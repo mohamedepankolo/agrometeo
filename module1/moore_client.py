@@ -32,6 +32,7 @@ from __future__ import annotations
 import base64
 import mimetypes
 import os
+import re
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -185,34 +186,151 @@ class MooreClient:
 # =====================================================================
 #  MODULE 1 : bulletin FR -> texte mooré -> audio mooré
 # =====================================================================
+# Le service TTS échoue (500) au-delà d'une certaine limite qui ne dépend pas
+# que du nombre de caractères : un bloc de 780 caractères (phrases complètes)
+# passe, mais un bloc de 806 caractères composé de nombreux items séparés par
+# " ; " échoue alors que chaque item pris seul fonctionne (testé empiriquement).
+# Le nombre de segments/clauses semble aussi compter, pas seulement la longueur.
+# On découpe donc à la fois sur la ponctuation forte ET sur les points-virgules,
+# avec une marge de sécurité réduite, puis on recolle les .wav produits.
+_TTS_MAX_CHARS = 500
+
+
+def _split_for_tts(text_moore: str) -> list[str]:
+    sentences = [s.strip() for s in re.split(r"(?<=[.!?;])\s+", text_moore.strip()) if s.strip()]
+    blocks: list[str] = []
+    current = ""
+    for sentence in sentences:
+        candidate = f"{current} {sentence}".strip() if current else sentence
+        if len(candidate) > _TTS_MAX_CHARS and current:
+            blocks.append(current)
+            current = sentence
+        else:
+            current = candidate
+    if current:
+        blocks.append(current)
+    return blocks
+
+
+def _concat_wavs(paths: list[Path], out_path: Path) -> Path:
+    import wave
+
+    with wave.open(str(paths[0]), "rb") as first:
+        params = first.getparams()
+        frames = [first.readframes(first.getnframes())]
+    for p in paths[1:]:
+        with wave.open(str(p), "rb") as w:
+            frames.append(w.readframes(w.getnframes()))
+    with wave.open(str(out_path), "wb") as out:
+        out.setparams(params)
+        for f in frames:
+            out.writeframes(f)
+    return out_path
+
+
+def tts_moore_long(text_moore: str, out_path="tts_output.wav", sclient: MooreClient | None = None) -> Path:
+    """Synthèse vocale d'un texte mooré long : découpe en blocs sous la limite du
+    service TTS puis recolle les audios en un seul fichier."""
+    sclient = sclient or MooreClient()
+    blocks = _split_for_tts(text_moore)
+    if len(blocks) <= 1:
+        return sclient.tts_moore(text_moore, out_path=out_path)
+
+    import tempfile
+
+    tmp_paths: list[Path] = []
+    try:
+        for i, block in enumerate(blocks):
+            tmp = Path(tempfile.gettempdir()) / f"_tts_block_{os.getpid()}_{i}.wav"
+            sclient.tts_moore(block, out_path=tmp)
+            tmp_paths.append(tmp)
+        return _concat_wavs(tmp_paths, Path(out_path))
+    finally:
+        for p in tmp_paths:
+            p.unlink(missing_ok=True)
+
+
 def translate_fr_to_moore(text_fr: str, tclient: TranslationClient | None = None) -> str:
     """Traduction texte FR -> mooré (désormais opérationnelle)."""
     return (tclient or TranslationClient()).fr_to_moore(text_fr)
 
 
+# Le service de traduction NLLB tronque sa sortie au-delà d'une longueur limite
+# (~150-250 caractères mooré observés en test), quelle que soit la longueur du
+# texte FR envoyé. Découper phrase par phrase avant de traduire évite ce problème —
+# mais une phrase "naturelle" à virgules (plutôt que ponctuée en points-virgules)
+# peut rester trop longue après ce découpage ; on la resplite alors récursivement.
+_SENTENCE_SPLIT_RE = re.compile(r"(?<=[.;:!?])\s+")
+_CLAUSE_SPLIT_RE = re.compile(r"(?<=,)\s+")
+_MAX_CHUNK_CHARS = 200
+
+
+def _split_safe(text: str) -> list[str]:
+    """Découpe `text` en fragments <= _MAX_CHUNK_CHARS, d'abord sur la ponctuation
+    forte (. ; : ! ?), puis sur les virgules si un fragment est encore trop long."""
+    chunks = [c.strip() for c in _SENTENCE_SPLIT_RE.split(text.strip()) if c.strip()]
+    safe: list[str] = []
+    for chunk in chunks:
+        if len(chunk) <= _MAX_CHUNK_CHARS:
+            safe.append(chunk)
+            continue
+        sub_chunks = [c.strip() for c in _CLAUSE_SPLIT_RE.split(chunk) if c.strip()]
+        safe.extend(sub_chunks)
+    return safe
+
+
+def translate_long_fr_to_moore(text_fr: str, tclient: TranslationClient | None = None) -> str:
+    """Traduction FR -> mooré d'un texte long (bulletin complet), phrase par phrase."""
+    tclient = tclient or TranslationClient()
+    chunks = _split_safe(text_fr)
+    return " ".join(tclient.fr_to_moore(c) for c in chunks)
+
+
 def bulletin_to_moore_audio(bulletin_fr: str, out_path: str = "bulletin_mos.wav",
                             tclient: TranslationClient | None = None,
                             sclient: MooreClient | None = None) -> dict:
-    """Pipeline module 1 (voie mooré) : traduit puis synthétise.
+    """Pipeline module 1 (voie mooré) : traduit (phrase par phrase) puis synthétise.
     Renvoie {'text_moore', 'audio_path'}."""
-    text_moore = translate_fr_to_moore(bulletin_fr, tclient)
-    audio = (sclient or MooreClient()).tts_moore(text_moore, out_path=out_path)
+    text_moore = translate_long_fr_to_moore(bulletin_fr, tclient)
+    audio = tts_moore_long(text_moore, out_path=out_path, sclient=sclient)
     return {"text_moore": text_moore, "audio_path": audio}
+
+
+def bulletin_pdf_to_moore_audio(pdf_path, out_path: str = "bulletin_mos.wav",
+                                tclient: TranslationClient | None = None,
+                                sclient: MooreClient | None = None) -> dict:
+    """Pipeline complet F1.1-F1.4 (voie mooré) : PDF ANAM/RECLIM -> extraction des
+    sections (bulletin_parser) -> texte FR -> traduction mooré -> audio.
+    Les phrases-titres récurrentes (titres de section, intro des conseils) utilisent
+    des traductions mooré fixes (cf. bulletin_parser.MOORE_LABEL_*) plutôt que d'être
+    retraduites à chaque bulletin ; seul le contenu variable passe par le traducteur.
+    Renvoie {'bulletin', 'text_fr', 'text_moore', 'audio_path'}."""
+    from bulletin_parser import bulletin_narration_fr, bulletin_narration_moore, parse_bulletin
+
+    bulletin = parse_bulletin(pdf_path)
+    text_fr = bulletin_narration_fr(bulletin)
+    text_moore = bulletin_narration_moore(bulletin, tclient)
+    audio = tts_moore_long(text_moore, out_path=out_path, sclient=sclient)
+    return {"bulletin": bulletin, "text_fr": text_fr, "text_moore": text_moore, "audio_path": audio}
 
 
 # ---------------------------------------------------------------------
 if __name__ == "__main__":
     import sys
 
-    phrase = " ".join(sys.argv[1:]) or "Fortes pluies attendues cet après-midi. Limitez les déplacements."
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
 
-    # 1) Traduction (nécessite CITADEL_API_EMAIL / CITADEL_API_PASSWORD)
-    tc = TranslationClient()
-    mos = tc.fr_to_moore(phrase)
-    print("FR    :", phrase)
-    print("MOORÉ :", mos)
+    arg = " ".join(sys.argv[1:]) or "Fortes pluies attendues cet après-midi. Limitez les déplacements."
 
-    # 2) Audio mooré (décommenter une fois MOORE_API_BASE_URL / MOORE_API_TOKEN dispo)
-    # sc = MooreClient()
-    # wav = sc.tts_moore(mos, out_path="demo_bulletin_mos.wav")
-    # print("Audio :", wav)
+    if arg.lower().endswith(".pdf"):
+        # Pipeline F1.1-F1.4 : PDF du bulletin -> texte FR -> traduction mooré -> audio
+        result = bulletin_pdf_to_moore_audio(arg, out_path="bulletin_mos.wav")
+        print("FR    :", result["text_fr"])
+    else:
+        # Pipeline simple : texte FR -> traduction mooré -> audio mooré
+        result = bulletin_to_moore_audio(arg, out_path="bulletin_mos.wav")
+        print("FR    :", arg)
+
+    print("MOORÉ :", result["text_moore"])
+    print("Audio :", result["audio_path"])

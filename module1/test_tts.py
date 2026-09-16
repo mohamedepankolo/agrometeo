@@ -15,6 +15,9 @@ import os
 import sys
 import requests
 
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+
 BASE_URL = os.environ.get("MOORE_API_BASE_URL", "https://iodine-april-bulb.ngrok-free.dev").rstrip("/")
 TOKEN = os.environ.get("MOORE_API_TOKEN", "")            # vide par defaut, expres
 TEXT = " ".join(sys.argv[1:]) or "ne y yibeoogo, yamba"

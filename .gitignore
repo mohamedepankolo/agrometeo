@@ -9,3 +9,4 @@ venv/
 
 # Sorties audio de test
 *.wav
+*.mp3

@@ -1,0 +1,3452 @@
+[
+  {
+    "fr": "Bulletin météo",
+    "moore": "Wakata manesom kibaya",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Alerte",
+    "moore": "Kiogre/gusgu",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Bulletin agro-météo",
+    "moore": "kooda Wakata manesom kibaya",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "mousson",
+    "moore": "Siong sebgo",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "harmattan",
+    "moore": "Sipalg sebgo",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "modéré",
+    "moore": "Sin zemse",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "faible",
+    "moore": "faassinga",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Ciel",
+    "moore": "saganna/saasin",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Affaiblissement",
+    "moore": "Koomsgo",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "renforcement",
+    "moore": "Pang paasgo/yangre",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Partiellement",
+    "moore": "Zins pèdba",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Nuageux",
+    "moore": "Sawato",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Couvert",
+    "moore": "Gubgame",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Manifestations",
+    "moore": "Manesonm",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Pluvieuses",
+    "moore": "Saa nidga",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "orageux",
+    "moore": "Saa tansa",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Pluvio-orageux",
+    "moore": "Saa tansa ne saaga",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Ligne de grains",
+    "moore": "Saa kuuiga",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Amas nuageux",
+    "moore": "Sawad-bèèda",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Amas nuageux isolé",
+    "moore": "Sawad-bèèd sin be bogre yembre",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Nord",
+    "moore": "Windg sin yit nug gobga",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Sud",
+    "moore": "Windg sin yit nug ritgo",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Ouest",
+    "moore": "Windg sin luutin/ni taore",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Est",
+    "moore": "Windg sin yitin/ yaaga",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Temps ensoleillé",
+    "moore": "Wuinto sanyinga/ pelga",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Ciel degagé",
+    "moore": "Saaganin-zaale",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Temps brumeux",
+    "moore": "Wuulg-faaga",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Brouillard",
+    "moore": "Wuul-taoko",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Poussière en suspension",
+    "moore": "gangadgo(wusggu sin yage)",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Nappe de poussière",
+    "moore": "pulupuka",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Température",
+    "moore": "Ziig-mamkre(maasom, tuulm sin ya soaba)",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Température Minimale",
+    "moore": "Ziiga bogsgo sin ya soaba",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Température Maximale",
+    "moore": "Ziiga tuulm sin ya soaba",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Température moyenne",
+    "moore": "Ziiga sin zems to-to",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Températures extrêmes",
+    "moore": "Ziiga weogre",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Degré",
+    "moore": "Tuulg ne waod ma teogo",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Les dernières 24h",
+    "moore": "Zame daara",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Prévisions météo",
+    "moore": "Wakata mansom saagre",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "normale",
+    "moore": "Sin zemsé",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "déficitaire",
+    "moore": "Sin paoge",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Excédentaire",
+    "moore": "Sin zuuge",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Normale à excédentaire",
+    "moore": "Sin zemse tog zuuge",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Déficitaire à normale",
+    "moore": "Sin paogo tog zemse",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Rafale",
+    "moore": "Seb-tuule",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "visibilité",
+    "moore": "nininme",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "évaporation",
+    "moore": "woogdame/yoonbgre",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "évapo-transpiration",
+    "moore": "A yoonbg-seedgdin",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Grêle",
+    "moore": "saapilma",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Heures crépusculaires",
+    "moore": "Zin yingre wal la luuisin",
+    "explication": "",
+    "source": "kaya"
+  },
+  {
+    "fr": "Abri météo",
+    "moore": "Raad ro-bila sên ya pèèlga sasa wâ (wakatâ) bôn-magdg (metewo wâ) tùùm- teed bîngr yînga",
+    "explication": "Petite cage blanche contenant des instruments météo",
+    "source": "braced"
+  },
+  {
+    "fr": "Accalmie",
+    "moore": "Zîigâ maagre, Zîigâ lebga bùgsgo",
+    "explication": "Un calme après une pluie, un orage ou un vent",
+    "source": "braced"
+  },
+  {
+    "fr": "Accès (à quelque chose)",
+    "moore": "Metewo wâ kibay paoongo",
+    "explication": "La possibilité d'obtenir l'information météo",
+    "source": "braced"
+  },
+  {
+    "fr": "Activité",
+    "moore": "Metewo wâ manesem sên tôe n wa ne.",
+    "explication": "Le résultat d'un phénomène météo",
+    "source": "braced"
+  },
+  {
+    "fr": "Aéroport",
+    "moore": "A silg yiri",
+    "explication": "La gare des avions",
+    "source": "braced"
+  },
+  {
+    "fr": "Afficher",
+    "moore": "N wilgi, n tabende",
+    "explication": "Montrer, présenter, indiquer",
+    "source": "braced"
+  },
+  {
+    "fr": "Agro météorologie",
+    "moore": "Manesem nins sên kêed metewo wâ la koobâ tùùm maaneg wèèngê ;",
+    "explication": "Etudes des relations entre les conditions météorologiques et l'agriculture",
+    "source": "braced"
+  },
+  {
+    "fr": "Alerte",
+    "moore": "Râamd maaneg sên na yàlê tà nebâ segl b mens tà metewo wâ sabaab wêng a ye n na n wa",
+    "explication": "Signal (information) prévenant l'arrivée d'un phénomène météo incitant à prendre des mesures de sécurité",
+    "source": "braced"
+  },
+  {
+    "fr": "Alizées",
+    "moore": "Sebg buud a ye yùùre",
+    "explication": "Type de vents",
+    "source": "braced"
+  },
+  {
+    "fr": "Altitude",
+    "moore": "Zîig zândlem sên ya to-to ne mogrâ",
+    "explication": "Hauteur par rapport au niveau de la mer",
+    "source": "braced"
+  },
+  {
+    "fr": "Amas nuageux",
+    "moore": "Sawat sên tigim taaba ; Sawad taoko",
+    "explication": "Gros nuage (nuage de grande envergure)",
+    "source": "braced"
+  },
+  {
+    "fr": "Amont",
+    "moore": "Sàngrê, Sên deng taoore",
+    "explication": "Ce qui est avant",
+    "source": "braced"
+  },
+  {
+    "fr": "Animateur",
+    "moore": "Sôasgâ taoor soaba",
+    "explication": "Animateur, présentateur (d'une émission)",
+    "source": "braced"
+  },
+  {
+    "fr": "Annuel",
+    "moore": "Yùùmd-yùùmde ; Yùùmd fâa",
+    "explication": "Par an",
+    "source": "braced"
+  },
+  {
+    "fr": "Anomalie",
+    "moore": "Sên paooge, sên pa wênd taaba",
+    "explication": "Différence par rapport à la normale (la moyenne sur 30 ans)",
+    "source": "braced"
+  },
+  {
+    "fr": "Aout",
+    "moore": "Sa-sik kiuugu",
+    "explication": "Août, 8e mois",
+    "source": "braced"
+  },
+  {
+    "fr": "Après",
+    "moore": "Rê poore ; Rê loogr poore",
+    "explication": "Après",
+    "source": "braced"
+  },
+  {
+    "fr": "Après-midi",
+    "moore": "Zafare, Zaabre",
+    "explication": "Après-midi",
+    "source": "braced"
+  },
+  {
+    "fr": "Arachide",
+    "moore": "Nanguri, sînkaam, sûma",
+    "explication": "Arachide",
+    "source": "braced"
+  },
+  {
+    "fr": "Arc en ciel",
+    "moore": "Saag gomtàùùgo",
+    "explication": "Arc-en-ciel",
+    "source": "braced"
+  },
+  {
+    "fr": "Archives",
+    "moore": "Tùùmâ kibay sèb-kùd bîngri",
+    "explication": "Anciens docu-ments de sauve-garde de données",
+    "source": "braced"
+  },
+  {
+    "fr": "Arpège",
+    "moore": "Fârens têngê wâ metewo wâ bôn- makdg tùùm teoogo",
+    "explication": "Modèle de prévision météo de la France",
+    "source": "braced"
+  },
+  {
+    "fr": "Artisans",
+    "moore": "Nug tùmtùmda",
+    "explication": "Personne qui exerce un métier manuel",
+    "source": "braced"
+  },
+  {
+    "fr": "Association",
+    "moore": "Sulli ; lagem-n-taare",
+    "explication": "Regroupement",
+    "source": "braced"
+  },
+  {
+    "fr": "Associer",
+    "moore": "N tigmi, n koole",
+    "explication": "Regrouper, assembler",
+    "source": "braced"
+  },
+  {
+    "fr": "Astres",
+    "moore": "Yîngr âdse",
+    "explication": "Etoiles du ciel",
+    "source": "braced"
+  },
+  {
+    "fr": "Atterrissage",
+    "moore": "Têng zug sigbu",
+    "explication": "Le fait de se poser sur le sol",
+    "source": "braced"
+  },
+  {
+    "fr": "Atmosphère",
+    "moore": "Gaas buud sên gûbg têngâ",
+    "explication": "Couche de gaz qui entoure la terre",
+    "source": "braced"
+  },
+  {
+    "fr": "Automne",
+    "moore": "Sasa buud sên be tùùlgâ ne waoodâ sùka (bôn-bàùùng kiuug ne zî-likr kiuugâ sùka) tà tààsâ vâad sùùgd sasa kâng têms kêer pùgê",
+    "explication": "Type de saison entre les périodes de chaleur et de froid (septembre-octobre) où les arbres perdent leurs feuilles dans certains pays",
+    "source": "braced"
+  },
+  {
+    "fr": "Autorité",
+    "moore": "Têng taoor soaba ; Noor ràkr taoor soaba",
+    "explication": "Dirigeant, décideur",
+    "source": "braced"
+  },
+  {
+    "fr": "Autorités coutumières",
+    "moore": "Rog-n-mik nanambse",
+    "explication": "Chefs coutumiers",
+    "source": "braced"
+  },
+  {
+    "fr": "Autorités politiques",
+    "moore": "Têng taoor dâmbâ ; politikâ taoor dâmbâ ;",
+    "explication": "Dirigeants, gouvernants",
+    "source": "braced"
+  },
+  {
+    "fr": "Autorités religieuses",
+    "moore": "Wênd tûudub taoor dâmbâ",
+    "explication": "Responsables religieux",
+    "source": "braced"
+  },
+  {
+    "fr": "Aux abords",
+    "moore": "yambâ, Sên pê ; gilim-gilmi ;",
+    "explication": "A côtés, aux alentours, à la limite de",
+    "source": "braced"
+  },
+  {
+    "fr": "Avals",
+    "moore": "Sên be poorê, têngre, baasgê",
+    "explication": "Ce qui est après, bas, fin",
+    "source": "braced"
+  },
+  {
+    "fr": "Avant",
+    "moore": "Reng taoore, pînda",
+    "explication": "Avant",
+    "source": "braced"
+  },
+  {
+    "fr": "Averse",
+    "moore": "Saluka",
+    "explication": "Forte pluie soudaine qui ne dure pas longtemps",
+    "source": "braced"
+  },
+  {
+    "fr": "Avril",
+    "moore": "Tùùl-nif kiuugu (tùùlgâ yaa wùsg sasa kânga)",
+    "explication": "Avril (période de forte chaleur)",
+    "source": "braced"
+  },
+  {
+    "fr": "Axe",
+    "moore": "Ween-vààs a 4 sên tees zîig ning wilgri",
+    "explication": "Orientation",
+    "source": "braced"
+  },
+  {
+    "fr": "Baisse",
+    "moore": "Boogre",
+    "explication": "Diminution",
+    "source": "braced"
+  },
+  {
+    "fr": "Baromètre",
+    "moore": "Pemsem ninga sên gilga têngâ (atmosfèèrâ)zàslem magb teoogo (tûuda ne magbâ sên na n maan zîig ninga)",
+    "explication": "Instrument de mesure de la pression (poids de l'atmosphère en un lieu donné de la terre)",
+    "source": "braced"
+  },
+  {
+    "fr": "Barrage",
+    "moore": "Baraase ; Koom gàdgr zîig sên me",
+    "explication": "Retenue d'eau construite",
+    "source": "braced"
+  },
+  {
+    "fr": "Bases",
+    "moore": "Yêbgre ; sàngre, viuglg zîigâ, tilgri",
+    "explication": "Fondement, commencement, implantation",
+    "source": "braced"
+  },
+  {
+    "fr": "Bas-fonds",
+    "moore": "Koom sên yalsd zîis nins n kaoosdê ;",
+    "explication": "Terrains où l'eau s'arrête pendant longtemps (terrains inondables)",
+    "source": "braced"
+  },
+  {
+    "fr": "Bassins",
+    "moore": "Koom ningr zîig sên me",
+    "explication": "Construction destinée à contenir de l'eau",
+    "source": "braced"
+  },
+  {
+    "fr": "Boue",
+    "moore": "Bègdo",
+    "explication": "Boue",
+    "source": "braced"
+  },
+  {
+    "fr": "Boussole",
+    "moore": "Tùùm-teoog sên wilgd zîiga",
+    "explication": "Appareil qui montre la direction",
+    "source": "braced"
+  },
+  {
+    "fr": "Bouturage",
+    "moore": "Bôn-yitg rao-gàrg b sên send tênga sên na yàlê t’a tobe",
+    "explication": "Plantation de morceaux de tige d'une plante dans le sol pour qu'ils repoussent",
+    "source": "braced"
+  },
+  {
+    "fr": "Bras du fleuve",
+    "moore": "Ko-zoetem sên zoet n dabd kùàl-kasengê",
+    "explication": "Petit cours d'eau qui coule vers le fleuve",
+    "source": "braced"
+  },
+  {
+    "fr": "Bras du lac",
+    "moore": "Ko-zoetem sên zoet n dabd kùàl-bilê",
+    "explication": "Petit cours d'eau qui coule vers le lac",
+    "source": "braced"
+  },
+  {
+    "fr": "Brouillard",
+    "moore": "Wulgu",
+    "explication": "Nuage au niveau du sol qui réduit la visibilité",
+    "source": "braced"
+  },
+  {
+    "fr": "Brumes",
+    "moore": "Wulga (ko-wallem bà wubsg sên kàt tàpa le ne sôma ye)",
+    "explication": "Présence (suspension) de vapeur d'eau ou de poussière qui réduit la visibilité",
+    "source": "braced"
+  },
+  {
+    "fr": "Buttage",
+    "moore": "Koob tùùm manesem sên kàt tà gaad tândâ n ning bôn-yitg yêgne",
+    "explication": "Pratique agricole qui consiste à rassembler la terre en hauteur autour d'une plante",
+    "source": "braced"
+  },
+  {
+    "fr": "Carac-téristique",
+    "moore": "Toor zalle, bud toore",
+    "explication": "Trait spécifique, particularité",
+    "source": "braced"
+  },
+  {
+    "fr": "Carte",
+    "moore": "bon- naand sên kôt kibay saagâ niib wèèngê, zîigâ tùùlem wèèngê… bà… (makre : Burkîna Faso)",
+    "explication": "Figure, dessin qui montrent des informations comme la pluie, la température … d'un lieu (ex. : Burkina Faso)",
+    "source": "braced"
+  },
+  {
+    "fr": "Cascades",
+    "moore": "Koom sên yit tâng zug n kiigd tênga",
+    "explication": "Chutes d'eau tombant d'une montagne",
+    "source": "braced"
+  },
+  {
+    "fr": "Catastrophe",
+    "moore": "Sabaab wêng sên tiig n wa, n sâamd teed wùsgo",
+    "explication": "Evénement brutal et dévastateur (qui cause de gros dégâts)",
+    "source": "braced"
+  },
+  {
+    "fr": "Céder (digue)",
+    "moore": "pasgre, kaogre",
+    "explication": "Rompre, casser",
+    "source": "braced"
+  },
+  {
+    "fr": "Chaleur",
+    "moore": "Zîig sên wànge",
+    "explication": "Température élevée",
+    "source": "braced"
+  },
+  {
+    "fr": "Champignons",
+    "moore": "Gûudu : Bôn-yitg sên pa kêeng la a pa tar yêgena bà vâad ye",
+    "explication": "Plante qui n'est pas verte et qui n'a ni racines, ni feuilles",
+    "source": "braced"
+  },
+  {
+    "fr": "Changement climatique",
+    "moore": "Sasa wâ toeeng sên wè n ya a soaba yùùm 10 pùgê bà yààd rênda",
+    "explication": "Modification générale des saisons par rapport à 10 années ou plus",
+    "source": "braced"
+  },
+  {
+    "fr": "Chenille",
+    "moore": "Zûnzûuri",
+    "explication": "Chenille",
+    "source": "braced"
+  },
+  {
+    "fr": "Choix (de variété de semences)",
+    "moore": "Bôn-buud tûusgu",
+    "explication": "Sélection",
+    "source": "braced"
+  },
+  {
+    "fr": "Ciel",
+    "moore": "Saaga-gâna , yîngri",
+    "explication": "Ciel",
+    "source": "braced"
+  },
+  {
+    "fr": "Clairsemé (végétation clairsemée)",
+    "moore": "Tààs sên pa waoog zîigê",
+    "explication": "Espacé, dispersé (végétation où il n'y a pas beaucoup d'arbres)",
+    "source": "braced"
+  },
+  {
+    "fr": "Climat",
+    "moore": "Sasa magb wakat wok pùgê (yùùm 30)",
+    "explication": "Moyenne des temps sur une période donnée (30 ans)",
+    "source": "braced"
+  },
+  {
+    "fr": "Climato dépendante",
+    "moore": "Bâag bà tùùmd maaneg sên tûud ne sasa wâ yalê",
+    "explication": "Maladie ou activité dépendant des conditions climatiques",
+    "source": "braced"
+  },
+  {
+    "fr": "Collaboration",
+    "moore": "Wùm-taaba, zems- taaba",
+    "explication": "Entente",
+    "source": "braced"
+  },
+  {
+    "fr": "Collines",
+    "moore": "Tâm-puusi, Tâmse",
+    "explication": "Collines",
+    "source": "braced"
+  },
+  {
+    "fr": "Commun- autaires (radios)",
+    "moore": "Têng pùgê radiyo",
+    "explication": "Radios locales",
+    "source": "braced"
+  },
+  {
+    "fr": "Commune",
+    "moore": "Komiindi (yaa kâdenga meer sên so)",
+    "explication": "Territoire dirigé par un maire",
+    "source": "braced"
+  },
+  {
+    "fr": "Comparé",
+    "moore": "Sên mak n mag ne…",
+    "explication": "Mesuré par rapport à",
+    "source": "braced"
+  },
+  {
+    "fr": "Condition (météo)",
+    "moore": "Sasa wâ (metewo wâ) sên na yà a soaba",
+    "explication": "Situation météo",
+    "source": "braced"
+  },
+  {
+    "fr": "Conduite",
+    "moore": "Nao-kêndr ninga d sên segd n dàke, noor ràkre, saglga",
+    "explication": "Mesure à prendre, directive, conseil",
+    "source": "braced"
+  },
+  {
+    "fr": "Conseils",
+    "moore": "Noor reegre, sor ninga d sên segd n tû, saglse",
+    "explication": "Voie à suivre",
+    "source": "braced"
+  },
+  {
+    "fr": "Conservation des aliments",
+    "moore": "Rààbâ bîngri, rààbâ koglgo",
+    "explication": "Garde, protection des aliments",
+    "source": "braced"
+  },
+  {
+    "fr": "Constat",
+    "moore": "D sên gûus n yânde",
+    "explication": "Remarque",
+    "source": "braced"
+  },
+  {
+    "fr": "Contre saison (culture de contre saison)",
+    "moore": "Sàpaolg zêed tùùmâ",
+    "explication": "Saison sèche",
+    "source": "braced"
+  },
+  {
+    "fr": "Coopératives",
+    "moore": "Zê-koaadb sulli, zê- koaadb gurupmâ",
+    "explication": "Groupements de producteurs",
+    "source": "braced"
+  },
+  {
+    "fr": "cordon herbacé",
+    "moore": "Mood selb pùtâ todsê wâ sên na yàlê n kok koomâ la n kogl-b ne sebdâ la ne rûmsâ",
+    "explication": "Délimitation des champs à base d'herbes, pour garder l'eau, protéger contre les vents violents, les animaux",
+    "source": "braced"
+  },
+  {
+    "fr": "cordons pierreux",
+    "moore": "Ko-koag gânegr pùtâ todsê ne kuga sên na yàl n kok koomâ",
+    "explication": "Délimitation des champs à base de pierres pour garder l'eau",
+    "source": "braced"
+  },
+  {
+    "fr": "Côtes",
+    "moore": "Mogrâ kàremse",
+    "explication": "Bordures de mer",
+    "source": "braced"
+  },
+  {
+    "fr": "Couleurs",
+    "moore": "Kôbgo",
+    "explication": "Couleurs",
+    "source": "braced"
+  },
+  {
+    "fr": "Cours d'eau",
+    "moore": "Koomâ sên wè n tûud zîig ninga",
+    "explication": "Chemin naturel de l'eau",
+    "source": "braced"
+  },
+  {
+    "fr": "couvert végétal",
+    "moore": "Zîig a ye pùgê mood la tààse sên naag taaba",
+    "explication": "L'ensemble des herbes et des arbres sur un espace donné",
+    "source": "braced"
+  },
+  {
+    "fr": "Crapaud",
+    "moore": "Pondre",
+    "explication": "Crapaud",
+    "source": "braced"
+  },
+  {
+    "fr": "Crash",
+    "moore": "Silg lùààse",
+    "explication": "Accident d'avion",
+    "source": "braced"
+  },
+  {
+    "fr": "Criquets pèlerins",
+    "moore": "Bôn-yàgds sên sâamd koodâ, tààsâ, moodâ la tààsâ (sùyâ)",
+    "explication": "Insectes qui détruisent les récoltes, la végétation",
+    "source": "braced"
+  },
+  {
+    "fr": "Crue",
+    "moore": "Koomâ sên sudgd n dùùgdê",
+    "explication": "Montée de l'eau qui déborde",
+    "source": "braced"
+  },
+  {
+    "fr": "Cultivateurs",
+    "moore": "Ka-koaadba",
+    "explication": "Cultivateurs",
+    "source": "braced"
+  },
+  {
+    "fr": "Culture de rente",
+    "moore": "Koob sên ya koosem yînga",
+    "explication": "Culture destinée à la vente",
+    "source": "braced"
+  },
+  {
+    "fr": "culture vivrière",
+    "moore": "Koob sên ya rààb yînga",
+    "explication": "Culture destinée à la consommation",
+    "source": "braced"
+  },
+  {
+    "fr": "Cultures basses",
+    "moore": "Bôn-koodà sên pa yikd yîngri (makre : nanguri, bènga)",
+    "explication": "Cultures de petite taille (ex. : arachides, haricot)",
+    "source": "braced"
+  },
+  {
+    "fr": "Cultures hautes",
+    "moore": "Bôn-koodà sên yaa wogdo, sên tar kânkâe (makre : ki, kamaan la ka-zêeg koobo)",
+    "explication": "Cultures de haute taille, qui ont des tiges (ex.: mil, maïs, sorgho)",
+    "source": "braced"
+  },
+  {
+    "fr": "Cumul pluvio- métrique",
+    "moore": "Saagâ koom waooglem magbo (a sên ni lèèr a ye pùgê, daar a ye pùgê, semend a ye pùgê, kiuug a ye bà yùùmd a ye pùgê)",
+    "explication": "Quantité totale d'eau de pluie tombée sur une période donnée (en une heure, un jour, une semaine, un mois, une année)",
+    "source": "braced"
+  },
+  {
+    "fr": "Cumul",
+    "moore": "Fâa zânga sên yala",
+    "explication": "Total",
+    "source": "braced"
+  },
+  {
+    "fr": "Cuvette",
+    "moore": "Laoko, zî- longo",
+    "explication": "Récipient, partie creuse d'une surface",
+    "source": "braced"
+  },
+  {
+    "fr": "Cycle",
+    "moore": "Wakat ninga bôn- koodr sên dàkd n bà ; bôn-koodr bàùùng wakato",
+    "explication": "Durée de déve- loppement d'une culture (Temps mis par une cul-ture pour attein-dre sa maturité)",
+    "source": "braced"
+  },
+  {
+    "fr": "Cycle court",
+    "moore": "Bôn-koodr sên dàkd wakat bilf n bàtê ; bôn-koodr sên bàt tao-tao",
+    "explication": "Culture qui met moins de temps pour murir",
+    "source": "braced"
+  },
+  {
+    "fr": "Cycle long",
+    "moore": "Bôn-koodr sên dàkd wakat wok n bàtê ; bôn-koodr sên ka bàt tao-tao",
+    "explication": "Culture qui met plus de temps pour murir",
+    "source": "braced"
+  },
+  {
+    "fr": "Cycle moyen",
+    "moore": "Bôn-koodr sên dàkd wakat sên pa bilfu, bà sên pa wok n bà ye",
+    "explication": "Culture qui met ni moins, ni plus de temps pour murir",
+    "source": "braced"
+  },
+  {
+    "fr": "Cyclone",
+    "moore": "Saag sebg sên fugd ne pânga wala sàlmande n sâamd teed wùsgo",
+    "explication": "Un vent violent qui se déplace comme un tourbillon accom- pagné de fortes pluies causant d'énormes dégâts",
+    "source": "braced"
+  },
+  {
+    "fr": "Déboisement",
+    "moore": "Tààsâ ke-yaare, tààsâ ke-peongo",
+    "explication": "coupe abusive des arbres",
+    "source": "braced"
+  },
+  {
+    "fr": "Dé-bordement",
+    "moore": "Sên loog a pângâ tèka, sên yôsg a toaaga",
+    "explication": "Dépassement du niveau maximal",
+    "source": "braced"
+  },
+  {
+    "fr": "Début de saison",
+    "moore": "Sêoogâ sàngre",
+    "explication": "Commencement de la saison",
+    "source": "braced"
+  },
+  {
+    "fr": "Début précoce",
+    "moore": "Sàngr sên yaa pînda",
+    "explication": "Début avant le début normal",
+    "source": "braced"
+  },
+  {
+    "fr": "Début tardif",
+    "moore": "Sàngr sên pa yà pînda",
+    "explication": "Début après le début normal",
+    "source": "braced"
+  },
+  {
+    "fr": "Décade",
+    "moore": "Rasem 10 pùgê",
+    "explication": "Une période de 10 jours",
+    "source": "braced"
+  },
+  {
+    "fr": "Décembre",
+    "moore": "Yùùm-sar kiuugu, kiuug 12 soaba",
+    "explication": "Décembre, 12eme mois",
+    "source": "braced"
+  },
+  {
+    "fr": "Décennie",
+    "moore": "Yùùm piig pùgê",
+    "explication": "Une période de 10 ans",
+    "source": "braced"
+  },
+  {
+    "fr": "Décollage",
+    "moore": "Sàlg yàkre",
+    "explication": "S'élever du sol",
+    "source": "braced"
+  },
+  {
+    "fr": "Décrue",
+    "moore": "Koomâ zândlem boogre",
+    "explication": "Baisse du niveau d'eau",
+    "source": "braced"
+  },
+  {
+    "fr": "Décrypter",
+    "moore": "bûmb vôor wilgri ; nbûmb vôor wegsgo",
+    "explication": "Décoder, interpréter",
+    "source": "braced"
+  },
+  {
+    "fr": "Défaut",
+    "moore": "Bûmb sên pa zemse, sên paooge, sên pa pidi",
+    "explication": "ce qui n'est pas normale, insuffisance",
+    "source": "braced"
+  },
+  {
+    "fr": "Déficitaire",
+    "moore": "Sên paooge bilfu, sên pa seke, sên pa tao, sên pa kolg weoogo",
+    "explication": "en dessous de la moyenne ou la normale, insuffisant",
+    "source": "braced"
+  },
+  {
+    "fr": "Dégagé (Ciel)",
+    "moore": "Sawat sên ka be, sagân sên pa tar sawato",
+    "explication": "Ciel sans nuage",
+    "source": "braced"
+  },
+  {
+    "fr": "Dégarnis (ciel)",
+    "moore": "Sawat beeme la pa waoog ye , sagân sên pa tar sawat wùsgo",
+    "explication": "Ciel qui a peu de nuages",
+    "source": "braced"
+  },
+  {
+    "fr": "Dégâts",
+    "moore": "Sâoongo, sâanga",
+    "explication": "Dégâts, destructions",
+    "source": "braced"
+  },
+  {
+    "fr": "Degré",
+    "moore": "Tùùlg bà waood magb teoogo",
+    "explication": "Unité de mesure de la température, niveau de la chaleur ou du froid",
+    "source": "braced"
+  },
+  {
+    "fr": "Déficit",
+    "moore": "Sê n ka be, sên pa seke, sên paooge",
+    "explication": "Manque, insuffisance",
+    "source": "braced"
+  },
+  {
+    "fr": "Délicat",
+    "moore": "Sên tog n maan ne gûusgu",
+    "explication": "Difficile, risqué",
+    "source": "braced"
+  },
+  {
+    "fr": "Demi-lune",
+    "moore": "Koob tùùm nao-kêndr sên kêed ne tên-gând noosem sên sâbg lebsgo : bog-gils tuub sên na yàl n kok saagâ koomâ tà maasrâ pa zîigâ pùgê n kaoose",
+    "explication": "Technique culturale de récupération des terres dégrader et consistant à mettre en place des trous sous forme de demi cercle permettant de recueillir l'eau et de conserver l'humidité pendant longtemps.",
+    "source": "braced"
+  },
+  {
+    "fr": "Dense",
+    "moore": "Kâgre, tààsâ la moodâ waooga zîigâ pùgê",
+    "explication": "Touffu, présence de beaucoup d'arbres, d'herbes",
+    "source": "braced"
+  },
+  {
+    "fr": "Dent de scie",
+    "moore": "Bûmb sên toeemd n dùùd la sigda zîig ninga pùgê",
+    "explication": "Variation périodique en baisse et en hausse dans un lieu donné",
+    "source": "braced"
+  },
+  {
+    "fr": "Département",
+    "moore": "Departema, (yaa kadeng tà prefè la taoor soaba)",
+    "explication": "Territoire administré par un préfet",
+    "source": "braced"
+  },
+  {
+    "fr": "Dernière 24 heures",
+    "moore": "Wakat 24 sên looge (makre : zaamê wakat 12 soaba n wa ta rûndâ wakat 12 ; zaamê wakat 18 soaba n wa tâag rûndâ wakat 18)",
+    "explication": "les 24 heures passées (ex. hier à 12 heures à aujourd'hui à 12 heures, Hier à 18 heures à aujourd'hui à 18 heures)",
+    "source": "braced"
+  },
+  {
+    "fr": "Désert",
+    "moore": "Zî-koèènga, bîisr zîiga, tààs la mood sên kaê",
+    "explication": "Zone sèche, terrain sec, zone de sable, absence de végétation",
+    "source": "braced"
+  },
+  {
+    "fr": "DGM devenu ANAM",
+    "moore": "Dezeyèm (DGM) : Meteworolozi wâ Dirèksô zeneralle – Tùùm-noor kaseng ninga sên get sasa wâ yalê la a magb yelle",
+    "explication": "Direction Générale de la Météorologie",
+    "source": "braced"
+  },
+  {
+    "fr": "Différence",
+    "moore": "bakr ning sên be ne sên da segd n yà wâ sùka",
+    "explication": "L'écart par rapport à une référence (moyenne ou normale)",
+    "source": "braced"
+  },
+  {
+    "fr": "Digue",
+    "moore": "Koak sên maane sên na yàl n kok baraase bà kùàlg koom",
+    "explication": "Barrière pour contenir l'eau d'un barrage, d'un lac, d'une rivière",
+    "source": "braced"
+  },
+  {
+    "fr": "Dimanche",
+    "moore": "Hato, zîmaas",
+    "explication": "Dimanche",
+    "source": "braced"
+  },
+  {
+    "fr": "Direction (du vent)",
+    "moore": "Sebgâ sên teesdê",
+    "explication": "Orientation ou sens du vent",
+    "source": "braced"
+  },
+  {
+    "fr": "Disposition",
+    "moore": "Yèlâ sên maneg n gâneg to-to ; yèlâ sên gâneg to-to",
+    "explication": "Manière dont les choses sont disposées",
+    "source": "braced"
+  },
+  {
+    "fr": "Divagation des animaux",
+    "moore": "Rûmsâ gô-yaarâ",
+    "explication": "L'errance, promenade libre des animaux",
+    "source": "braced"
+  },
+  {
+    "fr": "Dune",
+    "moore": "Bîis-tânga",
+    "explication": "Colline de sable formée par le vent",
+    "source": "braced"
+  },
+  {
+    "fr": "Dunes de sables",
+    "moore": "Bîis-tâmse",
+    "explication": "colline de sable formée par le vent",
+    "source": "braced"
+  },
+  {
+    "fr": "Eaux de ruissellement",
+    "moore": "Saag ko-zoetem",
+    "explication": "Eau qui coule après la tombée de la pluie",
+    "source": "braced"
+  },
+  {
+    "fr": "Eaux souterraines",
+    "moore": "Tên-gâongâ têngr koom",
+    "explication": "Eaux qui se trouvent sous la terre",
+    "source": "braced"
+  },
+  {
+    "fr": "Eaux stagnantes",
+    "moore": "Koom sên pa zoete (n yas zî-yende)",
+    "explication": "Eaux qui ne coulent pas",
+    "source": "braced"
+  },
+  {
+    "fr": "Ecart de l'humidité",
+    "moore": "Maasrâ (bùgsmâ) toaag ne sên da segd n yà",
+    "explication": "Différence de l'humidité par rapport à la normale ou la moyenne",
+    "source": "braced"
+  },
+  {
+    "fr": "Echelle",
+    "moore": "Têmsâ ne taab zârem b sên mak n wilg sebr zugu, tà d tôe n dàka rê n geel n bâng zârem ninga sên sàd be têmsâ ne taabasùk hakàka",
+    "explication": "Rapport entre les distances ou des dimensions qui permettent de représenter les dimensions réelles sur papier (une carte)",
+    "source": "braced"
+  },
+  {
+    "fr": "Eclair",
+    "moore": "Saag yâgengo",
+    "explication": "Lumière brève et intense qui sort des nuages",
+    "source": "braced"
+  },
+  {
+    "fr": "Eclipse",
+    "moore": "Yûug-tar-kiuugu, Yûug-yôk-kiuugu",
+    "explication": "Disparition partielle ou totale de la lune ou le soleil",
+    "source": "braced"
+  },
+  {
+    "fr": "Economie (d'eau)",
+    "moore": "Koom bîngri, Koom koglgo ,koom paoongo, koom boogre",
+    "explication": "Epargne, gain, réduction",
+    "source": "braced"
+  },
+  {
+    "fr": "Eleveurs",
+    "moore": "Gùùnda, Gùùngùùnda",
+    "explication": "Quelqu'un qui fait de l'élevage",
+    "source": "braced"
+  },
+  {
+    "fr": "Emissions radio / Emission de gaz",
+    "moore": "Radiyo wâ koeese / Gaaz yiisgu",
+    "explication": "Diffusion radio / Rejet de gaz",
+    "source": "braced"
+  },
+  {
+    "fr": "Enclos",
+    "moore": "Zîig sên gûbgi goarga",
+    "explication": "Terrain entouré d'une clôture",
+    "source": "braced"
+  },
+  {
+    "fr": "Endroit",
+    "moore": "Babgo, zîiga, sên beê sên tutê,sên teesê",
+    "explication": "Position, lieu, localité, zone",
+    "source": "braced"
+  },
+  {
+    "fr": "Engrais",
+    "moore": "Birga, pôosgo",
+    "explication": "Produit qui fertilise le sol",
+    "source": "braced"
+  },
+  {
+    "fr": "Engrais biologique",
+    "moore": "Pôosgo, bir- pônegdem",
+    "explication": "Engrais naturel (compost, fumure)",
+    "source": "braced"
+  },
+  {
+    "fr": "Engrais minérale",
+    "moore": "Nasar-birga",
+    "explication": "Engrais fabriqué dans les usines",
+    "source": "braced"
+  },
+  {
+    "fr": "Engrais organiques",
+    "moore": "Bir-pônegdem",
+    "explication": "Engrais naturel",
+    "source": "braced"
+  },
+  {
+    "fr": "Ensoleillé",
+    "moore": "Wîntoog sên be daare",
+    "explication": "Période dominée par le soleil (une journée ensoleillée)",
+    "source": "braced"
+  },
+  {
+    "fr": "Entre",
+    "moore": "Sùka, sên be Sùka",
+    "explication": "Situé, compris au milieu",
+    "source": "braced"
+  },
+  {
+    "fr": "Ephémères",
+    "moore": "Sên pa zèèd loogre, sên pa kaoosde",
+    "explication": "Qui dure très peu de temps",
+    "source": "braced"
+  },
+  {
+    "fr": "Equateur",
+    "moore": "Yaa rulg nebâ sên naan b yamê t’a welgd (pùàt) têngâ zîis a yiibu",
+    "explication": "C'est une ligne imaginaire qui partage la terre en deux parties",
+    "source": "braced"
+  },
+  {
+    "fr": "Equivalent",
+    "moore": "Bûmb sômblem bà a waooglem/neerêm sên zem taaba, sên ya a yeyn , sên leb taaba, sên wên taaba",
+    "explication": "Egal, qui est de même valeur ou de même quantité/ qualité",
+    "source": "braced"
+  },
+  {
+    "fr": "Erosion",
+    "moore": "Tên-gâongâ yerb sên tûud ne sebdâ, koomâ bà sa-pilmâ manesem",
+    "explication": "Perte ou usure des sols, du relief due au vent, à l’eau, au gel",
+    "source": "braced"
+  },
+  {
+    "fr": "Espaces protégés",
+    "moore": "Weoogâ zîis ninsa b sên yâk n gàdg tààs keebo bà tâoosgâ maanego",
+    "explication": "Endroits gardés où il est interdit de couper les arbres ou de chasser",
+    "source": "braced"
+  },
+  {
+    "fr": "Espèces",
+    "moore": "Bôn-vààlà buud sên wênd taaba la b tôe lagem taaba n weke",
+    "explication": "Catégories d'êtres vivants qui se ressemblent et peuvent se reproduiront entre eux",
+    "source": "braced"
+  },
+  {
+    "fr": "Espèces animales",
+    "moore": "Rûms buud sên wênd taaba la b tôe lagem taaba n weke",
+    "explication": "Catégories d'animaux qui se ressemblent et peuvent se reproduiront entre eux",
+    "source": "braced"
+  },
+  {
+    "fr": "Espèces en voie de disparition",
+    "moore": "Ninsaal tùùm manesem bà yèl a taab manesem sên tôe n wa ne bôn-vààlà buud kêer menesgo",
+    "explication": "Catégorie d'êtres vivants dont l'existence est menacée par l'action de l'Homme ou de cause naturelle",
+    "source": "braced"
+  },
+  {
+    "fr": "Espèces protégées",
+    "moore": "Bôn-vààl buud kêer kùùb sên gàdge",
+    "explication": "Catégories d'êtres vivants qu'il est interdit de détruire",
+    "source": "braced"
+  },
+  {
+    "fr": "Espèces végétales",
+    "moore": "Bôn-yiti buud fâa sên naag taaba",
+    "explication": "Ensemble des plantes",
+    "source": "braced"
+  },
+  {
+    "fr": "Est",
+    "moore": "Yaanga, ni-taoore",
+    "explication": "Le côté où le soleil se lève",
+    "source": "braced"
+  },
+  {
+    "fr": "Estimation",
+    "moore": "Magbo, geelgo",
+    "explication": "Mesure, évaluation, calcul",
+    "source": "braced"
+  },
+  {
+    "fr": "Etat (à l'état liquide, solide, gazeux)",
+    "moore": "Bûmb buud fâa yalê (koom-koom, kègemde, walem)",
+    "explication": "Forme (liquide, solide, gazeux)",
+    "source": "braced"
+  },
+  {
+    "fr": "Eté",
+    "moore": "Sasa ninga wîntoogâ sên tar pâng têms kêer pùgê (tùùl-nif kiuugu, sig-noe kiuugu, sigr kiuugu, sêoog kiuugu)",
+    "explication": "Saison où il y a le maximum de soleil dans certains pays (avril-mai-juin-juillet)",
+    "source": "braced"
+  },
+  {
+    "fr": "Etoile",
+    "moore": "Âdga",
+    "explication": "Astre qui brille la nuit dans le ciel",
+    "source": "braced"
+  },
+  {
+    "fr": "Etoile polaire",
+    "moore": "Âdga sên be goabg wakat fâa",
+    "explication": "Etoile qui se trouve au nord et qui ne bouge pas",
+    "source": "braced"
+  },
+  {
+    "fr": "Etudes scientifiques",
+    "moore": "Tùùm bà bângr baoob sên tûud ne noy nins b sên gânege",
+    "explication": "Travail, recherche qui respecte les règles d'une science",
+    "source": "braced"
+  },
+  {
+    "fr": "Evaporation",
+    "moore": "Koom fêbgre, koom yôbgre",
+    "explication": "Transformation ou passage de l'eau en vapeur, gaz",
+    "source": "braced"
+  },
+  {
+    "fr": "Evènement",
+    "moore": "Yell kaseng sên zînd bà sên maane tà b pa tôe n yîm a yell ye",
+    "explication": "Un fait important qui se produit et qui marque l'actualité",
+    "source": "braced"
+  },
+  {
+    "fr": "Excédentaire",
+    "moore": "Sên yôsge, sên yùùge, sên yààde",
+    "explication": "Qui est dépasse la moyenne (normale)",
+    "source": "braced"
+  },
+  {
+    "fr": "Expert",
+    "moore": "Bâng-kâag soaba",
+    "explication": "Personne qui maîtrise (spécialiste) un domaine de connaissance",
+    "source": "braced"
+  },
+  {
+    "fr": "Explication",
+    "moore": "N wa ne vêenem, n bilg tà b wùm a vôore",
+    "explication": "Eclaircissement, rendre compréhensible",
+    "source": "braced"
+  },
+  {
+    "fr": "Extrême",
+    "moore": "Bûmb tèka, n kù zùùre, pâng sên yààd bà sên pa ta",
+    "explication": "Limite, au bout, plus forte ou plus bas",
+    "source": "braced"
+  },
+  {
+    "fr": "Faible",
+    "moore": "Bûmb pâng sên pa waooge, komslem",
+    "explication": "Bas",
+    "source": "braced"
+  },
+  {
+    "fr": "Faible à modéré (vent)",
+    "moore": "Sên komse, sên sàng têngr n wa ta pùsùka (sebgâ zoees pâng tôe n ya m a 1/s ne m a 7/s sùka)",
+    "explication": "Bas, qui part du bas niveau au niveau moyen (Vitesse comprise entre 1m/s à 7m/s)",
+    "source": "braced"
+  },
+  {
+    "fr": "Feu de brousse",
+    "moore": "We-yôorâ",
+    "explication": "Feu réalisé pour brûler la végétation et la faune",
+    "source": "braced"
+  },
+  {
+    "fr": "Février",
+    "moore": "Wao-fugdg kiuugu, yùùmdâ pùgê kiuug a 2 soaba",
+    "explication": "Février, 2ème mois de l'année",
+    "source": "braced"
+  },
+  {
+    "fr": "Figure",
+    "moore": "Bûmb yalê naanego",
+    "explication": "Forme, représentation d'un objet",
+    "source": "braced"
+  },
+  {
+    "fr": "Fin de saison",
+    "moore": "Sêoog saabo",
+    "explication": "Fin d'une période climatique de l'année (fin de la saison pluvieuse)",
+    "source": "braced"
+  },
+  {
+    "fr": "Fin précoce",
+    "moore": "Sêoogâ tiig n saame",
+    "explication": "Fin avant la fin normale",
+    "source": "braced"
+  },
+  {
+    "fr": "Fin tardive",
+    "moore": "Sêoogâ kaoos n saame",
+    "explication": "Fin après la fin normale",
+    "source": "braced"
+  },
+  {
+    "fr": "Flaque d'eau",
+    "moore": "Londâ koom, bogdâ koom",
+    "explication": "Eau accumulée temporairement dans des trous après la pluie",
+    "source": "braced"
+  },
+  {
+    "fr": "Fleuve",
+    "moore": "Koom sên zoet n dabd mogrâ wâ bà kùàlg ato pùgê",
+    "explication": "Cours d'eau qui se jette à la mer ou dans un autre fleuve",
+    "source": "braced"
+  },
+  {
+    "fr": "Floraison",
+    "moore": "Tààsâ puud ningr wakato",
+    "explication": "Période d'apparition des fleurs sur les plantes",
+    "source": "braced"
+  },
+  {
+    "fr": "Foire",
+    "moore": "Teed buud toor-toor koosg ne a wilgr ra- kasenga",
+    "explication": "Grand marché de ventes et d'expositions d'articles divers",
+    "source": "braced"
+  },
+  {
+    "fr": "Forêt dense",
+    "moore": "Kâgre",
+    "explication": "Espace de grande étendue de terrain occupée par de grands arbres touffus",
+    "source": "braced"
+  },
+  {
+    "fr": "Formation éparse (de nuage)",
+    "moore": "Sawat sên be zîig toor-toore",
+    "explication": "Disposition, apparition de nuages isolés",
+    "source": "braced"
+  },
+  {
+    "fr": "Formation sporadique",
+    "moore": "Sawat sên tôe n puki n wêneg n menem wakat bilf pùgê",
+    "explication": "Apparition de nuages qui disparaissent d'un moment à l'autre",
+    "source": "braced"
+  },
+  {
+    "fr": "Fort (vent)",
+    "moore": "Sebg sên tar pânga (sebgâ zoees tôe n yààga m a 7/s fâa)",
+    "explication": "Puissant, dont la vitesse dépasse 7m/s",
+    "source": "braced"
+  },
+  {
+    "fr": "Foudre",
+    "moore": "Sa-tâsga, sa-tâase",
+    "explication": "Décharge d'électricité pendant les orages",
+    "source": "braced"
+  },
+  {
+    "fr": "Foyer orageux",
+    "moore": "Zîig ninga sawat sên beê n naag ne yâgb la sa-tâsse",
+    "explication": "Zone où il y a des nuages accompagnés d'éclairs et de tonnerre",
+    "source": "braced"
+  },
+  {
+    "fr": "Fraicheur*",
+    "moore": "Sên yaa maasga",
+    "explication": "Ce qui est froid",
+    "source": "braced"
+  },
+  {
+    "fr": "Frais*",
+    "moore": "maasga",
+    "explication": "Froid",
+    "source": "braced"
+  },
+  {
+    "fr": "froid*",
+    "moore": "Zî-maare",
+    "explication": "Etat de basse température",
+    "source": "braced"
+  },
+  {
+    "fr": "Front inter tropical",
+    "moore": "Zîig ninga waoodâ sebg ne sêoogâ sebg sên segd taaba",
+    "explication": "Ligne ou zone de rencontre entre les vents d'harmattan et les vents de mousson",
+    "source": "braced"
+  },
+  {
+    "fr": "Fumier",
+    "moore": "Bir-pônegdem",
+    "explication": "Matière organique provenant de la litière (feuilles mortes des arbres) et des déchets d'animaux décomposés",
+    "source": "braced"
+  },
+  {
+    "fr": "Fumure organique",
+    "moore": "Birga",
+    "explication": "Engrais qui contient de la matière organique",
+    "source": "braced"
+  },
+  {
+    "fr": "Gouvern-ement",
+    "moore": "Gofneema (yaa neb ninsa sên tar tôog n tôe n zâ têngâ)",
+    "explication": "Ensembles des personnes qui ont le pouvoir de diriger un pays",
+    "source": "braced"
+  },
+  {
+    "fr": "GPS",
+    "moore": "Gepeyèse (GPS) : yaa tùùmd teoog (masîni) sên sôngd tà b bâng bûmb bà ned sên bee zîig ninga",
+    "explication": "Appareil qui permet de déterminer le lieu où se trouvent un objet, une personne",
+    "source": "braced"
+  },
+  {
+    "fr": "Graines",
+    "moore": "Bôn-yitg biisi",
+    "explication": "Graines",
+    "source": "braced"
+  },
+  {
+    "fr": "Granivores",
+    "moore": "Rûms ninsa sên dàt-b bôn-yitis biisi",
+    "explication": "Animaux qui se nourrissent de graines",
+    "source": "braced"
+  },
+  {
+    "fr": "Grêles",
+    "moore": "Sapàlemde",
+    "explication": "Morceau de glaces qui tombent pendant la pluie",
+    "source": "braced"
+  },
+  {
+    "fr": "Grenouille",
+    "moore": "Pondre, loanga",
+    "explication": "Grenouille",
+    "source": "braced"
+  },
+  {
+    "fr": "Groupe",
+    "moore": "Sulli",
+    "explication": "Rassemblement de personnes",
+    "source": "braced"
+  },
+  {
+    "fr": "Groupement",
+    "moore": "Gurupma",
+    "explication": "Ensemble de personnes qui travaillent pour des intérêts communs",
+    "source": "braced"
+  },
+  {
+    "fr": "Guides",
+    "moore": "Neb sên lùàt taoor n wilgd sore",
+    "explication": "Personnes qui montrent le chemin à suivre",
+    "source": "braced"
+  },
+  {
+    "fr": "Harmattan",
+    "moore": "Waood wakat sebgo sên fugd n tûud ne wubsgu (a sàngda fugb sàpaolg kiuugu n tà tâag wao-fugdg kiuugu)",
+    "explication": "Vent sec qui souffle en saison sèche, souvent accompagné de poussière (novembre à février)",
+    "source": "braced"
+  },
+  {
+    "fr": "Hausse",
+    "moore": "Bûmb paasgo",
+    "explication": "Augmentation",
+    "source": "braced"
+  },
+  {
+    "fr": "Hebdo-madaire",
+    "moore": "Rasem a yopopoe fâa",
+    "explication": "Qui se produit tous les sept jours",
+    "source": "braced"
+  },
+  {
+    "fr": "Hémisphère",
+    "moore": "Ândûni wâ boak a ye (Goabg bà Ràtgo)",
+    "explication": "Une moitié de la terre (Nord/Sud)",
+    "source": "braced"
+  },
+  {
+    "fr": "Herbacée (plante)",
+    "moore": "Bôn-yitg sên pa tar raoog ye (moodo)",
+    "explication": "Plante qui ne contient pas du bois (herbes)",
+    "source": "braced"
+  },
+  {
+    "fr": "Herbes",
+    "moore": "Moodo",
+    "explication": "Herbes",
+    "source": "braced"
+  },
+  {
+    "fr": "Heure",
+    "moore": "Lèère (lèèr a ye = mn 60), wakat a ye = mn 60",
+    "explication": "Heure (une heure = 60mn)",
+    "source": "braced"
+  },
+  {
+    "fr": "Horizon",
+    "moore": "Sa-gâongâ ne tên- gâongâ sên ya wa b sààsda taab zîig ninga wâ",
+    "explication": "Là où le ciel et la terre semblent se toucher",
+    "source": "braced"
+  },
+  {
+    "fr": "Hublot",
+    "moore": "Silg bà batayo pùgê pems-lèèga (fenetre)",
+    "explication": "Fenêtre d'un avion ou d'un bateau",
+    "source": "braced"
+  },
+  {
+    "fr": "Humidité",
+    "moore": "Bùgsem (koom bà ko- walem sên be pemsem pùgê)",
+    "explication": "Présence de l'eau ou de la vapeur d'eau dans l'air",
+    "source": "braced"
+  },
+  {
+    "fr": "Humidité relative",
+    "moore": "Bùgsem pâng (ko- walmâ) sên yala pemsmâ pùgê",
+    "explication": "Quantité d'humidité (vapeur d'eau) dans l'air",
+    "source": "braced"
+  },
+  {
+    "fr": "Hygromètre",
+    "moore": "Tùùmd teoog (masîn) sên tar n magd bùgsmâ sên be pemsmâ pùgê",
+    "explication": "Appareil pour mesurer l'humidité de l'air",
+    "source": "braced"
+  },
+  {
+    "fr": "Hivernage",
+    "moore": "Sigri, Sêoogo",
+    "explication": "Saison des pluies",
+    "source": "braced"
+  },
+  {
+    "fr": "Illimitées",
+    "moore": "Sên ka be saabo",
+    "explication": "Sans fin",
+    "source": "braced"
+  },
+  {
+    "fr": "Images radar météo",
+    "moore": "Radaare : sawat bà sa- koom fot râmba b sên yôk ne tùùm-teoog b sên boond tà radaare",
+    "explication": "Photos faites par un appareil appelé radar pour voir les nuages, la pluie",
+    "source": "braced"
+  },
+  {
+    "fr": "Impact",
+    "moore": "Sên lebg a soaba, sên wat ne bûmb ninga",
+    "explication": "Effet, conséquence",
+    "source": "braced"
+  },
+  {
+    "fr": "Incursion de vent",
+    "moore": "Sebg kôom wakat bilf pùgê bà sebg kôom ne tùùlem zîig ninga pùgê",
+    "explication": "Entrée momentanée ou pénétration brusque de vent dans un domaine",
+    "source": "braced"
+  },
+  {
+    "fr": "Indice différentiel normalisé",
+    "moore": "Tààsâ waooglem bângr geelgo",
+    "explication": "Taux de couverture de la végétation",
+    "source": "braced"
+  },
+  {
+    "fr": "Indice normalisée",
+    "moore": "Tààsâ waooglem bângr geelgo",
+    "explication": "(idem) Taux de couverture de la végétation",
+    "source": "braced"
+  },
+  {
+    "fr": "Industrie",
+    "moore": "Tùùm maaneg sên kêesd laogo bà tùùm- noy sên tôe n dàk bûmb n tèka t’a lebg bûmb a to",
+    "explication": "Activité qui produit des richesses ou des services (qui transforme les matières premières en produits)",
+    "source": "braced"
+  },
+  {
+    "fr": "Infiltration",
+    "moore": "Koomâ fôogr tên- gâongâ pùgê",
+    "explication": "Pénétration, entrée de l'eau sous terre",
+    "source": "braced"
+  },
+  {
+    "fr": "Information",
+    "moore": "Kibare",
+    "explication": "Une nouvelle, un renseignement sur un sujet",
+    "source": "braced"
+  },
+  {
+    "fr": "Inondation",
+    "moore": "Koom sên kê zîig sên da wè n ya koèènga",
+    "explication": "Recouvrement, débordement d'eau dans une zone habituellement sèche",
+    "source": "braced"
+  },
+  {
+    "fr": "Insectes",
+    "moore": "Bôn-yàgdse (sùyâ, yêsâ )",
+    "explication": "Insectes (criquets, Fourmies ...)",
+    "source": "braced"
+  },
+  {
+    "fr": "Instabilité",
+    "moore": "Sên payas zî-yende",
+    "explication": "Qui est en mouvement",
+    "source": "braced"
+  },
+  {
+    "fr": "Installation précoce",
+    "moore": "Sêoogâ tiig n sàngame",
+    "explication": "Commencement avant la période normale de la saison",
+    "source": "braced"
+  },
+  {
+    "fr": "Installation",
+    "moore": "Sêoogâ sàngre",
+    "explication": "Commencement de la saison",
+    "source": "braced"
+  },
+  {
+    "fr": "Installation tardive",
+    "moore": "Sêoogâ kaoos n sàngame",
+    "explication": "Commencement après la période normale de la saison",
+    "source": "braced"
+  },
+  {
+    "fr": "Intensité",
+    "moore": "Saag koom waooglem sên dùùg wakat ninga pùgê",
+    "explication": "Force, quantité de pluie qui tombe pendant une certaine durée, vitesse",
+    "source": "braced"
+  },
+  {
+    "fr": "Intensité modérée",
+    "moore": "Pânga, waooglem bà sa-koomâ rùùgr pânga",
+    "explication": "Force, quantité ou vitesse moyenne",
+    "source": "braced"
+  },
+  {
+    "fr": "Intervention",
+    "moore": "Noy ràkr sên na yàl n gàdg bûmb maanego",
+    "explication": "Prise de mesures pour arrêter quelque chose",
+    "source": "braced"
+  },
+  {
+    "fr": "Invisibilité",
+    "moore": "Nin sên pa tôe n yânde",
+    "explication": "Qui échappe à la vue, ce que les yeux ne peuvent pas voir",
+    "source": "braced"
+  },
+  {
+    "fr": "Irrigation",
+    "moore": "kêes koom zîig pùgê",
+    "explication": "Faire couler de l'eau sur une surface ou arrosage artificiel à travers des canaux des terres cultivables",
+    "source": "braced"
+  },
+  {
+    "fr": "Irriguer",
+    "moore": "koom kêesgo",
+    "explication": "Arroser une surface cultivable",
+    "source": "braced"
+  },
+  {
+    "fr": "Isoler",
+    "moore": "N welge, n bake",
+    "explication": "Seul, séparer, écarter ou détacher des choses",
+    "source": "braced"
+  },
+  {
+    "fr": "Janvier",
+    "moore": "Yùùm-vêkr kiuugu (yaa yùùmdâ pipi kiuugu)",
+    "explication": "Janvier (premier mois de l'année)",
+    "source": "braced"
+  },
+  {
+    "fr": "Jeudi",
+    "moore": "Lamusa (semend pùgê rasem a naas soaba)",
+    "explication": "Jeudi (quatrième jour de la semaine)",
+    "source": "braced"
+  },
+  {
+    "fr": "Journalier",
+    "moore": "Beoog-beoog fâa",
+    "explication": "Qui se fait chaque jour",
+    "source": "braced"
+  },
+  {
+    "fr": "Journée",
+    "moore": "Daar a ye (yaa wakat ninga sên sàngd yibeoog wîndg pukri n tà tâag zaabr wîndg kôom)",
+    "explication": "Temps qui dure du matin au coucher du soleil",
+    "source": "braced"
+  },
+  {
+    "fr": "Juillet",
+    "moore": "Sêoog kiuugu ( yùùmd pùgê kiuug a yopoe soaba)",
+    "explication": "Juillet (septième mois de l'année)",
+    "source": "braced"
+  },
+  {
+    "fr": "Juin",
+    "moore": "Sigr kiuugu (yùùmd pùgê kiuug a yoob soaba)",
+    "explication": "Juin (sixième mois de l'année)",
+    "source": "braced"
+  },
+  {
+    "fr": "Jumelles",
+    "moore": "Yaa teoog sên sôngd tà b tôe n tall n ges yààga",
+    "explication": "Loupe, Instrument qui permet de voir de loin",
+    "source": "braced"
+  },
+  {
+    "fr": "Kilomètre / heure",
+    "moore": "Kilometr sôor lèèr a ye pùgê (yaa kênd magb bila)",
+    "explication": "Unité de mesure de la vitesse",
+    "source": "braced"
+  },
+  {
+    "fr": "La normale",
+    "moore": "Sên wè n watê, sên tôe n dàk tà yà makre, sên wè n yântê, sên paam yùùm 30 pùgê",
+    "explication": "Qui arrive d'habitude, qui sert de modèle, qui est fréquent, la moyenne sur 30 ans",
+    "source": "braced"
+  },
+  {
+    "fr": "Labour",
+    "moore": "Têngâ gudgri, koobo",
+    "explication": "Retourner la terre",
+    "source": "braced"
+  },
+  {
+    "fr": "Lac",
+    "moore": "Koom kokr zî- kasenga sên naan a tore sên boond ti Laka",
+    "explication": "Grande retenue d'eaux naturelle",
+    "source": "braced"
+  },
+  {
+    "fr": "Latitude",
+    "moore": "Zîig sên beê magb ne Ekoatèèrâ (Equateur)",
+    "explication": "Position d'un point par rapport à l'Equateur",
+    "source": "braced"
+  },
+  {
+    "fr": "Barrage hydro- électrique",
+    "moore": "Baraas sên me t’a koomâ sên dùùgda tôe n tall n maan elèktrisite (électricité)",
+    "explication": "Retenue d'eau construite qui produit l'électricité par les chutes d'eau",
+    "source": "braced"
+  },
+  {
+    "fr": "Leader",
+    "moore": "Lidèère (ângilimd gom-bil sên dat n yeel tà taoor soaba, naaba, sên dàkd-a koèèga )",
+    "explication": "Mot anglais qui veut dire dirigeant, chef et porte parole",
+    "source": "braced"
+  },
+  {
+    "fr": "Lecture",
+    "moore": "Kaorengo (sêntôe n karem sên gùlse)",
+    "explication": "Action de lire ou déchiffrer ce qui est écris",
+    "source": "braced"
+  },
+  {
+    "fr": "Légende",
+    "moore": "Yèl nins sên be têng naand tir zug vôor wilgri",
+    "explication": "Liste qui explique des signes, couleurs, traits, points figurant sur une carte",
+    "source": "braced"
+  },
+  {
+    "fr": "Les chutes",
+    "moore": "Kùàlg koom sên zoet yîngr n dùùgd tênga",
+    "explication": "L'eau qui tombe à un niveau bas d'un fleuve",
+    "source": "braced"
+  },
+  {
+    "fr": "Les rapides",
+    "moore": "Kùàlg pùgê zîig ning koomâ sên zoet ne pânga",
+    "explication": "endroit d'un fleuve où l'eau coule avec une grande vitesse",
+    "source": "braced"
+  },
+  {
+    "fr": "Ligne de grains",
+    "moore": "Sawat sên pùgd taaba n wat ne sebd la sa- ko-bèda",
+    "explication": "Succession de nuages organisés qui s'accompagne de vents forts et de forte pluie",
+    "source": "braced"
+  },
+  {
+    "fr": "Limites",
+    "moore": "Todse (sên welgd zîis a yiibu bà têms a yiibu)",
+    "explication": "Ligne qui sépare deux terrains ou territoires proches",
+    "source": "braced"
+  },
+  {
+    "fr": "Liquide",
+    "moore": "Bôn-koom buudu",
+    "explication": "Qui a la forme de l'eau",
+    "source": "braced"
+  },
+  {
+    "fr": "Lit du barrage",
+    "moore": "Long pùgê ninga baraasâ koom sên beê",
+    "explication": "Creux naturel dans lequel se pose l'eau du barrage",
+    "source": "braced"
+  },
+  {
+    "fr": "Lit du fleuve",
+    "moore": "Long pùgê ninga kùàlga koom sên zoetê",
+    "explication": "Creux naturel ou canal dans lequel coule un fleuve",
+    "source": "braced"
+  },
+  {
+    "fr": "Lit du lac",
+    "moore": "Long pùgê ninga lakâ (lac) koom sên beê",
+    "explication": "Creux naturel dans lequel se pose l'eau du lac",
+    "source": "braced"
+  },
+  {
+    "fr": "Lit mineur",
+    "moore": "Tùùlgâ wakato zî-bil ninga tèka koomâ sên beê wâ",
+    "explication": "Limite minimale ou se trouve l'eau en période sèche",
+    "source": "braced"
+  },
+  {
+    "fr": "Localité",
+    "moore": "Zîig takà, babgo, galê tên-bila bà tên- kàrenga",
+    "explication": "Lieu déterminé, une zone, une petite ville ou un village",
+    "source": "braced"
+  },
+  {
+    "fr": "Loin",
+    "moore": "Sên zâre, zî-zâorgê",
+    "explication": "Eloigné",
+    "source": "braced"
+  },
+  {
+    "fr": "Lointain",
+    "moore": "Sên zâr hal wùsgo",
+    "explication": "Qui est à une grande distance",
+    "source": "braced"
+  },
+  {
+    "fr": "Longitude",
+    "moore": "Zîig sên beê magb ne meridiyê O wâ (Méridien)",
+    "explication": "Position d'un point par rapport au méridien 0",
+    "source": "braced"
+  },
+  {
+    "fr": "Loupes",
+    "moore": "Tùùm-teoog sên sôngd tà yimaas râmba lebgd bèda",
+    "explication": "Appareil qui permet d'agrandir des images",
+    "source": "braced"
+  },
+  {
+    "fr": "Lundi",
+    "moore": "Têne (semendâ pipi daare)",
+    "explication": "Lundi (premier jour de la semaine)",
+    "source": "braced"
+  },
+  {
+    "fr": "Lune",
+    "moore": "Kiuugu",
+    "explication": "Lune",
+    "source": "braced"
+  },
+  {
+    "fr": "Mai",
+    "moore": "Sig-noy kiuugu (yùùmdâ kiuug a 5 soaba)",
+    "explication": "Mai (5ème mois de l'année)",
+    "source": "braced"
+  },
+  {
+    "fr": "Maïs",
+    "moore": "Kamaana",
+    "explication": "Maïs",
+    "source": "braced"
+  },
+  {
+    "fr": "Maitriser",
+    "moore": "N tôog f menga",
+    "explication": "Dominer, garder le contrôle",
+    "source": "braced"
+  },
+  {
+    "fr": "Majeure partie du pays",
+    "moore": "Têngâ babg ,zîig nîng sên waoog n yààda",
+    "explication": "La grande partie du pays",
+    "source": "braced"
+  },
+  {
+    "fr": "Manifestation pluvieux- orageuse",
+    "moore": "Saag niib sên naag ne sa-tâs la yâgbo",
+    "explication": "Arrivée de pluie accompagnée d'orage (tonnerre + éclairs)",
+    "source": "braced"
+  },
+  {
+    "fr": "Mardi",
+    "moore": "Talaato (semendâ rasem a yiib soaba)",
+    "explication": "Mardi (deuxième jour de la semaine)",
+    "source": "braced"
+  },
+  {
+    "fr": "Marigot",
+    "moore": "Bâoogo",
+    "explication": "Marigot (retenue d'eau)",
+    "source": "braced"
+  },
+  {
+    "fr": "Mars",
+    "moore": "Tùùlg kiuugu (yùùmdâ kiuug a tâab soaba)",
+    "explication": "Troisième mois de l'année",
+    "source": "braced"
+  },
+  {
+    "fr": "Matinée",
+    "moore": "Wîndg pukr n tâag wînto-sùka",
+    "explication": "Du levé du jour jusqu'à midi",
+    "source": "braced"
+  },
+  {
+    "fr": "Maximale",
+    "moore": "Sên zêk n yààda, sên bedem, wùsg n yààda",
+    "explication": "Plus élevé, plus grand",
+    "source": "braced"
+  },
+  {
+    "fr": "Mécanisme",
+    "moore": "na-kêndre",
+    "explication": "Fonctionnement",
+    "source": "braced"
+  },
+  {
+    "fr": "Mélanges",
+    "moore": "Yèl wùsg bà teed wùsg sên naag taaba",
+    "explication": "Qui est composé de plusieurs choses ou objets",
+    "source": "braced"
+  },
+  {
+    "fr": "Mensuel",
+    "moore": "Kiuug-kiuug fâa",
+    "explication": "Chaque mois",
+    "source": "braced"
+  },
+  {
+    "fr": "Mer",
+    "moore": "Mogrâ koom",
+    "explication": "Grande étendue d'eau salée proche de la terre",
+    "source": "braced"
+  },
+  {
+    "fr": "Mercredi",
+    "moore": "Arba (semendâ rasem a tâab soaba)",
+    "explication": "Mercredi (troisième jour de la semaine)",
+    "source": "braced"
+  },
+  {
+    "fr": "Message",
+    "moore": "Kibare",
+    "explication": "Information, nouvelle",
+    "source": "braced"
+  },
+  {
+    "fr": "Mesurer",
+    "moore": "bûmb woglem, bà a zàslem makre",
+    "explication": "Connaître la taille, le poids ou la quantité de quelque chose",
+    "source": "braced"
+  },
+  {
+    "fr": "Météo / Temps",
+    "moore": "Kibare kûun sên wilg tônd wakatâ sên na n yà to-to",
+    "explication": "Information, nouvelle qui nous dit le temps qu'il va faire",
+    "source": "braced"
+  },
+  {
+    "fr": "Mètre",
+    "moore": "Metre : Woglem magb bil-tikdga",
+    "explication": "Instrument, unité principale qui sert à mesurer les choses",
+    "source": "braced"
+  },
+  {
+    "fr": "Midi",
+    "moore": "Wînto-sùka",
+    "explication": "Quand le soleil se trouve au dessus de nos têtes",
+    "source": "braced"
+  },
+  {
+    "fr": "Mi-journée",
+    "moore": "Daarâ pùsùka",
+    "explication": "Moitié de la journée",
+    "source": "braced"
+  },
+  {
+    "fr": "Mil",
+    "moore": "Ki",
+    "explication": "Mil (céréale)",
+    "source": "braced"
+  },
+  {
+    "fr": "Millimètre (d'eau)",
+    "moore": "Milimetre koom yaa koom litr a ye b sên dùùg metr kaare a ye zugu",
+    "explication": "Représente un litre d'eau tombée sur une surface de un mètre carré (1m²)",
+    "source": "braced"
+  },
+  {
+    "fr": "Ministères",
+    "moore": "Tùùm-noy ninsa sên segd n maan b tùùmâ n zems ne gofneema wâ sên gâneg politikâ ninsa",
+    "explication": "Institution char-gée de la mise en œuvre de la poli-tique du gouver-nement dans un domaine précis",
+    "source": "braced"
+  },
+  {
+    "fr": "Mi-saison",
+    "moore": "Sêoogâ pùsùka",
+    "explication": "Le milieu de la saison",
+    "source": "braced"
+  },
+  {
+    "fr": "Mise à jour",
+    "moore": "N kàt tà kibarâ lèèg n yà wa kiba-sâanga",
+    "explication": "Actualiser, renouveler une information",
+    "source": "braced"
+  },
+  {
+    "fr": "Modèles",
+    "moore": "Sên segd n dàk makr zîig ninga",
+    "explication": "Référence, c'est une représenta-tion simplifiée de la réalité, qui sert d'exemple",
+    "source": "braced"
+  },
+  {
+    "fr": "Modéré",
+    "moore": "Sên zemse (pa paooge, pa zùùge)",
+    "explication": "Moyen (ni moins, ni plus)",
+    "source": "braced"
+  },
+  {
+    "fr": "Modérées à fortes",
+    "moore": "Sên zems n tà tâag sên yààd rênda (makre : saag tôe n niime tà zems bà yààg zîis kêere)",
+    "explication": "De moyen à plus important (ex: une pluie modérée à forte est une pluie pouvant être moyenne ou forte par endroit)",
+    "source": "braced"
+  },
+  {
+    "fr": "Moisissures",
+    "moore": "Pôogre, Kêkre (rààbo, koodo, bôn-buudu, tààg biisi…)",
+    "explication": "Pourriture, décomposition suite à une mauvaise conservation de la nourriture, des céréales, des graines, les aliments, les fruits…",
+    "source": "braced"
+  },
+  {
+    "fr": "Montagne",
+    "moore": "Tâng sên ya bedre Tân-bedre",
+    "explication": "Une très grande colline",
+    "source": "braced"
+  },
+  {
+    "fr": "Moussons",
+    "moore": "Sebg sên yit mogrê wâ n tar bùgsem wùsgo",
+    "explication": "Vent venant de la mer avec beaucoup d'humidité",
+    "source": "braced"
+  },
+  {
+    "fr": "Moyenne",
+    "moore": "Ràkda saasâ koom fâa milimetre sên koke n naag taaba n yaool n pùà ne saasâ niib sôore",
+    "explication": "La somme des valeurs observées divisée par le nombre d'observations ou valeurs. Ex. [(600mm+700mm+35 0mm) / 3] = 550mm. (550mm est donc la Moyenne)",
+    "source": "braced"
+  },
+  {
+    "fr": "Nappes",
+    "moore": "Tên-gâongâ têngr kùàlse (yaa zîis ninsa saagâ koom sên tigimd taaba b sâ n wa fôog n kê tên- gâongâ)",
+    "explication": "endroit souterrain où s'accumulent les eaux de pluie qui s'infiltrent",
+    "source": "braced"
+  },
+  {
+    "fr": "Nappes phréatiques",
+    "moore": "Saagâ koom sên fôog n kê tên-gâongê wâ tà boll bà pîig tà gàdg-a",
+    "explication": "L'eau de pluie infiltrée dans le sous sol et retenue par une couche argileuse ou rocheuse",
+    "source": "braced"
+  },
+  {
+    "fr": "Neiges",
+    "moore": "Sapàlem buudu sên lùàt nasaar têmsê wâ, (sapàl-puudu)",
+    "explication": "Neige",
+    "source": "braced"
+  },
+  {
+    "fr": "Néré",
+    "moore": "Rôaaga (yaa tààga tà b tara biisâ n maand kaolgo)",
+    "explication": "Néré, arbre dont les graines sont utilisées pour la fabrication du soum bala",
+    "source": "braced"
+  },
+  {
+    "fr": "Neutre",
+    "moore": "Sên pa kê zîig ba a yembr ye. Sên pa kê yâmba, sên pa zabd ne yâmba",
+    "explication": "Sans partie pris, équilibré. Ni pour, ni contre",
+    "source": "braced"
+  },
+  {
+    "fr": "Nid",
+    "moore": "Liuul tùko (Zîig ninga liuuli wâ sên lobd b gèlâ, tôe n yàà tênga, tôe n yàà tààsâ zutu bà tààsâ yogdê)",
+    "explication": "Endroit où les oiseaux pondent leurs œufs (sur la terre, dans les arbres, dans des creux)",
+    "source": "braced"
+  },
+  {
+    "fr": "Nombre",
+    "moore": "Sôore (yaa geel-biis sên naagd taaba n wilg sôore, waooglem, sôadga)",
+    "explication": "Groupe de chiffres pour exprimer une valeur ou une quantité, le résultat qu'on trouve après avoir compté quelque chose",
+    "source": "braced"
+  },
+  {
+    "fr": "Nord",
+    "moore": "Goabg baobgo",
+    "explication": "Nord",
+    "source": "braced"
+  },
+  {
+    "fr": "Normale",
+    "moore": "Sên geel n paam yùùm 30 zugu, sùka, makre",
+    "explication": "La moyenne calculée sur 30 ans, le milieu, la référence",
+    "source": "braced"
+  },
+  {
+    "fr": "Novembre",
+    "moore": "Sàpaolg kiuugu (yùùmd pùgê kiuug piig la a ye soaba)",
+    "explication": "Novembre (onzième mois de l'année)",
+    "source": "braced"
+  },
+  {
+    "fr": "Nuage bas",
+    "moore": "Sawadg sên pê tênga, sên pa zêk yîngr wùsg ye",
+    "explication": "Nuage de faible hauteur, pas très haut",
+    "source": "braced"
+  },
+  {
+    "fr": "Nuageux à couvert",
+    "moore": "Sawadg sên tolg n lud saagâ zânga bà sên bas vààd kêer tà b tôe n yând saagâ",
+    "explication": "Nuage couvrant totalement le ciel et/ou laissant des trous où on peut voir le ciel",
+    "source": "braced"
+  },
+  {
+    "fr": "Observer",
+    "moore": "Yaa gesg ne gûusgu sên na yàl n yând bûmb ninga sên be",
+    "explication": "C'est regarder avec attention afin de découvrir ce qui s'y trouve",
+    "source": "braced"
+  },
+  {
+    "fr": "Océans",
+    "moore": "Mogr kaseng koom sên ya yamsem- yamsem",
+    "explication": "Grande étendue d'eau salée",
+    "source": "braced"
+  },
+  {
+    "fr": "Octobre",
+    "moore": "Zî-likri (yùùmd pùgê kiuug piig soaba)",
+    "explication": "Octobre (10ème mois de l'année)",
+    "source": "braced"
+  },
+  {
+    "fr": "Odeur",
+    "moore": "Yûugu",
+    "explication": "Odeur",
+    "source": "braced"
+  },
+  {
+    "fr": "Oiseaux",
+    "moore": "Liuuli",
+    "explication": "Oiseaux",
+    "source": "braced"
+  },
+  {
+    "fr": "Ombre",
+    "moore": "Maasem, sulunsuku",
+    "explication": "Ombre",
+    "source": "braced"
+  },
+  {
+    "fr": "Opération SAAGA",
+    "moore": "Tùùm-noor ninga sên tall tàto n na n kàt tà saagâ ni",
+    "explication": "Service chargé de faire tomber la pluie en utilisant des produits",
+    "source": "braced"
+  },
+  {
+    "fr": "Organisations paysanne",
+    "moore": "Koaadb gurupma",
+    "explication": "Groupements de producteurs",
+    "source": "braced"
+  },
+  {
+    "fr": "Organisées",
+    "moore": "Sên maneg n gâneg tà zemse",
+    "explication": "Bien disposées",
+    "source": "braced"
+  },
+  {
+    "fr": "Oscillé",
+    "moore": "Sên lengd zîis a yiibu",
+    "explication": "Balancé entre deux points",
+    "source": "braced"
+  },
+  {
+    "fr": "Ouest",
+    "moore": "Poorê baobgo (wîndgâ sên lùàtê wâ)",
+    "explication": "Ouest, où le soleil se couche",
+    "source": "braced"
+  },
+  {
+    "fr": "Ouragans",
+    "moore": "Sa-ko-bèd sên naag ne seb-bèda sên sàngd mogrê wâ n sâamd bûmb ning fâa a sên segde",
+    "explication": "De fortes pluies accompagnées de vents très forts qui commencent dans la mer ravageant tout sur son passage (phase finale du cyclone).",
+    "source": "braced"
+  },
+  {
+    "fr": "Outils",
+    "moore": "Tùùmd teedo",
+    "explication": "matériels, instruments de travail",
+    "source": "braced"
+  },
+  {
+    "fr": "Ouvrage hydraulique",
+    "moore": "Meeb buud sên na n sông koomâ zâab wèèngê",
+    "explication": "Une construction qui permet de maitriser l'eau",
+    "source": "braced"
+  },
+  {
+    "fr": "Par endroit",
+    "moore": "Zîig-zîiga",
+    "explication": "par ci, par là, qui n'est pas arrivé partout",
+    "source": "braced"
+  },
+  {
+    "fr": "Par rapport",
+    "moore": "bûmb ne a to makre",
+    "explication": "Comparer",
+    "source": "braced"
+  },
+  {
+    "fr": "Parcs (météo)",
+    "moore": "Zîig ninga b sên vigl metewo wâ tùùm- teedo",
+    "explication": "Un terrain où sont installés des appareils météo",
+    "source": "braced"
+  },
+  {
+    "fr": "Partenaires",
+    "moore": "Tùmd-n-taase",
+    "explication": "Collaborateurs",
+    "source": "braced"
+  },
+  {
+    "fr": "Partie",
+    "moore": "Baobgo, zîig takà",
+    "explication": "Direction, un lieu précis",
+    "source": "braced"
+  },
+  {
+    "fr": "Passage nuageux",
+    "moore": "Sawat sên kênda, Sawat kênde",
+    "explication": "Défilement, déplacement ou mouvement de nuages",
+    "source": "braced"
+  },
+  {
+    "fr": "Pâturage",
+    "moore": "Rûmsâ wâbneg zîiga",
+    "explication": "Lieu où on va faire paître les animaux, où les animaux vont brouter",
+    "source": "braced"
+  },
+  {
+    "fr": "Pays",
+    "moore": "Tênga",
+    "explication": "Pays",
+    "source": "braced"
+  },
+  {
+    "fr": "Paysan",
+    "moore": "Ka-koaada",
+    "explication": "Producteur",
+    "source": "braced"
+  },
+  {
+    "fr": "Pêcheurs",
+    "moore": "Zîm-yêeda",
+    "explication": "Pêcheur",
+    "source": "braced"
+  },
+  {
+    "fr": "Pendant",
+    "moore": "Wakat kânga, sasa kânga",
+    "explication": "Un moment, durée, période",
+    "source": "braced"
+  },
+  {
+    "fr": "Période",
+    "moore": "Wakat yènga, sên kaoose,",
+    "explication": "Un moment, durée, temps",
+    "source": "braced"
+  },
+  {
+    "fr": "Perspectives",
+    "moore": "Sên wat beoogo, d sên na n maane",
+    "explication": "Prochain, ce qui est à venir, ce qu'on va faire",
+    "source": "braced"
+  },
+  {
+    "fr": "Perturbation",
+    "moore": "Sa-kùàùùgo",
+    "explication": "Dérangement, formation pluviaux- orageuse",
+    "source": "braced"
+  },
+  {
+    "fr": "Phénomène",
+    "moore": "Yel-kasenga waoongo, bûmb d sên da pa mi tiiri",
+    "explication": "Un fait extraordinaire qui survient, quelque chose qui est imprévisible",
+    "source": "braced"
+  },
+  {
+    "fr": "Plaine",
+    "moore": "Zî-lamde, zîig sên sakd koobo",
+    "explication": "Terrain plat où on peut cultiver",
+    "source": "braced"
+  },
+  {
+    "fr": "Plateau",
+    "moore": "Zî-lamd sên zêk bilfu (d pa tôe n ko zî-kâng zug ye)",
+    "explication": "Terrain plat (un peu élevé) où on ne peut pas cultiver",
+    "source": "braced"
+  },
+  {
+    "fr": "Pleine-lune",
+    "moore": "Ki-pèèlga sasa",
+    "explication": "Période où la lune apparaît dans sa totalité",
+    "source": "braced"
+  },
+  {
+    "fr": "Pluie",
+    "moore": "Saaga",
+    "explication": "Pluie",
+    "source": "braced"
+  },
+  {
+    "fr": "Pluie intermittente",
+    "moore": "Saag sên niid n wa yals bilfu n lèèg n sànge",
+    "explication": "Pluie qui s'arrête un peu de temps et recommence",
+    "source": "braced"
+  },
+  {
+    "fr": "Pluies attendues",
+    "moore": "Saase, d sên da gûudi",
+    "explication": "Pluies prévues, qu'on attendait",
+    "source": "braced"
+  },
+  {
+    "fr": "Pluies diluviennes",
+    "moore": "Sa-bèd sên niid n kaoosdê",
+    "explication": "Fortes pluies qui durent longtemps",
+    "source": "braced"
+  },
+  {
+    "fr": "Pluies relevées",
+    "moore": "Saas koom sên mag n gùls n bîngi",
+    "explication": "Pluies dont les quantités d'eau tombées ont été mesurées, enregistrées",
+    "source": "braced"
+  },
+  {
+    "fr": "Pluies torrentielles",
+    "moore": "Saas sên niid ne pânga",
+    "explication": "Pluies qui tombent avec force",
+    "source": "braced"
+  },
+  {
+    "fr": "Pluvieux (orageux temps)",
+    "moore": "Sasa ninga saagâ sên mi n niid wùsgo (pêdem-pêdem)",
+    "explication": "Temps avec beaucoup de pluie",
+    "source": "braced"
+  },
+  {
+    "fr": "Pluviomètre",
+    "moore": "Tùùmd teoog sên tar n magd saagâ sên ni koom waooglem",
+    "explication": "Appareil qui sert à mesurer la quantité de pluie tombée",
+    "source": "braced"
+  },
+  {
+    "fr": "Pluviométrie excédentaire",
+    "moore": "Saagâ koom waooglem zùùga b sên da têed paoongo",
+    "explication": "Quantité d'eau tombée supérieure à la moyenne",
+    "source": "braced"
+  },
+  {
+    "fr": "Poche de sécheresse",
+    "moore": "Saagâ yals niib bilf tà koodâ wêkdê",
+    "explication": "Arrêt momentanée de la pluie dans une zone entrainant un dessèchement des cultures",
+    "source": "braced"
+  },
+  {
+    "fr": "Pôles",
+    "moore": "Zîis nins sên tà be ândûni wâ goabg zâng-zânga bà a ràtg zâng-zânga",
+    "explication": "La partie la plus au nord ou la partie la plus au sud de la terre",
+    "source": "braced"
+  },
+  {
+    "fr": "Pont cédé",
+    "moore": "Pô sên kao, sor zug gaodg sên kao",
+    "explication": "Pont cassé",
+    "source": "braced"
+  },
+  {
+    "fr": "Ponts",
+    "moore": "Pô râmba",
+    "explication": "Pont",
+    "source": "braced"
+  },
+  {
+    "fr": "Possible",
+    "moore": "Sên tôe n maane, sên sakd maanego",
+    "explication": "Faisable, ce qu'on peut faire",
+    "source": "braced"
+  },
+  {
+    "fr": "Pourcentage",
+    "moore": "Koabg zug pùààre (Makre : 10%, 5%)",
+    "explication": "Nombre de parts considéré sur 100 parts.Ex10%, 5%",
+    "source": "braced"
+  },
+  {
+    "fr": "Poussière",
+    "moore": "Wubsgu",
+    "explication": "Poussière",
+    "source": "braced"
+  },
+  {
+    "fr": "Pouvoir",
+    "moore": "N tôog n maan bûmbu",
+    "explication": "Être capable de faire quelque chose",
+    "source": "braced"
+  },
+  {
+    "fr": "Précip-itations",
+    "moore": "Saaga, sapàlem sên dùùgde",
+    "explication": "Pluie, grêle ou neige qui tombe",
+    "source": "braced"
+  },
+  {
+    "fr": "Prédicateur",
+    "moore": "Bûmb ninga sên tôe n sông tà b reng n bâng saagâ sâ n na waame, tà b bâng sigrâ sên na n sàng sasa ninga, la a sên na n baas wakat ninga",
+    "explication": "Elément qui permet de faire la prévision sur la pluie, le début de la saison, la fin de la saison",
+    "source": "braced"
+  },
+  {
+    "fr": "Premières 24 heures",
+    "moore": "Lèèr 24 nins sên na n pùgl reng-b-bângâ wâ poore",
+    "explication": "Les 24 heures qui suivent la prévision",
+    "source": "braced"
+  },
+  {
+    "fr": "Présenter",
+    "moore": "N wilgi, n kàt tà b bânge, n piuugi",
+    "explication": "Montrer, porter à la connaissance, diffuser",
+    "source": "braced"
+  },
+  {
+    "fr": "Presque totalité",
+    "moore": "Sên waoog n yààd fâa ; zîig zânga",
+    "explication": "Presqu'entièrement, sur l'ensemble",
+    "source": "braced"
+  },
+  {
+    "fr": "Prévision",
+    "moore": "N pînd wilg bûmb ninga sên tôe n wa",
+    "explication": "dire à l'avance ce qui pourrait arriver",
+    "source": "braced"
+  },
+  {
+    "fr": "Prévision climatique",
+    "moore": "N tik yùùm sên loog kibayâ n wilg bûmb ninga sên tôe n wa",
+    "explication": "dire à l'avance ce qui pourrait arriver à partir des données des années passées",
+    "source": "braced"
+  },
+  {
+    "fr": "Prévision décadaire",
+    "moore": "N pînd n wilg wakatâ sên na n yà a soaba rasem piiga sên wata pùgê",
+    "explication": "dire à l'avance le temps qu'il fera dans les dix prochains jours",
+    "source": "braced"
+  },
+  {
+    "fr": "Prévision saisonnière",
+    "moore": "N wilg pînda sêoogâ sên na n yà a soaba kiis ninsa sên wata pùgê (saagâ sâ n na n niime, zîigâ sâ n na n yàà koèènga, sêoogâ sâ n na n yàà pînda, bà a na n kaoosame n wa, la saagâ koom waooglem sên na n yà a soaba)",
+    "explication": "dire à l'avance comment sera la saison dans les mois à venir (pluvieux, sec, précoce, tardif, moyenne)",
+    "source": "braced"
+  },
+  {
+    "fr": "Pré-visionnistes",
+    "moore": "Ned ninga sên pînd n wilgd wakatâ sên na n yà a soaba",
+    "explication": "une personne qui dit à l'avance le temps à venir",
+    "source": "braced"
+  },
+  {
+    "fr": "Printemps",
+    "moore": "Yaa sêo-bila sên wat (lùàt) waoodâ ne tùùlgâ sùka",
+    "explication": "Petite saison située entre la saison froide et la saison chaude",
+    "source": "braced"
+  },
+  {
+    "fr": "Probabilité",
+    "moore": "Zu-noog tà bûmb yà, sên tôe n wa",
+    "explication": "la chance que quelque chose arrive, ce qui pourrait arriver",
+    "source": "braced"
+  },
+  {
+    "fr": "Probable",
+    "moore": "Sên tôe n yà, daare… daar ninga…",
+    "explication": "Ce qui peut arriver, peut-être…",
+    "source": "braced"
+  },
+  {
+    "fr": "Processus",
+    "moore": "Vûgsi, nao-kêna",
+    "explication": "Les étapes",
+    "source": "braced"
+  },
+  {
+    "fr": "Prochaine 24 heures",
+    "moore": "Lèèr 24 nins sên na n pùgl reng-b-bângâ wâ poore",
+    "explication": "Les 24 heures qui suivent la prévision",
+    "source": "braced"
+  },
+  {
+    "fr": "Producteur",
+    "moore": "Koaadba, gùùndba,",
+    "explication": "Paysans, cultivateurs, éleveurs, fermiers",
+    "source": "braced"
+  },
+  {
+    "fr": "Production",
+    "moore": "Sên ko n paam fâa",
+    "explication": "L'ensemble des récoltes.",
+    "source": "braced"
+  },
+  {
+    "fr": "Progression",
+    "moore": "Taoor kênde",
+    "explication": "Avancée",
+    "source": "braced"
+  },
+  {
+    "fr": "Progressive",
+    "moore": "Bilf-bilfu, kàdg-kàdga",
+    "explication": "Doucement, petit à petit",
+    "source": "braced"
+  },
+  {
+    "fr": "Province",
+    "moore": "Porvênse (yaa kadeng sên tar departma râmb wùsgo)",
+    "explication": "Une localité qui regroupe plusieurs départements",
+    "source": "braced"
+  },
+  {
+    "fr": "Puits",
+    "moore": "Bulga, kùàlga",
+    "explication": "Puits",
+    "source": "braced"
+  },
+  {
+    "fr": "Quantité",
+    "moore": "Sôore",
+    "explication": "Nombre",
+    "source": "braced"
+  },
+  {
+    "fr": "Quasi stationnaire",
+    "moore": "Sên pa targd ye, sên yas zî-yènga",
+    "explication": "qui ne bouge pas",
+    "source": "braced"
+  },
+  {
+    "fr": "Quotidien",
+    "moore": "Daar fâa, beoog sên vêeg fâa",
+    "explication": "chaque jour",
+    "source": "braced"
+  },
+  {
+    "fr": "Radar météo",
+    "moore": "Tùùmd teoog sên tar n get sawatâ, saasâ la sebdâ",
+    "explication": "Appareil météo pour détecter les nuages, les pluies, les vents, …",
+    "source": "braced"
+  },
+  {
+    "fr": "Radier",
+    "moore": "Koom pàùùgr zîigê sên maneg n me ne sima nebâ tûub yînga",
+    "explication": "Un passage en béton sur un passage d'eau",
+    "source": "braced"
+  },
+  {
+    "fr": "Radio-sondage",
+    "moore": "Tùùmd teoog b sên tar n magd sebgâ zoees pânga,a sên teesdê, la a bùgsmâ sên yala",
+    "explication": "Appareil qui permet de mesurer la vitesse et la direction du vent, l'humidité.",
+    "source": "braced"
+  },
+  {
+    "fr": "Ralenti",
+    "moore": "Sên kênd bilf-bilfu, sên boog kênda tùùlem",
+    "explication": "Qui va doucement, diminuer la vitesse",
+    "source": "braced"
+  },
+  {
+    "fr": "Rare",
+    "moore": "Bûmb sên pa wè ye",
+    "explication": "Qu'on ne trouve pas souvent, difficile à trouver",
+    "source": "braced"
+  },
+  {
+    "fr": "Reboisement",
+    "moore": "Tààs selbo",
+    "explication": "Le fait de planter les arbres",
+    "source": "braced"
+  },
+  {
+    "fr": "Récoltes",
+    "moore": "Sên ko n paame ; koodâ biisi",
+    "explication": "Les fruits des cultures",
+    "source": "braced"
+  },
+  {
+    "fr": "Réduction de la visibilité",
+    "moore": "Zârem nenem boogre",
+    "explication": "Diminution de la distance à laquelle on peut voir au loin",
+    "source": "braced"
+  },
+  {
+    "fr": "Regain d'activités",
+    "moore": "Saagâ niib pâng paasgo",
+    "explication": "Renforcement de la pluie",
+    "source": "braced"
+  },
+  {
+    "fr": "Regain de mousson",
+    "moore": "Sêoog sebg fugda ne pânga",
+    "explication": "Renforcement de la mousson",
+    "source": "braced"
+  },
+  {
+    "fr": "Régime de la mousson",
+    "moore": "Sêoog sebgo",
+    "explication": "Le vent de mousson",
+    "source": "braced"
+  },
+  {
+    "fr": "Régions",
+    "moore": "Reezô (yaa porvêns- râmb sên naag taaba t’a taoor soaba boond tà Guvèèrneere)",
+    "explication": "Un ensemble de provinces dirigées par un gouverneur",
+    "source": "braced"
+  },
+  {
+    "fr": "Relevée",
+    "moore": "Kibay nins sên be-b yârg zugu, b kaoreng la b gùlsgo",
+    "explication": "Le fait de collecter, lire et écrire les données sur un tableau",
+    "source": "braced"
+  },
+  {
+    "fr": "Rendement",
+    "moore": "Sên paame",
+    "explication": "Résultat",
+    "source": "braced"
+  },
+  {
+    "fr": "Représentant",
+    "moore": "Nin-lèta (Ned sên wa ned a to yùùr yînga)",
+    "explication": "Celui qui est présent au nom de quelqu'un d'autre",
+    "source": "braced"
+  },
+  {
+    "fr": "Réserves",
+    "moore": "Sên bîng toore, bûmb b sên yâk n bîngi",
+    "explication": "Stocks, quelque chose qui est gardé",
+    "source": "braced"
+  },
+  {
+    "fr": "Résidus pluviaux orageux",
+    "moore": "Sawat nins sên kell-b saag niib loogr poore",
+    "explication": "Les restes de nuages après le passage d'une pluie",
+    "source": "braced"
+  },
+  {
+    "fr": "Résilience",
+    "moore": "Sû-tôogo (yaa tôog ninga ned sên tar tà baa yel-lingdim sâ n wa bà a tôee a menga)",
+    "explication": "Capacité de résister à un choc ou à un événement inattendu, brusque, imprévu",
+    "source": "braced"
+  },
+  {
+    "fr": "Ressources halieutique",
+    "moore": "Kùàl-zêedo",
+    "explication": "Produits ou récoltes de la pêche",
+    "source": "braced"
+  },
+  {
+    "fr": "Risque",
+    "moore": "Sabaab wênga d sên mi tiiri la sên tôe n wa",
+    "explication": "C'est un danger dont on connait et qui peut arriver",
+    "source": "braced"
+  },
+  {
+    "fr": "Rives",
+    "moore": "Kùàlg kàremse",
+    "explication": "Ce sont les bordures (côtés) ou berges d'un cours d'eau ou un fleuve",
+    "source": "braced"
+  },
+  {
+    "fr": "Rivières",
+    "moore": "Yaa kùàl-bil sên zoet n dùùgd kùàl-bedrê",
+    "explication": "C'est un cours d'eau naturel qui se jette dans le fleuve",
+    "source": "braced"
+  },
+  {
+    "fr": "Riz",
+    "moore": "Mui",
+    "explication": "Riz",
+    "source": "braced"
+  },
+  {
+    "fr": "Rizières",
+    "moore": "Muitinsi",
+    "explication": "Champ où on cultive le riz ou plantation de riz",
+    "source": "braced"
+  },
+  {
+    "fr": "Rosée",
+    "moore": "Meenem",
+    "explication": "Fines gouttelettes d'eau sur les her-bes, sur un objet à même le sol",
+    "source": "braced"
+  },
+  {
+    "fr": "Rupture",
+    "moore": "Yalsgo, bôn-koèèng kaoobo",
+    "explication": "Arrêt, division, séparation brusque d'une chose solide",
+    "source": "braced"
+  },
+  {
+    "fr": "Sable",
+    "moore": "Bîisri",
+    "explication": "Sable",
+    "source": "braced"
+  },
+  {
+    "fr": "Sahel",
+    "moore": "Zîig ning saagâ sên pa niid wùsg ye (a niibâ pa ta mm 400 ye)tà tààsâ yaa yembr- yembre",
+    "explication": "Zone où il ne pleut pas souvent beaucoup (inférieure à 400mm), avec les arbres dispersés",
+    "source": "braced"
+  },
+  {
+    "fr": "Sahélien",
+    "moore": "Sayèlê têngâ neda",
+    "explication": "Qui se trouve au Sahel",
+    "source": "braced"
+  },
+  {
+    "fr": "Saison froide",
+    "moore": "Waood sasa",
+    "explication": "Période où il fait froid",
+    "source": "braced"
+  },
+  {
+    "fr": "Saison pluvieuse",
+    "moore": "Sêoog sasa",
+    "explication": "Période où il pleut beaucoup",
+    "source": "braced"
+  },
+  {
+    "fr": "Saison sèche",
+    "moore": "Sàpaolg sasa",
+    "explication": "Période où il ne pleut pas",
+    "source": "braced"
+  },
+  {
+    "fr": "Samedi",
+    "moore": "Sibri (semend pùgê rasem a yoobe)",
+    "explication": "Samedi (sixième jour de la semaine)",
+    "source": "braced"
+  },
+  {
+    "fr": "Sanction",
+    "moore": "Tùùm-wênga sàbgre, manesem wêng sàbgre",
+    "explication": "Le fait de punir un mauvais travail",
+    "source": "braced"
+  },
+  {
+    "fr": "Sarclage",
+    "moore": "Warga",
+    "explication": "C'est arracher, enlever les mauvaises herbes dans un champ (avec un outil)",
+    "source": "braced"
+  },
+  {
+    "fr": "Satellite (météo)",
+    "moore": "Yaa masîni (tùùmd teoogo) ninsaal sên tool yîngri, sên na yàl n yôk sawatâ, sebdâ, wubsgâ fot râmba, la n paam kibay n toole",
+    "explication": "C'est une ma-chine (appareil) envoyée par l'homme dans le ciel pour faire les photos des nu-ages, des vents, de la poussière, etc. et aussi pour envoyer des informations",
+    "source": "braced"
+  },
+  {
+    "fr": "Savane",
+    "moore": "Zîig ninga sên pa tar tààs wùsgo, la a tar mood wùsgo",
+    "explication": "C'est un terrain où il ya moins d'arbres et beau-coup d'herbes",
+    "source": "braced"
+  },
+  {
+    "fr": "Science",
+    "moore": "Bâng-kâag ned sên tar bûmb zugu",
+    "explication": "Ensemble de con- naissances exac-tes et approfon-dies sur un objet",
+    "source": "braced"
+  },
+  {
+    "fr": "Secours d'urgence",
+    "moore": "Bûmb ninga fâa b sên tôe n tall n sông neda t’a yi wakat toog ningapùgê bà sabaab wêng ninga pùgê a sên be wâ, b sên tôe n kô a soaba bûmb ninga fâa, bûmb ninga fâa sên tôe n sông a soab sabaab wêngâ wakato, sên tôe n fâag-a, teed bà ligd kûuni sên tôe n sông-a toogâ wakate.",
+    "explication": "Tout ce sert à quelqu'un pour sortir d'une situation difficile et pressante, ce qu'on donne, qui est utile, qui sert en situation difficile, destiné à servir en cas de danger, sauvetage, aide matérielle et financière destinée aux personnes en situation difficile",
+    "source": "braced"
+  },
+  {
+    "fr": "Semaine",
+    "moore": "Semende (rasem a yopoe)",
+    "explication": "C'est un cycle de sept jours",
+    "source": "braced"
+  },
+  {
+    "fr": "Semence",
+    "moore": "Bôn-buudu",
+    "explication": "Graine destinée à être reprise ou mise en terre",
+    "source": "braced"
+  },
+  {
+    "fr": "Semestriel",
+    "moore": "Sên wat la sên maand kiuug a yoob-yoobe",
+    "explication": "Qui a lieu et se fait tous les six mois",
+    "source": "braced"
+  },
+  {
+    "fr": "Semis",
+    "moore": "Bùdbo",
+    "explication": "Action de mettre une graine en terre des graines pour les faire germer",
+    "source": "braced"
+  },
+  {
+    "fr": "Septembre",
+    "moore": "Bôn-bàùùng kiuugu (yùùmd pùgê kiuug a 9 soaba)",
+    "explication": "Septembre (9ème mois de l'année)",
+    "source": "braced"
+  },
+  {
+    "fr": "Séquence sèche",
+    "moore": "Saaga niib yalsg rasem a wân pùgê",
+    "explication": "Arrêt de pluie durant quelques jours",
+    "source": "braced"
+  },
+  {
+    "fr": "Séquence",
+    "moore": "Bogre, kaoosgo, wakato",
+    "explication": "Une partie, durée, temps",
+    "source": "braced"
+  },
+  {
+    "fr": "Signification",
+    "moore": "Bûmb vôor wilgri",
+    "explication": "Sens",
+    "source": "braced"
+  },
+  {
+    "fr": "Similaire",
+    "moore": "Bûmb a yembre, sên wênd taaba, sên zem taaba",
+    "explication": "Même chose, semblable, équivalent",
+    "source": "braced"
+  },
+  {
+    "fr": "Sinistrés",
+    "moore": "Sabaab wêng sên paam neb wùsg wakat yèng pùgê",
+    "explication": "Victimes, personnes touchées par un évènement malheureux",
+    "source": "braced"
+  },
+  {
+    "fr": "Situation agricole",
+    "moore": "Koodâ sên ya to-to",
+    "explication": "L'état des cultures",
+    "source": "braced"
+  },
+  {
+    "fr": "Sol",
+    "moore": "Tên-gâongâ, têngâ vêenem",
+    "explication": "Sol, surface de la terre",
+    "source": "braced"
+  },
+  {
+    "fr": "Sol dénudé",
+    "moore": "Tên-gâongâ sên pa tar noosem zî-pelle",
+    "explication": "Sol pauvre",
+    "source": "braced"
+  },
+  {
+    "fr": "Soleil",
+    "moore": "Wîndga, wîntoogo",
+    "explication": "Soleil",
+    "source": "braced"
+  },
+  {
+    "fr": "Sorgho",
+    "moore": "Ki ka-zêeg bi ba-ninga",
+    "explication": "Sorgho (céréale)",
+    "source": "braced"
+  },
+  {
+    "fr": "Soudanien (zone soudanienne)",
+    "moore": "Zîig sên tar weoogo (kâgre) tà saagâ niib tôe n ta yùùmd fâa mm 900 ne mm 1200 sùka (sig-noy kiuugu n tà ta bôn-bàùùng kiuugu)",
+    "explication": "Zone de forêt, de savane arborée où la pluviométrie varie entre 900 et 1 200mm/an (mai à septembre)",
+    "source": "braced"
+  },
+  {
+    "fr": "Sources",
+    "moore": "A yêgrâ, bûmb ning sên wa ne, a sên yàtê",
+    "explication": "Origines, cause, provenance",
+    "source": "braced"
+  },
+  {
+    "fr": "Stabilité",
+    "moore": "Sên zem taaba, zîig sên yaa sàà",
+    "explication": "Equilibré, situation calme",
+    "source": "braced"
+  },
+  {
+    "fr": "Station",
+    "moore": "Zîig sên manege tà masîn dâmba (tùùmd teedo) sên na n tall n maan mag tùùm be be",
+    "explication": "Terrain aménagé où sont installés des pareils de mesure",
+    "source": "braced"
+  },
+  {
+    "fr": "Station agro météoro-logique",
+    "moore": "Zak ninga pùgê b sên lugl masîn-dâmba tà b kôt kibay sasa wâ wèèngê sên kêed ne saagâ niib waooglem, koom ninga sên yit bôn-yitsê wâ la zîis a taab fâa koomâ sên lebgd ko-walem n yita, n paas tùùlgâ ne waoodâ magbo",
+    "explication": "Parc météo où sont installés des appareils météo mesurant des informations sur la quantité de pluie, l'eau qui sort des plantes et des surfaces d'eau sous forme de gaz, les températures, etc.",
+    "source": "braced"
+  },
+  {
+    "fr": "Station météoro-logique",
+    "moore": "Tùùmd noor ninga sên kôt kibay sên kêed ne sasa wâ yalê wèèngê (metewo wâ)",
+    "explication": "Station où on relève les informations météo",
+    "source": "braced"
+  },
+  {
+    "fr": "Station synoptique",
+    "moore": "Sasa wâ bôn-magdg tùùm zîiga sên kênd daar fâa ne masîn- dâmba sên kôt kibay sên kêed sasa wâ wèèngê la yaa tùmtùmdb bângr sên pidi n tùmd be",
+    "explication": "Station météo qui fonctionne tous les jours avec des appareils météo où on relève toutes les informations météo et tenues par des professionnelles de la météo",
+    "source": "braced"
+  },
+  {
+    "fr": "Stationnaire",
+    "moore": "sên pa tarkd ye, sên yas zî-yende sên pa loog ye",
+    "explication": "qui ne bouge pas",
+    "source": "braced"
+  },
+  {
+    "fr": "Stratégie",
+    "moore": "Tùùm-minim nao- kênâ buud toor-toor sên be bà manesem buud sên tôe n tû n paam zu-loèèg ninga tààm",
+    "explication": "Ensemble de techniques, de possibilités ou manière de faire pour trouver la solution à un problème.",
+    "source": "braced"
+  },
+  {
+    "fr": "Succès",
+    "moore": "Paoongo",
+    "explication": "Réussite",
+    "source": "braced"
+  },
+  {
+    "fr": "Sud",
+    "moore": "Ràtg baobgo",
+    "explication": "Sud",
+    "source": "braced"
+  },
+  {
+    "fr": "Surpâturage",
+    "moore": "Rûms sôor sên yààd zî-yèng wâbnego",
+    "explication": "Trop d'animaux qu'il n'en faut sur un même pâturage",
+    "source": "braced"
+  },
+  {
+    "fr": "Survoler",
+    "moore": "N gâdg n looge, n yàk n gâdg n looge",
+    "explication": "Passer au-dessus",
+    "source": "braced"
+  },
+  {
+    "fr": "Système nuageux",
+    "moore": "Sawatâ fâa sên naag taaba",
+    "explication": "Ensemble de nuages",
+    "source": "braced"
+  },
+  {
+    "fr": "Tarissement précoce",
+    "moore": "Koom ka le be n tà tâag wakat ninga koomâ sên na n le wa",
+    "explication": "Il n'y a plus d'eau avant la période (date) normale",
+    "source": "braced"
+  },
+  {
+    "fr": "Taux",
+    "moore": "Koabg zug pùààre",
+    "explication": "Pourcentage",
+    "source": "braced"
+  },
+  {
+    "fr": "Technicien",
+    "moore": "Tùùm-mita bûmb a ye zugu",
+    "explication": "Spécialiste dans un domaine",
+    "source": "braced"
+  },
+  {
+    "fr": "Température",
+    "moore": "Tùùlg bà waood râamde",
+    "explication": "Sensation qu'il fait chaud ou froid",
+    "source": "braced"
+  },
+  {
+    "fr": "Temp-ératures extrêmes",
+    "moore": "Tùùlg ne waood pâng sên yààd fâa-fâa b sên tik wakat n dàke",
+    "explication": "Ce sont les tem- pératures la plus faible et la plus élevée enregistrée au cours d'une période",
+    "source": "braced"
+  },
+  {
+    "fr": "Température maximale",
+    "moore": "Makrâ sên dàk tùùlg sên zabd n yààd fâa- fâa, waakat sên yâk pùgê",
+    "explication": "Température la plus élevée enregistrée au cours d'une période",
+    "source": "braced"
+  },
+  {
+    "fr": "Température minimale",
+    "moore": "Makrâ sên dàk waood sên zabd n yààd fâa- fâa, wakat sên yâk pùgê",
+    "explication": "Température la plus faible enre-gistrée au cours d'une période",
+    "source": "braced"
+  },
+  {
+    "fr": "Température moyenne",
+    "moore": "Makrâ sên dàk waoodâ la tùùlgâ, b naag-d-la taaba n yaool n pùà zîis a yiibu",
+    "explication": "Moitié de la somme des températures minimales et maximales",
+    "source": "braced"
+  },
+  {
+    "fr": "Tendance déficitaire",
+    "moore": "Sên pa ta pùsùkâ ye",
+    "explication": "En bas de la moyenne",
+    "source": "braced"
+  },
+  {
+    "fr": "Tendance excédentaire",
+    "moore": "Sên zùùg pùsùkâ",
+    "explication": "Qui dépasse la moyenne",
+    "source": "braced"
+  },
+  {
+    "fr": "Tendance normale",
+    "moore": "Sên zems pùsùkâ",
+    "explication": "Egal à la moyen-ne, même chose que la moyenne",
+    "source": "braced"
+  },
+  {
+    "fr": "Terciez",
+    "moore": "Tùùm 30 sên pùà zîis a tâabo n yaool gâneg-b n sàng ne kàdgâ n tà tâag kasenga, wal n sàng ne kasenga n wa kàdga n yaool n ning- b sul a tâab sên zems taaba",
+    "explication": "Le tiers de 30 valeurs classées par ordre croissant ou décroissant et divisées en trois groupes égaux",
+    "source": "braced"
+  },
+  {
+    "fr": "Termes",
+    "moore": "Bâmb baasgo, bûmb saabo",
+    "explication": "La fin de quelque chose",
+    "source": "braced"
+  },
+  {
+    "fr": "Termites",
+    "moore": "Mogdo",
+    "explication": "Termites",
+    "source": "braced"
+  },
+  {
+    "fr": "Termitières",
+    "moore": "Bàmbàlga Yaoore tâmbeko",
+    "explication": "Maison des termites",
+    "source": "braced"
+  },
+  {
+    "fr": "Terre",
+    "moore": "Têngâ, Ândûni wâ",
+    "explication": "Terre",
+    "source": "braced"
+  },
+  {
+    "fr": "Territoire",
+    "moore": "Têng toaaga bà kadeng toaaga",
+    "explication": "Limite d'une zone administrative ou d'un pays",
+    "source": "braced"
+  },
+  {
+    "fr": "Thermo-mètre",
+    "moore": "Tùùl-makdga",
+    "explication": "Instrument de mesure de la température",
+    "source": "braced"
+  },
+  {
+    "fr": "Tonnerre",
+    "moore": "Saagâ yâbre",
+    "explication": "Grondements ou bruit provenant des nuages",
+    "source": "braced"
+  },
+  {
+    "fr": "Tornade",
+    "moore": "Seb-kaseng sên naag ne saag koom",
+    "explication": "Vent violent accompagné de fortes pluies",
+    "source": "braced"
+  },
+  {
+    "fr": "Total",
+    "moore": "Sên geel n paame, fâa sên naag taaba",
+    "explication": "Somme d'un calcul, cumul",
+    "source": "braced"
+  },
+  {
+    "fr": "Tourbillon",
+    "moore": "Sàlmande",
+    "explication": "Vent qui tourne en rond",
+    "source": "braced"
+  },
+  {
+    "fr": "Traces de pluies",
+    "moore": "Sa-koomâ waooglem sên pa ta mm 0.1 ye",
+    "explication": "Quantité de pluie moins de 0.1 millimètre",
+    "source": "braced"
+  },
+  {
+    "fr": "Traitement (Phyto-sanitaire)",
+    "moore": "N ning nansaar tàt koobâ tùùm pùgê",
+    "explication": "Mettre des produits chimiques dans une culture",
+    "source": "braced"
+  },
+  {
+    "fr": "Trans-formation",
+    "moore": "Toeengo",
+    "explication": "Modification",
+    "source": "braced"
+  },
+  {
+    "fr": "Tremble-ments de terre",
+    "moore": "Têng rigingu",
+    "explication": "Mouvement ou agitation de la terre",
+    "source": "braced"
+  },
+  {
+    "fr": "Très",
+    "moore": "Halà",
+    "explication": "Très",
+    "source": "braced"
+  },
+  {
+    "fr": "Tropical",
+    "moore": "Têms nins sasa sên ya tùùlgo (Burkîna, Nizèère, sayèlle)",
+    "explication": "Climat des pays chaud, Burkina, Niger, sahel)",
+    "source": "braced"
+  },
+  {
+    "fr": "Tropiques",
+    "moore": "Farens têngê yaa toadg ninga sên be rezô râmb nins sùka tà b sasa wâ pa a yembr ye (sên tar sasa toay-toaya)",
+    "explication": "Limite entre les régions tropicales et les régions tempérées (France)",
+    "source": "braced"
+  },
+  {
+    "fr": "Troupeaux",
+    "moore": "Rûm-doogo, Bâgre (Rûms sôor sên waooge)",
+    "explication": "Nombre important d'animaux à quatre pattes",
+    "source": "braced"
+  },
+  {
+    "fr": "Tsunami",
+    "moore": "Têng riging mogrâ pùgê n kàt tà koomâ sâam teed wùsgo",
+    "explication": "Tremblement terre au fond de la mer qui cause d'énormes dégâts sur les cotes",
+    "source": "braced"
+  },
+  {
+    "fr": "Usages",
+    "moore": "Sên tar n tùùmdê",
+    "explication": "Utilisation habituelle",
+    "source": "braced"
+  },
+  {
+    "fr": "Vagues",
+    "moore": "Sebgâ fugb kàtame tà mogrâ koom lengdê",
+    "explication": "Mouvement ou agitation des eaux de mer, déformation de la surface de l'eau par le vent",
+    "source": "braced"
+  },
+  {
+    "fr": "Vallées",
+    "moore": "Zîig sên be tâms a yiib sùka",
+    "explication": "Creux situé entre des montagnes ou des collines",
+    "source": "braced"
+  },
+  {
+    "fr": "Vannes",
+    "moore": "Teoog sên ning baraasâ pùgê sên na yàl n pagdê la b pakdê tà koomâ tûud be n yita",
+    "explication": "Dispositif qui bouge pour con-trôler le passage de l'eau au niveau de barrage",
+    "source": "braced"
+  },
+  {
+    "fr": "Vapeur",
+    "moore": "Ko-walem, walem",
+    "explication": "Eau sous forme de gaz",
+    "source": "braced"
+  },
+  {
+    "fr": "Variation",
+    "moore": "Toeengo, tekre",
+    "explication": "Changement",
+    "source": "braced"
+  },
+  {
+    "fr": "Végétale",
+    "moore": "Sên kêed bôn-yitsâ ne moodâ wèèngê",
+    "explication": "Qui concerne les plantes, les herbes",
+    "source": "braced"
+  },
+  {
+    "fr": "Végétation",
+    "moore": "Tààsâ la moodâ buud fâa sên naag taaba",
+    "explication": "L'ensemble cons-titué des arbres et des herbes",
+    "source": "braced"
+  },
+  {
+    "fr": "Vendredi",
+    "moore": "Arzûma (semend a rasem a 5 soaba)",
+    "explication": "Vendredi (5eme jour de la semaine)",
+    "source": "braced"
+  },
+  {
+    "fr": "Verdure",
+    "moore": "Bôn-yitsâ buud ne moodâ buud fâa sên naag taaba",
+    "explication": "Ensemble de tou-tes les plantes et les herbes vertes",
+    "source": "braced"
+  },
+  {
+    "fr": "Vigilance",
+    "moore": "Sabaab wêng sên tôe n wa, n maan gûusg ne sabaab wênga, bob-n-dôbê",
+    "explication": "Risque d'un dan-ger, faire atten-tion à un danger, Etre sur ses gar-des, être sur garde",
+    "source": "braced"
+  },
+  {
+    "fr": "Village",
+    "moore": "Tên-kàrenga",
+    "explication": "Village",
+    "source": "braced"
+  },
+  {
+    "fr": "Ville",
+    "moore": "Galù tênga",
+    "explication": "Ville",
+    "source": "braced"
+  },
+  {
+    "fr": "Visibilité",
+    "moore": "Bûmb nenem zârem sên tôe n zem to-to",
+    "explication": "Distance maximale à laquelle un objet peut être vue et identifié",
+    "source": "braced"
+  },
+  {
+    "fr": "Visible",
+    "moore": "Bûmb b sên ne",
+    "explication": "Quelques choses qu'on voit",
+    "source": "braced"
+  },
+  {
+    "fr": "Vitesse",
+    "moore": "Kênd tùùlem magbo",
+    "explication": "Déplacement sur une distance par unité de temps",
+    "source": "braced"
+  },
+  {
+    "fr": "Voisinage",
+    "moore": "Yak-n-taare, sên pê, yamba",
+    "explication": "Proximité, à coté",
+    "source": "braced"
+  },
+  {
+    "fr": "Vol (avion)",
+    "moore": "Sàlg sên kênd toto yîngri",
+    "explication": "Déplacement de l'avion dans l'air",
+    "source": "braced"
+  },
+  {
+    "fr": "Volcans",
+    "moore": "Tâng sên yiisd bugum Tâng sên wùbd bugum",
+    "explication": "Montagne qui crache du feu",
+    "source": "braced"
+  },
+  {
+    "fr": "Zäi",
+    "moore": "Zaee (Koob tùùm- paalg manesem sên tûud ne bogd tuubu, sên na yàl n sông tên- gâongâ t’a lebg n paam a noosem)",
+    "explication": "Technique de culture qui permet d'améliorer la fertilité des sols dégradés en creusant des petits trous",
+    "source": "braced"
+  },
+  {
+    "fr": "Zone",
+    "moore": "Zîiga, Baobgo",
+    "explication": "Un lieu, un endroit",
+    "source": "braced"
+  },
+  {
+    "fr": "Zone de turbulence",
+    "moore": "Sàlg sên toe n miim zîigê",
+    "explication": "Un lieu de secousse d'un avion",
+    "source": "braced"
+  },
+  {
+    "fr": "Zone vulnérable",
+    "moore": "Zî- bânde",
+    "explication": "Un lieu sensible",
+    "source": "braced"
+  },
+  {
+    "fr": "BOGANDE DORI FADA N'GOURMA OUAGADOUGOU OUAHIGOUYA",
+    "moore": "39,3",
+    "explication": "",
+    "source": "braced"
+  },
+  {
+    "fr": "Mois/Month",
+    "moore": "Symbole/symbol",
+    "explication": "Manifestation/ characteristics",
+    "source": "braced"
+  },
+  {
+    "fr": "Mois/Month",
+    "moore": "Symbole/ Image",
+    "explication": "Manifestation/ characteristics",
+    "source": "braced"
+  },
+  {
+    "fr": "Kiuugu",
+    "moore": "A naandâ",
+    "explication": "A manesmâ",
+    "source": "braced"
+  },
+  {
+    "fr": "Kiuugu",
+    "moore": "A naandâ",
+    "explication": "A manesmâ",
+    "source": "braced"
+  },
+  {
+    "fr": "I ŋmaali",
+    "moore": "Maalima/ nannanli",
+    "explication": "Yaala n yen tieni",
+    "source": "braced"
+  },
+  {
+    "fr": "I ŋmaali",
+    "moore": "Maalima/nannanli",
+    "explication": "Yaala n yen tieni",
+    "source": "braced"
+  },
+  {
+    "fr": "Lebbi",
+    "moore": "Annditirgel/natal",
+    "explication": "No sifori",
+    "source": "braced"
+  },
+  {
+    "fr": "Lebbi",
+    "moore": "Maaninirgel/natal",
+    "explication": "No sifori",
+    "source": "braced"
+  }
+]

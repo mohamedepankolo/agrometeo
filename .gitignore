@@ -7,6 +7,8 @@ __pycache__/
 .venv/
 venv/
 
-# Sorties audio de test
+# Sorties audio/vidéo de test
 *.wav
 *.mp3
+*.mp4
+*.png

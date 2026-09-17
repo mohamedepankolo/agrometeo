@@ -88,6 +88,49 @@ def extract_text(pdf_path: str | Path) -> str:
         return "\n".join(page.extract_text() or "" for page in pdf.pages)
 
 
+def extract_bulletin_images(pdf_path: str | Path, out_dir: str | Path | None = None,
+                            resolution: int = 200) -> dict[str, Path]:
+    """F1.4 : extrait du bulletin les 2 cartes (observé + prévisions) et le logo
+    ANAM/météo Burkina en 3 fichiers séparés, en rognant le rendu de la page 1
+    aux coordonnées des images embarquées.
+
+    Heuristique (constatée sur les bulletins RECLIM) : les 2 plus grandes images
+    de la page sont les cartes, triées par position verticale (la plus haute =
+    section "temps observé", la plus basse = section "prévisions") ; parmi les
+    images restantes, nettement plus petites, la plus haute sur la page est le
+    logo (cartouche en haut de page)."""
+    pdf_path = Path(pdf_path)
+    out_dir = Path(out_dir) if out_dir else pdf_path.parent
+    stem = pdf_path.stem
+
+    with pdfplumber.open(pdf_path) as pdf:
+        page = pdf.pages[0]
+        rendered = page.to_image(resolution=resolution)
+        scale = resolution / 72
+
+        images = sorted(page.images, key=lambda im: (im["x1"] - im["x0"]) * (im["y1"] - im["y0"]), reverse=True)
+        if len(images) < 2:
+            raise ValueError(f"Moins de 2 images trouvées sur la page 1 de {pdf_path.name}.")
+        maps = sorted(images[:2], key=lambda im: im["top"])
+        others = images[2:]
+
+        def _crop(img: dict, out_name: str) -> Path:
+            box = (img["x0"] * scale, img["top"] * scale, img["x1"] * scale, img["bottom"] * scale)
+            out_path = out_dir / out_name
+            rendered.original.crop(box).save(out_path)
+            return out_path
+
+        result = {
+            "carte_observee": _crop(maps[0], f"{stem}_carte_observee.png"),
+            "carte_prevision": _crop(maps[1], f"{stem}_carte_prevision.png"),
+        }
+        if others:
+            logo_img = min(others, key=lambda im: im["top"])
+            result["logo"] = _crop(logo_img, f"{stem}_logo.png")
+
+    return result
+
+
 def parse_bulletin(pdf_path: str | Path) -> Bulletin:
     """Parse un bulletin PDF RECLIM et renvoie ses sections structurées."""
     pdf_path = Path(pdf_path)
@@ -122,17 +165,34 @@ def parse_bulletin(pdf_path: str | Path) -> Bulletin:
     )
 
 
+def bulletin_narration_fr_parts(bulletin: Bulletin) -> list[tuple[str, str]]:
+    """Narration FR découpée par section : [("observee", texte), ("prevision", texte),
+    ("conseils", texte)?]. Une image différente est associée à chaque partie pour la
+    vidéo (F1.4) ; la version "audio complet" (bulletin_narration_fr) n'est que la
+    concaténation de ces parties."""
+    intro = f"Bulletin agrométéorologique du {bulletin.date_text}. " if bulletin.date_text else ""
+    parts = [
+        ("observee", f"{intro}Temps observé au cours des dernières 24 heures : {bulletin.observed}"),
+        ("prevision", f"Prévisions pour les prochaines 24 heures : {bulletin.forecast}"),
+    ]
+    if bulletin.has_advice:
+        advice_intro = f"{bulletin.advice_intro} " if bulletin.advice_intro else ""
+        parts.append(("conseils", "Avis et conseils agrométéorologiques : "
+                                   + advice_intro + " ; ".join(bulletin.advice) + "."))
+    return parts
+
+
 def bulletin_narration_fr(bulletin: Bulletin) -> str:
     """Construit le texte FR à traduire/synthétiser à partir des sections extraites."""
-    parts = []
-    if bulletin.date_text:
-        parts.append(f"Bulletin agrométéorologique du {bulletin.date_text}.")
-    parts.append(f"Temps observé au cours des dernières 24 heures : {bulletin.observed}")
-    parts.append(f"Prévisions pour les prochaines 24 heures : {bulletin.forecast}")
-    if bulletin.has_advice:
-        intro = f"{bulletin.advice_intro} " if bulletin.advice_intro else ""
-        parts.append("Avis et conseils agrométéorologiques : " + intro + " ; ".join(bulletin.advice) + ".")
-    return " ".join(parts)
+    return " ".join(text for _, text in bulletin_narration_fr_parts(bulletin))
+
+
+def bulletin_narration_en_parts(bulletin: Bulletin) -> list[tuple[str, str]]:
+    """Narration anglaise découpée par section (même structure que la FR),
+    traduite phrase par phrase via MyMemory (cf. french_tts.py)."""
+    from french_tts import translate_long_fr_to_english
+
+    return [(name, translate_long_fr_to_english(text)) for name, text in bulletin_narration_fr_parts(bulletin)]
 
 
 # ---------------------------------------------------------------------------
@@ -165,38 +225,49 @@ MOORE_INTRO = (
 MOORE_OUTRO = "Yaa woto la tõnd rũndã kibayã sa. Wa-y beoogo ne kibay a taaba. Bɩ laafɩ zĩnd ne yãmba."
 
 
+def bulletin_narration_moore_parts(bulletin: Bulletin, tclient=None) -> list[tuple[str, str]]:
+    """Narration mooré découpée par section, même principe que bulletin_narration_fr_parts
+    (une image différente par partie pour la vidéo). L'intro va sur la 1re partie
+    ("observee"), l'outro sur la dernière ("conseils" si présente, sinon "prevision")."""
+    from moore_client import TranslationClient, translate_long_fr_to_moore
+
+    tclient = tclient or TranslationClient()
+
+    observed_text = MOORE_INTRO
+    if bulletin.date_text:
+        observed_text += " " + translate_long_fr_to_moore(f"Bulletin agrométéorologique du {bulletin.date_text}.", tclient)
+    observed_text += " " + MOORE_LABEL_OBSERVED + " " + translate_long_fr_to_moore(bulletin.observed, tclient)
+
+    forecast_text = MOORE_LABEL_FORECAST + " " + translate_long_fr_to_moore(bulletin.forecast, tclient)
+
+    parts = [("observee", observed_text)]
+
+    if bulletin.has_advice:
+        parts.append(("prevision", forecast_text))
+
+        advice_text = MOORE_LABEL_ADVICE
+        intro_fr = (bulletin.advice_intro or "").rstrip(" :")
+        if intro_fr == _KNOWN_ADVICE_INTRO_FR:
+            advice_text += " " + MOORE_ADVICE_INTRO
+        elif bulletin.advice_intro:
+            advice_text += " " + translate_long_fr_to_moore(bulletin.advice_intro, tclient)
+        items_moore = [translate_long_fr_to_moore(item, tclient).rstrip(".") for item in bulletin.advice]
+        advice_text += " " + " ; ".join(items_moore) + "."
+        advice_text += " " + MOORE_OUTRO
+        parts.append(("conseils", advice_text))
+    else:
+        forecast_text += " " + MOORE_OUTRO
+        parts.append(("prevision", forecast_text))
+
+    return parts
+
+
 def bulletin_narration_moore(bulletin: Bulletin, tclient=None) -> str:
     """Construit la narration mooré : phrases-titres fixes (validées une fois)
     + contenu variable du bulletin traduit à la volée, phrase par phrase.
     Évite de retraduire (et donc de risquer une dégradation de qualité sur)
     les mêmes phrases-titres à chaque bulletin."""
-    from moore_client import TranslationClient, translate_long_fr_to_moore
-
-    tclient = tclient or TranslationClient()
-    parts = [MOORE_INTRO]
-
-    if bulletin.date_text:
-        parts.append(translate_long_fr_to_moore(f"Bulletin agrométéorologique du {bulletin.date_text}.", tclient))
-
-    parts.append(MOORE_LABEL_OBSERVED)
-    parts.append(translate_long_fr_to_moore(bulletin.observed, tclient))
-
-    parts.append(MOORE_LABEL_FORECAST)
-    parts.append(translate_long_fr_to_moore(bulletin.forecast, tclient))
-
-    if bulletin.has_advice:
-        parts.append(MOORE_LABEL_ADVICE)
-        intro_fr = (bulletin.advice_intro or "").rstrip(" :")
-        if intro_fr == _KNOWN_ADVICE_INTRO_FR:
-            parts.append(MOORE_ADVICE_INTRO)
-        elif bulletin.advice_intro:
-            parts.append(translate_long_fr_to_moore(bulletin.advice_intro, tclient))
-        items_moore = [translate_long_fr_to_moore(item, tclient).rstrip(".") for item in bulletin.advice]
-        parts.append(" ; ".join(items_moore) + ".")
-
-    parts.append(MOORE_OUTRO)
-
-    return " ".join(p for p in parts if p)
+    return " ".join(text for _, text in bulletin_narration_moore_parts(bulletin, tclient))
 
 
 if __name__ == "__main__":

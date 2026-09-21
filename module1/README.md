@@ -16,6 +16,21 @@ Deux points d'entrée, selon le type de contenu :
 | Bulletin | `generate_bulletin_all.py` | 1 PDF |
 | Alerte | `generate_alert_all.py` | 1 image + 1 fichier texte |
 
+## Interface de test locale
+
+Pour essayer la chaîne sans ligne de commande :
+
+```bash
+streamlit run app.py
+```
+
+La page s'ouvre dans le navigateur (`http://localhost:8501`), avec deux onglets :
+**Bulletin (PDF)** — dépose un PDF ; **Alerte** — dépose l'image et colle le
+texte du message WhatsApp. Après « Générer », chaque langue affiche sa vidéo, son
+audio, des boutons de téléchargement et le texte réellement lu (utile pour
+relire la traduction mooré). Le fichier `.env` est lu automatiquement. Outil de
+test uniquement : ce n'est pas l'interface de production.
+
 ## Pour la personne qui intègre ça au frontend
 
 ### Alertes météo — `generate_alert_all.py`
@@ -91,6 +106,7 @@ Le dossier est créé automatiquement s'il n'existe pas.
 | `bulletin_parser.py` | Extraction du PDF : sections de texte (F1.2) + images cartes/logo (F1.4) |
 | `moore_client.py` | Traduction FR↔mooré (CITADEL/NLLB) + synthèse vocale mooré (CITADEL) |
 | `french_tts.py` | Synthèse vocale FR/EN (Edge TTS) + traduction FR→anglais (MyMemory) |
+| `app.py` | Interface de test locale (Streamlit) pour bulletins et alertes |
 | `alert_parser.py` | Structuration du texte d'une alerte + formules d'ouverture/clôture (F1.6) |
 | `generate_alert_all.py` | **Point d'entrée alertes** — 3 audios + 3 vidéos pour une alerte |
 | `generate_bulletin_all.py` | **Point d'entrée bulletins** — 3 audios + 3 vidéos pour un bulletin |

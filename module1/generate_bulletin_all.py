@@ -43,7 +43,7 @@ def _concat(paths: list[Path], out_path: Path) -> None:
         list_path.unlink(missing_ok=True)
 
 
-def generate_bulletin_all(pdf_path: str, out_dir: str | None = None) -> dict[str, Path]:
+def generate_bulletin_all(pdf_path: str, out_dir: str | None = None) -> dict[str, Path | str]:
     pdf_path = Path(pdf_path)
     out_dir = Path(out_dir) if out_dir else pdf_path.parent
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -56,7 +56,9 @@ def generate_bulletin_all(pdf_path: str, out_dir: str | None = None) -> dict[str
         "mos": bulletin_narration_moore_parts(bulletin),
     }
 
-    result: dict[str, Path] = {}
+    result: dict[str, Path | str] = {
+        f"text_{lang}": " ".join(text for _, text in parts) for lang, parts in parts_by_lang.items()
+    }
 
     with tempfile.TemporaryDirectory() as tmp_str:
         tmp = Path(tmp_str)

@@ -72,9 +72,9 @@ def _show_results(res: dict, key: str) -> None:
             st.audio(data["audio"], format=mime)
             d1, d2 = st.columns(2)
             d1.download_button("Vidéo (mp4)", data["video"], data["video_name"], "video/mp4",
-                               key=f"{key}_v_{lang}", use_container_width=True)
+                               key=f"{key}_v_{lang}", width="stretch")
             d2.download_button("Audio", data["audio"], data["audio_name"], mime,
-                               key=f"{key}_a_{lang}", use_container_width=True)
+                               key=f"{key}_a_{lang}", width="stretch")
             with st.expander("Texte lu"):
                 st.write(data["text"])
 
@@ -133,7 +133,7 @@ with tab_alert:
     with left:
         image = st.file_uploader("Image de l'alerte", type=["jpg", "jpeg", "png"], key="img")
         if image:
-            st.image(image.getvalue(), use_container_width=True)
+            st.image(image.getvalue(), width="stretch")
     with right:
         text = st.text_area("Texte de l'alerte (coller le message WhatsApp tel quel)", height=320, key="alert_text")
 

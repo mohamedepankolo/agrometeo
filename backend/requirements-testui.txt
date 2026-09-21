@@ -1,0 +1,4 @@
+# Interface de test (Streamlit) : outil de développement, pas nécessaire en production
+streamlit>=1.40
+requests>=2.31
+pyotp>=2.9

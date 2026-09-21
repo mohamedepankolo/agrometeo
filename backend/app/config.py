@@ -13,7 +13,7 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
     env: str = "dev"  # dev | test | prod
-    database_url: str = "sqlite:///./auth_dev.db"
+    database_url: str = "sqlite:///./anam_dev.db"
 
     jwt_secret: str = ""
     data_encryption_key: str = ""  # chiffrement des secrets 2FA ; dérivé de jwt_secret si absent
@@ -44,6 +44,35 @@ class Settings(BaseSettings):
 
     totp_issuer: str = "ANAM"
 
+    # Stockage des médias générés (PDF, images, audios, vidéos) et URL publique de l'API
+    storage_dir: str = "./storage"
+    public_base_url: str = ""  # ex. https://api.anam.bf ; vide = URLs relatives (/media/...)
+    max_upload_mb: int = 25
+
+    # Chaîne audio/vidéo du Module 1
+    module1_dir: str = "../module1"
+    citadel_translate_url: str = ""
+    citadel_api_email: str = ""
+    citadel_api_password: str = ""
+    moore_api_base_url: str = ""
+    moore_api_token: str = ""
+
+    # Diffusion : push (FCM), SMS (Orange), WhatsApp (Cloud API). 'console' = simulation.
+    push_backend: str = "console"  # console | fcm
+    fcm_credentials_file: str = ""  # clé de compte de service Firebase (JSON)
+    orange_client_id: str = ""
+    orange_client_secret: str = ""
+    orange_sender: str = ""  # ex. +22670000000 (numéro expéditeur enregistré chez Orange)
+    orange_sender_name: str = "ANAM"
+    whatsapp_backend: str = "console"  # console | cloud
+    whatsapp_token: str = ""
+    whatsapp_phone_number_id: str = ""
+
+    @property
+    def dev_tools(self) -> bool:
+        """Outils de développement (/dev/*) : jamais en production."""
+        return self.env in {"dev", "test"}
+
     @property
     def is_prod(self) -> bool:
         return self.env == "prod"
@@ -65,6 +94,6 @@ def get_settings() -> Settings:
             raise RuntimeError("JWT_SECRET est obligatoire en production.")
         s.jwt_secret = secrets.token_urlsafe(48)
         log.warning("JWT_SECRET absent : secret éphémère généré (les sessions sautent au redémarrage).")
-    if s.is_prod and (s.sms_backend == "console" or s.email_backend == "console"):
-        raise RuntimeError("En production, SMS_BACKEND et EMAIL_BACKEND ne peuvent pas être 'console'.")
+    if s.is_prod and "console" in (s.sms_backend, s.email_backend, s.push_backend, s.whatsapp_backend):
+        raise RuntimeError("En production, aucun backend d'envoi ne peut être 'console' (simulation).")
     return s

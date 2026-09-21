@@ -17,3 +17,6 @@ venv/
 ressources/
 *.db
 .pytest_cache/
+backend/storage/
+backend/storage_smoke/
+backend/dev_smoke.db

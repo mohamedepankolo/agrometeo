@@ -25,7 +25,8 @@ log = logging.getLogger("auth.audit")
 
 ALL_PERMISSIONS = {
     "content:read",  # consulter bulletins, alertes, cartes
-    "content:manage",  # créer / modifier bulletins, alertes, avis
+    "content:manage",  # créer / modifier bulletins, alertes, avis (brouillons)
+    "content:publish",  # publier, annuler, diffuser
     "observations:write",  # saisir des observations terrain
     "stats:read",  # tableau de bord, statistiques
     "users:read",  # consulter les comptes
@@ -34,11 +35,32 @@ ALL_PERMISSIONS = {
     "config:manage",  # paramètres et canaux de diffusion
 }
 
+PERMISSION_LABELS = {
+    "content:read": "Consulter bulletins, alertes, avis et cartes",
+    "content:manage": "Créer et modifier bulletins, alertes, avis (brouillons)",
+    "content:publish": "Publier, annuler et diffuser les contenus",
+    "observations:write": "Saisir des observations de terrain",
+    "stats:read": "Consulter le tableau de bord et les statistiques",
+    "users:read": "Consulter les comptes utilisateurs",
+    "users:manage": "Créer, activer, désactiver des comptes",
+    "roles:assign": "Attribuer des rôles",
+    "config:manage": "Modifier les paramètres, zones et canaux de diffusion",
+}
+
+ROLE_LABELS = {
+    Role.grand_public: "Grand public",
+    Role.observateur: "Observateur",
+    Role.responsable_communal: "Responsable communal",
+    Role.agent_anam: "Agent ANAM",
+    Role.administrateur: "Administrateur",
+}
+
 ROLE_PERMISSIONS: dict[Role, set[str]] = {
     Role.grand_public: {"content:read"},
     Role.observateur: {"content:read", "observations:write"},
     Role.responsable_communal: {"content:read", "stats:read"},
-    Role.agent_anam: {"content:read", "content:manage", "observations:write", "stats:read", "users:read"},
+    Role.agent_anam: {"content:read", "content:manage", "content:publish", "observations:write", "stats:read",
+                      "users:read"},
     Role.administrateur: set(ALL_PERMISSIONS),
 }
 
@@ -81,6 +103,24 @@ def get_user_for_2fa_setup(
         return _load_user(db, creds.credentials, "2fa_setup")
 
 
+def user_from_token(db: Session, token: str) -> User:
+    """Utilisateur d'un token d'accès passé hors en-tête (ex. lecture d'un média dans une balise <video>)."""
+    return _load_user(db, token, "access")
+
+
+def get_optional_user(
+    creds: HTTPAuthorizationCredentials | None = Depends(_bearer), db: Session = Depends(get_db)
+) -> User | None:
+    """Utilisateur connecté s'il y en a un ; None pour un visiteur anonyme (lecture des contenus publics)."""
+    if creds is None:
+        return None
+    return _load_user(db, creds.credentials, "access")
+
+
+def has_permission(user: User | None, permission: str) -> bool:
+    return user is not None and permission in ROLE_PERMISSIONS[user.role]
+
+
 def require_permission(permission: str) -> Callable[..., User]:
     def dependency(user: User = Depends(get_current_user)) -> User:
         if permission not in ROLE_PERMISSIONS[user.role]:
@@ -88,4 +128,5 @@ def require_permission(permission: str) -> Callable[..., User]:
             raise HTTPException(status.HTTP_403_FORBIDDEN, "Droits insuffisants.")
         return user
 
+    dependency._permission = permission  # lu par la génération de la documentation
     return dependency

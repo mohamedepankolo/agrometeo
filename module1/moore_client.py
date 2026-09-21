@@ -45,6 +45,27 @@ class MooreApiError(RuntimeError):
     """Erreur de transport HTTP ou réponse inattendue d'un service."""
 
 
+_RETRY_ATTEMPTS = 4
+_RETRY_BASE_DELAY_S = 2.0
+
+
+def _post_with_retry(url: str, **kwargs) -> requests.Response:
+    """requests.post avec retry + backoff sur les coupures réseau (connexion
+    réinitialisée, timeout) — les services CITADEL/ngrok en produisent
+    régulièrement. Les erreurs HTTP (4xx/5xx) ne sont pas rejouées."""
+    import time
+
+    # Un fichier ouvert (ASR/S2S) est consommé par le 1er envoi : pas de retry.
+    attempts = 1 if "files" in kwargs else _RETRY_ATTEMPTS
+    for attempt in range(attempts):
+        try:
+            return requests.post(url, **kwargs)
+        except (requests.ConnectionError, requests.Timeout):
+            if attempt == attempts - 1:
+                raise
+            time.sleep(_RETRY_BASE_DELAY_S * (2 ** attempt))
+
+
 def _first(data, keys):
     """Renvoie la 1re valeur non vide parmi `keys` dans un dict (gère {'data': {...}})."""
     if isinstance(data, dict):
@@ -76,7 +97,7 @@ class TranslationClient:
         """Authentifie et met en cache le token Bearer."""
         url = f"{self.base_url}/api/auth/login"
         try:
-            r = requests.post(url, json={"email": self.email, "password": self.password}, timeout=self.timeout)
+            r = _post_with_retry(url, json={"email": self.email, "password": self.password}, timeout=self.timeout)
             r.raise_for_status()
         except requests.RequestException as exc:
             raise MooreApiError(f"Échec du login {url} : {exc}") from exc
@@ -102,7 +123,7 @@ class TranslationClient:
         url = f"{self.base_url}/api/translate"
         payload = {"text": text, "source_lang": source_lang, "target_lang": target_lang, "model_type": model_type}
         try:
-            r = requests.post(url, json=payload, headers=self._auth(), timeout=self.timeout)
+            r = _post_with_retry(url, json=payload, headers=self._auth(), timeout=self.timeout)
             if r.status_code == 401 and _retry:
                 self.login()
                 return self.translate(text, source_lang, target_lang, model_type, _retry=False)
@@ -146,7 +167,7 @@ class MooreClient:
     def _post(self, path: str, **kwargs):
         url = f"{self.base_url}{path}"
         try:
-            r = requests.post(url, headers=self._auth, timeout=self.timeout, **kwargs)
+            r = _post_with_retry(url, headers=self._auth, timeout=self.timeout, **kwargs)
             r.raise_for_status()
             return r
         except requests.RequestException as exc:

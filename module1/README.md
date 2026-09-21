@@ -1,4 +1,4 @@
-# Module 1 — Bulletins agrométéo en audio et vidéo (FR / anglais / mooré)
+# Module 1 — Bulletins et alertes agrométéo en audio et vidéo (FR / anglais / mooré)
 
 Chaîne de traitement du **Module 1** de la plateforme agrométéorologique ANAM-BF
 (cf. cahier des charges, section 6.1) :
@@ -6,9 +6,47 @@ Chaîne de traitement du **Module 1** de la plateforme agrométéorologique ANAM
 **bulletin PDF (FR) → extraction du texte et des images → traduction (mooré/anglais)
 → synthèse vocale → vidéo (image + audio synchronisés par section).**
 
+**alerte (image + texte FR) → traduction (mooré/anglais) → synthèse vocale →
+vidéo (image fixe + audio).**
+
+Deux points d'entrée, selon le type de contenu :
+
+| Contenu | Script | Entrées |
+|---|---|---|
+| Bulletin | `generate_bulletin_all.py` | 1 PDF |
+| Alerte | `generate_alert_all.py` | 1 image + 1 fichier texte |
+
 ## Pour la personne qui intègre ça au frontend
 
-Le point d'entrée à connaître est **`generate_bulletin_all.py`**. Il prend un
+### Alertes météo — `generate_alert_all.py`
+
+Une alerte est fournie sous forme d'**une image** (radar/satellite) et du **texte
+WhatsApp** associé (emojis, puces et liens acceptés : ils sont retirés
+automatiquement avant la lecture). Le script produit **6 fichiers**, nommés
+d'après l'image, dans le dossier de sortie :
+
+| Fichier | Contenu | Format |
+|---|---|---|
+| `<nom>_fr.mp3` / `_en.mp3` / `_mos.wav` | Audio français / anglais / mooré | mp3 / mp3 / wav |
+| `<nom>_fr.mp4` / `_en.mp4` / `_mos.mp4` | Vidéo : l'image affichée pendant tout l'audio | mp4, 1280px de large |
+
+```bash
+python generate_alert_all.py "alerte.jpg" "alerte.txt" dossier_de_sortie
+```
+
+Le texte est structuré automatiquement (titre avec date, situation actuelle,
+évolution attendue, risques attendus *(optionnel)*, conseils de prudence/sécurité).
+Une formule d'ouverture et de clôture propre aux alertes (registre plus urgent que
+celle des bulletins) encadre l'audio. Exemples : `samples/alerte1.*`, `samples/alerte2.*`.
+`alert_parser.py <texte.txt>` affiche le texte reconnu sans appeler aucune API.
+
+Particularités : les liens et le rappel « suivez nos publications » du texte source
+ne sont pas lus ; la date de l'alerte est lue en français et en anglais mais pas
+en mooré (la traduction automatique la rend de façon incohérente).
+
+### Bulletins — `generate_bulletin_all.py`
+
+Il prend un
 bulletin PDF (format "Bulletin Spécifique RECLIM" de l'ANAM) et produit
 **6 fichiers**, nommés d'après le PDF source, dans le dossier de sortie choisi :
 
@@ -53,12 +91,14 @@ Le dossier est créé automatiquement s'il n'existe pas.
 | `bulletin_parser.py` | Extraction du PDF : sections de texte (F1.2) + images cartes/logo (F1.4) |
 | `moore_client.py` | Traduction FR↔mooré (CITADEL/NLLB) + synthèse vocale mooré (CITADEL) |
 | `french_tts.py` | Synthèse vocale FR/EN (Edge TTS) + traduction FR→anglais (MyMemory) |
-| `generate_bulletin_all.py` | **Point d'entrée principal** — 3 audios + 3 vidéos pour un bulletin |
+| `alert_parser.py` | Structuration du texte d'une alerte + formules d'ouverture/clôture (F1.6) |
+| `generate_alert_all.py` | **Point d'entrée alertes** — 3 audios + 3 vidéos pour une alerte |
+| `generate_bulletin_all.py` | **Point d'entrée bulletins** — 3 audios + 3 vidéos pour un bulletin |
 | `generate_bulletin_audio.py` | 3 audios + 3 images (sans vidéo) |
 | `generate_bulletin_video.py` | Vidéo française seule |
 | `lexicon.py` / `lexicons/` | Lexiques météo FR-mooré (référence terminologique, F1.7) |
 | `reference_pairs/` | Bulletins audio réels + transcriptions (validation de la structure) |
-| `samples/` | Bulletins PDF d'exemple |
+| `samples/` | Bulletins PDF et alertes (image + texte) d'exemple |
 | `test_tts.py` | Petit script de test bas niveau du service TTS mooré |
 | `.env.example` | Modèle de configuration (à copier en `.env`) |
 | `requirements.txt` | Dépendances Python |
@@ -95,17 +135,23 @@ export $(grep -v '^#' .env | xargs)
 - ✅ Extraction PDF (texte + images), traduction FR↔mooré, traduction FR→anglais,
   synthèse vocale FR/EN/mooré, génération vidéo dans les 3 langues : opérationnel
   et testé sur plusieurs bulletins réels.
-- ⏳ Les phrases-titres récurrentes et la formule d'ouverture/clôture mooré sont
-  des traductions automatiques (NLLB) — **à faire valider par CITADEL/ANAM ou un
-  locuteur natif avant toute diffusion publique** (cf. commentaires dans
-  `bulletin_parser.py`).
+- ✅ Alertes météo (F1.6) : texte + image → 3 audios + 3 vidéos, testé sur 2
+  alertes réelles.
+- ⏳ Les phrases-titres récurrentes et les formules d'ouverture/clôture mooré
+  (bulletins **et** alertes) sont des traductions automatiques (NLLB) — **à faire
+  valider par CITADEL/ANAM ou un locuteur natif avant toute diffusion publique**
+  (cf. commentaires dans `bulletin_parser.py` et `alert_parser.py`). La
+  traduction mooré du contenu variable est elle aussi à relire (ex. listes de
+  risques très courtes, mal rendues par NLLB).
+- ⏳ Les appels aux services CITADEL sont rejoués automatiquement en cas de
+  coupure réseau (4 tentatives), mais ces services restent instables.
 - ⏳ La traduction anglaise (MyMemory) est correcte mais littérale, non relue.
 - ⏳ Le TTS français/anglais (Edge TTS) et la traduction anglaise (MyMemory)
   reposent sur des services tiers gratuits sans garantie de disponibilité en
   production — solutions provisoires en attendant un TTS FR/EN natif côté CITADEL.
-- 🔲 Pas encore fait : gestion des alertes météo (F1.6, format texte plutôt que
-  PDF), diffusion WhatsApp (F1.5, bloquée en attendant l'accès à l'API WhatsApp
-  Business), tests sur un plus grand échantillon de bulletins.
+- 🔲 Pas encore fait : diffusion WhatsApp (F1.5 — bloquée en attendant l'accès à
+  l'API WhatsApp Business ; le format du message reste à fixer avec l'ANAM),
+  tests sur un plus grand échantillon de bulletins et d'alertes.
 
 ## Sécurité
 

@@ -12,3 +12,8 @@ venv/
 *.mp3
 *.mp4
 *.png
+
+# Documents de travail (cahier des charges, suivi des tâches...) : jamais versionnés
+ressources/
+*.db
+.pytest_cache/

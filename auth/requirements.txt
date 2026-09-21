@@ -1,0 +1,14 @@
+fastapi>=0.115
+uvicorn[standard]>=0.30
+sqlalchemy>=2.0
+pydantic[email]>=2.7
+pydantic-settings>=2.3
+argon2-cffi>=23.1
+PyJWT>=2.8
+pyotp>=2.9
+cryptography>=42
+# Tests
+pytest>=8
+httpx>=0.27
+# PostgreSQL (production) : décommenter, ou installer à part
+# psycopg[binary]>=3.2

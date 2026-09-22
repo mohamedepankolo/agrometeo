@@ -59,10 +59,13 @@ def parse_bulletin_pdf(pdf_path: Path) -> dict:
 
 
 def _collect(result: dict) -> dict:
+    """Normalise le résultat du Module 1. Une langue peut manquer (ex. anglais si le service gratuit de
+    traduction a atteint son quota) : elle est alors absente de `texts`/`files` et listée dans `skipped`."""
+    done = [lang for lang in LANGS if f"audio_{lang}" in result]
     return {
-        "texts": {lang: result[f"text_{lang}"] for lang in LANGS},
-        "files": {lang: {"audio": Path(result[f"audio_{lang}"]), "video": Path(result[f"video_{lang}"])}
-                  for lang in LANGS},
+        "texts": {lang: result[f"text_{lang}"] for lang in done},
+        "files": {lang: {"audio": Path(result[f"audio_{lang}"]), "video": Path(result[f"video_{lang}"])} for lang in done},
+        "skipped": result.get("skipped", {}),
     }
 
 

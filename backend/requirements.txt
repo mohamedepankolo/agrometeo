@@ -17,6 +17,14 @@ edge-tts>=6.1
 deep-translator>=1.11
 requests>=2.31
 
+# Traduction anglaise locale (hors ligne, sans quota) : modèle Helsinki-NLP/opus-mt-fr-en, ~300 Mo au 1er lancement.
+# Sur un serveur Linux, préférer la version CPU de torch (bien plus légère) :
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+torch>=2.3
+transformers>=4.40
+sentencepiece>=0.2
+sacremoses>=0.1
+
 # Tests
 pytest>=8
 

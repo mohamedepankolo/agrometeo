@@ -9,7 +9,7 @@ Les Modules 2 (observations GeoJSON) et 3 (prévisions NetCDF) s'y ajouteront qu
 backend/
   app/                 le service (routers/ = les routes, par domaine)
   testui/app.py        interface de test (Streamlit)
-  tests/               74 tests automatiques
+  tests/               83 tests automatiques
   docs/                GUIDE_FRONTEND.md · API_REFERENCE.md · openapi.json  (à remettre aux front-end)
   scripts/export_docs.py   régénère la documentation depuis le code
 ../module1/            la chaîne audio/vidéo (appelée par le backend)
@@ -27,7 +27,7 @@ uvicorn app.main:app --reload     # API sur http://localhost:8000  (documentatio
 streamlit run testui/app.py       # interface de test sur http://localhost:8501
 ```
 
-Il faut aussi **ffmpeg** installé (génération des vidéos). Comptes de démonstration, mot de passe `Demo1234!` :
+Il faut aussi **ffmpeg** installé (génération des vidéos). Le premier lancement télécharge le modèle de traduction anglaise (~300 Mo, une seule fois). Comptes de démonstration, mot de passe `Demo1234!` :
 `admin@demo.test`, `agent@demo.test`, `commune@demo.test`, `observateur@demo.test`, `citoyen@demo.test`
 (admin et agent configurent la 2FA à leur première connexion). Premier administrateur *réel* : `python -m app.create_admin --email ...`.
 
@@ -121,9 +121,9 @@ Mots de passe argon2 · jetons JWT courts + refresh à usage unique avec détect
 
 **Infrastructure**
 - Instance PostgreSQL, nom de domaine et certificat TLS, serveur avec ffmpeg, volume de stockage pour les fichiers générés, sauvegardes.
-- URL **stable** pour le service de voix mooré (aujourd'hui un tunnel ngrok) et remplacement des services gratuits de traduction/voix française-anglaise (MyMemory, Edge TTS).
+- URL **stable** pour le service de voix mooré (aujourd'hui un tunnel ngrok) et remplacement du service gratuit de voix française/anglaise (Edge TTS). La traduction française → anglaise est désormais faite **localement** (modèle opus-mt-fr-en : hors ligne, sans quota, ~1 Go de RAM) ; MyMemory ne sert plus que de secours.
 - Migrations de base de données (Alembic) avant la production ; test complet sur PostgreSQL (aujourd'hui testé sur SQLite) ; scan de vulnérabilités et non-objection de l'ANAM.
 
 ## Tests
 
-`pytest` (74 tests) : authentification, rôles et permissions, cycle de vie des alertes/bulletins/avis, ciblage et suivi des diffusions, carte, paramètres, canaux d'envoi (Orange, FCM, WhatsApp contre des serveurs simulés), documentation. La génération audio/vidéo y est simulée (aucun appel réseau) ; elle a été vérifiée séparément en réel de bout en bout.
+`pytest` (83 tests) : authentification, rôles et permissions, cycle de vie des alertes/bulletins/avis, ciblage et suivi des diffusions, carte, paramètres, canaux d'envoi (Orange, FCM, WhatsApp contre des serveurs simulés), documentation. La génération audio/vidéo y est simulée (aucun appel réseau) ; elle a été vérifiée séparément en réel de bout en bout.

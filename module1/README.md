@@ -105,7 +105,7 @@ Le dossier est créé automatiquement s'il n'existe pas.
 |---|---|
 | `bulletin_parser.py` | Extraction du PDF : sections de texte (F1.2) + images cartes/logo (F1.4) |
 | `moore_client.py` | Traduction FR↔mooré (CITADEL/NLLB) + synthèse vocale mooré (CITADEL) |
-| `french_tts.py` | Synthèse vocale FR/EN (Edge TTS) + traduction FR→anglais (MyMemory) |
+| `french_tts.py` | Synthèse vocale FR/EN (Edge TTS) + traduction FR→anglais (modèle local, repli MyMemory) |
 | `app.py` | Interface de test locale (Streamlit) pour bulletins et alertes |
 | `alert_parser.py` | Structuration du texte d'une alerte + formules d'ouverture/clôture (F1.6) |
 | `generate_alert_all.py` | **Point d'entrée alertes** — 3 audios + 3 vidéos pour une alerte |
@@ -129,7 +129,7 @@ Le dossier est créé automatiquement s'il n'existe pas.
 ## Configuration
 
 Copier `.env.example` en `.env` et renseigner les valeurs (nécessaire pour la
-traduction et le TTS mooré, via CITADEL — le FR/EN via Edge TTS et MyMemory ne
+traduction et le TTS mooré, via CITADEL — le FR/EN (Edge TTS, modèle de traduction local) ne
 demandent pas de clé). Le fichier `.env` n'est jamais committé (cf. `.gitignore`).
 
 Windows (PowerShell), à charger dans chaque nouvelle session avant de lancer un
@@ -161,7 +161,7 @@ export $(grep -v '^#' .env | xargs)
   risques très courtes, mal rendues par NLLB).
 - ⏳ Les appels aux services CITADEL sont rejoués automatiquement en cas de
   coupure réseau (4 tentatives), mais ces services restent instables.
-- ⏳ La traduction anglaise (MyMemory) est correcte mais littérale, non relue.
+- ✅ Traduction anglaise **locale** (modèle `Helsinki-NLP/opus-mt-fr-en`, hors ligne, sans quota ni envoi du texte à un tiers) ; les phrases traduites sont mises en cache (`.cache/`). MyMemory (gratuit, ~5 000 caractères/jour) ne sert que de repli, et si aucun moteur n'est disponible le bulletin est livré en français et mooré avec un avertissement. Traduction automatique : à relire.
 - ⏳ Le TTS français/anglais (Edge TTS) et la traduction anglaise (MyMemory)
   reposent sur des services tiers gratuits sans garantie de disponibilité en
   production — solutions provisoires en attendant un TTS FR/EN natif côté CITADEL.

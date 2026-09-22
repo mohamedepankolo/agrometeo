@@ -5919,7 +5919,8 @@
                 "type": "null"
               }
             ],
-            "title": "Error"
+            "title": "Error",
+            "description": "Si `failed` : la cause de l'échec. Si `ready` : avertissement éventuel (ex. une langue n'a pas pu être générée ; elle est alors absente de `files`)."
           },
           "files": {
             "additionalProperties": {

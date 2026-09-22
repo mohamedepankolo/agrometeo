@@ -20,3 +20,4 @@ ressources/
 backend/storage/
 backend/storage_smoke/
 backend/dev_smoke.db
+module1/.cache/

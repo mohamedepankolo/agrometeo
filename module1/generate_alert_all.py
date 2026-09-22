@@ -33,7 +33,7 @@ def _make_video(image_path: Path, audio_path: Path, out_path: Path) -> None:
 
 
 def generate_alert_all(image_path: str, text_path: str, out_dir: str | None = None,
-                       stem: str | None = None) -> dict[str, Path]:
+                       stem: str | None = None) -> dict:
     image_path = Path(image_path)
     text_path = Path(text_path)
     out_dir = Path(out_dir) if out_dir else image_path.parent
@@ -43,20 +43,24 @@ def generate_alert_all(image_path: str, text_path: str, out_dir: str | None = No
     alert = parse_alert_text(text_path.read_text(encoding="utf-8"))
 
     text_fr = alert_narration_fr(alert)
-    text_en = alert_narration_en(alert)
     text_mos = alert_narration_moore(alert)
+    result: dict = {"text_fr": text_fr, "text_mos": text_mos}
 
-    result: dict[str, Path] = {"text_fr": text_fr, "text_en": text_en, "text_mos": text_mos}
+    # L'anglais repose sur un service gratuit à quota (MyMemory) : s'il refuse, on livre quand même le
+    # français et le mooré, et on signale l'anglais manquant dans result["skipped"].
+    try:
+        result["text_en"] = alert_narration_en(alert)
+    except Exception as exc:  # noqa: BLE001
+        result["skipped"] = {"en": f"{type(exc).__name__}: {exc}"[:300]}
 
-    fr_audio = out_dir / f"{stem}_fr.mp3"
-    tts_french(text_fr, out_path=str(fr_audio))
-    en_audio = out_dir / f"{stem}_en.mp3"
-    tts_english(text_en, out_path=str(en_audio))
-    mos_audio = out_dir / f"{stem}_mos.wav"
-    tts_moore_long(text_mos, out_path=str(mos_audio))
-
-    audio_by_lang = {"fr": fr_audio, "en": en_audio, "mos": mos_audio}
-    result["audio_fr"], result["audio_en"], result["audio_mos"] = fr_audio, en_audio, mos_audio
+    audio_by_lang = {}
+    tts = {"fr": tts_french, "en": tts_english, "mos": tts_moore_long}
+    for lang, path in (("fr", out_dir / f"{stem}_fr.mp3"), ("en", out_dir / f"{stem}_en.mp3"), ("mos", out_dir / f"{stem}_mos.wav")):
+        if f"text_{lang}" not in result:
+            continue
+        tts[lang](result[f"text_{lang}"], out_path=str(path))
+        audio_by_lang[lang] = path
+        result[f"audio_{lang}"] = path
 
     for lang, audio in audio_by_lang.items():
         video_path = out_dir / f"{stem}_{lang}.mp4"
@@ -79,9 +83,12 @@ if __name__ == "__main__":
 
     print("FR :", result["text_fr"])
     print()
-    print("EN :", result["text_en"])
+    print("EN :", result.get("text_en", "(indisponible)"))
     print()
     print("MOS:", result["text_mos"])
     print()
     for key in ("audio_fr", "audio_en", "audio_mos", "video_fr", "video_en", "video_mos"):
-        print(f"{key:10s} -> {result[key]}")
+        if key in result:
+            print(f"{key:10s} -> {result[key]}")
+    if "skipped" in result:
+        print("Non générés :", result["skipped"])

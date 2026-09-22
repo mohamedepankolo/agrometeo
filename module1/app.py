@@ -50,8 +50,10 @@ if missing:
 
 def _read_results(result: dict, stem: str) -> dict:
     """Charge les fichiers produits en mémoire (ils survivent ainsi aux rechargements de la page)."""
-    out = {"stem": stem, "langs": {}}
+    out = {"stem": stem, "langs": {}, "skipped": result.get("skipped", {})}
     for lang in LANGS:
+        if f"audio_{lang}" not in result:
+            continue
         audio, video = Path(result[f"audio_{lang}"]), Path(result[f"video_{lang}"])
         out["langs"][lang] = {
             "text": result[f"text_{lang}"],
@@ -63,8 +65,12 @@ def _read_results(result: dict, stem: str) -> dict:
 
 def _show_results(res: dict, key: str) -> None:
     st.subheader("Résultats")
+    for lang, reason in res.get("skipped", {}).items():
+        st.warning(f"{LANGS[lang][0]} non généré : {reason}")
     cols = st.columns(len(LANGS))
     for col, (lang, (label, mime)) in zip(cols, LANGS.items()):
+        if lang not in res["langs"]:
+            continue
         data = res["langs"][lang]
         with col:
             st.markdown(f"**{label}**")

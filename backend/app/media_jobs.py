@@ -25,7 +25,9 @@ def _store_result(row, result: dict) -> None:
     row.media = {lang: {"audio": storage.rel(f["audio"]), "video": storage.rel(f["video"])}
                  for lang, f in result["files"].items()}
     row.media_status = MediaStatus.ready
-    row.media_error = None
+    # `ready` peut s'accompagner d'un avertissement : une langue n'a pas pu être générée
+    skipped = result.get("skipped") or {}
+    row.media_error = ("Langues non générées : " + " ; ".join(f"{lang} ({why})" for lang, why in skipped.items()))[:500] if skipped else None
 
 
 def _run(model, content_id: str, generate) -> None:

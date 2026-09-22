@@ -123,7 +123,10 @@ class MediaFiles(BaseModel):
 
 class MediaInfo(BaseModel):
     status: MediaStatus
-    error: str | None = None
+    error: str | None = Field(
+        default=None,
+        description="Si `failed` : la cause de l'échec. Si `ready` : avertissement éventuel "
+                    "(ex. une langue n'a pas pu être générée ; elle est alors absente de `files`).")
     files: dict[Lang, MediaFiles] = {}
 
 

@@ -11,7 +11,7 @@ from fastapi.encoders import jsonable_encoder
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
-from .. import notifications
+from .. import notifications, services
 from ..config import get_settings
 from ..db import Base, get_db
 
@@ -56,6 +56,22 @@ def last_verification_code(identifier: str):
             if m:
                 return {"identifier": ident[1], "code": m.group(1), "channel": msg["channel"]}
     raise HTTPException(404, "Aucun code envoyé à cet identifiant.")
+
+
+@router.post("/reset-2fa", response_model=dict)
+def reset_2fa_for_tests(identifier: str, db: Session = Depends(get_db)):
+    """Réinitialise la 2FA d'un compte SANS authentification (utile en test : la reconfiguration ne redonne
+    jamais le secret d'origine une fois la page/session fermée — cf. `/admin/.../reset-2fa` pour l'équivalent
+    protégé, réservé aux administrateurs, à utiliser en production)."""
+    user = services.find_user(db, identifier)
+    if user is None:
+        raise HTTPException(404, "Compte introuvable.")
+    user.totp_enabled = False
+    user.totp_secret_enc = None
+    user.totp_last_step = 0
+    services.revoke_all_sessions(db, user.id)
+    db.commit()
+    return {"message": f"2FA réinitialisée pour {identifier} : reconnectez-vous pour la reconfigurer."}
 
 
 @router.get("/db", response_model=dict)

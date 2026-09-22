@@ -205,13 +205,22 @@ def page_auth():
             if pending.get("requires_2fa"):
                 st.warning("Ce compte est protégé par la 2FA.")
                 secret = ss.totp.get(pending["identifier"])
-                code = st.text_input("Code 2FA", value=pyotp.TOTP(secret).now() if secret else "", key="c2fa")
                 if secret:
+                    code = st.text_input("Code 2FA", value=pyotp.TOTP(secret).now(), key="c2fa")
                     st.caption("Code pré-rempli avec le secret conservé lors de la configuration de test.")
-                if st.button("Valider la 2FA"):
-                    data = result(api("POST", "/auth/2fa/verify", json={"challenge_token": pending["challenge_token"], "code": code}))
-                    if data:
-                        _finish_login(data)
+                    if st.button("Valider la 2FA"):
+                        data = result(api("POST", "/auth/2fa/verify", json={"challenge_token": pending["challenge_token"], "code": code}))
+                        if data:
+                            _finish_login(data)
+                else:
+                    st.info("Secret 2FA inconnu de cette session (perdu à la fermeture de la page, ou configuré "
+                            "ailleurs) : impossible de calculer le code sans une vraie application d'authentification.")
+                    if st.button("Réinitialiser la 2FA de ce compte (mode test uniquement)", type="primary"):
+                        d = result(api("POST", "/dev/reset-2fa", params={"identifier": pending["identifier"]}))
+                        if d:
+                            st.success(d["message"])
+                            ss.pending = None
+                            st.rerun()
             elif pending.get("requires_2fa_setup"):
                 st.warning("Ce rôle exige la 2FA : configuration à faire.")
                 hdr = {"Authorization": f"Bearer {pending['setup_token']}"}

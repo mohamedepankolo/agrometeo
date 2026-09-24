@@ -211,18 +211,33 @@ MOORE_LABEL_FORECAST = "Wakat pissi la a naas sẽn wate:"
 MOORE_LABEL_ADVICE = "Gʋlsg sẽn kẽed ne koobã la sa-gãongã wɛɛngẽ:"
 MOORE_ADVICE_INTRO = "Sãn n yaa ne sa-gãonga sẽn zĩnd pĩndã, b sagenda koaadbã:"
 
-# Salutation d'ouverture et formule de clôture. Confirmées comme quasi identiques
-# sur 10 bulletins audio RECLIM réels distincts (salutation/paix, citation de la
-# source ANAM, bénédiction de clôture) — cf. reference_pairs/transcripts/. Le texte
-# mooré ci-dessous n'est PAS celui de ces enregistrements (trop bruité par l'ASR
-# pour être fiable) mais une reconstruction FR propre traduite via le même canal
-# NLLB validé que le reste — À FAIRE VALIDER PAR CITADEL/ANAM (idéalement avec leur
-# texte officiel exact) avant mise en production.
+# Salutation d'ouverture et formule de clôture. Reconstruites par VOTE MAJORITAIRE
+# (fréquence des mots + ordre des bigrammes) sur 89 bulletins audio RECLIM réels
+# distincts, indépendants (cf. reference_pairs/transcripts/) — même formule quasi
+# mot pour mot dans les 89. Remplace une 1re version qui était une reconstruction
+# FR propre traduite via NLLB (jamais entendue dans un vrai bulletin) : celle-ci
+# est ancrée dans ce que le présentateur ANAM dit réellement, mais reste une
+# reconstruction automatique bruitée par l'ASR — orthographe et grammaire exactes
+# À FAIRE VALIDER PAR UN LOCUTEUR NATIF avant mise en production. Ne PAS "corriger"
+# la grammaire ci-dessous sans un locuteur natif : mieux vaut le mot majoritaire
+# brut qu'une correction devinée.
+#
+# Constaté mais NON repris ici (portée volontairement limitée à l'ouverture/clôture
+# fixes) : (1) le présentateur cite nommément la source dans la même phrase que la
+# date ("...kibay buud toortoore sẽn yi azãs nasonaale la meteozɩtʋʋmd..." ~ "de
+# l'Agence Nationale de la Météorologie") — transcription ASR d'un nom propre trop
+# incertaine pour être figée telle quelle ; (2) la date y est dite en mooré natif
+# ("kiuugã rasem X la Y" ~ mois/jour) plutôt que comme la phrase "Bulletin
+# agrométéorologique du <date>." traduite du français ci-dessous. F1.9 (citation de
+# la source) reste donc à finaliser avec l'ANAM plutôt que deviné ici.
 MOORE_INTRO = (
-    "Ne-y fãa ne y laafɩ. Ad kibay nins sẽn yi Burkĩna Faso nao-kẽndr ning sẽn geta "
-    "sa-gãonga yellã sẽn yiis moore. Tõnd sũur yaa noogo, d sẽn paam yãmb rũndã wã."
+    "D dɩkda pʋʋsmã n taasd fãa, gi ne waoongo. D sasa wa kibay ne Moor pʋgã tɩ yaa "
+    "ne sũnoog la tõnd leb n paam yãmb rũndã."
 )
-MOORE_OUTRO = "Yaa woto la tõnd rũndã kibayã sa. Wa-y beoogo ne kibay a taaba. Bɩ laafɩ zĩnd ne yãmba."
+MOORE_OUTRO = (
+    "D kõ taab sɛk beoogo ne kibay taabã. D kota nabã wẽnde ta gãnegd zãmaanã bãane. "
+    "Wẽn na kõd beoogo, wẽn na kɩt tɩ d mi taab tɩɩrɩ."
+)
 
 
 def bulletin_narration_moore_parts(bulletin: Bulletin, tclient=None) -> list[tuple[str, str]]:

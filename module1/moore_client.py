@@ -138,7 +138,9 @@ class TranslationClient:
 
     # raccourcis
     def fr_to_moore(self, text: str) -> str:
-        return self.translate(text, "french", "moore")
+        # MOORE_MODEL_TYPE : à basculer entre "nllb" (actuel) et "nllb2" une fois la comparaison
+        # validée par un locuteur natif (les deux donnent des traductions différentes, cf. tests).
+        return self.translate(text, "french", "moore", model_type=os.environ.get("MOORE_MODEL_TYPE", "nllb"))
 
     def moore_to_fr(self, text: str) -> str:
         return self.translate(text, "moore", "french")

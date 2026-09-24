@@ -56,6 +56,8 @@ class Settings(BaseSettings):
     citadel_api_password: str = ""
     moore_api_base_url: str = ""
     moore_api_token: str = ""
+    # "nllb" (actuel) ou "nllb2" : à comparer avec un locuteur natif avant de basculer en production
+    moore_model_type: str = "nllb"
 
     # Diffusion : push (FCM), SMS (Orange), WhatsApp (Cloud API). 'console' = simulation.
     push_backend: str = "console"  # console | fcm

@@ -33,6 +33,7 @@ def _load() -> None:
         "CITADEL_API_PASSWORD": s.citadel_api_password,
         "MOORE_API_BASE_URL": s.moore_api_base_url,
         "MOORE_API_TOKEN": s.moore_api_token,
+        "MOORE_MODEL_TYPE": s.moore_model_type,
     }.items():
         if value:
             os.environ.setdefault(env_name, value)

@@ -31,6 +31,7 @@ def dev_status():
         "ffmpeg_installed": shutil.which("ffmpeg") is not None,
         "citadel_translation_configured": bool(s.citadel_api_email and s.citadel_api_password),
         "citadel_speech_configured": bool(s.moore_api_base_url and s.moore_api_token),
+        "moore_model_type": s.moore_model_type,
         "storage_dir": s.storage_dir,
         "public_base_url": s.public_base_url or "(vide : URLs relatives)",
     }

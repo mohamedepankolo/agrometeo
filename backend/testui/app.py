@@ -629,7 +629,8 @@ def page_dev():
     c[2].metric("CITADEL voix mooré", "configuré" if s["citadel_speech_configured"] else "non configuré")
     c[3].metric("Environnement", s["env"])
     st.write("Canaux d'envoi actifs (console = simulation) :", s["backends"])
-    st.caption(f"Base : {s['database']} · Stockage : {s['storage_dir']}")
+    st.caption(f"Base : {s['database']} · Stockage : {s['storage_dir']} · "
+              f"Modèle de traduction FR→mooré : **{s['moore_model_type']}**")
 
     tab_out, tab_db = st.tabs(["Messages envoyés (simulés)", "Tables de la base"])
     with tab_out:

@@ -218,6 +218,23 @@ class MooreClient:
 # avec une marge de sécurité réduite, puis on recolle les .wav produits.
 _TTS_MAX_CHARS = 500
 
+# Retour d'un locuteur natif ANAM (audio, 28/09/2026) sur un bulletin généré : une
+# phrase entière était perçue comme coupée en deux, changeant le sens perçu — "la
+# plupart, c'est comme ça". Exemple cité et vérifié : "D dɩkda pʋʋsmã n taasd fãa,
+# gi ne waoongo." (une seule phrase, une seule idée). Mesure empirique (ffmpeg
+# silencedetect) : la version AVEC virgule contient une pause supplémentaire
+# d'environ 0,24s à l'endroit de la virgule, absente de la version sans virgule
+# (3.85s vs 3.71s au total) — le moteur TTS mooré de CITADEL traite apparemment la
+# virgule comme une fin de phrase plutôt qu'une respiration courte. On retire donc
+# les virgules du texte juste avant la synthèse (jamais avant la traduction, qui
+# en a besoin pour son découpage) : on garde `.`/`!`/`?`/`;` qui marquent de vraies
+# coupures. À revalider si CITADEL fait évoluer son moteur TTS.
+_TTS_PAUSE_COMMA_RE = re.compile(r"\s*,\s*")
+
+
+def _strip_pause_commas(text_moore: str) -> str:
+    return _TTS_PAUSE_COMMA_RE.sub(" ", text_moore).strip()
+
 
 def _split_for_tts(text_moore: str) -> list[str]:
     sentences = [s.strip() for s in re.split(r"(?<=[.!?;])\s+", text_moore.strip()) if s.strip()]
@@ -255,6 +272,7 @@ def tts_moore_long(text_moore: str, out_path="tts_output.wav", sclient: MooreCli
     """Synthèse vocale d'un texte mooré long : découpe en blocs sous la limite du
     service TTS puis recolle les audios en un seul fichier."""
     sclient = sclient or MooreClient()
+    text_moore = _strip_pause_commas(text_moore)
     blocks = _split_for_tts(text_moore)
     if len(blocks) <= 1:
         return sclient.tts_moore(text_moore, out_path=out_path)

@@ -222,6 +222,13 @@ MOORE_ADVICE_INTRO = "Sãn n yaa ne sa-gãonga sẽn zĩnd pĩndã, b sagenda ko
 # la grammaire ci-dessous sans un locuteur natif : mieux vaut le mot majoritaire
 # brut qu'une correction devinée.
 #
+# Retour ANAM du 28/09/2026 (audio) sur un bulletin généré avec cette phrase : le
+# découpage en deux "phrases" perçu par l'auditeur venait de la virgule médiane
+# ("...taasd fãa, gi ne waoongo.") traitée par le TTS comme une fin de phrase —
+# corrigé en retirant la virgule (cf. moore_client._strip_pause_commas, appliqué
+# à tout texte avant synthèse, pas seulement ici). La structure de la phrase elle-
+# même n'a pas été remise en cause par ce retour.
+#
 # Constaté mais NON repris ici (portée volontairement limitée à l'ouverture/clôture
 # fixes) : (1) le présentateur cite nommément la source dans la même phrase que la
 # date ("...kibay buud toortoore sẽn yi azãs nasonaale la meteozɩtʋʋmd..." ~ "de
@@ -231,7 +238,7 @@ MOORE_ADVICE_INTRO = "Sãn n yaa ne sa-gãonga sẽn zĩnd pĩndã, b sagenda ko
 # agrométéorologique du <date>." traduite du français ci-dessous. F1.9 (citation de
 # la source) reste donc à finaliser avec l'ANAM plutôt que deviné ici.
 MOORE_INTRO = (
-    "D dɩkda pʋʋsmã n taasd fãa, gi ne waoongo. D sasa wa kibay ne Moor pʋgã tɩ yaa "
+    "D dɩkda pʋʋsmã n taasd fãa gi ne waoongo. D sasa wa kibay ne Moor pʋgã tɩ yaa "
     "ne sũnoog la tõnd leb n paam yãmb rũndã."
 )
 MOORE_OUTRO = (

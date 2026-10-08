@@ -2,17 +2,19 @@
 
 Une seule application **FastAPI** (PostgreSQL en production, SQLite pour développer) qui regroupe :
 authentification et rôles, bulletins et alertes avec audios/vidéos en français, anglais et mooré (Module 1),
-avis, zones et carte des alertes, diffusion multicanale (SMS, push, e-mail, WhatsApp) et back-office.
-Les Modules 2 (observations GeoJSON) et 3 (prévisions NetCDF) s'y ajouteront quand les fichiers de l'ANAM seront fournis.
+avis, zones et carte des alertes, prévisions WRF par zone (Module 3), diffusion multicanale (SMS, push,
+e-mail, WhatsApp) et back-office. Le Module 2 (observations GeoJSON) s'y ajoutera quand les fichiers de
+l'ANAM seront fournis.
 
 ```
 backend/
   app/                 le service (routers/ = les routes, par domaine)
   testui/app.py        interface de test (Streamlit)
-  tests/               83 tests automatiques
+  tests/               89 tests automatiques
   docs/                GUIDE_FRONTEND.md · API_REFERENCE.md · openapi.json  (à remettre aux front-end)
   scripts/export_docs.py   régénère la documentation depuis le code
 ../module1/            la chaîne audio/vidéo (appelée par le backend)
+../module3/            lecture des fichiers de prévisions WRF/NetCDF (appelée par le backend)
 ```
 
 ## Démarrer
@@ -78,6 +80,23 @@ Avis    :  brouillon ─► publié ─► retiré
 - La carte donne à chaque zone le niveau le plus élevé de ses alertes actives (`vert` sinon).
 - La génération audio/vidéo est **asynchrone** (1 à 3 min, `media.status` : `none`/`processing`/`ready`/`failed`). Une alerte peut être publiée en texte seul si la génération échoue.
 
+## Prévisions (Module 3)
+
+Les fichiers de sortie du modèle WRF (NetCDF, ~5 Go chacun, fournis par l'ANAM sur support physique —
+jamais par upload HTTP) sont déposés dans `wrf_incoming_dir` (hors stockage applicatif, jamais
+versionnés), puis ingérés un par un :
+
+1. `GET /forecasts/incoming` — fichiers en attente dans ce dossier.
+2. `POST /forecasts/ingest {"filename": "..."}` (`content:manage`) — lit le fichier et calcule, pour
+   chaque zone qui a des coordonnées, un résumé du jour couvert (température min/max/moyenne,
+   précipitations, vent moyen/max, humidité). Réponse immédiate (`status=processing`) ; relire
+   `GET /forecasts/runs/{id}` jusqu'à `ready`/`failed`.
+3. `GET /forecasts?zone_id=...&forecast_date=...` — résultats, **publics** comme les autres contenus
+   de référence.
+
+Détails (format des fichiers, calculs, piège des `:` dans les noms de fichiers sous Windows) dans
+[module3/README.md](../module3/README.md).
+
 ## Diffusion
 
 À la publication (automatique ou manuelle), le système :
@@ -109,9 +128,9 @@ Mots de passe argon2 · jetons JWT courts + refresh à usage unique avec détect
 - Compte WhatsApp Business (Cloud API) si l'envoi automatique est retenu, et décision sur les chaînes/groupes.
 
 **Données de l'ANAM**
-- Contours (GeoJSON) ou au moins coordonnées des communes pilotes et régions : à charger via `PATCH /zones/{id}` ; sans cela la carte ne peut pas dessiner les zones.
+- Contours (GeoJSON) des communes pilotes et régions : à charger via `PATCH /zones/{id}` ; sans cela la carte ne peut pas dessiner les zones, et le Module 3 n'extrait les prévisions qu'au point le plus proche (pas de moyenne sur la zone, cf. `module3/README.md`). Coordonnées ponctuelles déjà renseignées pour les 5 communes pilotes, mais approximatives (domaine public) : à faire valider/corriger par l'ANAM.
 - Rattachement régions → communes (`commune_names`) pour cibler les utilisateurs quand une alerte vise une région (Liptako, Goulmou, Tapoa, Nakambé, Sirba…).
-- Fichiers d'exemple GeoJSON (observations) et NetCDF (prévisions) → Modules 2 et 3.
+- Fichiers d'exemple GeoJSON (observations) → Module 2. Le Module 3 (prévisions NetCDF) a reçu 3 fichiers de test (sur une trentaine annoncés) et est déjà intégré ; l'ingestion du reste n'a pas encore été automatisée (cf. `module3/README.md`).
 
 **Validations métier**
 - Matrice des permissions ci-dessus ; rôles soumis à la 2FA ; comptes locaux validés ou non par un administrateur.
@@ -126,4 +145,4 @@ Mots de passe argon2 · jetons JWT courts + refresh à usage unique avec détect
 
 ## Tests
 
-`pytest` (83 tests) : authentification, rôles et permissions, cycle de vie des alertes/bulletins/avis, ciblage et suivi des diffusions, carte, paramètres, canaux d'envoi (Orange, FCM, WhatsApp contre des serveurs simulés), documentation. La génération audio/vidéo y est simulée (aucun appel réseau) ; elle a été vérifiée séparément en réel de bout en bout.
+`pytest` (89 tests) : authentification, rôles et permissions, cycle de vie des alertes/bulletins/avis, ciblage et suivi des diffusions, carte, paramètres, canaux d'envoi (Orange, FCM, WhatsApp contre des serveurs simulés), prévisions WRF (Module 3, sur un fichier NetCDF synthétique mais structurellement identique aux fichiers réels), documentation. La génération audio/vidéo du Module 1 y est simulée (aucun appel réseau) ; elle a été vérifiée séparément en réel de bout en bout. Le Module 3 a aussi été vérifié contre les 3 vrais fichiers WRF reçus (hors suite automatisée : ~5 Go chacun).

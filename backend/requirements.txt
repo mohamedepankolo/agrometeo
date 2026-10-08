@@ -25,6 +25,10 @@ transformers>=4.40
 sentencepiece>=0.2
 sacremoses>=0.1
 
+# Prévisions NetCDF du Module 3 (lecture des fichiers de sortie du modèle WRF fournis par l'ANAM)
+netCDF4>=1.6
+numpy>=1.26
+
 # Tests
 pytest>=8
 

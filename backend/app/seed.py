@@ -2,7 +2,7 @@
 
 Les messages de prévention et les libellés sont des PROPOSITIONS rédigées à partir des exemples
 d'alertes de l'ANAM : à faire valider/corriger par l'ANAM (via le back-office, sans toucher au code).
-Les coordonnées et contours des zones ne sont pas fournis : à charger depuis les fichiers de l'ANAM.
+Les contours GeoJSON des zones ne sont pas fournis : à charger depuis les fichiers de l'ANAM.
 """
 
 from __future__ import annotations
@@ -15,6 +15,17 @@ from .models_content import AlertType, PreventionMessage, Setting, Zone, ZoneKin
 
 # Régions citées dans les alertes de l'ANAM (le rattachement aux communes des utilisateurs reste à renseigner)
 SAMPLE_REGIONS = ["Liptako", "Goulmou", "Tapoa", "Nakambé", "Sirba"]
+
+# Coordonnées approximatives (centre-bourg, domaine public) des 5 communes pilotes, pour que le
+# Module 3 (prévisions WRF) puisse leur associer un point de grille dès maintenant. À remplacer
+# par les coordonnées précises de l'ANAM quand elles seront fournies (cf. Zone.geometry).
+COMMUNE_COORDS = {
+    "Kaya": (13.0917, -1.0836),
+    "Ziniaré": (12.5811, -1.2967),
+    "Zitenga": (12.7667, -1.3667),
+    "Absouya": (12.65, -1.45),
+    "Korsimoro": (12.95, -1.1667),
+}
 
 ALERT_TYPES = [
     ("orages", "Orages", "Thunderstorms"),
@@ -77,7 +88,9 @@ def all_settings(db: Session) -> dict:
 def seed_reference_data(db: Session) -> None:
     if not db.scalar(select(func.count()).select_from(Zone)):
         for name in COMMUNES:
-            db.add(Zone(name=name, kind=ZoneKind.commune, is_pilot=True, commune_names=[name]))
+            lat, lon = COMMUNE_COORDS.get(name, (None, None))
+            db.add(Zone(name=name, kind=ZoneKind.commune, is_pilot=True, commune_names=[name],
+                       latitude=lat, longitude=lon))
         for name in SAMPLE_REGIONS:
             db.add(Zone(name=name, kind=ZoneKind.region, is_pilot=False, commune_names=[]))
     if not db.scalar(select(func.count()).select_from(AlertType)):

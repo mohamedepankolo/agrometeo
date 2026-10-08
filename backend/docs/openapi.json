@@ -3180,6 +3180,259 @@
         }
       }
     },
+    "/forecasts/incoming": {
+      "get": {
+        "tags": [
+          "Prévisions (Module 3)"
+        ],
+        "summary": "List Incoming Files",
+        "description": "Fichiers wrfout présents dans le dossier d'arrivée (`wrf_incoming_dir`), pas encore forcément\ningérés. Utile pour choisir le `filename` à passer à `POST /forecasts/ingest`.\n\n**Accès :** Connexion requise, permission `content:manage` (rôles : Agent ANAM, Administrateur).",
+        "operationId": "list_incoming_files_forecasts_incoming_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array",
+                  "title": "Response List Incoming Files Forecasts Incoming Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/forecasts/ingest": {
+      "post": {
+        "tags": [
+          "Prévisions (Module 3)"
+        ],
+        "summary": "Ingest Forecast",
+        "description": "Lance l'extraction des prévisions par zone à partir d'un fichier wrfout du dossier d'arrivée.\nRéponse immédiate (`status=processing`) ; relire `GET /forecasts/runs/{id}` jusqu'à `ready`/`failed`.\nDomaine déduit du nom de fichier (`wrfout_d02_...` -> `d02`).\n\n**Accès :** Connexion requise, permission `content:manage` (rôles : Agent ANAM, Administrateur).",
+        "operationId": "ingest_forecast_forecasts_ingest_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ForecastIngestRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForecastRunOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/forecasts/runs": {
+      "get": {
+        "tags": [
+          "Prévisions (Module 3)"
+        ],
+        "summary": "List Runs",
+        "description": "Historique des ingestions, de la plus récente à la plus ancienne.\n\n**Accès :** Connexion requise, permission `content:manage` (rôles : Agent ANAM, Administrateur).",
+        "operationId": "list_runs_forecasts_runs_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 20,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ForecastRunOut"
+                  },
+                  "title": "Response List Runs Forecasts Runs Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/forecasts/runs/{run_id}": {
+      "get": {
+        "tags": [
+          "Prévisions (Module 3)"
+        ],
+        "summary": "Get Run",
+        "description": "**Accès :** Connexion requise, permission `content:manage` (rôles : Agent ANAM, Administrateur).",
+        "operationId": "get_run_forecasts_runs__run_id__get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "run_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Run Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForecastRunOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/forecasts": {
+      "get": {
+        "tags": [
+          "Prévisions (Module 3)"
+        ],
+        "summary": "List Forecasts",
+        "description": "Résumés journaliers par zone (température, précipitations, vent, humidité). Public, comme les\nautres contenus de référence. Sans filtre : les prévisions les plus récentes par zone.\n\n**Accès :** Public.",
+        "operationId": "list_forecasts_forecasts_get",
+        "parameters": [
+          {
+            "name": "zone_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Zone Id"
+            }
+          },
+          {
+            "name": "forecast_date",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "AAAA-MM-JJ",
+              "title": "Forecast Date"
+            },
+            "description": "AAAA-MM-JJ"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ZoneForecastOut"
+                  },
+                  "title": "Response List Forecasts Forecasts Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/users": {
       "get": {
         "tags": [
@@ -5617,6 +5870,100 @@
         ],
         "title": "DeviceRegister"
       },
+      "ForecastIngestRequest": {
+        "properties": {
+          "filename": {
+            "type": "string",
+            "title": "Filename",
+            "description": "Nom du fichier wrfout dans le dossier d'arrivée (wrf_incoming_dir), ex. 'wrfout_d02_2022-05-23_01:00:00'"
+          }
+        },
+        "type": "object",
+        "required": [
+          "filename"
+        ],
+        "title": "ForecastIngestRequest"
+      },
+      "ForecastRunOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "source_file": {
+            "type": "string",
+            "title": "Source File"
+          },
+          "domain": {
+            "type": "string",
+            "title": "Domain"
+          },
+          "forecast_date": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Forecast Date"
+          },
+          "status": {
+            "$ref": "#/components/schemas/MediaStatus"
+          },
+          "error": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Error"
+          },
+          "zones_done": {
+            "type": "integer",
+            "title": "Zones Done"
+          },
+          "zones_skipped": {
+            "type": "integer",
+            "title": "Zones Skipped"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "finished_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Finished At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "source_file",
+          "domain",
+          "forecast_date",
+          "status",
+          "error",
+          "zones_done",
+          "zones_skipped",
+          "created_at",
+          "finished_at"
+        ],
+        "title": "ForecastRunOut"
+      },
       "HTTPValidationError": {
         "properties": {
           "detail": {
@@ -7041,6 +7388,79 @@
         ],
         "title": "ZoneDetail"
       },
+      "ZoneForecastOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "run_id": {
+            "type": "string",
+            "title": "Run Id"
+          },
+          "zone_id": {
+            "type": "string",
+            "title": "Zone Id"
+          },
+          "zone_name": {
+            "type": "string",
+            "title": "Zone Name"
+          },
+          "forecast_date": {
+            "type": "string",
+            "title": "Forecast Date"
+          },
+          "distance_km": {
+            "type": "number",
+            "title": "Distance Km"
+          },
+          "temp_min_c": {
+            "type": "number",
+            "title": "Temp Min C"
+          },
+          "temp_max_c": {
+            "type": "number",
+            "title": "Temp Max C"
+          },
+          "temp_mean_c": {
+            "type": "number",
+            "title": "Temp Mean C"
+          },
+          "precip_total_mm": {
+            "type": "number",
+            "title": "Precip Total Mm"
+          },
+          "wind_speed_mean_ms": {
+            "type": "number",
+            "title": "Wind Speed Mean Ms"
+          },
+          "wind_speed_max_ms": {
+            "type": "number",
+            "title": "Wind Speed Max Ms"
+          },
+          "humidity_mean_pct": {
+            "type": "number",
+            "title": "Humidity Mean Pct"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "run_id",
+          "zone_id",
+          "zone_name",
+          "forecast_date",
+          "distance_km",
+          "temp_min_c",
+          "temp_max_c",
+          "temp_mean_c",
+          "precip_total_mm",
+          "wind_speed_mean_ms",
+          "wind_speed_max_ms",
+          "humidity_mean_pct"
+        ],
+        "title": "ZoneForecastOut"
+      },
       "ZoneKind": {
         "type": "string",
         "enum": [
@@ -7303,6 +7723,10 @@
     {
       "name": "Zones, carte et référentiels",
       "description": "Zones, carte des alertes par couleur, types d'alerte, messages de prévention."
+    },
+    {
+      "name": "Prévisions (Module 3)",
+      "description": "Ingestion des fichiers WRF (NetCDF) de l'ANAM et résumés journaliers par zone."
     },
     {
       "name": "Plateforme",

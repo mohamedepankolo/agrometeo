@@ -8,7 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from .api_docs import annotate_access
 from .config import get_settings
 from .db import init_db, new_session
-from .routers import admin, advisories, alerts, auth, backoffice, bulletins, dev, me, platform, reference
+from .routers import admin, advisories, alerts, auth, backoffice, bulletins, dev, forecasts, me, platform, reference
 from .seed import seed_reference_data
 
 DESCRIPTION = """
@@ -32,6 +32,7 @@ TAGS = [
     {"name": "Alertes", "description": "Alertes météo : saisie, médias, publication, diffusion."},
     {"name": "Avis et conseils", "description": "Avis et conseils, avis de planification anticipée."},
     {"name": "Zones, carte et référentiels", "description": "Zones, carte des alertes par couleur, types d'alerte, messages de prévention."},
+    {"name": "Prévisions (Module 3)", "description": "Ingestion des fichiers WRF (NetCDF) de l'ANAM et résumés journaliers par zone."},
     {"name": "Plateforme", "description": "Configuration publique, rôles et permissions."},
     {"name": "Médias", "description": "Fichiers audio, vidéo, image et PDF."},
     {"name": "Statistiques d'usage", "description": "Événements de consultation envoyés par l'application."},
@@ -72,7 +73,7 @@ async def security_headers(request: Request, call_next):
     return response
 
 
-_routers = [auth, me, platform, reference, bulletins, alerts, advisories, admin, backoffice]
+_routers = [auth, me, platform, reference, bulletins, alerts, advisories, forecasts, admin, backoffice]
 if _settings.dev_tools:
     _routers.append(dev)
 for module in _routers:

@@ -425,3 +425,42 @@ class SmsPilotOut(BaseModel):
     distinct_recipients_reached: int
     deliveries_by_status: dict[str, int]
     progress: float | None = Field(description="Avancement vers l'objectif, entre 0 et 1")
+
+
+# ------------------------------------------------------------------ Module 3 : prévisions NetCDF (WRF)
+class ForecastIngestRequest(BaseModel):
+    filename: str = Field(description="Nom du fichier wrfout dans le dossier d'arrivée (wrf_incoming_dir), "
+                                      "ex. 'wrfout_d02_2022-05-23_01:00:00'")
+
+
+class ForecastRunOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: str
+    source_file: str
+    domain: str
+    forecast_date: str | None
+    status: MediaStatus
+    error: str | None
+    zones_done: int
+    zones_skipped: int
+    created_at: datetime
+    finished_at: datetime | None
+
+
+class ZoneForecastOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: str
+    run_id: str
+    zone_id: str
+    zone_name: str
+    forecast_date: str
+    distance_km: float
+    temp_min_c: float
+    temp_max_c: float
+    temp_mean_c: float
+    precip_total_mm: float
+    wind_speed_mean_ms: float
+    wind_speed_max_ms: float
+    humidity_mean_pct: float

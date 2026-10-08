@@ -213,3 +213,48 @@ class UsageEvent(Base):
     kind: Mapped[str] = mapped_column(String(20))  # view | play_audio | play_video | share
     language: Mapped[str | None] = mapped_column(String(3))
     created_at: Mapped[datetime] = mapped_column(DateTime, default=utcnow, index=True)
+
+
+# ============================================================== Module 3 : prévisions NetCDF (WRF)
+class ForecastRun(Base):
+    """Un fichier WRF ingéré (une journée, un domaine). Le fichier source reste sur disque dans
+    `wrf_incoming_dir` (plusieurs Go : jamais en base, jamais dans le stockage applicatif habituel) ;
+    seul le résumé par zone (ZoneForecast) est conservé."""
+
+    __tablename__ = "forecast_runs"
+    __table_args__ = (UniqueConstraint("source_file", name="uq_forecast_run_source_file"),)
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    source_file: Mapped[str] = mapped_column(String(255))  # ex. "wrfout_d02_2022-05-23_01:00:00"
+    domain: Mapped[str] = mapped_column(String(10))  # ex. "d02"
+    forecast_date: Mapped[str | None] = mapped_column(String(10))  # AAAA-MM-JJ, lu dans le fichier
+    status: Mapped[MediaStatus] = mapped_column(_enum(MediaStatus), default=MediaStatus.none)
+    error: Mapped[str | None] = mapped_column(String(500))
+    zones_done: Mapped[int] = mapped_column(Integer, default=0)
+    zones_skipped: Mapped[int] = mapped_column(Integer, default=0)  # hors domaine ou sans coordonnées
+    created_by: Mapped[str | None] = mapped_column(ForeignKey("users.id", ondelete="SET NULL"))
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=utcnow, index=True)
+    finished_at: Mapped[datetime | None] = mapped_column(DateTime)
+
+
+class ZoneForecast(Base):
+    """Résumé journalier des prévisions WRF au point de grille le plus proche d'une zone. Une ligne
+    par (run, zone). `distance_km` mesure l'écart entre la zone et le point de grille utilisé (grille
+    à 3 km) : une valeur élevée signale une zone hors du domaine couvert par le fichier."""
+
+    __tablename__ = "zone_forecasts"
+    __table_args__ = (UniqueConstraint("run_id", "zone_id", name="uq_zone_forecast_run_zone"),)
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    run_id: Mapped[str] = mapped_column(ForeignKey("forecast_runs.id", ondelete="CASCADE"), index=True)
+    zone_id: Mapped[str] = mapped_column(ForeignKey("zones.id", ondelete="CASCADE"), index=True)
+    forecast_date: Mapped[str] = mapped_column(String(10), index=True)  # AAAA-MM-JJ, dupliqué pour filtrer sans jointure
+    distance_km: Mapped[float] = mapped_column(Float)
+    temp_min_c: Mapped[float] = mapped_column(Float)
+    temp_max_c: Mapped[float] = mapped_column(Float)
+    temp_mean_c: Mapped[float] = mapped_column(Float)
+    precip_total_mm: Mapped[float] = mapped_column(Float)
+    wind_speed_mean_ms: Mapped[float] = mapped_column(Float)
+    wind_speed_max_ms: Mapped[float] = mapped_column(Float)
+    humidity_mean_pct: Mapped[float] = mapped_column(Float)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=utcnow)

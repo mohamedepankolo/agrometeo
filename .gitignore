@@ -21,3 +21,6 @@ backend/storage/
 backend/storage_smoke/
 backend/dev_smoke.db
 module1/.cache/
+
+# Fichiers WRF du Module 3 (plusieurs Go chacun) : jamais versionnés, déposés localement par l'équipe ANAM
+wrf_incoming/

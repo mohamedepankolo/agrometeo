@@ -1590,6 +1590,135 @@ Modifie une zone (ex. renseigner ses coordonnées ou son contour GeoJSON fournis
 
 **Réponse 204** : aucun contenu
 
+## Prévisions (Module 3)
+
+Ingestion des fichiers WRF (NetCDF) de l'ANAM et résumés journaliers par zone.
+
+### `GET /forecasts`
+
+Résumés journaliers par zone (température, précipitations, vent, humidité). Public, comme les
+autres contenus de référence. Sans filtre : les prévisions les plus récentes par zone.
+
+**Accès :** Public.
+
+**Paramètres**
+
+| Nom | Où | Obligatoire | Type | Description |
+|---|---|---|---|---|
+| `zone_id` | query |  | string (facultatif) |  |
+| `forecast_date` | query |  | string (facultatif) | AAAA-MM-JJ |
+
+**Réponse 200** : liste de ZoneForecastOut
+Liste de : ZoneForecastOut
+
+| Champ | Type | Obligatoire | Description |
+|---|---|---|---|
+| `id` | string | oui |  |
+| `run_id` | string | oui |  |
+| `zone_id` | string | oui |  |
+| `zone_name` | string | oui |  |
+| `forecast_date` | string | oui |  |
+| `distance_km` | number | oui |  |
+| `temp_min_c` | number | oui |  |
+| `temp_max_c` | number | oui |  |
+| `temp_mean_c` | number | oui |  |
+| `precip_total_mm` | number | oui |  |
+| `wind_speed_mean_ms` | number | oui |  |
+| `wind_speed_max_ms` | number | oui |  |
+| `humidity_mean_pct` | number | oui |  |
+
+### `GET /forecasts/incoming`
+
+Fichiers wrfout présents dans le dossier d'arrivée (`wrf_incoming_dir`), pas encore forcément
+ingérés. Utile pour choisir le `filename` à passer à `POST /forecasts/ingest`.
+
+**Accès :** Connexion requise, permission `content:manage` (rôles : Agent ANAM, Administrateur).
+
+**Réponse 200** : liste de string
+Liste de : string
+
+### `POST /forecasts/ingest`
+
+Lance l'extraction des prévisions par zone à partir d'un fichier wrfout du dossier d'arrivée.
+Réponse immédiate (`status=processing`) ; relire `GET /forecasts/runs/{id}` jusqu'à `ready`/`failed`.
+Domaine déduit du nom de fichier (`wrfout_d02_...` -> `d02`).
+
+**Accès :** Connexion requise, permission `content:manage` (rôles : Agent ANAM, Administrateur).
+
+**Corps de la requête (JSON)**
+
+| Champ | Type | Obligatoire | Description |
+|---|---|---|---|
+| `filename` | string | oui | Nom du fichier wrfout dans le dossier d'arrivée (wrf_incoming_dir), ex. 'wrfout_d02_2022-05-23_01:00:00' |
+
+**Réponse 202** : ForecastRunOut
+
+| Champ | Type | Obligatoire | Description |
+|---|---|---|---|
+| `id` | string | oui |  |
+| `source_file` | string | oui |  |
+| `domain` | string | oui |  |
+| `forecast_date` | string (facultatif) | oui |  |
+| `status` | MediaStatus | oui |  |
+| `error` | string (facultatif) | oui |  |
+| `zones_done` | integer | oui |  |
+| `zones_skipped` | integer | oui |  |
+| `created_at` | string (date-time) | oui |  |
+| `finished_at` | string (date-time) (facultatif) | oui |  |
+
+### `GET /forecasts/runs`
+
+Historique des ingestions, de la plus récente à la plus ancienne.
+
+**Accès :** Connexion requise, permission `content:manage` (rôles : Agent ANAM, Administrateur).
+
+**Paramètres**
+
+| Nom | Où | Obligatoire | Type | Description |
+|---|---|---|---|---|
+| `limit` | query |  | integer |  |
+
+**Réponse 200** : liste de ForecastRunOut
+Liste de : ForecastRunOut
+
+| Champ | Type | Obligatoire | Description |
+|---|---|---|---|
+| `id` | string | oui |  |
+| `source_file` | string | oui |  |
+| `domain` | string | oui |  |
+| `forecast_date` | string (facultatif) | oui |  |
+| `status` | MediaStatus | oui |  |
+| `error` | string (facultatif) | oui |  |
+| `zones_done` | integer | oui |  |
+| `zones_skipped` | integer | oui |  |
+| `created_at` | string (date-time) | oui |  |
+| `finished_at` | string (date-time) (facultatif) | oui |  |
+
+### `GET /forecasts/runs/{run_id}`
+
+**Accès :** Connexion requise, permission `content:manage` (rôles : Agent ANAM, Administrateur).
+
+**Paramètres**
+
+| Nom | Où | Obligatoire | Type | Description |
+|---|---|---|---|---|
+| `run_id` | path | oui | string |  |
+
+**Réponse 200** : ForecastRunOut
+
+| Champ | Type | Obligatoire | Description |
+|---|---|---|---|
+| `id` | string | oui |  |
+| `source_file` | string | oui |  |
+| `domain` | string | oui |  |
+| `forecast_date` | string (facultatif) | oui |  |
+| `status` | MediaStatus | oui |  |
+| `error` | string (facultatif) | oui |  |
+| `zones_done` | integer | oui |  |
+| `zones_skipped` | integer | oui |  |
+| `created_at` | string (date-time) | oui |  |
+| `finished_at` | string (date-time) (facultatif) | oui |  |
+
 ## Plateforme
 
 Configuration publique, rôles et permissions.

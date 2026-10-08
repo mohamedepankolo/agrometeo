@@ -59,6 +59,15 @@ class Settings(BaseSettings):
     # "nllb" (actuel) ou "nllb2" : à comparer avec un locuteur natif avant de basculer en production
     moore_model_type: str = "nllb"
 
+    # Prévisions NetCDF du Module 3 (sorties du modèle WRF, fournies par l'ANAM)
+    module3_dir: str = "../module3"
+    # Fichiers wrfout déposés ici par l'équipe ANAM (USB, SFTP...) : plusieurs Go chacun, jamais
+    # par upload HTTP (voir max_upload_mb) ni versionnés. L'API lit ce dossier par nom de fichier.
+    wrf_incoming_dir: str = "../wrf_incoming"
+    # Au-delà de cette distance, le point de grille le plus proche d'une zone est jugé trop loin
+    # pour être fiable (zone hors du domaine couvert par le fichier) : la zone est ignorée.
+    wrf_max_distance_km: float = 15.0
+
     # Diffusion : push (FCM), SMS (Orange), WhatsApp (Cloud API). 'console' = simulation.
     push_backend: str = "console"  # console | fcm
     fcm_credentials_file: str = ""  # clé de compte de service Firebase (JSON)

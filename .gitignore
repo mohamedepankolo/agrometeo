@@ -1,5 +1,6 @@
 # Secrets
 .env
+_server.env
 
 # Python
 __pycache__/

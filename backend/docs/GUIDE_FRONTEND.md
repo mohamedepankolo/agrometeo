@@ -6,6 +6,15 @@ les appels** ; le détail de chaque route (champs, types, droits) est dans `API_
 
 La documentation interactive (essais en direct) est aussi servie par l'API elle-même : `<adresse>/docs`.
 
+**Adresse de l'API (hébergement de test)** :
+```
+http://197.239.116.77:8000
+```
+Documentation interactive : `http://197.239.116.77:8000/docs`. Déployée dans un conteneur Docker
+dédié sur un serveur partagé avec l'infrastructure CITADEL (ports distincts, aucun conflit) ;
+`CORS_ORIGINS=*` déjà activé — un front web dans un navigateur peut s'y connecter directement,
+sans configuration supplémentaire. Hébergement de test, pas encore l'adresse de production finale.
+
 ## 1. Bases
 
 | | |
@@ -24,10 +33,11 @@ Codes d'erreur : `401` non connecté ou token expiré · `403` droits insuffisan
 **Contenus publics** : bulletins, alertes, avis, carte, zones, prévisions et médias *publiés* se lisent **sans compte**.
 Un compte n'est nécessaire que pour le profil, les notifications et la gestion.
 
-## 2. Se connecter pendant cette phase de test (réseau local)
+## 2. Solution de repli : réseau local
 
-Pas encore d'adresse publique : l'API tourne sur la machine d'un développeur, et les autres s'y
-connectent sur le **même réseau Wi-Fi/local**.
+Si l'hébergement ci-dessus est indisponible (maintenance, ou pour tester une modification du code
+pas encore déployée) : l'API peut tourner sur la machine d'un développeur, les autres s'y
+connectant sur le **même réseau Wi-Fi/local**.
 
 **Côté machine qui héberge l'API :**
 ```bash
@@ -201,7 +211,7 @@ une action interdite renvoie toujours `403`.
 
 ## 8. Tester sans attendre le backend de production
 
-- `<adresse>/docs` : essayer chaque route (remplacer `<adresse>` par `http://<IP locale>:8000` en test réseau local, section 2).
+- `http://197.239.116.77:8000/docs` : essayer chaque route (ou `http://<IP locale>:8000/docs` en repli réseau local, section 2).
 - Comptes de démonstration (environnement de test seulement), mot de passe `Demo1234!` :
   `admin@demo.test`, `agent@demo.test`, `commune@demo.test`, `observateur@demo.test`, `citoyen@demo.test`.
   Admin et agent doivent configurer la 2FA à la première connexion.

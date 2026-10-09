@@ -7,6 +7,9 @@ Les contours GeoJSON des zones ne sont pas fournis : à charger depuis les fichi
 
 from __future__ import annotations
 
+import json
+from pathlib import Path
+
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
@@ -16,16 +19,22 @@ from .models_content import AlertType, PreventionMessage, Setting, Zone, ZoneKin
 # Régions citées dans les alertes de l'ANAM (le rattachement aux communes des utilisateurs reste à renseigner)
 SAMPLE_REGIONS = ["Liptako", "Goulmou", "Tapoa", "Nakambé", "Sirba"]
 
-# Coordonnées approximatives (centre-bourg, domaine public) des 5 communes pilotes, pour que le
-# Module 3 (prévisions WRF) puisse leur associer un point de grille dès maintenant. À remplacer
-# par les coordonnées précises de l'ANAM quand elles seront fournies (cf. Zone.geometry).
-COMMUNE_COORDS = {
-    "Kaya": (13.0917, -1.0836),
-    "Ziniaré": (12.5811, -1.2967),
-    "Zitenga": (12.7667, -1.3667),
-    "Absouya": (12.65, -1.45),
-    "Korsimoro": (12.95, -1.1667),
-}
+# Les 351 communes officielles du Burkina Faso (nom, région, province, coordonnées), source :
+# OCHA/Institut Géographique du Burkina (data.humdata.org, limites administratives, admin niveau 3,
+# valide au 01/08/2025) -- coordonnées réelles, pas des approximations. cf. module3/README.md pour
+# le détail de la récupération. Sert à la fois à lister toutes les communes (F-à-préciser) et à
+# donner au Module 3 (prévisions WRF) un point de grille pour chacune, pas seulement les 5 pilotes.
+_COMMUNES_DATA_PATH = Path(__file__).parent / "data" / "burkina_communes.json"
+# La source officielle orthographie différemment l'une des 5 communes pilotes : on garde
+# l'orthographe déjà utilisée dans COMMUNES/models.py (users, tests...) pour ne pas la dédoubler.
+_NAME_ALIASES = {"Ambsouya": "Absouya"}
+
+
+def _load_all_communes() -> list[dict]:
+    rows = json.loads(_COMMUNES_DATA_PATH.read_text(encoding="utf-8"))
+    for row in rows:
+        row["name"] = _NAME_ALIASES.get(row["name"], row["name"])
+    return rows
 
 ALERT_TYPES = [
     ("orages", "Orages", "Thunderstorms"),
@@ -87,10 +96,10 @@ def all_settings(db: Session) -> dict:
 
 def seed_reference_data(db: Session) -> None:
     if not db.scalar(select(func.count()).select_from(Zone)):
-        for name in COMMUNES:
-            lat, lon = COMMUNE_COORDS.get(name, (None, None))
-            db.add(Zone(name=name, kind=ZoneKind.commune, is_pilot=True, commune_names=[name],
-                       latitude=lat, longitude=lon))
+        pilot_names = set(COMMUNES)
+        for row in _load_all_communes():
+            db.add(Zone(name=row["name"], kind=ZoneKind.commune, is_pilot=row["name"] in pilot_names,
+                       commune_names=[row["name"]], latitude=row["latitude"], longitude=row["longitude"]))
         for name in SAMPLE_REGIONS:
             db.add(Zone(name=name, kind=ZoneKind.region, is_pilot=False, commune_names=[]))
     if not db.scalar(select(func.count()).select_from(AlertType)):

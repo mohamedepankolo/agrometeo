@@ -6,7 +6,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Query, status
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
@@ -76,13 +76,33 @@ def get_run(run_id: str, _: User = Depends(require_permission("content:manage"))
 
 
 @router.get("", response_model=list[ZoneForecastOut])
-def list_forecasts(zone_id: str | None = None, forecast_date: str | None = Query(default=None, description="AAAA-MM-JJ"),
-                   db: Session = Depends(get_db)):
+def list_forecasts(
+    zone_id: str | None = Query(default=None, description="Identifiant exact d'une zone (voir GET /zones)"),
+    zone_name: str | None = Query(default=None, description="Nom exact d'une commune/région (ex. \"Kaya\"), insensible à la casse -- alternative à zone_id quand on ne le connaît pas"),
+    pilot_only: bool = Query(default=False, description="Seulement les 5 communes pilotes, comme GET /zones?pilot_only"),
+    forecast_date: str | None = Query(default=None, description="AAAA-MM-JJ"),
+    db: Session = Depends(get_db),
+):
     """Résumés journaliers par zone (température, précipitations, vent, humidité). Public, comme les
-    autres contenus de référence. Sans filtre : les prévisions les plus récentes par zone."""
+    autres contenus de référence.
+
+    Trois façons de choisir les zones, combinables avec `forecast_date` :
+    - rien -> toutes les zones qui ont une prévision enregistrée (jusqu'à 351 communes si tout le
+      pays a été ingéré, voir `module3/README.md`) ;
+    - `pilot_only=true` -> seulement les 5 communes pilotes ;
+    - `zone_id=...` (identifiant obtenu via `GET /zones`) ou `zone_name=...` (nom exact, ex. "Kaya")
+      -> une seule zone. `zone_name` évite d'avoir à connaître l'identifiant à l'avance.
+
+    Sans `forecast_date`, renvoie TOUTES les prévisions enregistrées (pas seulement les plus
+    récentes) : si plusieurs fichiers ont été ingérés pour des jours différents, filtrer par date
+    ou trier côté client."""
     stmt = select(ZoneForecast, Zone.name).join(Zone, Zone.id == ZoneForecast.zone_id)
     if zone_id:
         stmt = stmt.where(ZoneForecast.zone_id == zone_id)
+    if zone_name:
+        stmt = stmt.where(func.lower(Zone.name) == zone_name.lower())
+    if pilot_only:
+        stmt = stmt.where(Zone.is_pilot.is_(True))
     if forecast_date:
         stmt = stmt.where(ZoneForecast.forecast_date == forecast_date)
     stmt = stmt.order_by(ZoneForecast.forecast_date.desc(), Zone.name)

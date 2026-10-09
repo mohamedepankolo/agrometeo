@@ -79,7 +79,8 @@ def test_dev_tools_verification_code_and_db_explorer(client, make_user):
     assert client.get("/dev/verification-code", params={"identifier": "79999999"}).status_code == 404
 
     tables = client.get("/dev/db").json()
-    assert tables["users"] == 1 and tables["zones"] == 10 and tables["alert_types"] == 7
+    # 351 communes officielles (Module 3) + 5 régions d'exemple citées dans les alertes
+    assert tables["users"] == 1 and tables["zones"] == 356 and tables["alert_types"] == 7
     rows = client.get("/dev/db/users").json()
     user = rows["rows"][0]
     assert user["password_hash"] == "***" and user["phone"] == "+22670123456"

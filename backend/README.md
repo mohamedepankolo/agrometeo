@@ -10,7 +10,7 @@ l'ANAM seront fournis.
 backend/
   app/                 le service (routers/ = les routes, par domaine)
   testui/app.py        interface de test (Streamlit)
-  tests/               89 tests automatiques
+  tests/               90 tests automatiques
   docs/                GUIDE_FRONTEND.md · API_REFERENCE.md · openapi.json  (à remettre aux front-end)
   scripts/export_docs.py   régénère la documentation depuis le code
 ../module1/            la chaîne audio/vidéo (appelée par le backend)
@@ -88,11 +88,14 @@ versionnés), puis ingérés un par un :
 
 1. `GET /forecasts/incoming` — fichiers en attente dans ce dossier.
 2. `POST /forecasts/ingest {"filename": "..."}` (`content:manage`) — lit le fichier et calcule, pour
-   chaque zone qui a des coordonnées, un résumé du jour couvert (température min/max/moyenne,
-   précipitations, vent moyen/max, humidité). Réponse immédiate (`status=processing`) ; relire
-   `GET /forecasts/runs/{id}` jusqu'à `ready`/`failed`.
-3. `GET /forecasts?zone_id=...&forecast_date=...` — résultats, **publics** comme les autres contenus
-   de référence.
+   chaque zone qui a des coordonnées (les 351 communes officielles, voir plus bas), un résumé du
+   jour couvert (température min/max/moyenne, précipitations, vent moyen/max, humidité). Réponse
+   immédiate (`status=processing`) ; relire `GET /forecasts/runs/{id}` jusqu'à `ready`/`failed`.
+3. `GET /forecasts` — résultats, **publics** comme les autres contenus de référence. Trois façons
+   de choisir les zones (combinables avec `?forecast_date=AAAA-MM-JJ`) : sans filtre (toutes les
+   communes), `?pilot_only=true` (seulement les 5 pilotes), ou une seule commune par `?zone_id=...`
+   (identifiant, via `GET /zones`) ou `?zone_name=Kaya` (nom exact, pratique quand on ne connaît
+   pas l'identifiant).
 
 Détails (format des fichiers, calculs, piège des `:` dans les noms de fichiers sous Windows) dans
 [module3/README.md](../module3/README.md).
@@ -128,7 +131,7 @@ Mots de passe argon2 · jetons JWT courts + refresh à usage unique avec détect
 - Compte WhatsApp Business (Cloud API) si l'envoi automatique est retenu, et décision sur les chaînes/groupes.
 
 **Données de l'ANAM**
-- Contours (GeoJSON) des communes pilotes et régions : à charger via `PATCH /zones/{id}` ; sans cela la carte ne peut pas dessiner les zones, et le Module 3 n'extrait les prévisions qu'au point le plus proche (pas de moyenne sur la zone, cf. `module3/README.md`). Coordonnées ponctuelles déjà renseignées pour les 5 communes pilotes, mais approximatives (domaine public) : à faire valider/corriger par l'ANAM.
+- Contours (GeoJSON) des communes et régions : à charger via `PATCH /zones/{id}` ; sans cela la carte ne peut pas dessiner les zones, et le Module 3 n'extrait les prévisions qu'au point le plus proche (pas de moyenne sur la zone, cf. `module3/README.md`). Coordonnées ponctuelles des 351 communes déjà renseignées (source officielle OCHA/IGB, pas une approximation — voir `module3/README.md`) ; à faire valider par l'ANAM malgré tout, et contours toujours à fournir.
 - Rattachement régions → communes (`commune_names`) pour cibler les utilisateurs quand une alerte vise une région (Liptako, Goulmou, Tapoa, Nakambé, Sirba…).
 - Fichiers d'exemple GeoJSON (observations) → Module 2. Le Module 3 (prévisions NetCDF) a reçu 3 fichiers de test (sur une trentaine annoncés) et est déjà intégré ; l'ingestion du reste n'a pas encore été automatisée (cf. `module3/README.md`).
 
@@ -145,4 +148,4 @@ Mots de passe argon2 · jetons JWT courts + refresh à usage unique avec détect
 
 ## Tests
 
-`pytest` (89 tests) : authentification, rôles et permissions, cycle de vie des alertes/bulletins/avis, ciblage et suivi des diffusions, carte, paramètres, canaux d'envoi (Orange, FCM, WhatsApp contre des serveurs simulés), prévisions WRF (Module 3, sur un fichier NetCDF synthétique mais structurellement identique aux fichiers réels), documentation. La génération audio/vidéo du Module 1 y est simulée (aucun appel réseau) ; elle a été vérifiée séparément en réel de bout en bout. Le Module 3 a aussi été vérifié contre les 3 vrais fichiers WRF reçus (hors suite automatisée : ~5 Go chacun).
+`pytest` (90 tests) : authentification, rôles et permissions, cycle de vie des alertes/bulletins/avis, ciblage et suivi des diffusions, carte, paramètres, canaux d'envoi (Orange, FCM, WhatsApp contre des serveurs simulés), prévisions WRF (Module 3, sur un fichier NetCDF synthétique mais structurellement identique aux fichiers réels), documentation. La génération audio/vidéo du Module 1 y est simulée (aucun appel réseau) ; elle a été vérifiée séparément en réel de bout en bout. Le Module 3 a aussi été vérifié contre les 3 vrais fichiers WRF reçus (hors suite automatisée : ~5 Go chacun).

@@ -3367,7 +3367,7 @@
           "Prévisions (Module 3)"
         ],
         "summary": "List Forecasts",
-        "description": "Résumés journaliers par zone (température, précipitations, vent, humidité). Public, comme les\nautres contenus de référence. Sans filtre : les prévisions les plus récentes par zone.\n\n**Accès :** Public.",
+        "description": "Résumés journaliers par zone (température, précipitations, vent, humidité). Public, comme les\nautres contenus de référence.\n\nTrois façons de choisir les zones, combinables avec `forecast_date` :\n- rien -> toutes les zones qui ont une prévision enregistrée (jusqu'à 351 communes si tout le\n  pays a été ingéré, voir `module3/README.md`) ;\n- `pilot_only=true` -> seulement les 5 communes pilotes ;\n- `zone_id=...` (identifiant obtenu via `GET /zones`) ou `zone_name=...` (nom exact, ex. \"Kaya\")\n  -> une seule zone. `zone_name` évite d'avoir à connaître l'identifiant à l'avance.\n\nSans `forecast_date`, renvoie TOUTES les prévisions enregistrées (pas seulement les plus\nrécentes) : si plusieurs fichiers ont été ingérés pour des jours différents, filtrer par date\nou trier côté client.\n\n**Accès :** Public.",
         "operationId": "list_forecasts_forecasts_get",
         "parameters": [
           {
@@ -3383,8 +3383,40 @@
                   "type": "null"
                 }
               ],
+              "description": "Identifiant exact d'une zone (voir GET /zones)",
               "title": "Zone Id"
-            }
+            },
+            "description": "Identifiant exact d'une zone (voir GET /zones)"
+          },
+          {
+            "name": "zone_name",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Nom exact d'une commune/région (ex. \"Kaya\"), insensible à la casse -- alternative à zone_id quand on ne le connaît pas",
+              "title": "Zone Name"
+            },
+            "description": "Nom exact d'une commune/région (ex. \"Kaya\"), insensible à la casse -- alternative à zone_id quand on ne le connaît pas"
+          },
+          {
+            "name": "pilot_only",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Seulement les 5 communes pilotes, comme GET /zones?pilot_only",
+              "default": false,
+              "title": "Pilot Only"
+            },
+            "description": "Seulement les 5 communes pilotes, comme GET /zones?pilot_only"
           },
           {
             "name": "forecast_date",

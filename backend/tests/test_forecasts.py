@@ -117,6 +117,19 @@ def far_zone(db, no_preexisting_zones):
     return zone
 
 
+@pytest.fixture
+def other_zone(db, no_preexisting_zones):
+    """Une commune non pilote mais dans le domaine (contrairement a far_zone) : pour distinguer
+    pilot_only=true (qui doit l'exclure) d'un simple hors-domaine (qui l'exclurait de toute facon)."""
+    from app.models_content import Zone, ZoneKind
+
+    zone = Zone(name="Ziniare-test", kind=ZoneKind.commune, is_pilot=False, commune_names=["Ziniare-test"],
+                latitude=IN_DOMAIN[0] + 0.05, longitude=IN_DOMAIN[1] + 0.05)
+    db.add(zone)
+    db.commit()
+    return zone
+
+
 def test_wrf_reader_extracts_plausible_daily_summary(wrf_file, tmp_path):
     """Logique pure (module3/wrf_reader.py), sans passer par l'API."""
     import sys
@@ -185,6 +198,27 @@ def test_ingest_then_list_forecasts(client, staff, wrf_file, pilot_zone, far_zon
     assert len(r.json()) == 1
 
     r = client.get("/forecasts", params={"forecast_date": "2099-12-31"})
+    assert r.json() == []
+
+
+def test_list_forecasts_pilot_only_and_zone_name(client, staff, wrf_file, pilot_zone, other_zone):
+    """pilot_zone (is_pilot=True) et other_zone (is_pilot=False, mais dans le domaine) : de quoi
+    distinguer pilot_only=true d'un simple filtre géographique."""
+    r = client.post("/forecasts/ingest", json={"filename": wrf_file}, headers=staff(Role.agent_anam))
+    assert r.status_code == 202, r.text
+
+    r = client.get("/forecasts")
+    assert {item["zone_name"] for item in r.json()} == {"Kaya-test", "Ziniare-test"}
+
+    r = client.get("/forecasts", params={"pilot_only": True})
+    items = r.json()
+    assert len(items) == 1 and items[0]["zone_name"] == "Kaya-test"
+
+    # zone_name : exact, insensible a la casse -- alternative a zone_id quand on ne le connait pas
+    r = client.get("/forecasts", params={"zone_name": "kaya-TEST"})
+    assert len(r.json()) == 1 and r.json()[0]["zone_name"] == "Kaya-test"
+
+    r = client.get("/forecasts", params={"zone_name": "Commune-Inexistante"})
     assert r.json() == []
 
 

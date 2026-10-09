@@ -13,7 +13,9 @@ de nommage standard de WRF. Chacun :
 
 - couvre **24 échéances horaires** (une journée complète) ;
 - une grille de **400 × 300 points à 3 km de résolution** (domaine imbriqué `d02`), centrée sur
-  12,68° N / -1,64° O (région de Ouagadougou, Burkina Faso) ;
+  12,68° N / -1,64° O (région de Ouagadougou, Burkina Faso). Vérifié sur les données : la grille
+  va de 8,10°N à 17,18°N et de -7,85° à 4,58° — **tout le Burkina Faso**, avec de la marge dans
+  les pays voisins (Mali, Niger, Bénin, Togo, Côte d'Ivoire) ;
 - **242 variables** au total. Celles utilisées pour le résumé journalier par point :
   `T2` (température à 2 m), `Q2` (humidité spécifique à 2 m), `PSFC` (pression de surface),
   `U10`/`V10` (vent à 10 m), `RAINC`+`RAINNC` (précipitations cumulées depuis le début de la
@@ -35,6 +37,15 @@ brut (ex. `7z l/x \\.\<lettre>:`) y parvient.
 **Avant de placer un fichier wrfout dans `wrf_incoming_dir` sur un serveur Windows**, renommez-le
 en remplaçant les `:` par des `-` (ex. `wrfout_d02_2022-05-23_01-00-00`). Un serveur Linux n'a pas
 cette contrainte (ext4 et la plupart des systèmes de fichiers Linux acceptent les `:`).
+
+`sanitize_incoming.ps1` automatise cette étape pour un support externe (clé USB, disque...) dont
+les fichiers ont encore leur nom d'origine : il lit le volume en brut via 7-Zip (nécessaire tant
+que les `:` y sont, Windows ne peut même pas les copier normalement) et les recopie dans
+`wrf_incoming_dir` avec un nom sans `:`.
+
+```powershell
+.\module3\sanitize_incoming.ps1 -Volume D: -Destination .\wrf_incoming
+```
 
 ## `wrf_reader.py`
 
@@ -67,13 +78,32 @@ relative à 2 m dans cette sortie.
 - Modèles `ForecastRun` (une ingestion = un fichier) et `ZoneForecast` (un résumé = une zone pour
   un jour donné) dans `backend/app/models_content.py`.
 
+## Les 351 communes
+
+`backend/app/data/burkina_communes.json` liste les **351 communes officielles** du Burkina Faso
+(nom, région, province, coordonnées) — source : OCHA/Institut Géographique du Burkina
+(data.humdata.org, limites administratives, admin niveau 3, valide au 01/08/2025), pas des
+approximations. `seed.py` crée une `Zone` (kind=commune) pour chacune au premier démarrage ; les
+5 communes pilotes d'origine (Kaya, Ziniaré, Zitenga, Absouya, Korsimoro) gardent `is_pilot=true`
+et leur orthographe déjà utilisée ailleurs dans l'app (la source officielle écrit "Ambsouya").
+
+Vérifié : les 351 sont toutes à moins de 2,4 km de leur point de grille le plus proche dans le
+fichier WRF — confirme que le domaine couvre bien tout le pays (cf. plus haut).
+
+Une fois un fichier ingéré, `GET /forecasts` peut renvoyer les résultats de trois façons
+(combinables avec `forecast_date`) :
+- sans filtre -> toutes les communes qui ont une prévision enregistrée ;
+- `?pilot_only=true` -> seulement les 5 communes pilotes ;
+- `?zone_id=<id>` ou `?zone_name=Kaya` -> une seule commune. `zone_id` est l'identifiant interne
+  (obtenu via `GET /zones`) ; `zone_name` est une alternative pratique quand on connaît juste le
+  nom (exact, insensible à la casse) et pas l'identifiant.
+
 ## Limites connues / à faire
 
 - **Extraction par point, pas par polygone.** Les zones n'ont pour l'instant que des coordonnées
-  ponctuelles (voir `backend/app/seed.py`, `COMMUNE_COORDS` — approximatives, domaine public, en
-  attendant les coordonnées précises de l'ANAM). Une fois les contours GeoJSON des zones fournis
-  (`Zone.geometry`), une moyenne sur tous les points de grille à l'intérieur du polygone serait
-  plus représentative qu'un point unique — nécessiterait `shapely` (pas encore une dépendance).
+  ponctuelles. Une fois les contours GeoJSON des zones fournis par l'ANAM (`Zone.geometry`), une
+  moyenne sur tous les points de grille à l'intérieur du polygone serait plus représentative
+  qu'un point unique — nécessiterait `shapely` (pas encore une dépendance).
 - **Un fichier = un jour, ingestion manuelle.** Pas encore d'automatisation pour traiter en bloc
   la trentaine de fichiers reçus (une simple boucle sur `POST /forecasts/ingest` suffirait, mais
   n'a pas été scriptée — l'équipe n'a pour l'instant que 3 fichiers de test en local).

@@ -1597,7 +1597,18 @@ Ingestion des fichiers WRF (NetCDF) de l'ANAM et résumés journaliers par zone.
 ### `GET /forecasts`
 
 Résumés journaliers par zone (température, précipitations, vent, humidité). Public, comme les
-autres contenus de référence. Sans filtre : les prévisions les plus récentes par zone.
+autres contenus de référence.
+
+Trois façons de choisir les zones, combinables avec `forecast_date` :
+- rien -> toutes les zones qui ont une prévision enregistrée (jusqu'à 351 communes si tout le
+  pays a été ingéré, voir `module3/README.md`) ;
+- `pilot_only=true` -> seulement les 5 communes pilotes ;
+- `zone_id=...` (identifiant obtenu via `GET /zones`) ou `zone_name=...` (nom exact, ex. "Kaya")
+  -> une seule zone. `zone_name` évite d'avoir à connaître l'identifiant à l'avance.
+
+Sans `forecast_date`, renvoie TOUTES les prévisions enregistrées (pas seulement les plus
+récentes) : si plusieurs fichiers ont été ingérés pour des jours différents, filtrer par date
+ou trier côté client.
 
 **Accès :** Public.
 
@@ -1605,7 +1616,9 @@ autres contenus de référence. Sans filtre : les prévisions les plus récentes
 
 | Nom | Où | Obligatoire | Type | Description |
 |---|---|---|---|---|
-| `zone_id` | query |  | string (facultatif) |  |
+| `zone_id` | query |  | string (facultatif) | Identifiant exact d'une zone (voir GET /zones) |
+| `zone_name` | query |  | string (facultatif) | Nom exact d'une commune/région (ex. "Kaya"), insensible à la casse -- alternative à zone_id quand on ne le connaît pas |
+| `pilot_only` | query |  | boolean | Seulement les 5 communes pilotes, comme GET /zones?pilot_only |
 | `forecast_date` | query |  | string (facultatif) | AAAA-MM-JJ |
 
 **Réponse 200** : liste de ZoneForecastOut

@@ -1,0 +1,2810 @@
+[
+  {
+    "name": "Ambsouya",
+    "region": "Oubri",
+    "province": "Bassitenga",
+    "pcode": "BF550301",
+    "latitude": 12.639865,
+    "longitude": -1.058335
+  },
+  {
+    "name": "Andemtenga",
+    "region": "Nakambé",
+    "province": "Kourittenga",
+    "pcode": "BF480301",
+    "latitude": 12.322064,
+    "longitude": -0.310871
+  },
+  {
+    "name": "Arbinda",
+    "region": "Soum",
+    "province": "Karo-Peli",
+    "pcode": "BF590201",
+    "latitude": 14.227379,
+    "longitude": -0.866701
+  },
+  {
+    "name": "Arbollé",
+    "region": "Yaadga",
+    "province": "Passoré",
+    "pcode": "BF540201",
+    "latitude": 12.847489,
+    "longitude": -2.032435
+  },
+  {
+    "name": "Bagaré",
+    "region": "Yaadga",
+    "province": "Passoré",
+    "pcode": "BF540202",
+    "latitude": 12.913732,
+    "longitude": -2.599076
+  },
+  {
+    "name": "Bagassi",
+    "region": "Bankui",
+    "province": "Balé",
+    "pcode": "BF620101",
+    "latitude": 11.747918,
+    "longitude": -3.29604
+  },
+  {
+    "name": "Bagré",
+    "region": "Nakambé",
+    "province": "Boulgou",
+    "pcode": "BF480101",
+    "latitude": 11.538192,
+    "longitude": -0.478383
+  },
+  {
+    "name": "Bahn",
+    "region": "Yaadga",
+    "province": "Loroum",
+    "pcode": "BF540101",
+    "latitude": 14.081282,
+    "longitude": -2.447566
+  },
+  {
+    "name": "Bakata",
+    "region": "Nando",
+    "province": "Ziro",
+    "pcode": "BF500401",
+    "latitude": 11.773726,
+    "longitude": -1.843282
+  },
+  {
+    "name": "Balavé",
+    "region": "Bankui",
+    "province": "Banwa",
+    "pcode": "BF620201",
+    "latitude": 12.377191,
+    "longitude": -4.154789
+  },
+  {
+    "name": "Bama",
+    "region": "Guiriko",
+    "province": "Houet",
+    "pcode": "BF530101",
+    "latitude": 11.381469,
+    "longitude": -4.421075
+  },
+  {
+    "name": "Bana",
+    "region": "Bankui",
+    "province": "Balé",
+    "pcode": "BF620102",
+    "latitude": 11.919837,
+    "longitude": -3.391123
+  },
+  {
+    "name": "Banfora",
+    "region": "Tannounyan",
+    "province": "Comoé",
+    "pcode": "BF470101",
+    "latitude": 10.643884,
+    "longitude": -4.756853
+  },
+  {
+    "name": "Bani",
+    "region": "Liptako",
+    "province": "Séno",
+    "pcode": "BF640201",
+    "latitude": 13.721962,
+    "longitude": -0.17068
+  },
+  {
+    "name": "Banzon",
+    "region": "Guiriko",
+    "province": "Kénédougou",
+    "pcode": "BF530201",
+    "latitude": 11.313895,
+    "longitude": -4.800992
+  },
+  {
+    "name": "Bané",
+    "region": "Nakambé",
+    "province": "Boulgou",
+    "pcode": "BF480102",
+    "latitude": 11.555989,
+    "longitude": -0.29732
+  },
+  {
+    "name": "Baraboulé",
+    "region": "Soum",
+    "province": "Djelgodji",
+    "pcode": "BF590101",
+    "latitude": 14.207334,
+    "longitude": -1.852068
+  },
+  {
+    "name": "Barani",
+    "region": "Sourou",
+    "province": "Kossin",
+    "pcode": "BF610101",
+    "latitude": 13.168942,
+    "longitude": -3.89159
+  },
+  {
+    "name": "Barga",
+    "region": "Yaadga",
+    "province": "Yatenga",
+    "pcode": "BF540301",
+    "latitude": 13.790482,
+    "longitude": -2.260789
+  },
+  {
+    "name": "Barsalogho",
+    "region": "Koulsé",
+    "province": "Sandbondtenga",
+    "pcode": "BF490301",
+    "latitude": 13.412604,
+    "longitude": -1.052734
+  },
+  {
+    "name": "Bartiébougou",
+    "region": "Sirba",
+    "province": "Komandjari",
+    "pcode": "BF580201",
+    "latitude": 12.876326,
+    "longitude": 0.790994
+  },
+  {
+    "name": "Baskouré",
+    "region": "Nakambé",
+    "province": "Kourittenga",
+    "pcode": "BF480302",
+    "latitude": 12.167831,
+    "longitude": -0.234012
+  },
+  {
+    "name": "Bassi",
+    "region": "Yaadga",
+    "province": "Zondoma",
+    "pcode": "BF540401",
+    "latitude": 13.326378,
+    "longitude": -2.241111
+  },
+  {
+    "name": "Batié",
+    "region": "Djôrô",
+    "province": "Noumbiel",
+    "pcode": "BF570301",
+    "latitude": 9.876029,
+    "longitude": -2.92089
+  },
+  {
+    "name": "Bieha",
+    "region": "Nando",
+    "province": "Sissili",
+    "pcode": "BF500301",
+    "latitude": 11.059105,
+    "longitude": -1.823382
+  },
+  {
+    "name": "Bilanga",
+    "region": "Sirba",
+    "province": "Gnagna",
+    "pcode": "BF580101",
+    "latitude": 12.546282,
+    "longitude": -0.025747
+  },
+  {
+    "name": "Bindé",
+    "region": "Nazinon",
+    "province": "Zoundwéogo",
+    "pcode": "BF510302",
+    "latitude": 11.747699,
+    "longitude": -1.09176
+  },
+  {
+    "name": "Bingo",
+    "region": "Nando",
+    "province": "Boulkiemdé",
+    "pcode": "BF500101",
+    "latitude": 12.300506,
+    "longitude": -1.832075
+  },
+  {
+    "name": "Bissiga",
+    "region": "Nakambé",
+    "province": "Boulgou",
+    "pcode": "BF480104",
+    "latitude": 11.866431,
+    "longitude": -0.047009
+  },
+  {
+    "name": "Bitou",
+    "region": "Nakambé",
+    "province": "Boulgou",
+    "pcode": "BF480105",
+    "latitude": 11.257204,
+    "longitude": -0.303097
+  },
+  {
+    "name": "Boala",
+    "region": "Koulsé",
+    "province": "Namentenga",
+    "pcode": "BF490201",
+    "latitude": 12.870071,
+    "longitude": -0.700992
+  },
+  {
+    "name": "Bobo-Dioulasso",
+    "region": "Guiriko",
+    "province": "Houet",
+    "pcode": "BF530102",
+    "latitude": 11.185497,
+    "longitude": -4.295846
+  },
+  {
+    "name": "Bogandé",
+    "region": "Sirba",
+    "province": "Gnagna",
+    "pcode": "BF580102",
+    "latitude": 12.977412,
+    "longitude": -0.145475
+  },
+  {
+    "name": "Boken",
+    "region": "Yaadga",
+    "province": "Passoré",
+    "pcode": "BF540204",
+    "latitude": 13.00695,
+    "longitude": -1.793515
+  },
+  {
+    "name": "Bomborokui",
+    "region": "Sourou",
+    "province": "Kossin",
+    "pcode": "BF610102",
+    "latitude": 13.00427,
+    "longitude": -3.953311
+  },
+  {
+    "name": "Bondokui",
+    "region": "Bankui",
+    "province": "Mouhoun",
+    "pcode": "BF620301",
+    "latitude": 11.852296,
+    "longitude": -3.761585
+  },
+  {
+    "name": "Boni",
+    "region": "Guiriko",
+    "province": "Tuy",
+    "pcode": "BF530303",
+    "latitude": 11.555096,
+    "longitude": -3.392344
+  },
+  {
+    "name": "Boromo",
+    "region": "Bankui",
+    "province": "Balé",
+    "pcode": "BF620103",
+    "latitude": 11.746847,
+    "longitude": -2.929376
+  },
+  {
+    "name": "Botou",
+    "region": "Tapoa",
+    "province": "Dyamongou",
+    "pcode": "BF600101",
+    "latitude": 12.666164,
+    "longitude": 2.052938
+  },
+  {
+    "name": "Boudri",
+    "region": "Oubri",
+    "province": "Ganzourgou",
+    "pcode": "BF550101",
+    "latitude": 12.199196,
+    "longitude": -0.732885
+  },
+  {
+    "name": "Bougnounou",
+    "region": "Nando",
+    "province": "Ziro",
+    "pcode": "BF500402",
+    "latitude": 11.803226,
+    "longitude": -1.992797
+  },
+  {
+    "name": "Boulsa",
+    "region": "Koulsé",
+    "province": "Namentenga",
+    "pcode": "BF490202",
+    "latitude": 12.658967,
+    "longitude": -0.572527
+  },
+  {
+    "name": "Boundoré",
+    "region": "Liptako",
+    "province": "Yagha",
+    "pcode": "BF640301",
+    "latitude": 13.441405,
+    "longitude": 0.907103
+  },
+  {
+    "name": "Boura",
+    "region": "Nando",
+    "province": "Sissili",
+    "pcode": "BF500302",
+    "latitude": 11.039861,
+    "longitude": -2.501601
+  },
+  {
+    "name": "Bourasso",
+    "region": "Sourou",
+    "province": "Kossin",
+    "pcode": "BF610103",
+    "latitude": 12.63328,
+    "longitude": -3.713139
+  },
+  {
+    "name": "Bouroum",
+    "region": "Koulsé",
+    "province": "Namentenga",
+    "pcode": "BF490203",
+    "latitude": 13.612103,
+    "longitude": -0.647998
+  },
+  {
+    "name": "Bouroum-Bouroum",
+    "region": "Djôrô",
+    "province": "Poni",
+    "pcode": "BF570401",
+    "latitude": 10.535324,
+    "longitude": -3.235463
+  },
+  {
+    "name": "Bourzanga",
+    "region": "Koulsé",
+    "province": "Bam",
+    "pcode": "BF490101",
+    "latitude": 13.674995,
+    "longitude": -1.545088
+  },
+  {
+    "name": "Boussou",
+    "region": "Yaadga",
+    "province": "Zondoma",
+    "pcode": "BF540402",
+    "latitude": 13.027043,
+    "longitude": -2.563397
+  },
+  {
+    "name": "Boussou-Koula",
+    "region": "Djôrô",
+    "province": "Noumbiel",
+    "pcode": "BF570302",
+    "latitude": 9.835293,
+    "longitude": -3.08826
+  },
+  {
+    "name": "Boussouma (Boulgou)",
+    "region": "Nakambé",
+    "province": "Boulgou",
+    "pcode": "BF480106",
+    "latitude": 11.729839,
+    "longitude": -0.660002
+  },
+  {
+    "name": "Boussouma (Sandbondtenga)",
+    "region": "Koulsé",
+    "province": "Sandbondtenga",
+    "pcode": "BF490302",
+    "latitude": 12.90971,
+    "longitude": -1.07819
+  },
+  {
+    "name": "Boussé",
+    "region": "Oubri",
+    "province": "Kourwéogo",
+    "pcode": "BF550201",
+    "latitude": 12.661677,
+    "longitude": -1.895291
+  },
+  {
+    "name": "Bousséra",
+    "region": "Djôrô",
+    "province": "Poni",
+    "pcode": "BF570402",
+    "latitude": 10.332177,
+    "longitude": -3.019657
+  },
+  {
+    "name": "Béguédo",
+    "region": "Nakambé",
+    "province": "Boulgou",
+    "pcode": "BF480103",
+    "latitude": 11.778254,
+    "longitude": -0.738213
+  },
+  {
+    "name": "Békui",
+    "region": "Guiriko",
+    "province": "Tuy",
+    "pcode": "BF530301",
+    "latitude": 11.637735,
+    "longitude": -3.890065
+  },
+  {
+    "name": "Béré",
+    "region": "Nazinon",
+    "province": "Zoundwéogo",
+    "pcode": "BF510301",
+    "latitude": 11.830477,
+    "longitude": -1.156932
+  },
+  {
+    "name": "Béréba",
+    "region": "Guiriko",
+    "province": "Tuy",
+    "pcode": "BF530302",
+    "latitude": 11.627374,
+    "longitude": -3.688827
+  },
+  {
+    "name": "Bérégadougou",
+    "region": "Tannounyan",
+    "province": "Comoé",
+    "pcode": "BF470102",
+    "latitude": 10.765981,
+    "longitude": -4.735038
+  },
+  {
+    "name": "Dablo",
+    "region": "Koulsé",
+    "province": "Sandbondtenga",
+    "pcode": "BF490303",
+    "latitude": 13.714419,
+    "longitude": -1.176477
+  },
+  {
+    "name": "Dakôrô",
+    "region": "Tannounyan",
+    "province": "Léraba",
+    "pcode": "BF470201",
+    "latitude": 10.462602,
+    "longitude": -5.151685
+  },
+  {
+    "name": "Dalô",
+    "region": "Nando",
+    "province": "Ziro",
+    "pcode": "BF500404",
+    "latitude": 11.73435,
+    "longitude": -2.088655
+  },
+  {
+    "name": "Dandé",
+    "region": "Guiriko",
+    "province": "Houet",
+    "pcode": "BF530103",
+    "latitude": 11.583673,
+    "longitude": -4.55812
+  },
+  {
+    "name": "Dano",
+    "region": "Djôrô",
+    "province": "Ioba",
+    "pcode": "BF570201",
+    "latitude": 11.146344,
+    "longitude": -3.062565
+  },
+  {
+    "name": "Dapeolgo",
+    "region": "Oubri",
+    "province": "Bassitenga",
+    "pcode": "BF550302",
+    "latitude": 12.672222,
+    "longitude": -1.538642
+  },
+  {
+    "name": "Dargo",
+    "region": "Koulsé",
+    "province": "Namentenga",
+    "pcode": "BF490204",
+    "latitude": 12.718439,
+    "longitude": -0.284386
+  },
+  {
+    "name": "Dassa",
+    "region": "Nando",
+    "province": "Sanguié",
+    "pcode": "BF500201",
+    "latitude": 12.451789,
+    "longitude": -2.688968
+  },
+  {
+    "name": "Di",
+    "region": "Sourou",
+    "province": "Sourou",
+    "pcode": "BF610301",
+    "latitude": 13.172066,
+    "longitude": -3.409718
+  },
+  {
+    "name": "Diabo",
+    "region": "Goulmou",
+    "province": "Gourma",
+    "pcode": "BF630101",
+    "latitude": 12.018469,
+    "longitude": -0.031878
+  },
+  {
+    "name": "Dialgaye",
+    "region": "Nakambé",
+    "province": "Kourittenga",
+    "pcode": "BF480303",
+    "latitude": 11.958347,
+    "longitude": -0.389345
+  },
+  {
+    "name": "Diapaga",
+    "region": "Tapoa",
+    "province": "Gobnangou",
+    "pcode": "BF600201",
+    "latitude": 12.072906,
+    "longitude": 1.790268
+  },
+  {
+    "name": "Diapangou",
+    "region": "Goulmou",
+    "province": "Gourma",
+    "pcode": "BF630102",
+    "latitude": 12.117051,
+    "longitude": 0.183728
+  },
+  {
+    "name": "Didyr",
+    "region": "Nando",
+    "province": "Sanguié",
+    "pcode": "BF500202",
+    "latitude": 12.561415,
+    "longitude": -2.624765
+  },
+  {
+    "name": "Diguel",
+    "region": "Soum",
+    "province": "Djelgodji",
+    "pcode": "BF590102",
+    "latitude": 14.436197,
+    "longitude": -1.886249
+  },
+  {
+    "name": "Dissihn",
+    "region": "Djôrô",
+    "province": "Ioba",
+    "pcode": "BF570202",
+    "latitude": 10.940784,
+    "longitude": -2.923909
+  },
+  {
+    "name": "Diébougou",
+    "region": "Djôrô",
+    "province": "Bougouriba",
+    "pcode": "BF570102",
+    "latitude": 10.971974,
+    "longitude": -3.244866
+  },
+  {
+    "name": "Djibasso",
+    "region": "Sourou",
+    "province": "Kossin",
+    "pcode": "BF610104",
+    "latitude": 13.121952,
+    "longitude": -4.158043
+  },
+  {
+    "name": "Djibo",
+    "region": "Soum",
+    "province": "Djelgodji",
+    "pcode": "BF590103",
+    "latitude": 14.101649,
+    "longitude": -1.63034
+  },
+  {
+    "name": "Djigouè",
+    "region": "Djôrô",
+    "province": "Poni",
+    "pcode": "BF570403",
+    "latitude": 10.052563,
+    "longitude": -3.818194
+  },
+  {
+    "name": "Djigouèra",
+    "region": "Guiriko",
+    "province": "Kénédougou",
+    "pcode": "BF530202",
+    "latitude": 11.174678,
+    "longitude": -4.912061
+  },
+  {
+    "name": "Dokui",
+    "region": "Sourou",
+    "province": "Kossin",
+    "pcode": "BF610105",
+    "latitude": 12.548693,
+    "longitude": -4.109123
+  },
+  {
+    "name": "Dolo",
+    "region": "Djôrô",
+    "province": "Bougouriba",
+    "pcode": "BF570103",
+    "latitude": 10.874551,
+    "longitude": -3.395813
+  },
+  {
+    "name": "Dori",
+    "region": "Liptako",
+    "province": "Séno",
+    "pcode": "BF640202",
+    "latitude": 14.036336,
+    "longitude": -0.036101
+  },
+  {
+    "name": "Doulougou",
+    "region": "Nazinon",
+    "province": "Bazèga",
+    "pcode": "BF510101",
+    "latitude": 11.986678,
+    "longitude": -1.458659
+  },
+  {
+    "name": "Doumbala",
+    "region": "Sourou",
+    "province": "Kossin",
+    "pcode": "BF610106",
+    "latitude": 12.912049,
+    "longitude": -4.169942
+  },
+  {
+    "name": "Douna",
+    "region": "Tannounyan",
+    "province": "Léraba",
+    "pcode": "BF470202",
+    "latitude": 10.613299,
+    "longitude": -5.108562
+  },
+  {
+    "name": "Douroula",
+    "region": "Bankui",
+    "province": "Mouhoun",
+    "pcode": "BF620303",
+    "latitude": 12.588707,
+    "longitude": -3.299847
+  },
+  {
+    "name": "Dourtenga",
+    "region": "Nakambé",
+    "province": "Koulpélogo",
+    "pcode": "BF480202",
+    "latitude": 11.585718,
+    "longitude": -0.007785
+  },
+  {
+    "name": "Dédougou",
+    "region": "Bankui",
+    "province": "Mouhoun",
+    "pcode": "BF620302",
+    "latitude": 12.46191,
+    "longitude": -3.467343
+  },
+  {
+    "name": "Déou",
+    "region": "Liptako",
+    "province": "Oudalan",
+    "pcode": "BF640101",
+    "latitude": 14.601736,
+    "longitude": -0.719848
+  },
+  {
+    "name": "Fada-Ngourma",
+    "region": "Goulmou",
+    "province": "Gourma",
+    "pcode": "BF630103",
+    "latitude": 12.059015,
+    "longitude": 0.36252
+  },
+  {
+    "name": "Falagountou",
+    "region": "Liptako",
+    "province": "Séno",
+    "pcode": "BF640203",
+    "latitude": 14.364425,
+    "longitude": 0.185868
+  },
+  {
+    "name": "Fara",
+    "region": "Bankui",
+    "province": "Balé",
+    "pcode": "BF620104",
+    "latitude": 11.527603,
+    "longitude": -2.763855
+  },
+  {
+    "name": "Faramana",
+    "region": "Guiriko",
+    "province": "Houet",
+    "pcode": "BF530104",
+    "latitude": 12.049591,
+    "longitude": -4.668814
+  },
+  {
+    "name": "Fo",
+    "region": "Guiriko",
+    "province": "Houet",
+    "pcode": "BF530105",
+    "latitude": 11.884924,
+    "longitude": -4.518892
+  },
+  {
+    "name": "Founzan",
+    "region": "Guiriko",
+    "province": "Tuy",
+    "pcode": "BF530304",
+    "latitude": 11.451836,
+    "longitude": -3.22845
+  },
+  {
+    "name": "Foutouri",
+    "region": "Sirba",
+    "province": "Komandjari",
+    "pcode": "BF580202",
+    "latitude": 12.731352,
+    "longitude": 1.072887
+  },
+  {
+    "name": "Gaongo",
+    "region": "Nazinon",
+    "province": "Bazèga",
+    "pcode": "BF510102",
+    "latitude": 12.005378,
+    "longitude": -1.16469
+  },
+  {
+    "name": "Gaoua",
+    "region": "Djôrô",
+    "province": "Poni",
+    "pcode": "BF570404",
+    "latitude": 10.329214,
+    "longitude": -3.182433
+  },
+  {
+    "name": "Garango",
+    "region": "Nakambé",
+    "province": "Boulgou",
+    "pcode": "BF480107",
+    "latitude": 11.804807,
+    "longitude": -0.548948
+  },
+  {
+    "name": "Gassan",
+    "region": "Sourou",
+    "province": "Nayala",
+    "pcode": "BF610201",
+    "latitude": 12.819031,
+    "longitude": -3.201165
+  },
+  {
+    "name": "Gayéri",
+    "region": "Sirba",
+    "province": "Komandjari",
+    "pcode": "BF580203",
+    "latitude": 12.651694,
+    "longitude": 0.489249
+  },
+  {
+    "name": "Gaô",
+    "region": "Nando",
+    "province": "Ziro",
+    "pcode": "BF500405",
+    "latitude": 11.648624,
+    "longitude": -2.179455
+  },
+  {
+    "name": "Gbomblora",
+    "region": "Djôrô",
+    "province": "Poni",
+    "pcode": "BF570405",
+    "latitude": 10.244125,
+    "longitude": -3.030921
+  },
+  {
+    "name": "Gbondjigui",
+    "region": "Djôrô",
+    "province": "Bougouriba",
+    "pcode": "BF570101",
+    "latitude": 10.907546,
+    "longitude": -3.499021
+  },
+  {
+    "name": "Godyr",
+    "region": "Nando",
+    "province": "Sanguié",
+    "pcode": "BF500203",
+    "latitude": 12.697701,
+    "longitude": -2.626785
+  },
+  {
+    "name": "Gogo",
+    "region": "Nazinon",
+    "province": "Zoundwéogo",
+    "pcode": "BF510303",
+    "latitude": 11.562272,
+    "longitude": -0.962145
+  },
+  {
+    "name": "Gomboro",
+    "region": "Sourou",
+    "province": "Sourou",
+    "pcode": "BF610302",
+    "latitude": 13.484837,
+    "longitude": -2.775143
+  },
+  {
+    "name": "Gomboussougou",
+    "region": "Nazinon",
+    "province": "Zoundwéogo",
+    "pcode": "BF510304",
+    "latitude": 11.42884,
+    "longitude": -0.775437
+  },
+  {
+    "name": "Gomponsom",
+    "region": "Yaadga",
+    "province": "Passoré",
+    "pcode": "BF540205",
+    "latitude": 13.021852,
+    "longitude": -2.176083
+  },
+  {
+    "name": "Gorgadji",
+    "region": "Liptako",
+    "province": "Séno",
+    "pcode": "BF640204",
+    "latitude": 14.03327,
+    "longitude": -0.518973
+  },
+  {
+    "name": "Gorom-Gorom",
+    "region": "Liptako",
+    "province": "Oudalan",
+    "pcode": "BF640102",
+    "latitude": 14.440799,
+    "longitude": -0.233328
+  },
+  {
+    "name": "Gossina",
+    "region": "Sourou",
+    "province": "Nayala",
+    "pcode": "BF610202",
+    "latitude": 12.522243,
+    "longitude": -2.872055
+  },
+  {
+    "name": "Gounguen",
+    "region": "Nakambé",
+    "province": "Kourittenga",
+    "pcode": "BF480304",
+    "latitude": 12.14678,
+    "longitude": -0.063845
+  },
+  {
+    "name": "Goursi",
+    "region": "Yaadga",
+    "province": "Zondoma",
+    "pcode": "BF540403",
+    "latitude": 13.206673,
+    "longitude": -2.358023
+  },
+  {
+    "name": "Guiaro",
+    "region": "Nazinon",
+    "province": "Nahouri",
+    "pcode": "BF510201",
+    "latitude": 11.364786,
+    "longitude": -1.377229
+  },
+  {
+    "name": "Guiba",
+    "region": "Nazinon",
+    "province": "Zoundwéogo",
+    "pcode": "BF510305",
+    "latitude": 11.719734,
+    "longitude": -1.150143
+  },
+  {
+    "name": "Guibaré",
+    "region": "Koulsé",
+    "province": "Bam",
+    "pcode": "BF490102",
+    "latitude": 13.094873,
+    "longitude": -1.609169
+  },
+  {
+    "name": "Guéguéré",
+    "region": "Djôrô",
+    "province": "Ioba",
+    "pcode": "BF570203",
+    "latitude": 11.12433,
+    "longitude": -3.178479
+  },
+  {
+    "name": "Houndé",
+    "region": "Guiriko",
+    "province": "Tuy",
+    "pcode": "BF530305",
+    "latitude": 11.488251,
+    "longitude": -3.522319
+  },
+  {
+    "name": "Imasgho",
+    "region": "Nando",
+    "province": "Boulkiemdé",
+    "pcode": "BF500102",
+    "latitude": 12.434102,
+    "longitude": -2.329932
+  },
+  {
+    "name": "Ipelsé",
+    "region": "Nazinon",
+    "province": "Bazèga",
+    "pcode": "BF510103",
+    "latitude": 11.958831,
+    "longitude": -1.547453
+  },
+  {
+    "name": "Iôlôniôrô",
+    "region": "Djôrô",
+    "province": "Bougouriba",
+    "pcode": "BF570104",
+    "latitude": 10.753495,
+    "longitude": -3.402295
+  },
+  {
+    "name": "Kalsaka",
+    "region": "Yaadga",
+    "province": "Yatenga",
+    "pcode": "BF540303",
+    "latitude": 13.176656,
+    "longitude": -1.98135
+  },
+  {
+    "name": "Kampti",
+    "region": "Djôrô",
+    "province": "Poni",
+    "pcode": "BF570406",
+    "latitude": 10.141071,
+    "longitude": -3.45554
+  },
+  {
+    "name": "Kando",
+    "region": "Nakambé",
+    "province": "Kourittenga",
+    "pcode": "BF480305",
+    "latitude": 12.344698,
+    "longitude": -0.497082
+  },
+  {
+    "name": "Kangala",
+    "region": "Guiriko",
+    "province": "Kénédougou",
+    "pcode": "BF530203",
+    "latitude": 10.966204,
+    "longitude": -5.231965
+  },
+  {
+    "name": "Kankalaba",
+    "region": "Tannounyan",
+    "province": "Léraba",
+    "pcode": "BF470203",
+    "latitude": 10.758551,
+    "longitude": -5.280712
+  },
+  {
+    "name": "Kantchari",
+    "region": "Tapoa",
+    "province": "Dyamongou",
+    "pcode": "BF600102",
+    "latitude": 12.478208,
+    "longitude": 1.51428
+  },
+  {
+    "name": "Karangasso-Sambla",
+    "region": "Guiriko",
+    "province": "Houet",
+    "pcode": "BF530106",
+    "latitude": 11.22664,
+    "longitude": -4.645467
+  },
+  {
+    "name": "Karangasso-Vigué",
+    "region": "Guiriko",
+    "province": "Houet",
+    "pcode": "BF530107",
+    "latitude": 10.879554,
+    "longitude": -3.936254
+  },
+  {
+    "name": "Kassou",
+    "region": "Nando",
+    "province": "Ziro",
+    "pcode": "BF500403",
+    "latitude": 11.580475,
+    "longitude": -2.047447
+  },
+  {
+    "name": "Kassoum",
+    "region": "Sourou",
+    "province": "Sourou",
+    "pcode": "BF610303",
+    "latitude": 13.074414,
+    "longitude": -3.298097
+  },
+  {
+    "name": "Kaya",
+    "region": "Koulsé",
+    "province": "Sandbondtenga",
+    "pcode": "BF490304",
+    "latitude": 13.090765,
+    "longitude": -1.091126
+  },
+  {
+    "name": "Kayan",
+    "region": "Guiriko",
+    "province": "Kénédougou",
+    "pcode": "BF530204",
+    "latitude": 11.830212,
+    "longitude": -4.736142
+  },
+  {
+    "name": "Kayao",
+    "region": "Nazinon",
+    "province": "Bazèga",
+    "pcode": "BF510104",
+    "latitude": 12.013688,
+    "longitude": -1.844269
+  },
+  {
+    "name": "Kaïn",
+    "region": "Yaadga",
+    "province": "Yatenga",
+    "pcode": "BF540302",
+    "latitude": 14.044367,
+    "longitude": -2.759166
+  },
+  {
+    "name": "Kelbo",
+    "region": "Soum",
+    "province": "Djelgodji",
+    "pcode": "BF590104",
+    "latitude": 13.852623,
+    "longitude": -1.161896
+  },
+  {
+    "name": "Kiembara",
+    "region": "Sourou",
+    "province": "Sourou",
+    "pcode": "BF610304",
+    "latitude": 13.240568,
+    "longitude": -2.728565
+  },
+  {
+    "name": "Kindi",
+    "region": "Nando",
+    "province": "Boulkiemdé",
+    "pcode": "BF500103",
+    "latitude": 12.436795,
+    "longitude": -2.036748
+  },
+  {
+    "name": "Kirsi",
+    "region": "Yaadga",
+    "province": "Passoré",
+    "pcode": "BF540206",
+    "latitude": 13.037267,
+    "longitude": -1.936952
+  },
+  {
+    "name": "Koala",
+    "region": "Sirba",
+    "province": "Gnagna",
+    "pcode": "BF580103",
+    "latitude": 13.407635,
+    "longitude": -0.134598
+  },
+  {
+    "name": "Kogho",
+    "region": "Oubri",
+    "province": "Ganzourgou",
+    "pcode": "BF550102",
+    "latitude": 12.654071,
+    "longitude": -0.670989
+  },
+  {
+    "name": "Kokologo",
+    "region": "Nando",
+    "province": "Boulkiemdé",
+    "pcode": "BF500104",
+    "latitude": 12.19478,
+    "longitude": -1.873376
+  },
+  {
+    "name": "Kombissiri",
+    "region": "Nazinon",
+    "province": "Bazèga",
+    "pcode": "BF510105",
+    "latitude": 12.066578,
+    "longitude": -1.335254
+  },
+  {
+    "name": "Kombori",
+    "region": "Sourou",
+    "province": "Kossin",
+    "pcode": "BF610107",
+    "latitude": 13.437157,
+    "longitude": -3.938771
+  },
+  {
+    "name": "Komin-Yanga",
+    "region": "Nakambé",
+    "province": "Koulpélogo",
+    "pcode": "BF480201",
+    "latitude": 11.706921,
+    "longitude": 0.138994
+  },
+  {
+    "name": "Komki-Ipala",
+    "region": "Kadiogo",
+    "province": "Kadiogo",
+    "pcode": "BF130001",
+    "latitude": 12.189016,
+    "longitude": -1.804425
+  },
+  {
+    "name": "Kompienga",
+    "region": "Goulmou",
+    "province": "Kompienga",
+    "pcode": "BF630201",
+    "latitude": 11.0813,
+    "longitude": 0.724037
+  },
+  {
+    "name": "Komsilga",
+    "region": "Kadiogo",
+    "province": "Kadiogo",
+    "pcode": "BF130002",
+    "latitude": 12.181378,
+    "longitude": -1.634553
+  },
+  {
+    "name": "Komtoèga",
+    "region": "Nakambé",
+    "province": "Boulgou",
+    "pcode": "BF480108",
+    "latitude": 11.848405,
+    "longitude": -0.649047
+  },
+  {
+    "name": "Kona",
+    "region": "Bankui",
+    "province": "Mouhoun",
+    "pcode": "BF620304",
+    "latitude": 12.064321,
+    "longitude": -3.425906
+  },
+  {
+    "name": "Kongoussi",
+    "region": "Koulsé",
+    "province": "Bam",
+    "pcode": "BF490103",
+    "latitude": 13.325115,
+    "longitude": -1.526734
+  },
+  {
+    "name": "Koper",
+    "region": "Djôrô",
+    "province": "Ioba",
+    "pcode": "BF570204",
+    "latitude": 11.097364,
+    "longitude": -2.928342
+  },
+  {
+    "name": "Kordié",
+    "region": "Nando",
+    "province": "Sanguié",
+    "pcode": "BF500204",
+    "latitude": 12.595091,
+    "longitude": -2.363657
+  },
+  {
+    "name": "Korsimoro",
+    "region": "Koulsé",
+    "province": "Sandbondtenga",
+    "pcode": "BF490305",
+    "latitude": 12.823506,
+    "longitude": -1.069449
+  },
+  {
+    "name": "Kossouka",
+    "region": "Yaadga",
+    "province": "Yatenga",
+    "pcode": "BF540304",
+    "latitude": 13.372034,
+    "longitude": -1.89872
+  },
+  {
+    "name": "Koti",
+    "region": "Guiriko",
+    "province": "Tuy",
+    "pcode": "BF530306",
+    "latitude": 11.394398,
+    "longitude": -3.05594
+  },
+  {
+    "name": "Koubri",
+    "region": "Kadiogo",
+    "province": "Kadiogo",
+    "pcode": "BF130003",
+    "latitude": 12.196528,
+    "longitude": -1.406051
+  },
+  {
+    "name": "Koudougou",
+    "region": "Nando",
+    "province": "Boulkiemdé",
+    "pcode": "BF500105",
+    "latitude": 12.251132,
+    "longitude": -2.365575
+  },
+  {
+    "name": "Kougny",
+    "region": "Sourou",
+    "province": "Nayala",
+    "pcode": "BF610203",
+    "latitude": 12.779995,
+    "longitude": -3.118078
+  },
+  {
+    "name": "Kouka",
+    "region": "Bankui",
+    "province": "Banwa",
+    "pcode": "BF620202",
+    "latitude": 11.90054,
+    "longitude": -4.342536
+  },
+  {
+    "name": "Koumbia",
+    "region": "Guiriko",
+    "province": "Tuy",
+    "pcode": "BF530307",
+    "latitude": 11.237074,
+    "longitude": -3.695902
+  },
+  {
+    "name": "Koumbri",
+    "region": "Yaadga",
+    "province": "Yatenga",
+    "pcode": "BF540305",
+    "latitude": 13.846317,
+    "longitude": -2.413613
+  },
+  {
+    "name": "Koundougou",
+    "region": "Guiriko",
+    "province": "Houet",
+    "pcode": "BF530108",
+    "latitude": 11.725274,
+    "longitude": -4.508341
+  },
+  {
+    "name": "Koupèla",
+    "region": "Nakambé",
+    "province": "Kourittenga",
+    "pcode": "BF480306",
+    "latitude": 12.1821,
+    "longitude": -0.353062
+  },
+  {
+    "name": "Kourinion",
+    "region": "Guiriko",
+    "province": "Kénédougou",
+    "pcode": "BF530206",
+    "latitude": 10.985204,
+    "longitude": -4.791676
+  },
+  {
+    "name": "Kourouma",
+    "region": "Guiriko",
+    "province": "Kénédougou",
+    "pcode": "BF530207",
+    "latitude": 11.617364,
+    "longitude": -4.79766
+  },
+  {
+    "name": "Koutougou",
+    "region": "Soum",
+    "province": "Karo-Peli",
+    "pcode": "BF590206",
+    "latitude": 14.497312,
+    "longitude": -1.015669
+  },
+  {
+    "name": "Kpuéré",
+    "region": "Djôrô",
+    "province": "Noumbiel",
+    "pcode": "BF570303",
+    "latitude": 9.473567,
+    "longitude": -2.793208
+  },
+  {
+    "name": "Kyon",
+    "region": "Nando",
+    "province": "Sanguié",
+    "pcode": "BF500205",
+    "latitude": 12.283613,
+    "longitude": -2.572569
+  },
+  {
+    "name": "Kôlôkô",
+    "region": "Guiriko",
+    "province": "Kénédougou",
+    "pcode": "BF530205",
+    "latitude": 11.080228,
+    "longitude": -5.309823
+  },
+  {
+    "name": "La-Toden",
+    "region": "Yaadga",
+    "province": "Passoré",
+    "pcode": "BF540207",
+    "latitude": 12.900601,
+    "longitude": -2.457739
+  },
+  {
+    "name": "Lalgaye",
+    "region": "Nakambé",
+    "province": "Koulpélogo",
+    "pcode": "BF480203",
+    "latitude": 11.615113,
+    "longitude": -0.065196
+  },
+  {
+    "name": "Lanfièra",
+    "region": "Sourou",
+    "province": "Sourou",
+    "pcode": "BF610305",
+    "latitude": 12.985457,
+    "longitude": -3.414375
+  },
+  {
+    "name": "Lankoué",
+    "region": "Sourou",
+    "province": "Sourou",
+    "pcode": "BF610306",
+    "latitude": 13.247551,
+    "longitude": -2.58411
+  },
+  {
+    "name": "Laye",
+    "region": "Oubri",
+    "province": "Kourwéogo",
+    "pcode": "BF550202",
+    "latitude": 12.532091,
+    "longitude": -1.778321
+  },
+  {
+    "name": "Legmoin",
+    "region": "Djôrô",
+    "province": "Noumbiel",
+    "pcode": "BF570304",
+    "latitude": 10.147221,
+    "longitude": -2.903894
+  },
+  {
+    "name": "Liptougou",
+    "region": "Sirba",
+    "province": "Gnagna",
+    "pcode": "BF580104",
+    "latitude": 13.177377,
+    "longitude": 0.315394
+  },
+  {
+    "name": "Loropéni",
+    "region": "Djôrô",
+    "province": "Poni",
+    "pcode": "BF570407",
+    "latitude": 10.296227,
+    "longitude": -3.529873
+  },
+  {
+    "name": "Loumana",
+    "region": "Tannounyan",
+    "province": "Léraba",
+    "pcode": "BF470204",
+    "latitude": 10.577523,
+    "longitude": -5.355705
+  },
+  {
+    "name": "Loumbila",
+    "region": "Oubri",
+    "province": "Bassitenga",
+    "pcode": "BF550303",
+    "latitude": 12.523505,
+    "longitude": -1.378449
+  },
+  {
+    "name": "Lèba",
+    "region": "Yaadga",
+    "province": "Zondoma",
+    "pcode": "BF540404",
+    "latitude": 13.385613,
+    "longitude": -2.347882
+  },
+  {
+    "name": "Lèna",
+    "region": "Guiriko",
+    "province": "Houet",
+    "pcode": "BF530109",
+    "latitude": 11.302693,
+    "longitude": -3.898301
+  },
+  {
+    "name": "Léo",
+    "region": "Nando",
+    "province": "Sissili",
+    "pcode": "BF500303",
+    "latitude": 11.097374,
+    "longitude": -2.104724
+  },
+  {
+    "name": "Lôgbou",
+    "region": "Tapoa",
+    "province": "Gobnangou",
+    "pcode": "BF600202",
+    "latitude": 11.631363,
+    "longitude": 1.670669
+  },
+  {
+    "name": "Madjoari",
+    "region": "Goulmou",
+    "province": "Kompienga",
+    "pcode": "BF630202",
+    "latitude": 11.476692,
+    "longitude": 1.249926
+  },
+  {
+    "name": "Madouba",
+    "region": "Sourou",
+    "province": "Kossin",
+    "pcode": "BF610108",
+    "latitude": 13.105458,
+    "longitude": -4.326064
+  },
+  {
+    "name": "Malba",
+    "region": "Djôrô",
+    "province": "Poni",
+    "pcode": "BF570408",
+    "latitude": 10.457348,
+    "longitude": -2.978842
+  },
+  {
+    "name": "Manga",
+    "region": "Nazinon",
+    "province": "Zoundwéogo",
+    "pcode": "BF510306",
+    "latitude": 11.666277,
+    "longitude": -1.074337
+  },
+  {
+    "name": "Mangodara",
+    "region": "Tannounyan",
+    "province": "Comoé",
+    "pcode": "BF470103",
+    "latitude": 9.904995,
+    "longitude": -4.355128
+  },
+  {
+    "name": "Mani",
+    "region": "Sirba",
+    "province": "Gnagna",
+    "pcode": "BF580105",
+    "latitude": 13.259667,
+    "longitude": -0.211997
+  },
+  {
+    "name": "Mansila",
+    "region": "Liptako",
+    "province": "Yagha",
+    "pcode": "BF640302",
+    "latitude": 13.164453,
+    "longitude": 0.638193
+  },
+  {
+    "name": "Mané",
+    "region": "Koulsé",
+    "province": "Sandbondtenga",
+    "pcode": "BF490306",
+    "latitude": 12.987534,
+    "longitude": -1.345034
+  },
+  {
+    "name": "Markoye",
+    "region": "Liptako",
+    "province": "Oudalan",
+    "pcode": "BF640103",
+    "latitude": 14.645063,
+    "longitude": 0.033797
+  },
+  {
+    "name": "Matiakoali",
+    "region": "Goulmou",
+    "province": "Gourma",
+    "pcode": "BF630104",
+    "latitude": 12.361926,
+    "longitude": 1.037741
+  },
+  {
+    "name": "Midebdo",
+    "region": "Djôrô",
+    "province": "Noumbiel",
+    "pcode": "BF570305",
+    "latitude": 9.988102,
+    "longitude": -3.142656
+  },
+  {
+    "name": "Morlaba",
+    "region": "Guiriko",
+    "province": "Kénédougou",
+    "pcode": "BF530208",
+    "latitude": 11.900631,
+    "longitude": -5.019739
+  },
+  {
+    "name": "Moussodougou",
+    "region": "Tannounyan",
+    "province": "Comoé",
+    "pcode": "BF470104",
+    "latitude": 10.833173,
+    "longitude": -4.936468
+  },
+  {
+    "name": "Mégué",
+    "region": "Oubri",
+    "province": "Ganzourgou",
+    "pcode": "BF550103",
+    "latitude": 12.422384,
+    "longitude": -0.713971
+  },
+  {
+    "name": "Môgtédo",
+    "region": "Oubri",
+    "province": "Ganzourgou",
+    "pcode": "BF550104",
+    "latitude": 12.285971,
+    "longitude": -0.836515
+  },
+  {
+    "name": "Nagbingou",
+    "region": "Koulsé",
+    "province": "Namentenga",
+    "pcode": "BF490205",
+    "latitude": 13.553792,
+    "longitude": -0.466208
+  },
+  {
+    "name": "Nagréongo",
+    "region": "Oubri",
+    "province": "Bassitenga",
+    "pcode": "BF550304",
+    "latitude": 12.475579,
+    "longitude": -1.200961
+  },
+  {
+    "name": "Nako",
+    "region": "Djôrô",
+    "province": "Poni",
+    "pcode": "BF570409",
+    "latitude": 10.632585,
+    "longitude": -3.05472
+  },
+  {
+    "name": "Namissiguima (Sandbondtenga)",
+    "region": "Koulsé",
+    "province": "Sandbondtenga",
+    "pcode": "BF490307",
+    "latitude": 13.512655,
+    "longitude": -1.287207
+  },
+  {
+    "name": "Namissiguima (Yatenga)",
+    "region": "Yaadga",
+    "province": "Yatenga",
+    "pcode": "BF540306",
+    "latitude": 13.61739,
+    "longitude": -2.218536
+  },
+  {
+    "name": "Namouno",
+    "region": "Tapoa",
+    "province": "Gobnangou",
+    "pcode": "BF600203",
+    "latitude": 11.860027,
+    "longitude": 1.70012
+  },
+  {
+    "name": "Nandiala",
+    "region": "Nando",
+    "province": "Boulkiemdé",
+    "pcode": "BF500107",
+    "latitude": 12.329611,
+    "longitude": -2.171186
+  },
+  {
+    "name": "Nanoro",
+    "region": "Nando",
+    "province": "Boulkiemdé",
+    "pcode": "BF500106",
+    "latitude": 12.68698,
+    "longitude": -2.196171
+  },
+  {
+    "name": "Nassoumbou",
+    "region": "Soum",
+    "province": "Djelgodji",
+    "pcode": "BF590105",
+    "latitude": 14.409236,
+    "longitude": -1.551966
+  },
+  {
+    "name": "Nasséré",
+    "region": "Koulsé",
+    "province": "Bam",
+    "pcode": "BF490104",
+    "latitude": 13.320385,
+    "longitude": -1.360513
+  },
+  {
+    "name": "Ndôrôla",
+    "region": "Guiriko",
+    "province": "Kénédougou",
+    "pcode": "BF530209",
+    "latitude": 11.764108,
+    "longitude": -4.817667
+  },
+  {
+    "name": "Niabouri",
+    "region": "Nando",
+    "province": "Sissili",
+    "pcode": "BF500305",
+    "latitude": 11.268724,
+    "longitude": -2.637073
+  },
+  {
+    "name": "Niangoloko",
+    "region": "Tannounyan",
+    "province": "Comoé",
+    "pcode": "BF470105",
+    "latitude": 10.281491,
+    "longitude": -4.917168
+  },
+  {
+    "name": "Niankôrôdougou",
+    "region": "Tannounyan",
+    "province": "Léraba",
+    "pcode": "BF470205",
+    "latitude": 10.454746,
+    "longitude": -5.302816
+  },
+  {
+    "name": "Niaogho",
+    "region": "Nakambé",
+    "province": "Boulgou",
+    "pcode": "BF480109",
+    "latitude": 11.765507,
+    "longitude": -0.764684
+  },
+  {
+    "name": "Niou",
+    "region": "Oubri",
+    "province": "Kourwéogo",
+    "pcode": "BF550203",
+    "latitude": 12.76775,
+    "longitude": -1.933819
+  },
+  {
+    "name": "Niégo",
+    "region": "Djôrô",
+    "province": "Ioba",
+    "pcode": "BF570205",
+    "latitude": 11.111929,
+    "longitude": -2.695825
+  },
+  {
+    "name": "Nobéré",
+    "region": "Nazinon",
+    "province": "Zoundwéogo",
+    "pcode": "BF510307",
+    "latitude": 11.556257,
+    "longitude": -1.201672
+  },
+  {
+    "name": "Nouna",
+    "region": "Sourou",
+    "province": "Kossin",
+    "pcode": "BF610109",
+    "latitude": 12.733905,
+    "longitude": -3.857261
+  },
+  {
+    "name": "Nébiélianayou",
+    "region": "Nando",
+    "province": "Sissili",
+    "pcode": "BF500304",
+    "latitude": 11.891196,
+    "longitude": -2.36164
+  },
+  {
+    "name": "Orodara",
+    "region": "Guiriko",
+    "province": "Kénédougou",
+    "pcode": "BF530210",
+    "latitude": 10.982141,
+    "longitude": -4.915109
+  },
+  {
+    "name": "Oronkua",
+    "region": "Djôrô",
+    "province": "Ioba",
+    "pcode": "BF570206",
+    "latitude": 11.280697,
+    "longitude": -3.101471
+  },
+  {
+    "name": "Ouagadougou",
+    "region": "Kadiogo",
+    "province": "Kadiogo",
+    "pcode": "BF130004",
+    "latitude": 12.368327,
+    "longitude": -1.528654
+  },
+  {
+    "name": "Ouahigouya",
+    "region": "Yaadga",
+    "province": "Yatenga",
+    "pcode": "BF540307",
+    "latitude": 13.577008,
+    "longitude": -2.417951
+  },
+  {
+    "name": "Ouargaye",
+    "region": "Nakambé",
+    "province": "Koulpélogo",
+    "pcode": "BF480204",
+    "latitude": 11.505356,
+    "longitude": 0.058297
+  },
+  {
+    "name": "Ouarkoye",
+    "region": "Bankui",
+    "province": "Mouhoun",
+    "pcode": "BF620305",
+    "latitude": 12.095489,
+    "longitude": -3.667493
+  },
+  {
+    "name": "Ouindigui",
+    "region": "Yaadga",
+    "province": "Loroum",
+    "pcode": "BF540102",
+    "latitude": 13.680935,
+    "longitude": -1.966906
+  },
+  {
+    "name": "Oula",
+    "region": "Yaadga",
+    "province": "Yatenga",
+    "pcode": "BF540308",
+    "latitude": 13.487814,
+    "longitude": -2.328207
+  },
+  {
+    "name": "Ourgou-Manéga",
+    "region": "Oubri",
+    "province": "Bassitenga",
+    "pcode": "BF550305",
+    "latitude": 12.778878,
+    "longitude": -1.510738
+  },
+  {
+    "name": "Ouri",
+    "region": "Bankui",
+    "province": "Balé",
+    "pcode": "BF620105",
+    "latitude": 11.97129,
+    "longitude": -3.038643
+  },
+  {
+    "name": "Oursi",
+    "region": "Liptako",
+    "province": "Oudalan",
+    "pcode": "BF640104",
+    "latitude": 14.675578,
+    "longitude": -0.460743
+  },
+  {
+    "name": "Ouéléni",
+    "region": "Tannounyan",
+    "province": "Léraba",
+    "pcode": "BF470206",
+    "latitude": 10.842589,
+    "longitude": -5.344417
+  },
+  {
+    "name": "Ouéssa",
+    "region": "Djôrô",
+    "province": "Ioba",
+    "pcode": "BF570207",
+    "latitude": 11.044838,
+    "longitude": -2.786816
+  },
+  {
+    "name": "Ouô",
+    "region": "Tannounyan",
+    "province": "Comoé",
+    "pcode": "BF470106",
+    "latitude": 10.400027,
+    "longitude": -3.846064
+  },
+  {
+    "name": "Pabré",
+    "region": "Kadiogo",
+    "province": "Kadiogo",
+    "pcode": "BF130005",
+    "latitude": 12.521474,
+    "longitude": -1.58639
+  },
+  {
+    "name": "Padéma",
+    "region": "Guiriko",
+    "province": "Houet",
+    "pcode": "BF530110",
+    "latitude": 11.645136,
+    "longitude": -4.260342
+  },
+  {
+    "name": "Pama",
+    "region": "Goulmou",
+    "province": "Kompienga",
+    "pcode": "BF630203",
+    "latitude": 11.246693,
+    "longitude": 0.709889
+  },
+  {
+    "name": "Partiaga",
+    "region": "Tapoa",
+    "province": "Gobnangou",
+    "pcode": "BF600204",
+    "latitude": 11.931468,
+    "longitude": 1.624644
+  },
+  {
+    "name": "Pella",
+    "region": "Nando",
+    "province": "Boulkiemdé",
+    "pcode": "BF500108",
+    "latitude": 12.584281,
+    "longitude": -2.033302
+  },
+  {
+    "name": "Pensa",
+    "region": "Koulsé",
+    "province": "Sandbondtenga",
+    "pcode": "BF490308",
+    "latitude": 13.643672,
+    "longitude": -0.808502
+  },
+  {
+    "name": "Pibaoré",
+    "region": "Koulsé",
+    "province": "Sandbondtenga",
+    "pcode": "BF490309",
+    "latitude": 12.905245,
+    "longitude": -0.813035
+  },
+  {
+    "name": "Pilimpikou",
+    "region": "Yaadga",
+    "province": "Passoré",
+    "pcode": "BF540208",
+    "latitude": 12.708034,
+    "longitude": -2.259523
+  },
+  {
+    "name": "Pissila",
+    "region": "Koulsé",
+    "province": "Sandbondtenga",
+    "pcode": "BF490310",
+    "latitude": 13.163348,
+    "longitude": -0.825142
+  },
+  {
+    "name": "Piéla",
+    "region": "Sirba",
+    "province": "Gnagna",
+    "pcode": "BF580106",
+    "latitude": 12.718883,
+    "longitude": -0.139951
+  },
+  {
+    "name": "Po",
+    "region": "Nazinon",
+    "province": "Nahouri",
+    "pcode": "BF510202",
+    "latitude": 11.167599,
+    "longitude": -1.146213
+  },
+  {
+    "name": "Poa",
+    "region": "Nando",
+    "province": "Boulkiemdé",
+    "pcode": "BF500109",
+    "latitude": 12.209437,
+    "longitude": -2.10639
+  },
+  {
+    "name": "Pobé-Mengao",
+    "region": "Soum",
+    "province": "Djelgodji",
+    "pcode": "BF590106",
+    "latitude": 13.900764,
+    "longitude": -1.763839
+  },
+  {
+    "name": "Pompoï",
+    "region": "Bankui",
+    "province": "Balé",
+    "pcode": "BF620107",
+    "latitude": 11.858083,
+    "longitude": -3.233977
+  },
+  {
+    "name": "Pouni",
+    "region": "Nando",
+    "province": "Sanguié",
+    "pcode": "BF500206",
+    "latitude": 11.956514,
+    "longitude": -2.547791
+  },
+  {
+    "name": "Poura",
+    "region": "Bankui",
+    "province": "Balé",
+    "pcode": "BF620108",
+    "latitude": 11.59174,
+    "longitude": -2.759303
+  },
+  {
+    "name": "Pouytenga",
+    "region": "Nakambé",
+    "province": "Kourittenga",
+    "pcode": "BF480307",
+    "latitude": 12.245126,
+    "longitude": -0.430682
+  },
+  {
+    "name": "Pâ",
+    "region": "Bankui",
+    "province": "Balé",
+    "pcode": "BF620106",
+    "latitude": 11.549036,
+    "longitude": -3.259647
+  },
+  {
+    "name": "Péni",
+    "region": "Guiriko",
+    "province": "Houet",
+    "pcode": "BF530111",
+    "latitude": 10.948979,
+    "longitude": -4.472628
+  },
+  {
+    "name": "Périgban",
+    "region": "Djôrô",
+    "province": "Poni",
+    "pcode": "BF570410",
+    "latitude": 10.225661,
+    "longitude": -3.349214
+  },
+  {
+    "name": "Rambo",
+    "region": "Yaadga",
+    "province": "Yatenga",
+    "pcode": "BF540309",
+    "latitude": 13.233989,
+    "longitude": -1.821848
+  },
+  {
+    "name": "Ramongo",
+    "region": "Nando",
+    "province": "Boulkiemdé",
+    "pcode": "BF500110",
+    "latitude": 12.216248,
+    "longitude": -2.238366
+  },
+  {
+    "name": "Rollo",
+    "region": "Koulsé",
+    "province": "Bam",
+    "pcode": "BF490105",
+    "latitude": 13.601166,
+    "longitude": -1.702629
+  },
+  {
+    "name": "Roukô",
+    "region": "Koulsé",
+    "province": "Bam",
+    "pcode": "BF490106",
+    "latitude": 13.214024,
+    "longitude": -1.631195
+  },
+  {
+    "name": "Réo",
+    "region": "Nando",
+    "province": "Sanguié",
+    "pcode": "BF500207",
+    "latitude": 12.319342,
+    "longitude": -2.472366
+  },
+  {
+    "name": "Saaba",
+    "region": "Kadiogo",
+    "province": "Kadiogo",
+    "pcode": "BF130006",
+    "latitude": 12.371793,
+    "longitude": -1.418283
+  },
+  {
+    "name": "Sabou",
+    "region": "Nando",
+    "province": "Boulkiemdé",
+    "pcode": "BF500111",
+    "latitude": 12.060209,
+    "longitude": -2.225862
+  },
+  {
+    "name": "Sabsé",
+    "region": "Koulsé",
+    "province": "Bam",
+    "pcode": "BF490107",
+    "latitude": 13.200274,
+    "longitude": -1.525079
+  },
+  {
+    "name": "Safané",
+    "region": "Bankui",
+    "province": "Mouhoun",
+    "pcode": "BF620306",
+    "latitude": 12.126627,
+    "longitude": -3.231367
+  },
+  {
+    "name": "Samba",
+    "region": "Yaadga",
+    "province": "Passoré",
+    "pcode": "BF540209",
+    "latitude": 12.669835,
+    "longitude": -2.381661
+  },
+  {
+    "name": "Sami",
+    "region": "Bankui",
+    "province": "Banwa",
+    "pcode": "BF620203",
+    "latitude": 12.100607,
+    "longitude": -4.55282
+  },
+  {
+    "name": "Sampelga",
+    "region": "Liptako",
+    "province": "Séno",
+    "pcode": "BF640205",
+    "latitude": 13.751368,
+    "longitude": 0.21865
+  },
+  {
+    "name": "Samôgôgouan",
+    "region": "Guiriko",
+    "province": "Kénédougou",
+    "pcode": "BF530212",
+    "latitude": 11.394556,
+    "longitude": -4.938318
+  },
+  {
+    "name": "Samôgôyiri",
+    "region": "Guiriko",
+    "province": "Kénédougou",
+    "pcode": "BF530211",
+    "latitude": 10.930313,
+    "longitude": -5.119807
+  },
+  {
+    "name": "Sanaba",
+    "region": "Bankui",
+    "province": "Banwa",
+    "pcode": "BF620204",
+    "latitude": 12.406722,
+    "longitude": -3.81426
+  },
+  {
+    "name": "Sangha",
+    "region": "Nakambé",
+    "province": "Koulpélogo",
+    "pcode": "BF480205",
+    "latitude": 11.176933,
+    "longitude": 0.161228
+  },
+  {
+    "name": "Saolgo",
+    "region": "Oubri",
+    "province": "Ganzourgou",
+    "pcode": "BF550105",
+    "latitude": 12.44413,
+    "longitude": -0.617302
+  },
+  {
+    "name": "Saponé",
+    "region": "Nazinon",
+    "province": "Bazèga",
+    "pcode": "BF510106",
+    "latitude": 12.050795,
+    "longitude": -1.603404
+  },
+  {
+    "name": "Sapouy",
+    "region": "Nando",
+    "province": "Ziro",
+    "pcode": "BF500406",
+    "latitude": 11.550175,
+    "longitude": -1.770783
+  },
+  {
+    "name": "Satiri",
+    "region": "Guiriko",
+    "province": "Houet",
+    "pcode": "BF530112",
+    "latitude": 11.435634,
+    "longitude": -4.038138
+  },
+  {
+    "name": "Sebba",
+    "region": "Liptako",
+    "province": "Yagha",
+    "pcode": "BF640303",
+    "latitude": 13.441348,
+    "longitude": 0.525383
+  },
+  {
+    "name": "Senguènèga",
+    "region": "Yaadga",
+    "province": "Yatenga",
+    "pcode": "BF540310",
+    "latitude": 13.437513,
+    "longitude": -1.965582
+  },
+  {
+    "name": "Seytenga",
+    "region": "Liptako",
+    "province": "Séno",
+    "pcode": "BF640206",
+    "latitude": 13.972833,
+    "longitude": 0.304219
+  },
+  {
+    "name": "Siby",
+    "region": "Bankui",
+    "province": "Balé",
+    "pcode": "BF620109",
+    "latitude": 11.853413,
+    "longitude": -2.974503
+  },
+  {
+    "name": "Sidéradougou",
+    "region": "Tannounyan",
+    "province": "Comoé",
+    "pcode": "BF470107",
+    "latitude": 10.677627,
+    "longitude": -4.257608
+  },
+  {
+    "name": "Siglé",
+    "region": "Nando",
+    "province": "Boulkiemdé",
+    "pcode": "BF500112",
+    "latitude": 12.556218,
+    "longitude": -1.888038
+  },
+  {
+    "name": "Silly",
+    "region": "Nando",
+    "province": "Sissili",
+    "pcode": "BF500306",
+    "latitude": 11.600753,
+    "longitude": -2.493387
+  },
+  {
+    "name": "Sindo",
+    "region": "Guiriko",
+    "province": "Kénédougou",
+    "pcode": "BF530213",
+    "latitude": 11.544464,
+    "longitude": -5.187767
+  },
+  {
+    "name": "Sindou",
+    "region": "Tannounyan",
+    "province": "Léraba",
+    "pcode": "BF470207",
+    "latitude": 10.65969,
+    "longitude": -5.163105
+  },
+  {
+    "name": "Soa",
+    "region": "Nando",
+    "province": "Boulkiemdé",
+    "pcode": "BF500113",
+    "latitude": 12.518958,
+    "longitude": -2.183819
+  },
+  {
+    "name": "Solenzo",
+    "region": "Bankui",
+    "province": "Banwa",
+    "pcode": "BF620205",
+    "latitude": 12.180413,
+    "longitude": -4.081721
+  },
+  {
+    "name": "Solhan",
+    "region": "Liptako",
+    "province": "Yagha",
+    "pcode": "BF640304",
+    "latitude": 13.376186,
+    "longitude": 0.457174
+  },
+  {
+    "name": "Sollé",
+    "region": "Yaadga",
+    "province": "Loroum",
+    "pcode": "BF540103",
+    "latitude": 14.121718,
+    "longitude": -2.115238
+  },
+  {
+    "name": "Soubakaniédougou",
+    "region": "Tannounyan",
+    "province": "Comoé",
+    "pcode": "BF470108",
+    "latitude": 10.475042,
+    "longitude": -5.003713
+  },
+  {
+    "name": "Soudougui",
+    "region": "Nakambé",
+    "province": "Koulpélogo",
+    "pcode": "BF480206",
+    "latitude": 11.201346,
+    "longitude": 0.326919
+  },
+  {
+    "name": "Sourgou",
+    "region": "Nando",
+    "province": "Boulkiemdé",
+    "pcode": "BF500114",
+    "latitude": 12.132145,
+    "longitude": -2.292766
+  },
+  {
+    "name": "Sourgoubila",
+    "region": "Oubri",
+    "province": "Kourwéogo",
+    "pcode": "BF550204",
+    "latitude": 12.41502,
+    "longitude": -1.810207
+  },
+  {
+    "name": "Sônô",
+    "region": "Sourou",
+    "province": "Kossin",
+    "pcode": "BF610110",
+    "latitude": 12.829649,
+    "longitude": -3.493988
+  },
+  {
+    "name": "Tambaga",
+    "region": "Tapoa",
+    "province": "Gobnangou",
+    "pcode": "BF600205",
+    "latitude": 11.799337,
+    "longitude": 1.742899
+  },
+  {
+    "name": "Tangaye",
+    "region": "Yaadga",
+    "province": "Yatenga",
+    "pcode": "BF540311",
+    "latitude": 13.540685,
+    "longitude": -2.544528
+  },
+  {
+    "name": "Tanguen-Dassouri",
+    "region": "Kadiogo",
+    "province": "Kadiogo",
+    "pcode": "BF130007",
+    "latitude": 12.274335,
+    "longitude": -1.716369
+  },
+  {
+    "name": "Tankougounadié",
+    "region": "Liptako",
+    "province": "Yagha",
+    "pcode": "BF640305",
+    "latitude": 13.567182,
+    "longitude": 0.73907
+  },
+  {
+    "name": "Tansarga",
+    "region": "Tapoa",
+    "province": "Gobnangou",
+    "pcode": "BF600206",
+    "latitude": 11.875561,
+    "longitude": 1.870024
+  },
+  {
+    "name": "Tansila",
+    "region": "Bankui",
+    "province": "Banwa",
+    "pcode": "BF620206",
+    "latitude": 12.422245,
+    "longitude": -4.394437
+  },
+  {
+    "name": "Tchériba",
+    "region": "Bankui",
+    "province": "Mouhoun",
+    "pcode": "BF620307",
+    "latitude": 12.264628,
+    "longitude": -3.085983
+  },
+  {
+    "name": "Tenkodogo",
+    "region": "Nakambé",
+    "province": "Boulgou",
+    "pcode": "BF480110",
+    "latitude": 11.78063,
+    "longitude": -0.36688
+  },
+  {
+    "name": "Tensobentenga",
+    "region": "Nakambé",
+    "province": "Kourittenga",
+    "pcode": "BF480308",
+    "latitude": 12.002328,
+    "longitude": -0.264537
+  },
+  {
+    "name": "Thion",
+    "region": "Sirba",
+    "province": "Gnagna",
+    "pcode": "BF580107",
+    "latitude": 13.072708,
+    "longitude": -0.319436
+  },
+  {
+    "name": "Thiou (Boulkiemdé)",
+    "region": "Nando",
+    "province": "Boulkiemdé",
+    "pcode": "BF500115",
+    "latitude": 11.95316,
+    "longitude": -2.197538
+  },
+  {
+    "name": "Thiou (Yatenga)",
+    "region": "Yaadga",
+    "province": "Yatenga",
+    "pcode": "BF540312",
+    "latitude": 13.803543,
+    "longitude": -2.657739
+  },
+  {
+    "name": "Tiankoura",
+    "region": "Djôrô",
+    "province": "Bougouriba",
+    "pcode": "BF570105",
+    "latitude": 10.761204,
+    "longitude": -3.262002
+  },
+  {
+    "name": "Tibga",
+    "region": "Goulmou",
+    "province": "Gourma",
+    "pcode": "BF630105",
+    "latitude": 12.16881,
+    "longitude": 0.060994
+  },
+  {
+    "name": "Tikaré",
+    "region": "Koulsé",
+    "province": "Bam",
+    "pcode": "BF490108",
+    "latitude": 13.289124,
+    "longitude": -1.728053
+  },
+  {
+    "name": "Tin-Akoff",
+    "region": "Liptako",
+    "province": "Oudalan",
+    "pcode": "BF640105",
+    "latitude": 14.966342,
+    "longitude": -0.163713
+  },
+  {
+    "name": "Titabè",
+    "region": "Liptako",
+    "province": "Yagha",
+    "pcode": "BF640306",
+    "latitude": 13.767734,
+    "longitude": 0.430367
+  },
+  {
+    "name": "Titao",
+    "region": "Yaadga",
+    "province": "Loroum",
+    "pcode": "BF540104",
+    "latitude": 13.768953,
+    "longitude": -2.071725
+  },
+  {
+    "name": "Tiébélé",
+    "region": "Nazinon",
+    "province": "Nahouri",
+    "pcode": "BF510203",
+    "latitude": 11.096182,
+    "longitude": -0.965571
+  },
+  {
+    "name": "Tiéfora",
+    "region": "Tannounyan",
+    "province": "Comoé",
+    "pcode": "BF470109",
+    "latitude": 10.626474,
+    "longitude": -4.553034
+  },
+  {
+    "name": "To",
+    "region": "Nando",
+    "province": "Sissili",
+    "pcode": "BF500307",
+    "latitude": 11.445976,
+    "longitude": -2.220078
+  },
+  {
+    "name": "Toma",
+    "region": "Sourou",
+    "province": "Nayala",
+    "pcode": "BF610204",
+    "latitude": 12.763773,
+    "longitude": -2.896426
+  },
+  {
+    "name": "Tongomayel",
+    "region": "Soum",
+    "province": "Djelgodji",
+    "pcode": "BF590107",
+    "latitude": 14.068002,
+    "longitude": -1.481454
+  },
+  {
+    "name": "Tougan",
+    "region": "Sourou",
+    "province": "Sourou",
+    "pcode": "BF610308",
+    "latitude": 13.071519,
+    "longitude": -3.068786
+  },
+  {
+    "name": "Tougo",
+    "region": "Yaadga",
+    "province": "Zondoma",
+    "pcode": "BF540405",
+    "latitude": 13.206225,
+    "longitude": -2.117269
+  },
+  {
+    "name": "Tougouri",
+    "region": "Koulsé",
+    "province": "Namentenga",
+    "pcode": "BF490206",
+    "latitude": 13.317233,
+    "longitude": -0.516852
+  },
+  {
+    "name": "Toussiana",
+    "region": "Guiriko",
+    "province": "Houet",
+    "pcode": "BF530113",
+    "latitude": 10.837703,
+    "longitude": -4.62024
+  },
+  {
+    "name": "Toèguen",
+    "region": "Oubri",
+    "province": "Kourwéogo",
+    "pcode": "BF550205",
+    "latitude": 12.815866,
+    "longitude": -1.727575
+  },
+  {
+    "name": "Toécé",
+    "region": "Nazinon",
+    "province": "Bazèga",
+    "pcode": "BF510107",
+    "latitude": 11.828699,
+    "longitude": -1.264497
+  },
+  {
+    "name": "Toéni",
+    "region": "Sourou",
+    "province": "Sourou",
+    "pcode": "BF610307",
+    "latitude": 13.437623,
+    "longitude": -3.18378
+  },
+  {
+    "name": "Ténado",
+    "region": "Nando",
+    "province": "Sanguié",
+    "pcode": "BF500208",
+    "latitude": 12.197164,
+    "longitude": -2.598446
+  },
+  {
+    "name": "Wolonkoto",
+    "region": "Tannounyan",
+    "province": "Léraba",
+    "pcode": "BF470208",
+    "latitude": 10.670721,
+    "longitude": -4.979579
+  },
+  {
+    "name": "Yaba",
+    "region": "Sourou",
+    "province": "Nayala",
+    "pcode": "BF610205",
+    "latitude": 12.872685,
+    "longitude": -2.855484
+  },
+  {
+    "name": "Yaho",
+    "region": "Bankui",
+    "province": "Balé",
+    "pcode": "BF620110",
+    "latitude": 11.814019,
+    "longitude": -3.546066
+  },
+  {
+    "name": "Yako",
+    "region": "Yaadga",
+    "province": "Passoré",
+    "pcode": "BF540210",
+    "latitude": 12.961448,
+    "longitude": -2.265422
+  },
+  {
+    "name": "Yalgo",
+    "region": "Koulsé",
+    "province": "Namentenga",
+    "pcode": "BF490207",
+    "latitude": 13.588928,
+    "longitude": -0.262829
+  },
+  {
+    "name": "Yamba",
+    "region": "Goulmou",
+    "province": "Gourma",
+    "pcode": "BF630106",
+    "latitude": 12.296566,
+    "longitude": 0.336981
+  },
+  {
+    "name": "Yargatenga",
+    "region": "Nakambé",
+    "province": "Koulpélogo",
+    "pcode": "BF480207",
+    "latitude": 11.21374,
+    "longitude": 0.009793
+  },
+  {
+    "name": "Yargo",
+    "region": "Nakambé",
+    "province": "Kourittenga",
+    "pcode": "BF480309",
+    "latitude": 12.067626,
+    "longitude": -0.272658
+  },
+  {
+    "name": "Yondé",
+    "region": "Nakambé",
+    "province": "Koulpélogo",
+    "pcode": "BF480208",
+    "latitude": 11.501123,
+    "longitude": 0.141027
+  },
+  {
+    "name": "Yé",
+    "region": "Sourou",
+    "province": "Nayala",
+    "pcode": "BF610206",
+    "latitude": 12.604334,
+    "longitude": -3.11321
+  },
+  {
+    "name": "Zabré",
+    "region": "Nakambé",
+    "province": "Boulgou",
+    "pcode": "BF480111",
+    "latitude": 11.18084,
+    "longitude": -0.634146
+  },
+  {
+    "name": "Zam",
+    "region": "Oubri",
+    "province": "Ganzourgou",
+    "pcode": "BF550106",
+    "latitude": 12.336008,
+    "longitude": -0.834065
+  },
+  {
+    "name": "Zambo",
+    "region": "Djôrô",
+    "province": "Ioba",
+    "pcode": "BF570208",
+    "latitude": 10.808581,
+    "longitude": -3.00318
+  },
+  {
+    "name": "Zamo",
+    "region": "Nando",
+    "province": "Sanguié",
+    "pcode": "BF500209",
+    "latitude": 12.019515,
+    "longitude": -2.712627
+  },
+  {
+    "name": "Zawara",
+    "region": "Nando",
+    "province": "Sanguié",
+    "pcode": "BF500210",
+    "latitude": 11.786623,
+    "longitude": -2.586175
+  },
+  {
+    "name": "Zecco",
+    "region": "Nazinon",
+    "province": "Nahouri",
+    "pcode": "BF510204",
+    "latitude": 11.028814,
+    "longitude": -0.858882
+  },
+  {
+    "name": "Ziga",
+    "region": "Koulsé",
+    "province": "Sandbondtenga",
+    "pcode": "BF490311",
+    "latitude": 12.618466,
+    "longitude": -0.830897
+  },
+  {
+    "name": "Zimtanga",
+    "region": "Koulsé",
+    "province": "Bam",
+    "pcode": "BF490109",
+    "latitude": 13.439611,
+    "longitude": -1.516554
+  },
+  {
+    "name": "Ziniaré",
+    "region": "Oubri",
+    "province": "Bassitenga",
+    "pcode": "BF550306",
+    "latitude": 12.582349,
+    "longitude": -1.297172
+  },
+  {
+    "name": "Ziou",
+    "region": "Nazinon",
+    "province": "Nahouri",
+    "pcode": "BF510205",
+    "latitude": 11.037564,
+    "longitude": -0.780465
+  },
+  {
+    "name": "Zitenga",
+    "region": "Oubri",
+    "province": "Bassitenga",
+    "pcode": "BF550307",
+    "latitude": 12.747064,
+    "longitude": -1.307534
+  },
+  {
+    "name": "Zoaga",
+    "region": "Nakambé",
+    "province": "Boulgou",
+    "pcode": "BF480112",
+    "latitude": 11.060172,
+    "longitude": -0.597776
+  },
+  {
+    "name": "Zogoré",
+    "region": "Yaadga",
+    "province": "Yatenga",
+    "pcode": "BF540313",
+    "latitude": 13.396892,
+    "longitude": -2.592591
+  },
+  {
+    "name": "Zonsé",
+    "region": "Nakambé",
+    "province": "Boulgou",
+    "pcode": "BF480113",
+    "latitude": 11.356268,
+    "longitude": -0.628196
+  },
+  {
+    "name": "Zoungou",
+    "region": "Oubri",
+    "province": "Ganzourgou",
+    "pcode": "BF550108",
+    "latitude": 12.152671,
+    "longitude": -0.536143
+  },
+  {
+    "name": "Zéguédéguen",
+    "region": "Koulsé",
+    "province": "Namentenga",
+    "pcode": "BF490208",
+    "latitude": 12.965178,
+    "longitude": -0.454123
+  },
+  {
+    "name": "Zôrgho",
+    "region": "Oubri",
+    "province": "Ganzourgou",
+    "pcode": "BF550107",
+    "latitude": 12.247422,
+    "longitude": -0.615213
+  }
+]

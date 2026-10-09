@@ -1596,8 +1596,7 @@ Ingestion des fichiers WRF (NetCDF) de l'ANAM et résumés journaliers par zone.
 
 ### `GET /forecasts`
 
-Résumés journaliers par zone (température, précipitations, vent, humidité). Public, comme les
-autres contenus de référence.
+Résumés journaliers par zone. Public, comme les autres contenus de référence.
 
 Trois façons de choisir les zones, combinables avec `forecast_date` :
 - rien -> toutes les zones qui ont une prévision enregistrée (jusqu'à 351 communes si tout le
@@ -1605,6 +1604,11 @@ Trois façons de choisir les zones, combinables avec `forecast_date` :
 - `pilot_only=true` -> seulement les 5 communes pilotes ;
 - `zone_id=...` (identifiant obtenu via `GET /zones`) ou `zone_name=...` (nom exact, ex. "Kaya")
   -> une seule zone. `zone_name` évite d'avoir à connaître l'identifiant à l'avance.
+
+`fields` choisit le NIVEAU de détail renvoyé (pas les zones) : `core` (par défaut, les 4
+indicateurs habituels) ou `extended` (les mêmes + nébulosité/rayonnement/sol...). Pour une
+variable précise qui n'est dans aucun des deux, ou pour TOUTES les 242 variables du fichier,
+voir `GET /forecasts/variables` (catalogue) et `GET /forecasts/raw` (valeurs à la demande).
 
 Sans `forecast_date`, renvoie TOUTES les prévisions enregistrées (pas seulement les plus
 récentes) : si plusieurs fichiers ont été ingérés pour des jours différents, filtrer par date
@@ -1620,6 +1624,7 @@ ou trier côté client.
 | `zone_name` | query |  | string (facultatif) | Nom exact d'une commune/région (ex. "Kaya"), insensible à la casse -- alternative à zone_id quand on ne le connaît pas |
 | `pilot_only` | query |  | boolean | Seulement les 5 communes pilotes, comme GET /zones?pilot_only |
 | `forecast_date` | query |  | string (facultatif) | AAAA-MM-JJ |
+| `fields` | query |  | `core` \| `extended` | "core" (température/pluie/vent/humidité, par défaut) ou "extended" (en plus : nébulosité, rayonnement, sol... -- voir GET /forecasts/variables) |
 
 **Réponse 200** : liste de ZoneForecastOut
 Liste de : ZoneForecastOut
@@ -1639,6 +1644,7 @@ Liste de : ZoneForecastOut
 | `wind_speed_mean_ms` | number | oui |  |
 | `wind_speed_max_ms` | number | oui |  |
 | `humidity_mean_pct` | number | oui |  |
+| `extended` | dictionnaire de number (facultatif) | oui | Variables étendues (nébulosité, rayonnement, sol...) ; absent si non calculées pour cette ligne |
 
 ### `GET /forecasts/incoming`
 
@@ -1678,6 +1684,36 @@ Domaine déduit du nom de fichier (`wrfout_d02_...` -> `d02`).
 | `zones_skipped` | integer | oui |  |
 | `created_at` | string (date-time) | oui |  |
 | `finished_at` | string (date-time) (facultatif) | oui |  |
+
+### `GET /forecasts/raw`
+
+Valeurs horaires BRUTES (pas de résumé pré-calculé) d'une ou plusieurs variables, à la
+demande, directement depuis le fichier WRF source -- qui doit encore exister dans
+`wrf_incoming_dir` (il n'est pas gardé en base, voir `module3/README.md`). Plus lent que
+`GET /forecasts` (relit le fichier), mais donne accès à n'importe laquelle des 242 variables,
+pas seulement celles déjà résumées.
+
+**Accès :** Connexion requise, permission `content:manage` (rôles : Agent ANAM, Administrateur).
+
+**Paramètres**
+
+| Nom | Où | Obligatoire | Type | Description |
+|---|---|---|---|---|
+| `run_id` | query | oui | string | Identifiant de l'ingestion (voir GET /forecasts/runs) -- détermine quel fichier source relire |
+| `zone_id` | query |  | string (facultatif) | Identifiant de la zone (voir GET /zones) |
+| `zone_name` | query |  | string (facultatif) | Nom exact de la zone, alternative à zone_id |
+| `variable` | query | oui | liste de string | Nom(s) de variable (voir GET /forecasts/variables) ; répéter le paramètre pour en demander plusieurs, ou passer "all" pour les 242 |
+| `level` | query |  | integer (facultatif) | Index de niveau pour une variable à 4 dimensions (profil vertical ou niveau de sol) ; omis pour une variable de surface simple |
+
+**Réponse 200** : RawVariablesResponse
+
+| Champ | Type | Obligatoire | Description |
+|---|---|---|---|
+| `zone_id` | string | oui |  |
+| `zone_name` | string | oui |  |
+| `forecast_date` | string (facultatif) | oui |  |
+| `results` | dictionnaire de RawVariableOut | oui |  |
+| `errors` | dictionnaire de string |  | Variable -> raison de l'échec (absente du fichier, mauvaise dimension...) |
 
 ### `GET /forecasts/runs`
 
@@ -1731,6 +1767,28 @@ Liste de : ForecastRunOut
 | `zones_skipped` | integer | oui |  |
 | `created_at` | string (date-time) | oui |  |
 | `finished_at` | string (date-time) (facultatif) | oui |  |
+
+### `GET /forecasts/variables`
+
+Catalogue complet des 242 variables du format de sortie WRF (nom, description, unité,
+dimensions), annotées `in_core`/`in_extended` selon qu'elles sont déjà résumées par
+`GET /forecasts` (`fields=core`/`extended`) ou seulement accessibles à la demande via
+`GET /forecasts/raw`. Fixe (ne lit aucun fichier) : le schéma de sortie WRF ne change pas
+d'un fichier à l'autre.
+
+**Accès :** Connexion requise, permission `content:manage` (rôles : Agent ANAM, Administrateur).
+
+**Réponse 200** : liste de WrfVariableOut
+Liste de : WrfVariableOut
+
+| Champ | Type | Obligatoire | Description |
+|---|---|---|---|
+| `name` | string | oui |  |
+| `description` | string | oui |  |
+| `units` | string | oui |  |
+| `dims` | liste de string | oui |  |
+| `in_core` | boolean | oui |  |
+| `in_extended` | boolean | oui |  |
 
 ## Plateforme
 

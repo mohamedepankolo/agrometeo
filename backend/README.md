@@ -10,7 +10,7 @@ l'ANAM seront fournis.
 backend/
   app/                 le service (routers/ = les routes, par domaine)
   testui/app.py        interface de test (Streamlit)
-  tests/               90 tests automatiques
+  tests/               94 tests automatiques
   docs/                GUIDE_FRONTEND.md · API_REFERENCE.md · openapi.json  (à remettre aux front-end)
   scripts/export_docs.py   régénère la documentation depuis le code
 ../module1/            la chaîne audio/vidéo (appelée par le backend)
@@ -95,7 +95,12 @@ versionnés), puis ingérés un par un :
    de choisir les zones (combinables avec `?forecast_date=AAAA-MM-JJ`) : sans filtre (toutes les
    communes), `?pilot_only=true` (seulement les 5 pilotes), ou une seule commune par `?zone_id=...`
    (identifiant, via `GET /zones`) ou `?zone_name=Kaya` (nom exact, pratique quand on ne connaît
-   pas l'identifiant).
+   pas l'identifiant). `?fields=core` (par défaut, 4 indicateurs) ou `?fields=extended` (+ nébulosité,
+   rayonnement, sol...) choisit le niveau de détail.
+4. `GET /forecasts/variables` (catalogue des 242 variables du fichier) et `GET /forecasts/raw`
+   (valeurs horaires brutes de n'importe laquelle, à la demande, `variable=all` pour les 242 d'un
+   coup) pour aller au-delà de `core`/`extended` — nécessite que le fichier source soit encore dans
+   `wrf_incoming_dir` (409 sinon, rien n'est gardé en base au-delà de core/extended).
 
 Détails (format des fichiers, calculs, piège des `:` dans les noms de fichiers sous Windows) dans
 [module3/README.md](../module3/README.md).
@@ -148,4 +153,4 @@ Mots de passe argon2 · jetons JWT courts + refresh à usage unique avec détect
 
 ## Tests
 
-`pytest` (90 tests) : authentification, rôles et permissions, cycle de vie des alertes/bulletins/avis, ciblage et suivi des diffusions, carte, paramètres, canaux d'envoi (Orange, FCM, WhatsApp contre des serveurs simulés), prévisions WRF (Module 3, sur un fichier NetCDF synthétique mais structurellement identique aux fichiers réels), documentation. La génération audio/vidéo du Module 1 y est simulée (aucun appel réseau) ; elle a été vérifiée séparément en réel de bout en bout. Le Module 3 a aussi été vérifié contre les 3 vrais fichiers WRF reçus (hors suite automatisée : ~5 Go chacun).
+`pytest` (94 tests) : authentification, rôles et permissions, cycle de vie des alertes/bulletins/avis, ciblage et suivi des diffusions, carte, paramètres, canaux d'envoi (Orange, FCM, WhatsApp contre des serveurs simulés), prévisions WRF (Module 3, sur un fichier NetCDF synthétique mais structurellement identique aux fichiers réels), documentation. La génération audio/vidéo du Module 1 y est simulée (aucun appel réseau) ; elle a été vérifiée séparément en réel de bout en bout. Le Module 3 a aussi été vérifié contre les 3 vrais fichiers WRF reçus (hors suite automatisée : ~5 Go chacun).

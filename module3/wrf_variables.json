@@ -1,0 +1,2365 @@
+[
+  {
+    "name": "Times",
+    "description": "",
+    "units": "",
+    "dims": [
+      "Time",
+      "DateStrLen"
+    ]
+  },
+  {
+    "name": "XLAT",
+    "description": "LATITUDE, SOUTH IS NEGATIVE",
+    "units": "degree_north",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "XLONG",
+    "description": "LONGITUDE, WEST IS NEGATIVE",
+    "units": "degree_east",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "LU_INDEX",
+    "description": "LAND USE CATEGORY",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "ZNU",
+    "description": "eta values on half (mass) levels",
+    "units": "",
+    "dims": [
+      "Time",
+      "bottom_top"
+    ]
+  },
+  {
+    "name": "ZNW",
+    "description": "eta values on full (w) levels",
+    "units": "",
+    "dims": [
+      "Time",
+      "bottom_top_stag"
+    ]
+  },
+  {
+    "name": "ZS",
+    "description": "DEPTHS OF CENTERS OF SOIL LAYERS",
+    "units": "m",
+    "dims": [
+      "Time",
+      "soil_layers_stag"
+    ]
+  },
+  {
+    "name": "DZS",
+    "description": "THICKNESSES OF SOIL LAYERS",
+    "units": "m",
+    "dims": [
+      "Time",
+      "soil_layers_stag"
+    ]
+  },
+  {
+    "name": "VAR_SSO",
+    "description": "variance of subgrid-scale orography",
+    "units": "m2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "BATHYMETRY_FLAG",
+    "description": "Flag for bathymetry in the global attributes for metgrid data",
+    "units": "-",
+    "dims": [
+      "Time"
+    ]
+  },
+  {
+    "name": "U",
+    "description": "x-wind component",
+    "units": "m s-1",
+    "dims": [
+      "Time",
+      "bottom_top",
+      "south_north",
+      "west_east_stag"
+    ]
+  },
+  {
+    "name": "V",
+    "description": "y-wind component",
+    "units": "m s-1",
+    "dims": [
+      "Time",
+      "bottom_top",
+      "south_north_stag",
+      "west_east"
+    ]
+  },
+  {
+    "name": "W",
+    "description": "z-wind component",
+    "units": "m s-1",
+    "dims": [
+      "Time",
+      "bottom_top_stag",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "PH",
+    "description": "perturbation geopotential",
+    "units": "m2 s-2",
+    "dims": [
+      "Time",
+      "bottom_top_stag",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "PHB",
+    "description": "base-state geopotential",
+    "units": "m2 s-2",
+    "dims": [
+      "Time",
+      "bottom_top_stag",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "T",
+    "description": "perturbation potential temperature theta-t0",
+    "units": "K",
+    "dims": [
+      "Time",
+      "bottom_top",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "THM",
+    "description": "either 1) pert moist pot temp=(1+Rv/Rd Qv)*(theta)-T0, or 2) pert dry pot temp=t",
+    "units": "K",
+    "dims": [
+      "Time",
+      "bottom_top",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "HFX_FORCE",
+    "description": "SCM ideal surface sensible heat flux",
+    "units": "W m-2",
+    "dims": [
+      "Time"
+    ]
+  },
+  {
+    "name": "LH_FORCE",
+    "description": "SCM ideal surface latent heat flux",
+    "units": "W m-2",
+    "dims": [
+      "Time"
+    ]
+  },
+  {
+    "name": "TSK_FORCE",
+    "description": "SCM ideal surface skin temperature",
+    "units": "W m-2",
+    "dims": [
+      "Time"
+    ]
+  },
+  {
+    "name": "HFX_FORCE_TEND",
+    "description": "SCM ideal surface sensible heat flux tendency",
+    "units": "W m-2 s-1",
+    "dims": [
+      "Time"
+    ]
+  },
+  {
+    "name": "LH_FORCE_TEND",
+    "description": "SCM ideal surface latent heat flux tendency",
+    "units": "W m-2 s-1",
+    "dims": [
+      "Time"
+    ]
+  },
+  {
+    "name": "TSK_FORCE_TEND",
+    "description": "SCM ideal surface skin temperature tendency",
+    "units": "W m-2 s-1",
+    "dims": [
+      "Time"
+    ]
+  },
+  {
+    "name": "MU",
+    "description": "perturbation dry air mass in column",
+    "units": "Pa",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "MUB",
+    "description": "base state dry air mass in column",
+    "units": "Pa",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "NEST_POS",
+    "description": "-",
+    "units": "-",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "P",
+    "description": "perturbation pressure",
+    "units": "Pa",
+    "dims": [
+      "Time",
+      "bottom_top",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "PB",
+    "description": "BASE STATE PRESSURE",
+    "units": "Pa",
+    "dims": [
+      "Time",
+      "bottom_top",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "FNM",
+    "description": "upper weight for vertical stretching",
+    "units": "",
+    "dims": [
+      "Time",
+      "bottom_top"
+    ]
+  },
+  {
+    "name": "FNP",
+    "description": "lower weight for vertical stretching",
+    "units": "",
+    "dims": [
+      "Time",
+      "bottom_top"
+    ]
+  },
+  {
+    "name": "RDNW",
+    "description": "inverse d(eta) values between full (w) levels",
+    "units": "",
+    "dims": [
+      "Time",
+      "bottom_top"
+    ]
+  },
+  {
+    "name": "RDN",
+    "description": "inverse d(eta) values between half (mass) levels",
+    "units": "",
+    "dims": [
+      "Time",
+      "bottom_top"
+    ]
+  },
+  {
+    "name": "DNW",
+    "description": "d(eta) values between full (w) levels",
+    "units": "",
+    "dims": [
+      "Time",
+      "bottom_top"
+    ]
+  },
+  {
+    "name": "DN",
+    "description": "d(eta) values between half (mass) levels",
+    "units": "",
+    "dims": [
+      "Time",
+      "bottom_top"
+    ]
+  },
+  {
+    "name": "CFN",
+    "description": "extrapolation constant",
+    "units": "",
+    "dims": [
+      "Time"
+    ]
+  },
+  {
+    "name": "CFN1",
+    "description": "extrapolation constant",
+    "units": "",
+    "dims": [
+      "Time"
+    ]
+  },
+  {
+    "name": "THIS_IS_AN_IDEAL_RUN",
+    "description": "T/F flag: this is an ARW ideal simulation",
+    "units": "-",
+    "dims": [
+      "Time"
+    ]
+  },
+  {
+    "name": "P_HYD",
+    "description": "hydrostatic pressure",
+    "units": "Pa",
+    "dims": [
+      "Time",
+      "bottom_top",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "Q2",
+    "description": "QV at 2 M",
+    "units": "kg kg-1",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "T2",
+    "description": "TEMP at 2 M",
+    "units": "K",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "TH2",
+    "description": "POT TEMP at 2 M",
+    "units": "K",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "PSFC",
+    "description": "SFC PRESSURE",
+    "units": "Pa",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "U10",
+    "description": "U at 10 M",
+    "units": "m s-1",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "V10",
+    "description": "V at 10 M",
+    "units": "m s-1",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "RDX",
+    "description": "INVERSE X GRID LENGTH",
+    "units": "m-1",
+    "dims": [
+      "Time"
+    ]
+  },
+  {
+    "name": "RDY",
+    "description": "INVERSE Y GRID LENGTH",
+    "units": "m-1",
+    "dims": [
+      "Time"
+    ]
+  },
+  {
+    "name": "AREA2D",
+    "description": "Horizontal grid cell area, using dx, dy, and map factors",
+    "units": "m2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "DX2D",
+    "description": "Horizontal grid distance: sqrt(area2d)",
+    "units": "m",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "RESM",
+    "description": "TIME WEIGHT CONSTANT FOR SMALL STEPS",
+    "units": "",
+    "dims": [
+      "Time"
+    ]
+  },
+  {
+    "name": "ZETATOP",
+    "description": "ZETA AT MODEL TOP",
+    "units": "",
+    "dims": [
+      "Time"
+    ]
+  },
+  {
+    "name": "CF1",
+    "description": "2nd order extrapolation constant",
+    "units": "",
+    "dims": [
+      "Time"
+    ]
+  },
+  {
+    "name": "CF2",
+    "description": "2nd order extrapolation constant",
+    "units": "",
+    "dims": [
+      "Time"
+    ]
+  },
+  {
+    "name": "CF3",
+    "description": "2nd order extrapolation constant",
+    "units": "",
+    "dims": [
+      "Time"
+    ]
+  },
+  {
+    "name": "ITIMESTEP",
+    "description": "",
+    "units": "",
+    "dims": [
+      "Time"
+    ]
+  },
+  {
+    "name": "XTIME",
+    "description": "minutes since 2022-05-01 00:00:00",
+    "units": "minutes since 2022-05-01 00:00:00",
+    "dims": [
+      "Time"
+    ]
+  },
+  {
+    "name": "QVAPOR",
+    "description": "Water vapor mixing ratio",
+    "units": "kg kg-1",
+    "dims": [
+      "Time",
+      "bottom_top",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "QCLOUD",
+    "description": "Cloud water mixing ratio",
+    "units": "kg kg-1",
+    "dims": [
+      "Time",
+      "bottom_top",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "QRAIN",
+    "description": "Rain water mixing ratio",
+    "units": "kg kg-1",
+    "dims": [
+      "Time",
+      "bottom_top",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "QICE",
+    "description": "Ice mixing ratio",
+    "units": "kg kg-1",
+    "dims": [
+      "Time",
+      "bottom_top",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "QSNOW",
+    "description": "Snow mixing ratio",
+    "units": "kg kg-1",
+    "dims": [
+      "Time",
+      "bottom_top",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "QGRAUP",
+    "description": "Graupel mixing ratio",
+    "units": "kg kg-1",
+    "dims": [
+      "Time",
+      "bottom_top",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "QNICE",
+    "description": "Ice Number concentration",
+    "units": "  kg-1",
+    "dims": [
+      "Time",
+      "bottom_top",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "QNRAIN",
+    "description": "Rain Number concentration",
+    "units": "  kg(-1)",
+    "dims": [
+      "Time",
+      "bottom_top",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "SHDMAX",
+    "description": "ANNUAL MAX VEG FRACTION",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "SHDMIN",
+    "description": "ANNUAL MIN VEG FRACTION",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "SHDAVG",
+    "description": "ANNUAL AVG VEG FRACTION",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "SNOALB",
+    "description": "ANNUAL MAX SNOW ALBEDO IN FRACTION",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "TSLB",
+    "description": "SOIL TEMPERATURE",
+    "units": "K",
+    "dims": [
+      "Time",
+      "soil_layers_stag",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "SMOIS",
+    "description": "SOIL MOISTURE",
+    "units": "m3 m-3",
+    "dims": [
+      "Time",
+      "soil_layers_stag",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "SH2O",
+    "description": "SOIL LIQUID WATER",
+    "units": "m3 m-3",
+    "dims": [
+      "Time",
+      "soil_layers_stag",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "SMCREL",
+    "description": "RELATIVE SOIL MOISTURE",
+    "units": "",
+    "dims": [
+      "Time",
+      "soil_layers_stag",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "SEAICE",
+    "description": "SEA ICE FLAG",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "XICEM",
+    "description": "SEA ICE FLAG (PREVIOUS STEP)",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "SFROFF",
+    "description": "SURFACE RUNOFF",
+    "units": "mm",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "UDROFF",
+    "description": "UNDERGROUND RUNOFF",
+    "units": "mm",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "IVGTYP",
+    "description": "DOMINANT VEGETATION CATEGORY",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "ISLTYP",
+    "description": "DOMINANT SOIL CATEGORY",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "VEGFRA",
+    "description": "VEGETATION FRACTION",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "GRDFLX",
+    "description": "GROUND HEAT FLUX",
+    "units": "W m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "ACGRDFLX",
+    "description": "ACCUMULATED GROUND HEAT FLUX",
+    "units": "J m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "ACSNOM",
+    "description": "ACCUMULATED MELTED SNOW",
+    "units": "kg m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "SNOW",
+    "description": "SNOW WATER EQUIVALENT",
+    "units": "kg m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "SNOWH",
+    "description": "PHYSICAL SNOW DEPTH",
+    "units": "m",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "CANWAT",
+    "description": "CANOPY WATER",
+    "units": "kg m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "SSTSK",
+    "description": "SKIN SEA SURFACE TEMPERATURE",
+    "units": "K",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "WATER_DEPTH",
+    "description": "global water depth",
+    "units": "m",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "COSZEN",
+    "description": "COS of SOLAR ZENITH ANGLE",
+    "units": "dimensionless",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "LAI",
+    "description": "LEAF AREA INDEX",
+    "units": "m-2/m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "QKE",
+    "description": "twice TKE from MYNN",
+    "units": "m2 s-2",
+    "dims": [
+      "Time",
+      "bottom_top",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "DTAUX3D",
+    "description": "LOCAL U GWDO STRESS",
+    "units": "m s-1",
+    "dims": [
+      "Time",
+      "bottom_top",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "DTAUY3D",
+    "description": "LOCAL V GWDO STRESS",
+    "units": "m s-1",
+    "dims": [
+      "Time",
+      "bottom_top",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "DUSFCG",
+    "description": "COLUMN-INTEGRATED U GWDO STRESS",
+    "units": "Pa m s-1",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "DVSFCG",
+    "description": "COLUMN-INTEGRATED V GWDO STRESS",
+    "units": "Pa m s-1",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "VAR",
+    "description": "STANDARD DEVIATION OF SUBGRID-SCALE OROGRAPHY",
+    "units": "m",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "CON",
+    "description": "OROGRAPHIC CONVEXITY",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "OA1",
+    "description": "ASYMMETRY OF SUBGRID-SCALE OROGRAPHY FOR WESTERLY FLOW",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "OA2",
+    "description": "ASYMMETRY OF SUBGRID-SCALE OROGRAPHY FOR SOUTHERLY FLOW",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "OA3",
+    "description": "ASYMMETRY OF SUBGRID-SCALE OROGRAPHY FOR SOUTH-WESTERLY FLOW",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "OA4",
+    "description": "ASYMMETRY OF SUBGRID-SCALE OROGRAPHY FOR NORTH-WESTERLY FLOW",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "OL1",
+    "description": "NON-DIMENSIONAL EFFECTIVE OROGRAPHIC LENGTH FOR WESTERLY FLOW",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "OL2",
+    "description": "NON-DIMENSIONAL EFFECTIVE OROGRAPHIC LENGTH FOR SOUTHERLY FLOW",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "OL3",
+    "description": "NON-DIMENSIONAL EFFECTIVE OROGRAPHIC LENGTH FOR SOUTH-WESTERLY FLOW",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "OL4",
+    "description": "NON-DIMENSIONAL EFFECTIVE OROGRAPHIC LENGTH FOR NORTH-WESTERLY FLOW",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "TKE_PBL",
+    "description": "TKE from PBL",
+    "units": "m2 s-2",
+    "dims": [
+      "Time",
+      "bottom_top_stag",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "EL_PBL",
+    "description": "Length scale from PBL",
+    "units": "m",
+    "dims": [
+      "Time",
+      "bottom_top_stag",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "O3_GFS_DU",
+    "description": "Total ozone from GFS",
+    "units": "Dobson Units",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "MAPFAC_M",
+    "description": "Map scale factor on mass grid",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "MAPFAC_U",
+    "description": "Map scale factor on u-grid",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east_stag"
+    ]
+  },
+  {
+    "name": "MAPFAC_V",
+    "description": "Map scale factor on v-grid",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north_stag",
+      "west_east"
+    ]
+  },
+  {
+    "name": "MAPFAC_MX",
+    "description": "Map scale factor on mass grid, x direction",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "MAPFAC_MY",
+    "description": "Map scale factor on mass grid, y direction",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "MAPFAC_UX",
+    "description": "Map scale factor on u-grid, x direction",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east_stag"
+    ]
+  },
+  {
+    "name": "MAPFAC_UY",
+    "description": "Map scale factor on u-grid, y direction",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east_stag"
+    ]
+  },
+  {
+    "name": "MAPFAC_VX",
+    "description": "Map scale factor on v-grid, x direction",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north_stag",
+      "west_east"
+    ]
+  },
+  {
+    "name": "MF_VX_INV",
+    "description": "Inverse map scale factor on v-grid, x direction",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north_stag",
+      "west_east"
+    ]
+  },
+  {
+    "name": "MAPFAC_VY",
+    "description": "Map scale factor on v-grid, y direction",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north_stag",
+      "west_east"
+    ]
+  },
+  {
+    "name": "F",
+    "description": "Coriolis sine latitude term",
+    "units": "s-1",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "E",
+    "description": "Coriolis cosine latitude term",
+    "units": "s-1",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "SINALPHA",
+    "description": "Local sine of map rotation",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "COSALPHA",
+    "description": "Local cosine of map rotation",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "HGT",
+    "description": "Terrain Height",
+    "units": "m",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "TSK",
+    "description": "SURFACE SKIN TEMPERATURE",
+    "units": "K",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "P_TOP",
+    "description": "PRESSURE TOP OF THE MODEL",
+    "units": "Pa",
+    "dims": [
+      "Time"
+    ]
+  },
+  {
+    "name": "GOT_VAR_SSO",
+    "description": "whether VAR_SSO was included in WPS output (beginning V3.4)",
+    "units": "",
+    "dims": [
+      "Time"
+    ]
+  },
+  {
+    "name": "T00",
+    "description": "BASE STATE TEMPERATURE",
+    "units": "K",
+    "dims": [
+      "Time"
+    ]
+  },
+  {
+    "name": "P00",
+    "description": "BASE STATE PRESSURE",
+    "units": "Pa",
+    "dims": [
+      "Time"
+    ]
+  },
+  {
+    "name": "TLP",
+    "description": "BASE STATE LAPSE RATE",
+    "units": "",
+    "dims": [
+      "Time"
+    ]
+  },
+  {
+    "name": "TISO",
+    "description": "TEMP AT WHICH THE BASE T TURNS CONST",
+    "units": "K",
+    "dims": [
+      "Time"
+    ]
+  },
+  {
+    "name": "TLP_STRAT",
+    "description": "BASE STATE LAPSE RATE (DT/D(LN(P)) IN STRATOSPHERE",
+    "units": "K",
+    "dims": [
+      "Time"
+    ]
+  },
+  {
+    "name": "P_STRAT",
+    "description": "BASE STATE PRESSURE AT BOTTOM OF STRATOSPHERE",
+    "units": "Pa",
+    "dims": [
+      "Time"
+    ]
+  },
+  {
+    "name": "MAX_MSFTX",
+    "description": "Max map factor in domain",
+    "units": "",
+    "dims": [
+      "Time"
+    ]
+  },
+  {
+    "name": "MAX_MSFTY",
+    "description": "Max map factor in domain",
+    "units": "",
+    "dims": [
+      "Time"
+    ]
+  },
+  {
+    "name": "RAINC",
+    "description": "ACCUMULATED TOTAL CUMULUS PRECIPITATION",
+    "units": "mm",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "RAINSH",
+    "description": "ACCUMULATED SHALLOW CUMULUS PRECIPITATION",
+    "units": "mm",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "RAINNC",
+    "description": "ACCUMULATED TOTAL GRID SCALE PRECIPITATION",
+    "units": "mm",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "SNOWNC",
+    "description": "ACCUMULATED TOTAL GRID SCALE SNOW AND ICE",
+    "units": "mm",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "GRAUPELNC",
+    "description": "ACCUMULATED TOTAL GRID SCALE GRAUPEL",
+    "units": "mm",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "HAILNC",
+    "description": "ACCUMULATED TOTAL GRID SCALE HAIL",
+    "units": "mm",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "CLDFRA",
+    "description": "CLOUD FRACTION",
+    "units": "",
+    "dims": [
+      "Time",
+      "bottom_top",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "SWDOWN",
+    "description": "DOWNWARD SHORT WAVE FLUX AT GROUND SURFACE",
+    "units": "W m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "GLW",
+    "description": "DOWNWARD LONG WAVE FLUX AT GROUND SURFACE",
+    "units": "W m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "SWNORM",
+    "description": "NORMAL SHORT WAVE FLUX AT GROUND SURFACE (SLOPE-DEPENDENT)",
+    "units": "W m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "ACSWUPT",
+    "description": "ACCUMULATED UPWELLING SHORTWAVE FLUX AT TOP",
+    "units": "J m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "ACSWUPTC",
+    "description": "ACCUMULATED UPWELLING CLEAR SKY SHORTWAVE FLUX AT TOP",
+    "units": "J m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "ACSWDNT",
+    "description": "ACCUMULATED DOWNWELLING SHORTWAVE FLUX AT TOP",
+    "units": "J m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "ACSWDNTC",
+    "description": "ACCUMULATED DOWNWELLING CLEAR SKY SHORTWAVE FLUX AT TOP",
+    "units": "J m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "ACSWUPB",
+    "description": "ACCUMULATED UPWELLING SHORTWAVE FLUX AT BOTTOM",
+    "units": "J m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "ACSWUPBC",
+    "description": "ACCUMULATED UPWELLING CLEAR SKY SHORTWAVE FLUX AT BOTTOM",
+    "units": "J m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "ACSWDNB",
+    "description": "ACCUMULATED DOWNWELLING SHORTWAVE FLUX AT BOTTOM",
+    "units": "J m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "ACSWDNBC",
+    "description": "ACCUMULATED DOWNWELLING CLEAR SKY SHORTWAVE FLUX AT BOTTOM",
+    "units": "J m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "ACLWUPT",
+    "description": "ACCUMULATED UPWELLING LONGWAVE FLUX AT TOP",
+    "units": "J m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "ACLWUPTC",
+    "description": "ACCUMULATED UPWELLING CLEAR SKY LONGWAVE FLUX AT TOP",
+    "units": "J m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "ACLWDNT",
+    "description": "ACCUMULATED DOWNWELLING LONGWAVE FLUX AT TOP",
+    "units": "J m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "ACLWDNTC",
+    "description": "ACCUMULATED DOWNWELLING CLEAR SKY LONGWAVE FLUX AT TOP",
+    "units": "J m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "ACLWUPB",
+    "description": "ACCUMULATED UPWELLING LONGWAVE FLUX AT BOTTOM",
+    "units": "J m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "ACLWUPBC",
+    "description": "ACCUMULATED UPWELLING CLEAR SKY LONGWAVE FLUX AT BOTTOM",
+    "units": "J m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "ACLWDNB",
+    "description": "ACCUMULATED DOWNWELLING LONGWAVE FLUX AT BOTTOM",
+    "units": "J m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "ACLWDNBC",
+    "description": "ACCUMULATED DOWNWELLING CLEAR SKY LONGWAVE FLUX AT BOTTOM",
+    "units": "J m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "SWUPT",
+    "description": "INSTANTANEOUS UPWELLING SHORTWAVE FLUX AT TOP",
+    "units": "W m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "SWUPTC",
+    "description": "INSTANTANEOUS UPWELLING CLEAR SKY SHORTWAVE FLUX AT TOP",
+    "units": "W m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "SWDNT",
+    "description": "INSTANTANEOUS DOWNWELLING SHORTWAVE FLUX AT TOP",
+    "units": "W m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "SWDNTC",
+    "description": "INSTANTANEOUS DOWNWELLING CLEAR SKY SHORTWAVE FLUX AT TOP",
+    "units": "W m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "SWUPB",
+    "description": "INSTANTANEOUS UPWELLING SHORTWAVE FLUX AT BOTTOM",
+    "units": "W m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "SWUPBC",
+    "description": "INSTANTANEOUS UPWELLING CLEAR SKY SHORTWAVE FLUX AT BOTTOM",
+    "units": "W m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "SWDNB",
+    "description": "INSTANTANEOUS DOWNWELLING SHORTWAVE FLUX AT BOTTOM",
+    "units": "W m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "SWDNBC",
+    "description": "INSTANTANEOUS DOWNWELLING CLEAR SKY SHORTWAVE FLUX AT BOTTOM",
+    "units": "W m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "LWUPT",
+    "description": "INSTANTANEOUS UPWELLING LONGWAVE FLUX AT TOP",
+    "units": "W m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "LWUPTC",
+    "description": "INSTANTANEOUS UPWELLING CLEAR SKY LONGWAVE FLUX AT TOP",
+    "units": "W m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "LWDNT",
+    "description": "INSTANTANEOUS DOWNWELLING LONGWAVE FLUX AT TOP",
+    "units": "W m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "LWDNTC",
+    "description": "INSTANTANEOUS DOWNWELLING CLEAR SKY LONGWAVE FLUX AT TOP",
+    "units": "W m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "LWUPB",
+    "description": "INSTANTANEOUS UPWELLING LONGWAVE FLUX AT BOTTOM",
+    "units": "W m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "LWUPBC",
+    "description": "INSTANTANEOUS UPWELLING CLEAR SKY LONGWAVE FLUX AT BOTTOM",
+    "units": "W m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "LWDNB",
+    "description": "INSTANTANEOUS DOWNWELLING LONGWAVE FLUX AT BOTTOM",
+    "units": "W m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "LWDNBC",
+    "description": "INSTANTANEOUS DOWNWELLING CLEAR SKY LONGWAVE FLUX AT BOTTOM",
+    "units": "W m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "OLR",
+    "description": "TOA OUTGOING LONG WAVE",
+    "units": "W m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "XLAT_U",
+    "description": "LATITUDE, SOUTH IS NEGATIVE",
+    "units": "degree_north",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east_stag"
+    ]
+  },
+  {
+    "name": "XLONG_U",
+    "description": "LONGITUDE, WEST IS NEGATIVE",
+    "units": "degree_east",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east_stag"
+    ]
+  },
+  {
+    "name": "XLAT_V",
+    "description": "LATITUDE, SOUTH IS NEGATIVE",
+    "units": "degree_north",
+    "dims": [
+      "Time",
+      "south_north_stag",
+      "west_east"
+    ]
+  },
+  {
+    "name": "XLONG_V",
+    "description": "LONGITUDE, WEST IS NEGATIVE",
+    "units": "degree_east",
+    "dims": [
+      "Time",
+      "south_north_stag",
+      "west_east"
+    ]
+  },
+  {
+    "name": "ALBEDO",
+    "description": "ALBEDO",
+    "units": "-",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "CLAT",
+    "description": "COMPUTATIONAL GRID LATITUDE, SOUTH IS NEGATIVE",
+    "units": "degree_north",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "ALBBCK",
+    "description": "BACKGROUND ALBEDO",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "EMISS",
+    "description": "SURFACE EMISSIVITY",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "NOAHRES",
+    "description": "RESIDUAL OF THE NOAH SURFACE ENERGY BUDGET",
+    "units": "W m{-2}",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "TMN",
+    "description": "SOIL TEMPERATURE AT LOWER BOUNDARY",
+    "units": "K",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "XLAND",
+    "description": "LAND MASK (1 FOR LAND, 2 FOR WATER)",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "UST",
+    "description": "U* IN SIMILARITY THEORY",
+    "units": "m s-1",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "PBLH",
+    "description": "PBL HEIGHT",
+    "units": "m",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "HFX",
+    "description": "UPWARD HEAT FLUX AT THE SURFACE",
+    "units": "W m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "QFX",
+    "description": "UPWARD MOISTURE FLUX AT THE SURFACE",
+    "units": "kg m-2 s-1",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "LH",
+    "description": "LATENT HEAT FLUX AT THE SURFACE",
+    "units": "W m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "ACHFX",
+    "description": "ACCUMULATED UPWARD HEAT FLUX AT THE SURFACE",
+    "units": "J m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "ACLHF",
+    "description": "ACCUMULATED UPWARD LATENT HEAT FLUX AT THE SURFACE",
+    "units": "J m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "SNOWC",
+    "description": "FLAG INDICATING SNOW COVERAGE (1 FOR SNOW COVER)",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "SR",
+    "description": "fraction of frozen precipitation",
+    "units": "-",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "SAVE_TOPO_FROM_REAL",
+    "description": "1=original topo from real/0=topo modified by WRF",
+    "units": "flag",
+    "dims": [
+      "Time"
+    ]
+  },
+  {
+    "name": "ISEEDARR_SPPT",
+    "description": "Array to hold seed for restart, SPPT",
+    "units": "",
+    "dims": [
+      "Time",
+      "seed_dim_stag"
+    ]
+  },
+  {
+    "name": "ISEEDARR_SKEBS",
+    "description": "Array to hold seed for restart, SKEBS",
+    "units": "",
+    "dims": [
+      "Time",
+      "seed_dim_stag"
+    ]
+  },
+  {
+    "name": "ISEEDARR_RAND_PERTURB",
+    "description": "Array to hold seed for restart, RAND_PERT",
+    "units": "",
+    "dims": [
+      "Time",
+      "seed_dim_stag"
+    ]
+  },
+  {
+    "name": "ISEEDARRAY_SPP_CONV",
+    "description": "Array to hold seed for restart, RAND_PERT2",
+    "units": "",
+    "dims": [
+      "Time",
+      "seed_dim_stag"
+    ]
+  },
+  {
+    "name": "ISEEDARRAY_SPP_PBL",
+    "description": "Array to hold seed for restart, RAND_PERT3",
+    "units": "",
+    "dims": [
+      "Time",
+      "seed_dim_stag"
+    ]
+  },
+  {
+    "name": "ISEEDARRAY_SPP_LSM",
+    "description": "Array to hold seed for restart, RAND_PERT4",
+    "units": "",
+    "dims": [
+      "Time",
+      "seed_dim_stag"
+    ]
+  },
+  {
+    "name": "C1H",
+    "description": "half levels, c1h = d bf / d eta, using znw",
+    "units": "Dimensionless",
+    "dims": [
+      "Time",
+      "bottom_top"
+    ]
+  },
+  {
+    "name": "C2H",
+    "description": "half levels, c2h = (1-c1h)*(p0-pt)",
+    "units": "Pa",
+    "dims": [
+      "Time",
+      "bottom_top"
+    ]
+  },
+  {
+    "name": "C1F",
+    "description": "full levels, c1f = d bf / d eta, using znu",
+    "units": "Dimensionless",
+    "dims": [
+      "Time",
+      "bottom_top_stag"
+    ]
+  },
+  {
+    "name": "C2F",
+    "description": "full levels, c2f = (1-c1f)*(p0-pt)",
+    "units": "Pa",
+    "dims": [
+      "Time",
+      "bottom_top_stag"
+    ]
+  },
+  {
+    "name": "C3H",
+    "description": "half levels, c3h = bh",
+    "units": "Dimensionless",
+    "dims": [
+      "Time",
+      "bottom_top"
+    ]
+  },
+  {
+    "name": "C4H",
+    "description": "half levels, c4h = (eta-bh)*(p0-pt), using znu",
+    "units": "Pa",
+    "dims": [
+      "Time",
+      "bottom_top"
+    ]
+  },
+  {
+    "name": "C3F",
+    "description": "full levels, c3f = bf",
+    "units": "Dimensionless",
+    "dims": [
+      "Time",
+      "bottom_top_stag"
+    ]
+  },
+  {
+    "name": "C4F",
+    "description": "full levels, c4f = (eta-bf)*(p0-pt), using znw",
+    "units": "Pa",
+    "dims": [
+      "Time",
+      "bottom_top_stag"
+    ]
+  },
+  {
+    "name": "PCB",
+    "description": "base state dry air mass in column",
+    "units": "Pa",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "PC",
+    "description": "perturbation dry air mass in column",
+    "units": "Pa",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "CLDFRAC2D",
+    "description": "2-D MAX CLOUD FRACTION",
+    "units": "%",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "WVP",
+    "description": "WATER VAPOR PATH",
+    "units": "kg m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "LWP",
+    "description": "LIQUID CLOUD WATER PATH",
+    "units": "kg m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "IWP",
+    "description": "ICE CLOUD WATER PATH",
+    "units": "kg m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "SWP",
+    "description": "SNOW CLOUD WATER PATH",
+    "units": "kg m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "WP_SUM",
+    "description": "SUM OF LWP+IWP+SWP",
+    "units": "kg m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "LWP_TOT",
+    "description": "LIQUID CLOUD WATER PATH RESOLVED + UNRESOLVED",
+    "units": "kg m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "IWP_TOT",
+    "description": "ICE CLOUD WATER PATH RESOLVED + UNRESOLVED",
+    "units": "kg m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "WP_TOT_SUM",
+    "description": "SUM OF LWP+IWP+SWP RESOLVED + UNRESOLVED",
+    "units": "kg m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "RE_QC",
+    "description": "MASS-WEIGHTED LIQUID CLOUD EFFECTIVE RADIUS",
+    "units": "m",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "RE_QI",
+    "description": "MASS-WEIGHTED ICE EFFECTIVE RADIUS",
+    "units": "m",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "RE_QS",
+    "description": "MASS-WEIGHTED SNOW EFFECTIVE RADIUS",
+    "units": "m",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "RE_QC_TOT",
+    "description": "MASS-WEIGHTED LIQUID CLOUD EFFECTIVE RADIUS RESOLVED + UNRESOLVED",
+    "units": "m",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "RE_QI_TOT",
+    "description": "MASS-WEIGHTED ICE EFFECTIVE RADIUS RESOLVED + UNRESOLVED",
+    "units": "m",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "TAU_QC",
+    "description": "MASS-WEIGHTED LIQUID CLOUD OPTICAL THICKNESS",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "TAU_QI",
+    "description": "MASS-WEIGHTED ICE OPTICAL THICKNESS",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "TAU_QS",
+    "description": "MASS-WEIGHTED SNOW OPTICAL THICKNESS",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "TAU_QC_TOT",
+    "description": "MASS-WEIGHTED LIQUID CLOUD OPTICAL THICKNESS RESOLVED + UNRESOLVED",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "TAU_QI_TOT",
+    "description": "MASS-WEIGHTED ICE OPTICAL THICKNESS RESOLVED + UNRESOLVED",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "CBASEHT",
+    "description": "CLOUD BASE HEIGHT",
+    "units": "m agl",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "CTOPHT",
+    "description": "CLOUD TOP HEIGHT",
+    "units": "m agl",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "CBASEHT_TOT",
+    "description": "CLOUD BASE HEIGHT RESOLVED + UNRESOLVED",
+    "units": "m agl",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "CTOPHT_TOT",
+    "description": "CLOUD TOP HEIGHT RESOLVED + UNRESOLVED",
+    "units": "m agl",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "CLRNIDX",
+    "description": "CLEARNESS INDEX",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "SZA",
+    "description": "SOLAR ZENITH ANGLE",
+    "units": "deg",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "GHI_ACCUM",
+    "description": "ACCUMULATED GHI",
+    "units": "J m-2",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "LANDMASK",
+    "description": "LAND MASK (1 FOR LAND, 0 FOR WATER)",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "LAKEMASK",
+    "description": "LAKE MASK (1 FOR LAKE, 0 FOR NON-LAKE)",
+    "units": "",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "SST",
+    "description": "SEA SURFACE TEMPERATURE",
+    "units": "K",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  },
+  {
+    "name": "SST_INPUT",
+    "description": "SEA SURFACE TEMPERATURE FROM WRFLOWINPUT FILE",
+    "units": "K",
+    "dims": [
+      "Time",
+      "south_north",
+      "west_east"
+    ]
+  }
+]

@@ -29,6 +29,7 @@ def _write_fake_wrfout(path: Path) -> None:
         ds.createDimension("DateStrLen", 19)
         ds.createDimension("south_north", ny)
         ds.createDimension("west_east", nx)
+        ds.createDimension("soil_layers_stag", 4)
 
         times = ds.createVariable("Times", "S1", ("Time", "DateStrLen"))
         labels = ["2022-05-23_00:00:00", "2022-05-23_12:00:00", "2022-05-23_23:00:00"]
@@ -63,6 +64,16 @@ def _write_fake_wrfout(path: Path) -> None:
         for t, val in enumerate([0.0, 2.0, 3.0]):
             rainc[t] = val
             rainnc[t] = val * 0.5
+
+        # Variables etendues (module3.wrf_reader.EXTENDED_VARIABLES)
+        surf("CLDFRAC2D", 0.6)
+        surf("SWDOWN", 250.0)
+        surf("GLW", 400.0)
+        surf("PBLH", 900.0)
+        soil = ds.createVariable("SMOIS", "f4", ("Time", "soil_layers_stag", "south_north", "west_east"))
+        soil[:] = 0.15  # m3/m3 (-> 15 % une fois mis a l'echelle)
+        tslb = ds.createVariable("TSLB", "f4", ("Time", "soil_layers_stag", "south_north", "west_east"))
+        tslb[:] = 303.15  # K (-> 30 C)
     finally:
         ds.close()
 
@@ -234,3 +245,77 @@ def test_list_incoming_files(client, staff, wrf_file):
     r = client.get("/forecasts/incoming", headers=staff(Role.agent_anam))
     assert r.status_code == 200
     assert wrf_file in r.json()
+
+
+def test_list_variables_catalog(client, staff):
+    r = client.get("/forecasts/variables", headers=staff(Role.agent_anam))
+    assert r.status_code == 200
+    rows = r.json()
+    assert len(rows) == 242
+    by_name = {v["name"]: v for v in rows}
+    assert by_name["T2"]["in_core"] is True and by_name["T2"]["in_extended"] is False
+    assert by_name["SWDOWN"]["in_core"] is False and by_name["SWDOWN"]["in_extended"] is True
+    assert by_name["HGT"]["in_core"] is False and by_name["HGT"]["in_extended"] is False
+
+
+def test_list_forecasts_fields_core_vs_extended(client, staff, wrf_file, pilot_zone):
+    client.post("/forecasts/ingest", json={"filename": wrf_file}, headers=staff(Role.agent_anam))
+
+    core = client.get("/forecasts").json()[0]
+    assert core["extended"] is None
+
+    ext = client.get("/forecasts", params={"fields": "extended"}).json()[0]
+    assert ext["extended"]["nebulosite_pct"] == pytest.approx(60.0, abs=0.1)
+    assert ext["extended"]["temperature_sol_c"] == pytest.approx(30.0, abs=0.1)
+
+
+def test_raw_variable_single_and_all(client, staff, wrf_file, pilot_zone):
+    headers = staff(Role.agent_anam)
+    r = client.post("/forecasts/ingest", json={"filename": wrf_file}, headers=headers)
+    run_id = r.json()["id"]
+
+    # une seule variable, par zone_name
+    r = client.get("/forecasts/raw", headers=headers,
+                   params={"run_id": run_id, "zone_name": "Kaya-test", "variable": "SWDOWN"})
+    assert r.status_code == 200, r.text
+    body = r.json()
+    assert body["zone_name"] == "Kaya-test"
+    assert body["results"]["SWDOWN"]["mean"] == pytest.approx(250.0, abs=0.1)
+    assert len(body["results"]["SWDOWN"]["hourly_values"]) == 3  # 3 echeances dans le fichier de test
+
+    # variable a 4 dimensions sans level -> erreur rapportee, pas une exception serveur
+    r = client.get("/forecasts/raw", headers=headers,
+                   params={"run_id": run_id, "zone_id": pilot_zone.id, "variable": "SMOIS"})
+    assert r.status_code == 200
+    assert "SMOIS" in r.json()["errors"]
+
+    # avec level
+    r = client.get("/forecasts/raw", headers=headers,
+                   params={"run_id": run_id, "zone_id": pilot_zone.id, "variable": "SMOIS", "level": 0})
+    assert r.json()["results"]["SMOIS"]["mean"] == pytest.approx(0.15, abs=0.001)
+
+    # plusieurs variables d'un coup
+    r = client.get("/forecasts/raw", headers=headers, params={
+        "run_id": run_id, "zone_id": pilot_zone.id, "variable": ["T2", "U10"],
+    })
+    assert set(r.json()["results"]) == {"T2", "U10"}
+
+    # "all" -> les 242 (dont beaucoup en erreur : statiques, profils verticaux sans level...)
+    r = client.get("/forecasts/raw", headers=headers,
+                   params={"run_id": run_id, "zone_id": pilot_zone.id, "variable": "all"})
+    assert r.status_code == 200
+    body = r.json()
+    assert "T2" in body["results"] and "SWDOWN" in body["results"]
+
+
+def test_raw_variable_requires_source_file_still_present(client, staff, wrf_file, pilot_zone):
+    headers = staff(Role.agent_anam)
+    r = client.post("/forecasts/ingest", json={"filename": wrf_file}, headers=headers)
+    run_id = r.json()["id"]
+
+    import os
+    os.remove(Path(get_settings().wrf_incoming_dir) / wrf_file)
+
+    r = client.get("/forecasts/raw", headers=headers,
+                   params={"run_id": run_id, "zone_id": pilot_zone.id, "variable": "T2"})
+    assert r.status_code == 409

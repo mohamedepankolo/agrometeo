@@ -257,4 +257,10 @@ class ZoneForecast(Base):
     wind_speed_mean_ms: Mapped[float] = mapped_column(Float)
     wind_speed_max_ms: Mapped[float] = mapped_column(Float)
     humidity_mean_pct: Mapped[float] = mapped_column(Float)
+    # Variables "étendues" (nébulosité, rayonnement, hauteur de couche limite, humidité/température
+    # du sol...), cf. module3.wrf_reader.EXTENDED_VARIABLES -- {cle: valeur}, pas une colonne par
+    # variable pour pouvoir en ajouter sans migration. Le reste des 242 variables du fichier WRF
+    # n'est PAS stocké (ni ici ni ailleurs) : accessible à la demande via GET /forecasts/raw tant
+    # que le fichier source existe encore dans wrf_incoming_dir, cf. module3/README.md.
+    extended: Mapped[dict | None] = mapped_column(JSON)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=utcnow)

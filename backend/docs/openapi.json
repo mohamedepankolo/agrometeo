@@ -3367,7 +3367,7 @@
           "Prévisions (Module 3)"
         ],
         "summary": "List Forecasts",
-        "description": "Résumés journaliers par zone (température, précipitations, vent, humidité). Public, comme les\nautres contenus de référence.\n\nTrois façons de choisir les zones, combinables avec `forecast_date` :\n- rien -> toutes les zones qui ont une prévision enregistrée (jusqu'à 351 communes si tout le\n  pays a été ingéré, voir `module3/README.md`) ;\n- `pilot_only=true` -> seulement les 5 communes pilotes ;\n- `zone_id=...` (identifiant obtenu via `GET /zones`) ou `zone_name=...` (nom exact, ex. \"Kaya\")\n  -> une seule zone. `zone_name` évite d'avoir à connaître l'identifiant à l'avance.\n\nSans `forecast_date`, renvoie TOUTES les prévisions enregistrées (pas seulement les plus\nrécentes) : si plusieurs fichiers ont été ingérés pour des jours différents, filtrer par date\nou trier côté client.\n\n**Accès :** Public.",
+        "description": "Résumés journaliers par zone. Public, comme les autres contenus de référence.\n\nTrois façons de choisir les zones, combinables avec `forecast_date` :\n- rien -> toutes les zones qui ont une prévision enregistrée (jusqu'à 351 communes si tout le\n  pays a été ingéré, voir `module3/README.md`) ;\n- `pilot_only=true` -> seulement les 5 communes pilotes ;\n- `zone_id=...` (identifiant obtenu via `GET /zones`) ou `zone_name=...` (nom exact, ex. \"Kaya\")\n  -> une seule zone. `zone_name` évite d'avoir à connaître l'identifiant à l'avance.\n\n`fields` choisit le NIVEAU de détail renvoyé (pas les zones) : `core` (par défaut, les 4\nindicateurs habituels) ou `extended` (les mêmes + nébulosité/rayonnement/sol...). Pour une\nvariable précise qui n'est dans aucun des deux, ou pour TOUTES les 242 variables du fichier,\nvoir `GET /forecasts/variables` (catalogue) et `GET /forecasts/raw` (valeurs à la demande).\n\nSans `forecast_date`, renvoie TOUTES les prévisions enregistrées (pas seulement les plus\nrécentes) : si plusieurs fichiers ont été ingérés pour des jours différents, filtrer par date\nou trier côté client.\n\n**Accès :** Public.",
         "operationId": "list_forecasts_forecasts_get",
         "parameters": [
           {
@@ -3435,6 +3435,22 @@
               "title": "Forecast Date"
             },
             "description": "AAAA-MM-JJ"
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "enum": [
+                "core",
+                "extended"
+              ],
+              "type": "string",
+              "description": "\"core\" (température/pluie/vent/humidité, par défaut) ou \"extended\" (en plus : nébulosité, rayonnement, sol... -- voir GET /forecasts/variables)",
+              "default": "core",
+              "title": "Fields"
+            },
+            "description": "\"core\" (température/pluie/vent/humidité, par défaut) ou \"extended\" (en plus : nébulosité, rayonnement, sol... -- voir GET /forecasts/variables)"
           }
         ],
         "responses": {
@@ -3448,6 +3464,155 @@
                     "$ref": "#/components/schemas/ZoneForecastOut"
                   },
                   "title": "Response List Forecasts Forecasts Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/forecasts/variables": {
+      "get": {
+        "tags": [
+          "Prévisions (Module 3)"
+        ],
+        "summary": "List Variables",
+        "description": "Catalogue complet des 242 variables du format de sortie WRF (nom, description, unité,\ndimensions), annotées `in_core`/`in_extended` selon qu'elles sont déjà résumées par\n`GET /forecasts` (`fields=core`/`extended`) ou seulement accessibles à la demande via\n`GET /forecasts/raw`. Fixe (ne lit aucun fichier) : le schéma de sortie WRF ne change pas\nd'un fichier à l'autre.\n\n**Accès :** Connexion requise, permission `content:manage` (rôles : Agent ANAM, Administrateur).",
+        "operationId": "list_variables_forecasts_variables_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/WrfVariableOut"
+                  },
+                  "type": "array",
+                  "title": "Response List Variables Forecasts Variables Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/forecasts/raw": {
+      "get": {
+        "tags": [
+          "Prévisions (Module 3)"
+        ],
+        "summary": "Raw Forecast Variables",
+        "description": "Valeurs horaires BRUTES (pas de résumé pré-calculé) d'une ou plusieurs variables, à la\ndemande, directement depuis le fichier WRF source -- qui doit encore exister dans\n`wrf_incoming_dir` (il n'est pas gardé en base, voir `module3/README.md`). Plus lent que\n`GET /forecasts` (relit le fichier), mais donne accès à n'importe laquelle des 242 variables,\npas seulement celles déjà résumées.\n\n**Accès :** Connexion requise, permission `content:manage` (rôles : Agent ANAM, Administrateur).",
+        "operationId": "raw_forecast_variables_forecasts_raw_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "run_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Identifiant de l'ingestion (voir GET /forecasts/runs) -- détermine quel fichier source relire",
+              "title": "Run Id"
+            },
+            "description": "Identifiant de l'ingestion (voir GET /forecasts/runs) -- détermine quel fichier source relire"
+          },
+          {
+            "name": "zone_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Identifiant de la zone (voir GET /zones)",
+              "title": "Zone Id"
+            },
+            "description": "Identifiant de la zone (voir GET /zones)"
+          },
+          {
+            "name": "zone_name",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Nom exact de la zone, alternative à zone_id",
+              "title": "Zone Name"
+            },
+            "description": "Nom exact de la zone, alternative à zone_id"
+          },
+          {
+            "name": "variable",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Nom(s) de variable (voir GET /forecasts/variables) ; répéter le paramètre pour en demander plusieurs, ou passer \"all\" pour les 242",
+              "title": "Variable"
+            },
+            "description": "Nom(s) de variable (voir GET /forecasts/variables) ; répéter le paramètre pour en demander plusieurs, ou passer \"all\" pour les 242"
+          },
+          {
+            "name": "level",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Index de niveau pour une variable à 4 dimensions (profil vertical ou niveau de sol) ; omis pour une variable de surface simple",
+              "title": "Level"
+            },
+            "description": "Index de niveau pour une variable à 4 dimensions (profil vertical ou niveau de sol) ; omis pour une variable de surface simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RawVariablesResponse"
                 }
               }
             }
@@ -6568,6 +6733,105 @@
         "type": "object",
         "title": "ProfileUpdate"
       },
+      "RawVariableOut": {
+        "properties": {
+          "variable": {
+            "type": "string",
+            "title": "Variable"
+          },
+          "level": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Level"
+          },
+          "distance_km": {
+            "type": "number",
+            "title": "Distance Km"
+          },
+          "hourly_values": {
+            "items": {
+              "type": "number"
+            },
+            "type": "array",
+            "title": "Hourly Values"
+          },
+          "min": {
+            "type": "number",
+            "title": "Min"
+          },
+          "max": {
+            "type": "number",
+            "title": "Max"
+          },
+          "mean": {
+            "type": "number",
+            "title": "Mean"
+          }
+        },
+        "type": "object",
+        "required": [
+          "variable",
+          "level",
+          "distance_km",
+          "hourly_values",
+          "min",
+          "max",
+          "mean"
+        ],
+        "title": "RawVariableOut"
+      },
+      "RawVariablesResponse": {
+        "properties": {
+          "zone_id": {
+            "type": "string",
+            "title": "Zone Id"
+          },
+          "zone_name": {
+            "type": "string",
+            "title": "Zone Name"
+          },
+          "forecast_date": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Forecast Date"
+          },
+          "results": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/RawVariableOut"
+            },
+            "type": "object",
+            "title": "Results"
+          },
+          "errors": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Errors",
+            "description": "Variable -> raison de l'échec (absente du fichier, mauvaise dimension...)"
+          }
+        },
+        "type": "object",
+        "required": [
+          "zone_id",
+          "zone_name",
+          "forecast_date",
+          "results"
+        ],
+        "title": "RawVariablesResponse"
+      },
       "RefreshRequest": {
         "properties": {
           "refresh_token": {
@@ -7348,6 +7612,47 @@
         ],
         "title": "VerifyRequest"
       },
+      "WrfVariableOut": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "units": {
+            "type": "string",
+            "title": "Units"
+          },
+          "dims": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Dims"
+          },
+          "in_core": {
+            "type": "boolean",
+            "title": "In Core"
+          },
+          "in_extended": {
+            "type": "boolean",
+            "title": "In Extended"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "description",
+          "units",
+          "dims",
+          "in_core",
+          "in_extended"
+        ],
+        "title": "WrfVariableOut"
+      },
       "ZoneDetail": {
         "properties": {
           "id": {
@@ -7473,6 +7778,21 @@
           "humidity_mean_pct": {
             "type": "number",
             "title": "Humidity Mean Pct"
+          },
+          "extended": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "number"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Extended",
+            "description": "Variables étendues (nébulosité, rayonnement, sol...) ; absent si non calculées pour cette ligne"
           }
         },
         "type": "object",
@@ -7489,7 +7809,8 @@
           "precip_total_mm",
           "wind_speed_mean_ms",
           "wind_speed_max_ms",
-          "humidity_mean_pct"
+          "humidity_mean_pct",
+          "extended"
         ],
         "title": "ZoneForecastOut"
       },

@@ -60,7 +60,13 @@ Fonctions pures (pas de base de données, pas d'API) :
   une valeur élevée signale un point hors du domaine couvert par le fichier (grille à 3 km :
   `backend` ignore une zone au-delà de `wrf_max_distance_km`, 15 km par défaut).
 - `daily_summaries(path, points)` — plusieurs points en un seul passage sur le fichier
-  (`{clé: (lat, lon)}` -> `{clé: résumé}`).
+  (`{clé: (lat, lon)}` -> `{clé: résumé}`), résumé CORE + EXTENDED (voir "Les variables" plus bas).
+- `list_variables()` — catalogue des 242 variables (lu depuis `wrf_variables.json`, figé : ne lit
+  aucun fichier wrfout).
+- `raw_variable_at_point(ds, lat, lon, variable, level=None)` / `raw_variables_at_point(path, lat,
+  lon, variables, level=None)` — valeurs horaires BRUTES de n'importe quelle variable du catalogue
+  à un point (pas un résumé pré-calculé) ; `level` est obligatoire pour une variable à 4 dimensions
+  (profil vertical `bottom_top`, niveau de sol `soil_layers_stag`).
 
 L'humidité relative est calculée à partir de `T2`/`Q2`/`PSFC` par la formule de Magnus (approche
 standard en post-traitement WRF, ex. NCL/wrf-python) — WRF ne fournit pas directement l'humidité
@@ -74,9 +80,10 @@ relative à 2 m dans cette sortie.
   chaque zone qui a des coordonnées, enregistre les résultats.
 - `backend/app/routers/forecasts.py` — API : `GET /forecasts/incoming` (fichiers en attente),
   `POST /forecasts/ingest` (lance l'extraction), `GET /forecasts/runs[/{id}]` (suivi),
-  `GET /forecasts` (résultats par zone, public).
+  `GET /forecasts` (résultats par zone, public), `GET /forecasts/variables` (catalogue),
+  `GET /forecasts/raw` (valeurs brutes à la demande).
 - Modèles `ForecastRun` (une ingestion = un fichier) et `ZoneForecast` (un résumé = une zone pour
-  un jour donné) dans `backend/app/models_content.py`.
+  un jour donné, avec sa colonne `extended`) dans `backend/app/models_content.py`.
 
 ## Les 351 communes
 
@@ -98,6 +105,25 @@ Une fois un fichier ingéré, `GET /forecasts` peut renvoyer les résultats de t
   (obtenu via `GET /zones`) ; `zone_name` est une alternative pratique quand on connaît juste le
   nom (exact, insensible à la casse) et pas l'identifiant.
 
+## Les variables : trois niveaux d'accès
+
+Comme pour les communes (351 plutôt que 5), le même principe s'applique aux variables : accès
+large par défaut, avec la possibilité de cibler précisément.
+
+1. **`core`** (par défaut, `GET /forecasts`) — les 4 indicateurs habituels (temp. min/max/moyenne,
+   pluie, vent moyen/max, humidité), pré-calculés à l'ingestion et stockés en base pour chaque zone.
+2. **`extended`** (`GET /forecasts?fields=extended`) — en plus : nébulosité moyenne, rayonnement
+   solaire et infrarouge moyens, hauteur de la couche limite atmosphérique, humidité et température
+   du sol en surface (0-10 cm). Aussi pré-calculé et stocké à l'ingestion (colonne `extended`,
+   `module3.wrf_reader.EXTENDED_VARIABLES` pour la liste exacte et les unités).
+3. **N'importe quelle variable, ou toutes** (`GET /forecasts/variables` pour le catalogue des 242,
+   `GET /forecasts/raw?run_id=...&zone_id=...&variable=...` pour les valeurs horaires brutes —
+   `variable=all` pour les 242 d'un coup, ou répéter le paramètre pour plusieurs variables précises).
+   **Différence importante avec `core`/`extended`** : ceci n'est PAS stocké en base (242 variables
+   x 351 communes x chaque jour serait énorme et presque tout inutile) — calculé à la demande en
+   relisant le fichier source, qui doit donc **encore exister** dans `wrf_incoming_dir` (409 sinon).
+   Une variable à 4 dimensions (profil vertical, niveau de sol) demande un `level` explicite.
+
 ## Limites connues / à faire
 
 - **Extraction par point, pas par polygone.** Les zones n'ont pour l'instant que des coordonnées
@@ -107,6 +133,8 @@ Une fois un fichier ingéré, `GET /forecasts` peut renvoyer les résultats de t
 - **Un fichier = un jour, ingestion manuelle.** Pas encore d'automatisation pour traiter en bloc
   la trentaine de fichiers reçus (une simple boucle sur `POST /forecasts/ingest` suffirait, mais
   n'a pas été scriptée — l'équipe n'a pour l'instant que 3 fichiers de test en local).
-- Variables non exploitées : les 242 du fichier n'ont pas toutes un intérêt pour un bulletin
-  (profils verticaux, variables de microphysique...) ; T2/Q2/PSFC/U10/V10/RAINC/RAINNC couvrent
-  l'essentiel d'un résumé journalier grand public.
+- **`GET /forecasts/raw` dépend d'un fichier encore présent.** Si `wrf_incoming/` est nettoyé après
+  ingestion pour économiser l'espace disque (ce qui est fait manuellement aujourd'hui, cf. plus
+  haut), l'accès à une variable "à la demande" pour cette ingestion devient impossible -- seuls
+  `core` et `extended` (déjà stockés) restent disponibles. À garder en tête si l'accès aux 242
+  variables doit rester possible longtemps après l'ingestion.

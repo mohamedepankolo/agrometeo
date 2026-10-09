@@ -464,3 +464,32 @@ class ZoneForecastOut(BaseModel):
     wind_speed_mean_ms: float
     wind_speed_max_ms: float
     humidity_mean_pct: float
+    extended: dict[str, float] | None = Field(description="Variables étendues (nébulosité, rayonnement, "
+                                                           "sol...) ; absent si non calculées pour cette ligne")
+
+
+class WrfVariableOut(BaseModel):
+    name: str
+    description: str
+    units: str
+    dims: list[str]
+    in_core: bool
+    in_extended: bool
+
+
+class RawVariableOut(BaseModel):
+    variable: str
+    level: int | None
+    distance_km: float
+    hourly_values: list[float]
+    min: float
+    max: float
+    mean: float
+
+
+class RawVariablesResponse(BaseModel):
+    zone_id: str
+    zone_name: str
+    forecast_date: str | None
+    results: dict[str, RawVariableOut]
+    errors: dict[str, str] = Field(default_factory=dict, description="Variable -> raison de l'échec (absente du fichier, mauvaise dimension...)")

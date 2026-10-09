@@ -43,3 +43,21 @@ def daily_summaries(path: Path, points: dict[str, tuple[float, float]]) -> dict[
     import wrf_reader
 
     return wrf_reader.daily_summaries(path, points)
+
+
+def list_variables() -> list[dict]:
+    """Catalogue des 242 variables du format WRF (figé, ne lit aucun fichier)."""
+    _load()
+    import wrf_reader
+
+    return wrf_reader.list_variables()
+
+
+def raw_variables(path: Path, lat: float, lon: float, variables: list[str],
+                  level: int | None = None) -> dict[str, dict]:
+    """Valeurs horaires brutes d'une ou plusieurs variables à un point, directement depuis le
+    fichier source (doit encore exister dans wrf_incoming_dir)."""
+    _load()
+    import wrf_reader
+
+    return wrf_reader.raw_variables_at_point(path, lat, lon, variables, level)

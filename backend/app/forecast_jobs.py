@@ -76,6 +76,7 @@ def _ingest(db, run: ForecastRun) -> None:
         row.wind_speed_mean_ms = summary["wind_speed_mean_ms"]
         row.wind_speed_max_ms = summary["wind_speed_max_ms"]
         row.humidity_mean_pct = summary["humidity_mean_pct"]
+        row.extended = summary.get("extended") or None
         if existing is None:
             db.add(row)
         done += 1

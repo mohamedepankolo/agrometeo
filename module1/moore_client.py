@@ -229,7 +229,16 @@ _TTS_MAX_CHARS = 500
 # les virgules du texte juste avant la synthèse (jamais avant la traduction, qui
 # en a besoin pour son découpage) : on garde `.`/`!`/`?`/`;` qui marquent de vraies
 # coupures. À revalider si CITADEL fait évoluer son moteur TTS.
-_TTS_PAUSE_COMMA_RE = re.compile(r"\s*,\s*")
+#
+# Exception (trouvée le 30/09/2026 en analysant l'audio MMS fine-tuné du bulletin du
+# 25/09) : les relevés de pluviométrie utilisent la virgule comme séparateur décimal
+# ("31,5 mm"). Le remplacement aveugle la transformait en deux nombres distincts
+# ("31 5 mm"), lu comme "31... 5 mm" au lieu de "31 virgule 5 mm" — une régression
+# introduite par ce même correctif, pas spécifique à une voix ou un moteur TTS
+# donné. Les lookaround (?<!\d)/(?!\d) épargnent une virgule collée à des chiffres
+# des deux côtés (séparateur décimal) tout en gardant le comportement précédent
+# pour les virgules "de pause" entre mots.
+_TTS_PAUSE_COMMA_RE = re.compile(r"\s*(?<!\d),(?!\d)\s*")
 
 
 def _strip_pause_commas(text_moore: str) -> str:

@@ -59,6 +59,12 @@ class Settings(BaseSettings):
     # "nllb" (actuel) ou "nllb2" : à comparer avec un locuteur natif avant de basculer en production
     moore_model_type: str = "nllb"
 
+    # Observations de stations météo du Module 2 (exports GeoJSON, fournis par l'ANAM)
+    module2_dir: str = "../module2"
+    # Fichiers GeoJSON déposés ici par l'équipe ANAM : petits (~20 Ko), mais pas versionnés --
+    # format pas garanti stable, et pour rester cohérent avec wrf_incoming_dir ci-dessous.
+    observations_incoming_dir: str = "../observations_incoming"
+
     # Prévisions NetCDF du Module 3 (sorties du modèle WRF, fournies par l'ANAM)
     module3_dir: str = "../module3"
     # Fichiers wrfout déposés ici par l'équipe ANAM (USB, SFTP...) : plusieurs Go chacun, jamais

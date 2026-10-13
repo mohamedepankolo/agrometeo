@@ -264,3 +264,40 @@ class ZoneForecast(Base):
     # que le fichier source existe encore dans wrf_incoming_dir, cf. module3/README.md.
     extended: Mapped[dict | None] = mapped_column(JSON)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=utcnow)
+
+
+# ============================================================== Module 2 : observations de stations (GeoJSON)
+class Station(Base):
+    """Station météo physique de l'ANAM -- un référentiel à part de `Zone` (noms et nombre
+    différents des 351 communes). Nom gardé tel que fourni par l'ANAM, verbatim : des quasi-
+    doublons existent dans les exports reçus (ex. "Mane"/"Mané") et ne sont pas fusionnés
+    automatiquement, voir module2/README.md."""
+
+    __tablename__ = "stations"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    name: Mapped[str] = mapped_column(String(80), unique=True)
+    latitude: Mapped[float] = mapped_column(Float)
+    longitude: Mapped[float] = mapped_column(Float)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=utcnow)
+
+
+class StationObservation(Base):
+    """Relevé RÉEL d'une station pour un jour donné (mesure, pas une prévision -- contrairement
+    au Module 3). Une ligne par (station, date) ; les colonnes se remplissent au fur et à mesure
+    des imports (température, pluviométrie, humidité ne sont pas forcément reçues le même jour
+    pour la même station, cf. module2/README.md)."""
+
+    __tablename__ = "station_observations"
+    __table_args__ = (UniqueConstraint("station_id", "observed_date", name="uq_station_observation_date"),)
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    station_id: Mapped[str] = mapped_column(ForeignKey("stations.id", ondelete="CASCADE"), index=True)
+    observed_date: Mapped[str] = mapped_column(String(10), index=True)  # AAAA-MM-JJ
+    temp_min_c: Mapped[float | None] = mapped_column(Float)
+    temp_max_c: Mapped[float | None] = mapped_column(Float)
+    humidity_min_pct: Mapped[float | None] = mapped_column(Float)
+    humidity_max_pct: Mapped[float | None] = mapped_column(Float)
+    rainfall_mm: Mapped[float | None] = mapped_column(Float)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=utcnow)
+    updated_at: Mapped[datetime] = mapped_column(DateTime, default=utcnow, onupdate=utcnow)

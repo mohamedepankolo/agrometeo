@@ -44,7 +44,7 @@ def _ingest(db, run: ForecastRun) -> None:
     settings = get_settings()
     path = Path(settings.wrf_incoming_dir) / run.source_file
     if not path.is_absolute():
-        path = (Path(__file__).resolve().parents[2] / path).resolve()
+        path = (Path(__file__).resolve().parents[1] / path).resolve()
     if not path.is_file():
         raise FileNotFoundError(f"Fichier introuvable dans wrf_incoming_dir : {run.source_file}")
 

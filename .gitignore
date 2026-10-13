@@ -25,3 +25,6 @@ module1/.cache/
 
 # Fichiers WRF du Module 3 (plusieurs Go chacun) : jamais versionnés, déposés localement par l'équipe ANAM
 wrf_incoming/
+
+# Exports GeoJSON de stations du Module 2 : pas versionnés (format pas garanti stable)
+observations_incoming/

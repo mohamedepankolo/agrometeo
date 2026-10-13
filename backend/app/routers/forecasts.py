@@ -58,7 +58,7 @@ def list_incoming_files(_: User = Depends(require_permission("content:manage")))
     ingérés. Utile pour choisir le `filename` à passer à `POST /forecasts/ingest`."""
     d = Path(get_settings().wrf_incoming_dir)
     if not d.is_absolute():
-        d = (Path(__file__).resolve().parents[3] / d).resolve()
+        d = (Path(__file__).resolve().parents[2] / d).resolve()
     if not d.is_dir():
         return []
     return sorted(p.name for p in d.iterdir() if p.is_file())
@@ -166,7 +166,7 @@ def raw_forecast_variables(
     settings = get_settings()
     path = Path(settings.wrf_incoming_dir) / run.source_file
     if not path.is_absolute():
-        path = (Path(__file__).resolve().parents[3] / path).resolve()
+        path = (Path(__file__).resolve().parents[2] / path).resolve()
     if not path.is_file():
         raise HTTPException(status.HTTP_409_CONFLICT,
                             f"Fichier source de cette ingestion introuvable ({run.source_file}) -- "

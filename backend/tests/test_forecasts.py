@@ -179,6 +179,24 @@ def test_ingest_missing_file_marks_run_failed(client, staff):
     assert "introuvable" in body["error"]
 
 
+def test_default_incoming_dir_resolves_next_to_repo_root(client, staff):
+    """Régression : la résolution du chemin par défaut (`wrf_incoming_dir` relatif, pas remplacé
+    par la fixture `wrf_file`) doit pointer sur `agrometeo/wrf_incoming/`, pas un niveau plus
+    haut -- une erreur d'index (`parents[N]`) trouvée et corrigée dans `routers/forecasts.py`
+    (ici) ET `forecast_jobs.py`, qui partagent le même calcul."""
+    root = Path(__file__).resolve().parents[2]  # backend/tests -> backend -> agrometeo
+    incoming = root / "wrf_incoming"
+    incoming.mkdir(exist_ok=True)
+    marker = incoming / "_test_marker_default_path.txt"
+    marker.write_text("x", encoding="utf-8")
+    try:
+        r = client.get("/forecasts/incoming", headers=staff(Role.agent_anam))
+        assert r.status_code == 200
+        assert "_test_marker_default_path.txt" in r.json()
+    finally:
+        marker.unlink()
+
+
 def test_ingest_then_list_forecasts(client, staff, wrf_file, pilot_zone, far_zone):
     headers = staff(Role.agent_anam)
     r = client.post("/forecasts/ingest", json={"filename": wrf_file}, headers=headers)

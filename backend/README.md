@@ -2,18 +2,18 @@
 
 Une seule application **FastAPI** (PostgreSQL en production, SQLite pour développer) qui regroupe :
 authentification et rôles, bulletins et alertes avec audios/vidéos en français, anglais et mooré (Module 1),
-avis, zones et carte des alertes, prévisions WRF par zone (Module 3), diffusion multicanale (SMS, push,
-e-mail, WhatsApp) et back-office. Le Module 2 (observations GeoJSON) s'y ajoutera quand les fichiers de
-l'ANAM seront fournis.
+avis, zones et carte des alertes, observations de stations météo (Module 2), prévisions WRF par zone
+(Module 3), diffusion multicanale (SMS, push, e-mail, WhatsApp) et back-office.
 
 ```
 backend/
   app/                 le service (routers/ = les routes, par domaine)
   testui/app.py        interface de test (Streamlit)
-  tests/               94 tests automatiques
+  tests/               102 tests automatiques
   docs/                GUIDE_FRONTEND.md · API_REFERENCE.md · openapi.json  (à remettre aux front-end)
   scripts/export_docs.py   régénère la documentation depuis le code
 ../module1/            la chaîne audio/vidéo (appelée par le backend)
+../module2/            lecture des exports GeoJSON de stations météo (appelée par le backend)
 ../module3/            lecture des fichiers de prévisions WRF/NetCDF (appelée par le backend)
 ```
 
@@ -80,6 +80,24 @@ Avis    :  brouillon ─► publié ─► retiré
 - La carte donne à chaque zone le niveau le plus élevé de ses alertes actives (`vert` sinon).
 - La génération audio/vidéo est **asynchrone** (1 à 3 min, `media.status` : `none`/`processing`/`ready`/`failed`). Une alerte peut être publiée en texte seul si la génération échoue.
 
+## Observations (Module 2)
+
+Relevés RÉELS de stations météo physiques (pas une prévision modélisée comme le Module 3),
+reçus de l'ANAM en petits exports GeoJSON (un fichier par variable et par jour, ~20 Ko chacun),
+déposés dans `observations_incoming_dir` puis ingérés un par un :
+
+1. `GET /observations/incoming` — fichiers en attente.
+2. `POST /observations/ingest {"filename": "..."}` (`content:manage`) — lit le fichier (la
+   variable — température, pluviométrie ou humidité — est déduite du contenu, pas du nom),
+   crée les stations inconnues et met à jour le relevé du jour pour chacune. Synchrone (fichier
+   petit) : la réponse contient déjà le résultat.
+3. `GET /observations/stations` et `GET /observations` — référentiel et relevés, **publics**
+   comme les autres contenus de référence. Filtrables par `station_id`/`station_name` et
+   `observed_date`.
+
+Détails (format des fichiers, doublons de noms de stations repérés dans les exports reçus) dans
+[module2/README.md](../module2/README.md).
+
 ## Prévisions (Module 3)
 
 Les fichiers de sortie du modèle WRF (NetCDF, ~5 Go chacun, fournis par l'ANAM sur support physique —
@@ -138,7 +156,7 @@ Mots de passe argon2 · jetons JWT courts + refresh à usage unique avec détect
 **Données de l'ANAM**
 - Contours (GeoJSON) des communes et régions : à charger via `PATCH /zones/{id}` ; sans cela la carte ne peut pas dessiner les zones, et le Module 3 n'extrait les prévisions qu'au point le plus proche (pas de moyenne sur la zone, cf. `module3/README.md`). Coordonnées ponctuelles des 351 communes déjà renseignées (source officielle OCHA/IGB, pas une approximation — voir `module3/README.md`) ; à faire valider par l'ANAM malgré tout, et contours toujours à fournir.
 - Rattachement régions → communes (`commune_names`) pour cibler les utilisateurs quand une alerte vise une région (Liptako, Goulmou, Tapoa, Nakambé, Sirba…).
-- Fichiers d'exemple GeoJSON (observations) → Module 2. Le Module 3 (prévisions NetCDF) a reçu 3 fichiers de test (sur une trentaine annoncés) et est déjà intégré ; l'ingestion du reste n'a pas encore été automatisée (cf. `module3/README.md`).
+- Module 2 (observations GeoJSON) : 3 premiers fichiers reçus et intégrés (2026-10-13, un seul jour couvert pour l'instant — voir `module2/README.md`). Module 3 (prévisions NetCDF) : 3 fichiers de test reçus (sur une trentaine annoncés) et déjà intégré. Pour les deux modules, l'ingestion reste manuelle, un fichier à la fois ; l'automatisation du traitement à l'arrivée d'un nouveau fichier n'a pas encore été faite.
 
 **Validations métier**
 - Matrice des permissions ci-dessus ; rôles soumis à la 2FA ; comptes locaux validés ou non par un administrateur.

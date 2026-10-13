@@ -493,3 +493,39 @@ class RawVariablesResponse(BaseModel):
     forecast_date: str | None
     results: dict[str, RawVariableOut]
     errors: dict[str, str] = Field(default_factory=dict, description="Variable -> raison de l'échec (absente du fichier, mauvaise dimension...)")
+
+
+# ------------------------------------------------------------------ Module 2 : observations de stations (GeoJSON)
+class ObservationIngestRequest(BaseModel):
+    filename: str = Field(description="Nom du fichier GeoJSON dans le dossier d'arrivée "
+                                      "(observations_incoming_dir), ex. 'exporttemp.geojson'")
+
+
+class ObservationIngestResult(BaseModel):
+    kind: Literal["temperature", "pluviometrie", "humidite"]
+    observed_date: str
+    stations_created: int
+    stations_updated: int
+
+
+class StationOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: str
+    name: str
+    latitude: float
+    longitude: float
+
+
+class StationObservationOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: str
+    station_id: str
+    station_name: str
+    observed_date: str
+    temp_min_c: float | None
+    temp_max_c: float | None
+    humidity_min_pct: float | None
+    humidity_max_pct: float | None
+    rainfall_mm: float | None

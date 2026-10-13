@@ -42,7 +42,11 @@ def run_forecast_ingest(run_id: str) -> None:
 
 def _ingest(db, run: ForecastRun) -> None:
     settings = get_settings()
-    path = Path(settings.wrf_incoming_dir) / run.source_file
+    # Path(...).name : isole le nom de fichier (sans répertoire) -- run.source_file vient à
+    # l'origine d'une entrée utilisateur (POST /forecasts/ingest) ; wrf_incoming_dir ne contient
+    # que des fichiers à plat, jamais de sous-dossiers, donc un nom avec '..' ou un chemin
+    # absolu ne désigne jamais un fichier légitime ici.
+    path = Path(settings.wrf_incoming_dir) / Path(run.source_file).name
     if not path.is_absolute():
         path = (Path(__file__).resolve().parents[1] / path).resolve()
     if not path.is_file():

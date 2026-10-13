@@ -21,6 +21,7 @@ from ..schemas_content import (
     StationObservationOut,
     StationOut,
 )
+from .common import safe_filename
 
 router = APIRouter(prefix="/observations", tags=["Observations (Module 2)"])
 
@@ -54,7 +55,7 @@ def ingest_observations(body: ObservationIngestRequest,
     (fichier de quelques dizaines de Ko) : la réponse contient déjà le résultat, pas de suivi à
     relire comme pour `POST /forecasts/ingest` (Module 3)."""
     settings = get_settings()
-    path = Path(settings.observations_incoming_dir) / body.filename
+    path = Path(settings.observations_incoming_dir) / safe_filename(body.filename)
     if not path.is_absolute():
         path = (Path(__file__).resolve().parents[2] / path).resolve()
     if not path.is_file():

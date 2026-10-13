@@ -25,7 +25,7 @@ from ..schemas_content import (
     WrfVariableOut,
     ZoneForecastOut,
 )
-from .common import get_or_404
+from .common import get_or_404, safe_filename
 
 router = APIRouter(prefix="/forecasts", tags=["Prévisions (Module 3)"])
 
@@ -164,7 +164,7 @@ def raw_forecast_variables(
     zone = _resolve_zone(db, zone_id, zone_name)
 
     settings = get_settings()
-    path = Path(settings.wrf_incoming_dir) / run.source_file
+    path = Path(settings.wrf_incoming_dir) / safe_filename(run.source_file)
     if not path.is_absolute():
         path = (Path(__file__).resolve().parents[2] / path).resolve()
     if not path.is_file():

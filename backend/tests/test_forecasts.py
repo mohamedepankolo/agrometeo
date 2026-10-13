@@ -179,6 +179,29 @@ def test_ingest_missing_file_marks_run_failed(client, staff):
     assert "introuvable" in body["error"]
 
 
+def test_ingest_rejects_path_traversal_filename(client, staff, tmp_path, monkeypatch):
+    """`filename` isole son nom de base avant d'être joint à wrf_incoming_dir (ingestion ET
+    `/forecasts/raw`) : un nom avec '..' ou un chemin absolu ne doit jamais désigner un fichier
+    hors de ce dossier -- même si un tel fichier existe réellement ailleurs sur le disque."""
+    incoming = tmp_path / "wrf_incoming"
+    incoming.mkdir()
+    monkeypatch.setattr(get_settings(), "wrf_incoming_dir", str(incoming))
+
+    outside = tmp_path / "outside.nc"
+    outside.write_text("pas un vrai fichier wrfout", encoding="utf-8")
+
+    r = client.post("/forecasts/ingest", json={"filename": str(outside)}, headers=staff(Role.agent_anam))
+    assert r.status_code == 202, r.text
+    run_id = r.json()["id"]
+
+    r = client.get(f"/forecasts/runs/{run_id}", headers=staff(Role.agent_anam))
+    body = r.json()
+    # Échoue comme un fichier manquant (cherché dans wrf_incoming_dir par son seul nom de base,
+    # "outside.nc", qui n'y existe pas) -- jamais lu depuis son chemin absolu réel.
+    assert body["status"] == "failed"
+    assert "introuvable" in body["error"]
+
+
 def test_default_incoming_dir_resolves_next_to_repo_root(client, staff):
     """Régression : la résolution du chemin par défaut (`wrf_incoming_dir` relatif, pas remplacé
     par la fixture `wrf_file`) doit pointer sur `agrometeo/wrf_incoming/`, pas un niveau plus

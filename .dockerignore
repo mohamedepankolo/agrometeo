@@ -8,6 +8,7 @@ backend/storage_smoke
 backend/dev_smoke.db
 *.db
 wrf_incoming
+observations_incoming
 module1/.cache
 module1/finetune_dataset
 module1/models

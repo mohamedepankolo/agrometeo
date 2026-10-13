@@ -88,6 +88,19 @@ def test_ingest_requires_content_manage_permission(client, incoming):
     assert r.status_code == 401
 
 
+def test_ingest_rejects_path_traversal_filename(client, staff, incoming, tmp_path):
+    """`filename` isole son nom de base avant d'être joint à observations_incoming_dir : un nom
+    avec '..' ou un chemin absolu ne doit jamais désigner un fichier hors de ce dossier."""
+    outside = tmp_path / "outside.json"
+    outside.write_text('{"type": "FeatureCollection", "features": []}', encoding="utf-8")
+
+    r = client.post("/observations/ingest", json={"filename": f"../{outside.name}"}, headers=staff(Role.agent_anam))
+    assert r.status_code == 404  # cherché dans observations_incoming_dir, pas trouvé (attendu)
+
+    r = client.post("/observations/ingest", json={"filename": str(outside)}, headers=staff(Role.agent_anam))
+    assert r.status_code == 404  # chemin absolu : seul le nom de fichier final est retenu
+
+
 def test_ingest_missing_file_returns_404(client, staff, incoming):
     r = client.post("/observations/ingest", json={"filename": "ne-existe-pas.geojson"},
                     headers=staff(Role.agent_anam))

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from datetime import datetime
+from pathlib import Path
 from typing import TypeVar
 
 from fastapi import HTTPException, status
@@ -14,6 +15,17 @@ T = TypeVar("T")
 
 _MONTHS = {"janvier": 1, "février": 2, "fevrier": 2, "mars": 3, "avril": 4, "mai": 5, "juin": 6, "juillet": 7,
            "août": 8, "aout": 8, "septembre": 9, "octobre": 10, "novembre": 11, "décembre": 12, "decembre": 12}
+
+
+def safe_filename(name: str) -> str:
+    """Isole le nom de fichier (sans répertoire), utilisé pour les noms fournis par l'utilisateur
+    (ex. `filename` de `POST /observations/ingest` et `POST /forecasts/ingest`) avant de les
+    joindre à un dossier d'arrivée configuré : ces dossiers ne contiennent que des fichiers à
+    plat (jamais de sous-dossiers), donc un nom contenant `..`, `/` ou un chemin absolu ne désigne
+    jamais un fichier légitime -- `Path(name).name` neutralise ces cas en gardant seulement le nom
+    final (ex. `/etc/passwd` -> `passwd`, `../../x` -> `x`), sans rien changer pour les noms plats
+    normaux déjà utilisés en pratique."""
+    return Path(name).name
 
 
 def get_or_404(db: Session, model: type[T], obj_id: str, label: str = "Ressource") -> T:

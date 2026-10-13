@@ -104,7 +104,8 @@ Si `must_change_password` est vrai dans les jetons : imposer `POST /me/password`
 | **Historique des bulletins** | `GET /bulletins?limit=20&offset=0` |
 | **Alertes en cours** | `GET /alerts?active_only=true` ; détail `GET /alerts/{id}` (texte, `prevention`, vidéo, image) |
 | **Carte** | `GET /map/alerts` → chaque zone avec `level` (`vert`/`jaune`/`orange`/`rouge`) ; couleurs et libellés dans `GET /config` |
-| **Prévisions** | voir section 6 (Module 3) |
+| **Observations (relevés réels de stations)** | voir section 6 (Module 2) |
+| **Prévisions** | voir section 7 (Module 3) |
 | **Avis et conseils / planification** | `GET /advisories?kind=conseil` ou `kind=planification` |
 | **Profil** | `GET /me`, `PATCH /me` (commune, langue, canaux `sms`/`push`/`email`), `POST /me/password` |
 | **Notifications push** | après connexion : `POST /me/devices {"token":"<jeton FCM>","platform":"android"}` |
@@ -128,7 +129,8 @@ Si `must_change_password` est vrai dans les jetons : imposer `POST /me/password`
 | **Alertes** | formulaire → `POST /alerts` → `PUT /alerts/{id}/image` → `POST /alerts/{id}/media` → prévisualiser → `POST /alerts/{id}/publish` ; `.../cancel`, `.../broadcast`, `.../share-kit` |
 | **Avis** | `POST /advisories` → `.../translate` → `.../publish`, `.../withdraw` |
 | **Prévention / types / zones** | `/prevention-messages`, `/alert-types`, `/zones` (CRUD, avec droits) |
-| **Prévisions** | voir section 6 (Module 3) |
+| **Observations** | voir section 6 (Module 2) |
+| **Prévisions** | voir section 7 (Module 3) |
 | **Utilisateurs et rôles** | `GET /admin/users?status=pending`, `POST /admin/users`, `PATCH /admin/users/{id}/role`, `.../activate`, `.../disable`, `.../reset-2fa`, `GET /admin/stats/communes` |
 | **Diffusion** | `GET /backoffice/broadcasts`, `GET /backoffice/broadcasts/{id}` (détail par canal) |
 | **Paramètres** | `GET/PUT /backoffice/settings` (canaux par type de contenu, diffusion automatique, numéros WhatsApp, durée de validité…) |
@@ -152,7 +154,36 @@ mode test, rien n'est réellement parti).
 **Bouton « Partager sur WhatsApp » (secours)** : `GET .../share-kit` renvoie le texte déjà formaté (gras `*…*`, puces, emojis) dans les
 trois langues, plus les liens vidéo/audio/image, à copier dans le groupe ou la chaîne WhatsApp.
 
-## 6. Prévisions (Module 3)
+## 6. Observations (Module 2)
+
+Relevés RÉELS de stations météo physiques de l'ANAM (pas une prévision modélisée, une mesure --
+à distinguer du Module 3 ci-dessous). **Public** en lecture (comme bulletins/alertes/zones),
+sauf l'ingestion (réservée à `content:manage`, section 3 pour la connexion).
+
+| Besoin | Route |
+|---|---|
+| Liste des stations connues (id, nom, coordonnées) | `GET /observations/stations` |
+| Relevés de toutes les stations | `GET /observations` |
+| Relevés d'UNE station, en la connaissant par id | `GET /observations?station_id=<id>` |
+| Relevés d'UNE station, en la connaissant par nom | `GET /observations?station_name=Kaya` (insensible à la casse) |
+| Filtrer par jour, combinable avec tout ce qui précède | ajouter `&observed_date=2026-10-08` |
+
+Chaque relevé : `temp_min_c`/`temp_max_c`, `humidity_min_pct`/`humidity_max_pct`, `rainfall_mm`.
+**Certains champs peuvent être `null`** : température, pluviométrie et humidité sont reçues de
+l'ANAM dans des fichiers séparés, pas forcément tous importés pour une station donnée à une date
+donnée (voir `module2/README.md`).
+
+**Importer un nouveau fichier** (équipe ANAM/back-office uniquement) :
+1. `GET /observations/incoming` (`content:manage`) → fichiers GeoJSON déposés sur le serveur,
+   pas encore importés.
+2. `POST /observations/ingest {"filename": "..."}` → synchrone (fichier de quelques dizaines de
+   Ko) : la réponse contient déjà le résultat (`kind` déduit du contenu, nombre de stations
+   créées/mises à jour), pas de suivi à relire comme pour le Module 3.
+
+Détails complets (format des fichiers, doublons de noms de stations repérés dans les exports
+reçus) : `module2/README.md` à la racine du dépôt.
+
+## 7. Prévisions (Module 3)
 
 Résumés météo quotidiens par commune, calculés à partir des fichiers du modèle WRF fournis par
 l'ANAM. **Public** (comme bulletins/alertes/zones), sauf l'ingestion et le catalogue/accès brut
@@ -194,7 +225,7 @@ jamais envoyés par upload HTTP) :
 
 Détails complets (format des fichiers WRF, calculs, limites) : `module3/README.md` à la racine du dépôt.
 
-## 7. Rôles et droits
+## 8. Rôles et droits
 
 `GET /roles` (public) donne la matrice à jour. Résumé :
 
@@ -209,7 +240,7 @@ Détails complets (format des fichiers WRF, calculs, limites) : `module3/README.
 Le **back-office doit masquer** les actions non permises (utiliser les permissions de `/roles`), mais c'est **l'API qui fait foi** :
 une action interdite renvoie toujours `403`.
 
-## 8. Tester sans attendre le backend de production
+## 9. Tester sans attendre le backend de production
 
 - `http://197.239.116.77:8000/docs` : essayer chaque route (ou `http://<IP locale>:8000/docs` en repli réseau local, section 2).
 - Comptes de démonstration (environnement de test seulement), mot de passe `Demo1234!` :

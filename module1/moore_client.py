@@ -279,7 +279,18 @@ def _concat_wavs(paths: list[Path], out_path: Path) -> Path:
 
 def tts_moore_long(text_moore: str, out_path="tts_output.wav", sclient: MooreClient | None = None) -> Path:
     """Synthèse vocale d'un texte mooré long : découpe en blocs sous la limite du
-    service TTS puis recolle les audios en un seul fichier."""
+    service TTS puis recolle les audios en un seul fichier.
+
+    MOORE_TTS_ENGINE="mms" bascule sur le modèle MMS fine-tuné (mms_tts.tts_mms_moore) au lieu
+    de CITADEL -- expérimental, voir module1/README.md : la justesse de la prononciation reste
+    à valider par un locuteur natif avant tout usage réel. Défaut ("citadel") : comportement
+    inchangé. Import différé pour ne pas imposer transformers/torch/soundfile tant que ce
+    n'est pas utilisé."""
+    if os.environ.get("MOORE_TTS_ENGINE", "citadel") == "mms":
+        from mms_tts import tts_mms_moore
+
+        return tts_mms_moore(_strip_pause_commas(text_moore), out_path=str(out_path))
+
     sclient = sclient or MooreClient()
     text_moore = _strip_pause_commas(text_moore)
     blocks = _split_for_tts(text_moore)

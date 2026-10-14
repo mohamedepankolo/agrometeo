@@ -58,6 +58,11 @@ class Settings(BaseSettings):
     moore_api_token: str = ""
     # "nllb" (actuel) ou "nllb2" : à comparer avec un locuteur natif avant de basculer en production
     moore_model_type: str = "nllb"
+    # "citadel" (actuel) ou "mms" (modèle MMS fine-tuné sur la voix du présentateur ANAM) : voix
+    # utilisée pour la synthèse mooré. "mms" nécessite le modèle dans module1/models/
+    # anam_mos_finetuned/ (pas versionné) -- expérimental, à comparer avec un locuteur natif
+    # avant de basculer en production, voir module1/README.md.
+    moore_tts_engine: str = "citadel"
 
     # Observations de stations météo du Module 2 (exports GeoJSON, fournis par l'ANAM)
     module2_dir: str = "../module2"

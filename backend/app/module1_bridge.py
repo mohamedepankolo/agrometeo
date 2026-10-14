@@ -34,6 +34,7 @@ def _load() -> None:
         "MOORE_API_BASE_URL": s.moore_api_base_url,
         "MOORE_API_TOKEN": s.moore_api_token,
         "MOORE_MODEL_TYPE": s.moore_model_type,
+        "MOORE_TTS_ENGINE": s.moore_tts_engine,
     }.items():
         if value:
             os.environ.setdefault(env_name, value)

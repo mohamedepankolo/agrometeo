@@ -146,6 +146,34 @@ Linux / macOS :
 export $(grep -v '^#' .env | xargs)
 ```
 
+## Voix mooré alternative : modèle MMS fine-tuné (expérimental)
+
+En plus de la voix CITADEL (par défaut), une voix alternative existe : le modèle ouvert Meta
+`facebook/mms-tts-mos`, **fine-tuné sur 2734 segments réels (89 enregistrements du présentateur
+ANAM)** — voir `prepare_finetune_dataset.py`, `finetune_mms_mos_colab.ipynb` et `mms_tts.py`.
+Contexte : retour de l'ANAM sur le rythme trop lent de la voix CITADEL.
+
+**Basculer dessus** : variable d'environnement `MOORE_TTS_ENGINE=mms` (défaut : `citadel`, aucun
+changement de comportement). Lu par `moore_client.tts_moore_long`, donc pris en compte
+automatiquement par `generate_bulletin_all.py`/`generate_alert_all.py` et, côté backend, par
+`MOORE_TTS_ENGINE` dans `backend/.env` (propagé via `module1_bridge.py`). Nécessite
+`pip install soundfile` (déjà ajouté à `backend/requirements.txt`) et que
+`models/anam_mos_finetuned/` existe (pas versionné, ~317 Mo — généré par le notebook de
+fine-tuning, voir ci-dessous).
+
+**⚠️ Pas encore validé pour un usage réel** : le pipeline technique fonctionne de bout en bout
+(vérifié le 14/10/2026 sur un bulletin complet), mais **la justesse de la prononciation reste à
+faire valider par un locuteur natif** avant toute diffusion publique — c'est un jugement d'écoute,
+pas quelque chose que les tests automatiques peuvent vérifier. Deux essais intermédiaires déjà
+écartés : le montage voix réelle + CITADEL (`generate_bulletin_mos_spliced.py`, rupture de voix
+perceptible à la jointure) et le modèle MMS générique non fine-tuné (voix pas celle du
+présentateur ANAM).
+
+**Pas encore fait si la validation est positive** : décider de verser le modèle fine-tuné
+(`models/anam_mos_finetuned/`, 317 Mo) et le dataset dans le dépôt ou ailleurs (actuellement
+exclus de `.dockerignore`/non commités) — nécessaire pour que `MOORE_TTS_ENGINE=mms` fonctionne
+sur un serveur déployé, pas seulement en local.
+
 ## État actuel / limites connues
 
 - ✅ Extraction PDF (texte + images), traduction FR↔mooré, traduction FR→anglais,

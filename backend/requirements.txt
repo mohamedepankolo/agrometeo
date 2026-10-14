@@ -23,6 +23,8 @@ requests>=2.31
 torch>=2.3
 transformers>=4.40
 sentencepiece>=0.2
+# Voix mooré fine-tunée (MMS), expérimentale -- MOORE_TTS_ENGINE=mms, voir module1/README.md
+soundfile>=0.12
 sacremoses>=0.1
 
 # Prévisions NetCDF du Module 3 (lecture des fichiers de sortie du modèle WRF fournis par l'ANAM)

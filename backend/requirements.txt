@@ -13,7 +13,8 @@ httpx>=0.27
 
 # Chaîne audio/vidéo du Module 1 (ffmpeg doit aussi être installé sur la machine)
 pdfplumber>=0.11
-edge-tts>=6.1
+edge-tts>=7.3.1  # Microsoft a change son schema d'auth cote serveur (cf. commit du 21/10/2026) :
+                 # les versions plus anciennes echouent avec une erreur 403 sur tout appel.
 deep-translator>=1.11
 requests>=2.31
 

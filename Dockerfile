@@ -9,6 +9,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends ffmpeg \
 WORKDIR /app
 
 COPY backend/requirements.txt backend/requirements.txt
+# torch CPU-only d'abord : ce serveur n'a pas de GPU, et le paquet par defaut tire ~1.4 Go de
+# bibliotheques CUDA inutiles (cause d'un echec de build par timeout reseau le 21/10/2026).
+# Une fois installe, `pip install -r requirements.txt` le laisse tel quel (version deja
+# satisfaite) au lieu de retelecharger la variante GPU.
+RUN pip install --no-cache-dir torch --index-url https://download.pytorch.org/whl/cpu
 RUN pip install --no-cache-dir -r backend/requirements.txt
 
 COPY backend/ backend/

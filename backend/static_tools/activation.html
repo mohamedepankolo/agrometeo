@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Validation des inscriptions — ANAM-BF</title>
+<style>
+  :root {
+    --bg: #f4f5f7;
+    --surface: #ffffff;
+    --border: #dde1e6;
+    --text: #1a1d23;
+    --muted: #5c6370;
+    --accent: #1f6feb;
+    --accent-ink: #ffffff;
+    --danger: #c0392b;
+    --danger-bg: #fbe9e7;
+    --ok: #1e8e3e;
+    --font-ui: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14161a;
+      --surface: #1c1f26;
+      --border: #30343d;
+      --text: #e8eaed;
+      --muted: #9aa0ac;
+      --accent: #5b9dff;
+      --accent-ink: #0a0e16;
+      --danger: #ff6b5b;
+      --danger-bg: #2b1a17;
+      --ok: #4ade80;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-ui);
+    min-height: 100vh;
+    padding: 24px max(16px, env(safe-area-inset-left, 0px));
+  }
+  .wrap { max-width: 720px; margin: 0 auto; }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  .sub { color: var(--muted); font-size: 13px; margin: 0 0 24px; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 4px; margin-top: 12px; }
+  label:first-child { margin-top: 0; }
+  input {
+    width: 100%;
+    padding: 9px 11px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 14px;
+  }
+  button {
+    font-family: inherit;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    padding: 9px 16px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .btn-primary { background: var(--accent); color: var(--accent-ink); margin-top: 16px; }
+  .btn-primary:disabled { opacity: .5; cursor: default; }
+  .btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+  .btn-activate { background: var(--ok); color: #fff; }
+  .error {
+    background: var(--danger-bg); color: var(--danger);
+    border-radius: 6px; padding: 10px 12px; font-size: 13px; margin-top: 12px;
+  }
+  .row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; gap: 12px; }
+  .pending-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 0; border-bottom: 1px solid var(--border); gap: 12px;
+  }
+  .pending-item:last-child { border-bottom: none; }
+  .name { font-weight: 600; font-size: 14px; }
+  .meta { color: var(--muted); font-size: 12px; margin-top: 2px; }
+  .empty { color: var(--muted); font-size: 14px; text-align: center; padding: 24px 0; }
+  .qr { background: #fff; padding: 12px; border-radius: 8px; display: inline-block; margin: 12px 0; }
+  .hint { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Validation des inscriptions</h1>
+  <p class="sub">Active les comptes bloqués en attente de vérification (plateforme ANAM-BF).</p>
+
+  <div id="login-view" class="card">
+    <label for="identifier">E-mail ou téléphone</label>
+    <input id="identifier" type="text" autocomplete="username">
+    <label for="password">Mot de passe</label>
+    <input id="password" type="password" autocomplete="current-password">
+    <div id="login-2fa" hidden>
+      <label for="code">Code à 6 chiffres (application d'authentification)</label>
+      <input id="code" type="text" inputmode="numeric" maxlength="6" autocomplete="one-time-code">
+    </div>
+    <div id="login-2fa-setup" hidden>
+      <p class="hint">Première connexion : dans une application d'authentification (Google Authenticator, Authy…), ajouter un compte manuellement avec cette clé, puis saisir le code généré.</p>
+      <label for="secret-display">Clé secrète</label>
+      <input id="secret-display" type="text" readonly>
+      <label for="setup-code">Code à 6 chiffres</label>
+      <input id="setup-code" type="text" inputmode="numeric" maxlength="6" autocomplete="one-time-code">
+    </div>
+    <button id="login-btn" class="btn-primary">Se connecter</button>
+    <div id="login-error" class="error" hidden></div>
+  </div>
+
+  <div id="main-view" hidden>
+    <div class="row">
+      <span id="who" class="meta"></span>
+      <div style="display:flex; gap:8px;">
+        <button id="refresh-btn" class="btn-ghost">Actualiser</button>
+        <button id="logout-btn" class="btn-ghost">Se déconnecter</button>
+      </div>
+    </div>
+    <div class="card">
+      <div id="list"></div>
+      <div id="main-error" class="error" hidden></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  const API = location.origin;
+  let accessToken = null;
+  let challengeToken = null;
+  let setupToken = null;
+
+  const el = (id) => document.getElementById(id);
+  const show = (id) => { el(id).hidden = false; };
+  const hide = (id) => { el(id).hidden = true; };
+
+  function showError(target, msg) {
+    el(target).textContent = msg;
+    show(target);
+  }
+  function clearError(target) { hide(target); }
+
+  el('login-btn').addEventListener('click', onLoginClick);
+  el('refresh-btn').addEventListener('click', loadPending);
+  el('logout-btn').addEventListener('click', () => { accessToken = null; show('login-view'); hide('main-view'); });
+
+  async function onLoginClick() {
+    clearError('login-error');
+    const identifier = el('identifier').value.trim();
+    const password = el('password').value;
+
+    // Cas C : on avait deja recu un setup_token, l'utilisateur vient de taper le 1er code
+    if (setupToken) {
+      const code = el('setup-code').value.trim();
+      try {
+        const r = await fetch(`${API}/auth/2fa/enable`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${setupToken}` },
+          body: JSON.stringify({ code }),
+        });
+        const body = await r.json();
+        if (!r.ok) { showError('login-error', body.detail || 'Code incorrect.'); return; }
+        onAuthenticated(body.access_token);
+      } catch (e) { showError('login-error', 'Connexion impossible : ' + e.message); }
+      return;
+    }
+
+    // Cas B : on attend le code 2FA d'un compte deja configure
+    if (challengeToken) {
+      const code = el('code').value.trim();
+      try {
+        const r = await fetch(`${API}/auth/2fa/verify`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ challenge_token: challengeToken, code }),
+        });
+        const body = await r.json();
+        if (!r.ok) { showError('login-error', body.detail || 'Code incorrect.'); return; }
+        onAuthenticated(body.access_token);
+      } catch (e) { showError('login-error', 'Connexion impossible : ' + e.message); }
+      return;
+    }
+
+    // Cas initial : identifiant + mot de passe
+    if (!identifier || !password) { showError('login-error', 'Identifiant et mot de passe requis.'); return; }
+    try {
+      const r = await fetch(`${API}/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ identifier, password }),
+      });
+      const body = await r.json();
+      if (!r.ok) { showError('login-error', body.detail || 'Échec de connexion.'); return; }
+
+      if (body.tokens) {
+        onAuthenticated(body.tokens.access_token);
+      } else if (body.requires_2fa) {
+        challengeToken = body.challenge_token;
+        show('login-2fa');
+        el('login-btn').textContent = 'Valider le code';
+        el('code').focus();
+      } else if (body.requires_2fa_setup) {
+        setupToken = body.setup_token;
+        const r2 = await fetch(`${API}/auth/2fa/setup`, {
+          method: 'POST', headers: { Authorization: `Bearer ${setupToken}` },
+        });
+        const body2 = await r2.json();
+        if (!r2.ok) { showError('login-error', body2.detail || 'Erreur de configuration 2FA.'); return; }
+        el('secret-display').value = body2.secret;
+        show('login-2fa-setup');
+        el('login-btn').textContent = 'Activer la 2FA';
+      }
+    } catch (e) {
+      showError('login-error', 'Connexion au serveur impossible : ' + e.message);
+    }
+  }
+
+  function onAuthenticated(token) {
+    accessToken = token;
+    challengeToken = null;
+    setupToken = null;
+    hide('login-view');
+    show('main-view');
+    loadPending();
+  }
+
+  async function loadPending() {
+    clearError('main-error');
+    el('list').innerHTML = '<p class="empty">Chargement…</p>';
+    try {
+      const r = await fetch(`${API}/admin/users?status=pending&limit=100`, {
+        headers: { Authorization: `Bearer ${accessToken}` },
+      });
+      if (r.status === 401) { el('logout-btn').click(); return; }
+      const body = await r.json();
+      if (!r.ok) { showError('main-error', body.detail || 'Erreur de chargement.'); el('list').innerHTML = ''; return; }
+      renderList(body.items || []);
+      el('who').textContent = `${body.total} compte(s) en attente`;
+    } catch (e) {
+      showError('main-error', 'Erreur réseau : ' + e.message);
+      el('list').innerHTML = '';
+    }
+  }
+
+  function renderList(items) {
+    if (!items.length) {
+      el('list').innerHTML = '<p class="empty">Aucun compte en attente — tout est à jour.</p>';
+      return;
+    }
+    el('list').innerHTML = '';
+    for (const u of items) {
+      const row = document.createElement('div');
+      row.className = 'pending-item';
+      const idLine = [u.phone, u.email, u.username].filter(Boolean).join(' · ') || '(sans identifiant)';
+      row.innerHTML = `
+        <div>
+          <div class="name">${escapeHtml(u.full_name || '(sans nom)')}</div>
+          <div class="meta">${escapeHtml(idLine)}${u.commune ? ' · ' + escapeHtml(u.commune) : ''}</div>
+        </div>
+        <button class="btn-activate" data-id="${u.id}">Activer</button>
+      `;
+      row.querySelector('button').addEventListener('click', (ev) => activate(u.id, ev.target));
+      el('list').appendChild(row);
+    }
+  }
+
+  async function activate(userId, btn) {
+    btn.disabled = true;
+    btn.textContent = '…';
+    try {
+      const r = await fetch(`${API}/admin/users/${userId}/activate`, {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${accessToken}` },
+      });
+      const body = await r.json();
+      if (!r.ok) { showError('main-error', body.detail || "Échec de l'activation."); btn.disabled = false; btn.textContent = 'Activer'; return; }
+      loadPending();
+    } catch (e) {
+      showError('main-error', 'Erreur réseau : ' + e.message);
+      btn.disabled = false;
+      btn.textContent = 'Activer';
+    }
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+})();
+</script>
+</body>
+</html>

@@ -2,8 +2,11 @@ from __future__ import annotations
 
 from contextlib import asynccontextmanager
 
+from pathlib import Path
+
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 from .api_docs import annotate_access
 from .config import get_settings
@@ -99,3 +102,11 @@ for module in _routers:
 def health():
     """Vérifie que le service répond. Public."""
     return {"status": "ok"}
+
+
+# Petits outils internes (pages statiques, ex. validation manuelle des inscriptions en attente
+# le temps que l'écran dédié existe dans le back-office). Servi sur la même origine que l'API :
+# évite tout souci de CORS/contenu mixte (l'API tourne en HTTP, pas encore de certificat TLS).
+_static_tools_dir = Path(__file__).resolve().parents[1] / "static_tools"
+if _static_tools_dir.is_dir():
+    app.mount("/outils", StaticFiles(directory=_static_tools_dir, html=True), name="outils")

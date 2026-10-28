@@ -75,6 +75,16 @@ class ResendRequest(BaseModel):
     identifier: str
 
 
+class ForgotPasswordRequest(BaseModel):
+    identifier: str
+
+
+class ResetPasswordRequest(BaseModel):
+    identifier: str
+    code: str = Field(pattern=r"^\d{6}$")
+    new_password: str = Password
+
+
 class LoginRequest(BaseModel):
     identifier: str
     password: str

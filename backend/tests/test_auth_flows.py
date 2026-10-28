@@ -95,6 +95,64 @@ def test_resend_code_does_not_reveal_accounts(client):
     assert known.json() == unknown.json()
 
 
+# ------------------------------------------------------------ mot de passe oublié
+def test_forgot_password_then_reset(client, make_user):
+    make_user(email="a@anam.bf")
+    r = client.post("/auth/forgot-password", json={"identifier": "a@anam.bf"})
+    assert r.status_code == 202
+    assert notifications.OUTBOX[-1]["channel"] == "email" and notifications.OUTBOX[-1]["to"] == "a@anam.bf"
+    assert "réinitialisation" in notifications.OUTBOX[-1]["message"]
+
+    r = client.post("/auth/reset-password", json={"identifier": "a@anam.bf", "code": _last_code(), "new_password": "NouveauMdp42"})
+    assert r.status_code == 200
+
+    assert client.post("/auth/login", json={"identifier": "a@anam.bf", "password": PASSWORD}).status_code == 401
+    assert client.post("/auth/login", json={"identifier": "a@anam.bf", "password": "NouveauMdp42"}).status_code == 200
+
+
+def test_reset_password_revokes_existing_sessions(client, make_user):
+    make_user(email="a@anam.bf")
+    tokens = client.post("/auth/login", json={"identifier": "a@anam.bf", "password": PASSWORD}).json()["tokens"]
+    client.post("/auth/forgot-password", json={"identifier": "a@anam.bf"})
+    client.post("/auth/reset-password", json={"identifier": "a@anam.bf", "code": _last_code(), "new_password": "NouveauMdp42"})
+    assert client.post("/auth/refresh", json={"refresh_token": tokens["refresh_token"]}).status_code == 401
+
+
+def test_forgot_password_does_not_reveal_accounts(client, make_user):
+    make_user(email="a@anam.bf")
+    known = client.post("/auth/forgot-password", json={"identifier": "a@anam.bf"})
+    unknown = client.post("/auth/forgot-password", json={"identifier": "inconnu@anam.bf"})
+    assert known.status_code == unknown.status_code == 202
+    assert known.json() == unknown.json()
+
+
+def test_reset_password_rejects_bad_or_reused_code(client, make_user):
+    make_user(email="a@anam.bf")
+    client.post("/auth/forgot-password", json={"identifier": "a@anam.bf"})
+    good = _last_code()
+    bad = "000000" if good != "000000" else "111111"
+    assert client.post("/auth/reset-password", json={"identifier": "a@anam.bf", "code": bad, "new_password": "NouveauMdp42"}).status_code == 400
+
+    r = client.post("/auth/reset-password", json={"identifier": "a@anam.bf", "code": good, "new_password": "NouveauMdp42"})
+    assert r.status_code == 200
+    # le code ne peut pas être rejoué
+    assert client.post("/auth/reset-password", json={"identifier": "a@anam.bf", "code": good, "new_password": "AutreMdp99"}).status_code == 400
+
+
+def test_forgot_password_ignores_local_accounts(client, make_user):
+    make_user(username="agent_kaya")
+    r = client.post("/auth/forgot-password", json={"identifier": "agent_kaya"})
+    assert r.status_code == 202
+    assert len(notifications.OUTBOX) == 0
+
+
+def test_forgot_password_ignores_pending_accounts(client):
+    _register_phone(client)
+    client.post("/auth/forgot-password", json={"identifier": "70123456"})
+    # seul le message d'inscription est présent : aucun code de réinitialisation envoyé à un compte en attente
+    assert len(notifications.OUTBOX) == 1
+
+
 # ------------------------------------------------------------ connexion / sessions
 def test_wrong_password_and_lockout(client, make_user):
     make_user(email="a@anam.bf")

@@ -184,3 +184,9 @@ def get_sender(channel: str):
 def send_verification_code(channel: str, to: str, code: str, minutes: int) -> None:
     get_sender(channel).send(to, f"ANAM : votre code de vérification est {code}. Il expire dans {minutes} minutes.",
                              title="ANAM - code de vérification")
+
+
+def send_password_reset_code(channel: str, to: str, code: str, minutes: int) -> None:
+    get_sender(channel).send(to, f"ANAM : votre code de réinitialisation de mot de passe est {code}. "
+                             f"Il expire dans {minutes} minutes. Si vous n'êtes pas à l'origine de cette "
+                             "demande, ignorez ce message.", title="ANAM - réinitialisation du mot de passe")

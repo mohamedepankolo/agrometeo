@@ -9,8 +9,8 @@ from sqlalchemy.orm import Session
 
 from .config import get_settings
 from .identifiers import classify_identifier
-from .models import RefreshSession, User, VerificationCode, utcnow
-from .notifications import send_verification_code
+from .models import PasswordResetCode, RefreshSession, User, VerificationCode, utcnow
+from .notifications import send_password_reset_code, send_verification_code
 from .schemas import TokenPair
 from .security import (
     create_access_token,
@@ -63,6 +63,34 @@ def issue_verification_code(db: Session, user: User, channel: str, respect_coold
         send_verification_code(channel, to, code, s.verification_code_minutes)
     except Exception:
         audit.exception("échec d'envoi du code (%s) user=%s", channel, user.id)
+        raise HTTPException(status.HTTP_502_BAD_GATEWAY, "Envoi du code impossible, réessayez dans un instant.") from None
+    return True
+
+
+# ------------------------------------------------------------------ mot de passe oublié
+def issue_password_reset_code(db: Session, user: User, channel: str) -> bool:
+    """Crée et envoie un code de réinitialisation. Renvoie False si un code récent existe déjà (anti-spam)."""
+    s = get_settings()
+    now = utcnow()
+    last = db.scalar(
+        select(PasswordResetCode).where(PasswordResetCode.user_id == user.id, PasswordResetCode.channel == channel)
+        .order_by(PasswordResetCode.created_at.desc()).limit(1)
+    )
+    if last and (now - last.created_at) < timedelta(seconds=s.verification_resend_seconds):
+        return False
+
+    db.execute(update(PasswordResetCode).where(PasswordResetCode.user_id == user.id, PasswordResetCode.consumed.is_(False))
+               .values(consumed=True))
+    code = new_verification_code()
+    db.add(PasswordResetCode(user_id=user.id, channel=channel, code_hash=hash_code(code),
+                             expires_at=now + timedelta(minutes=s.verification_code_minutes)))
+    db.commit()
+
+    to = user.phone if channel == "sms" else user.email
+    try:
+        send_password_reset_code(channel, to, code, s.verification_code_minutes)
+    except Exception:
+        audit.exception("échec d'envoi du code de réinitialisation (%s) user=%s", channel, user.id)
         raise HTTPException(status.HTTP_502_BAD_GATEWAY, "Envoi du code impossible, réessayez dans un instant.") from None
     return True
 

@@ -59,6 +59,23 @@ def last_verification_code(identifier: str):
     raise HTTPException(404, "Aucun code envoyé à cet identifiant.")
 
 
+@router.get("/password-reset-code", response_model=dict)
+def last_password_reset_code(identifier: str):
+    """Dernier code de réinitialisation de mot de passe simulé envoyé à ce numéro / e-mail
+    (pour tester /auth/forgot-password + /auth/reset-password sans SMS réel)."""
+    from ..identifiers import classify_identifier
+
+    ident = classify_identifier(identifier)
+    if not ident:
+        raise HTTPException(422, "Identifiant invalide.")
+    for msg in reversed(notifications.OUTBOX):
+        if msg["to"] == ident[1] and "réinitialisation de mot de passe" in msg["message"]:
+            m = re.search(r"est (\d{6})", msg["message"])
+            if m:
+                return {"identifier": ident[1], "code": m.group(1), "channel": msg["channel"]}
+    raise HTTPException(404, "Aucun code envoyé à cet identifiant.")
+
+
 @router.post("/reset-2fa", response_model=dict)
 def reset_2fa_for_tests(identifier: str, db: Session = Depends(get_db)):
     """Réinitialise la 2FA d'un compte SANS authentification (utile en test : la reconfiguration ne redonne

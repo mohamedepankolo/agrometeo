@@ -12,15 +12,17 @@ from .. import services
 from ..config import get_settings
 from ..db import get_db
 from ..identifiers import classify_identifier
-from ..models import RefreshSession, Role, User, UserStatus, VerificationCode, utcnow
+from ..models import PasswordResetCode, RefreshSession, Role, User, UserStatus, VerificationCode, utcnow
 from ..rbac import get_current_user, get_user_for_2fa_setup
 from ..schemas import (
+    ForgotPasswordRequest,
     LoginRequest,
     LoginResponse,
     MessageResponse,
     RefreshRequest,
     RegisterRequest,
     ResendRequest,
+    ResetPasswordRequest,
     TokenPair,
     TwoFactorEnableRequest,
     TwoFactorLoginRequest,
@@ -146,6 +148,55 @@ def resend_code(body: ResendRequest, db: Session = Depends(get_db)):
     if user and user.status == UserStatus.pending:
         services.issue_verification_code(db, user, "sms" if ident[0] == "phone" else "email")
     return MessageResponse(message="Si un compte en attente correspond, un nouveau code vient d'être envoyé.")
+
+
+# ============================================================== mot de passe oublié
+FORGOT_PASSWORD_MESSAGE = "Si un compte correspond à cet identifiant, un code de réinitialisation vient d'être envoyé."
+
+
+@router.post("/forgot-password", response_model=MessageResponse, status_code=status.HTTP_202_ACCEPTED)
+def forgot_password(body: ForgotPasswordRequest, db: Session = Depends(get_db)):
+    """Démarre la réinitialisation : envoie un code par SMS ou e-mail (selon l'identifiant fourni).
+
+    Réponse identique que le compte existe ou non, et quel que soit son état (pas d'énumération de
+    comptes). Uniquement pour les comptes téléphone/e-mail : un compte local (identifiant seul,
+    sans contact) n'a pas de canal pour recevoir un code."""
+    ident = classify_identifier(body.identifier)
+    user = services.find_user(db, body.identifier) if ident and ident[0] in ("phone", "email") else None
+    if user and user.status == UserStatus.active:
+        services.issue_password_reset_code(db, user, "sms" if ident[0] == "phone" else "email")
+    return MessageResponse(message=FORGOT_PASSWORD_MESSAGE)
+
+
+@router.post("/reset-password", response_model=MessageResponse)
+def reset_password(body: ResetPasswordRequest, db: Session = Depends(get_db)):
+    """Termine la réinitialisation : code reçu + nouveau mot de passe. Ferme toutes les sessions en cours."""
+    ident = classify_identifier(body.identifier)
+    user = services.find_user(db, body.identifier) if ident and ident[0] in ("phone", "email") else None
+    row = None
+    if user:
+        row = db.scalar(select(PasswordResetCode).where(PasswordResetCode.user_id == user.id, PasswordResetCode.consumed.is_(False))
+                        .order_by(PasswordResetCode.created_at.desc()).limit(1))
+    if not user or not row or row.expires_at < utcnow():
+        raise INVALID_CODE
+
+    row.attempts += 1
+    if row.attempts > get_settings().verification_max_attempts:
+        row.consumed = True
+        db.commit()
+        raise INVALID_CODE
+    if not codes_match(body.code, row.code_hash):
+        db.commit()
+        raise INVALID_CODE
+
+    row.consumed = True
+    user.password_hash = hash_password(body.new_password)
+    user.must_change_password = False
+    services.clear_failures(user)
+    services.revoke_all_sessions(db, user.id)
+    db.commit()
+    audit.info("mot de passe réinitialisé user=%s", user.id)
+    return MessageResponse(message="Mot de passe réinitialisé. Vous pouvez vous connecter.")
 
 
 # ============================================================== connexion
